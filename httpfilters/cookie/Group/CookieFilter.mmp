@@ -1,0 +1,55 @@
+/*
+* Copyright (c) 2001 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET			cookiefilter.dll
+TARGETTYPE		PLUGIN
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+UID	0x10009D8D 	0x101F852E
+VENDORID          VID_DEFAULT
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE	../FilterInc
+USERINCLUDE     ../ManagerInc
+
+SOURCEPATH	../FilterSrc
+SOURCE		CookieFilterMain.cpp
+SOURCE		CookieLogger.cpp
+SOURCE		CookieFilter.cpp
+
+START RESOURCE  101f852e.rss
+TARGET   CookieFilter.rsc
+
+END
+
+LIBRARY		euser.lib bafl.lib http.lib
+LIBRARY		ecom.lib CookieManager.lib InetProtUtil.lib
+
+
+// Define this macro is you wish to enable logging
+//#define __TEST_COOKIE_LOG_ENABLED
+
+#ifdef __TEST_COOKIE_LOG_ENABLED
+	MACRO __TEST_COOKIE_LOG__
+	DEBUGLIBRARY		flogger.lib
+#endif	// __TEST_COOKIE_LOG_ENABLED
+

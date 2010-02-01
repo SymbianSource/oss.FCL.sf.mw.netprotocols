@@ -1,0 +1,45 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		httptestutils.dll
+TARGETTYPE		dll
+CAPABILITY ALL -TCB
+
+UID		0x1000008d	0x10005188
+VENDORID 0x70000001
+SOURCEPATH	../t_utils
+SOURCE		httptestutils.cpp HttpTestCore.cpp T_DummyServer.cpp ScriptFile.cpp ScriptSection.cpp ScriptSectionItem.cpp
+SOURCE		t_detectkey.cpp
+SOURCE		csrvaddrval.cpp
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+USERINCLUDE		../t_utils
+USERINCLUDE		../../inc/framework
+LIBRARY		euser.lib efsrv.lib flogger.lib http.lib c32.lib esock.lib inetprotutil.lib bafl.lib
+
+#ifdef		WINSCW
+DEFFILE		HTTPTESTUTILS.DEF
+#endif
+
+#ifdef		ARMV5
+DEFFILE		httptestutils.def
+#endif
+SMPSAFE

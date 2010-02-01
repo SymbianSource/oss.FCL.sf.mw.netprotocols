@@ -1,0 +1,35 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.11.3
+## Driver chat script
+#
+# Test Synopsis
+# * Disconnect a connection in suspended state 
+
+# Expected Result
+# * Expected result: disconnect session
+
+
+SCRIPT UnitTestDriver2.1.11.3 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Step 1
+#
+
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

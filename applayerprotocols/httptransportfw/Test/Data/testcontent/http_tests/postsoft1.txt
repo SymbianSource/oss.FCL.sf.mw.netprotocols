@@ -1,0 +1,8 @@
+POST http://waptest:9000/tryit?req=postsoft1.txt&resp=postsoft2.txt
+User-Agent: acme-http-client-1.0
+Host: waptest:9000
+Accept: application/ocsp-response, text/*
+Content-type: application/ocsp-response
+Content-length: 48
+
+posting content for the software install client 

@@ -1,0 +1,38 @@
+## Include script - create a GET transaction trans1
+#
+# Client creates a GET transaction - trans1 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+# User-Agent: 01234567890123456789012345678901234567890123456789
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans1_get_largeheader_driver
+
+#
+# Create a GET method transaction
+#
+	ECHO "Creating and submiting GET method transaction"
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue 01234567890123456789012345678901234567890123456789
+		ENDINVOKE
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+
+ENDSCRIPT

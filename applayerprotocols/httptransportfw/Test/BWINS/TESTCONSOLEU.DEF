@@ -1,0 +1,13 @@
+EXPORTS
+	??1CCommandLine@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CCommandLine::~CCommandLine(void)
+	??1CCommandLineProcessor@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CCommandLineProcessor::~CCommandLineProcessor(void)
+	?AppendL@CCommandLine@@QAEXABVTDesC16@@@Z @ 3 NONAME ; public: void __thiscall CCommandLine::AppendL(class TDesC16 const &)
+	?AppendL@CCommandLine@@QAEXPAVHBufC16@@@Z @ 4 NONAME ; public: void __thiscall CCommandLine::AppendL(class HBufC16 *)
+	?CancelGetCommand@CCommandLineProcessor@@QAEXXZ @ 5 NONAME ; public: void __thiscall CCommandLineProcessor::CancelGetCommand(void)
+	?Delete@CCommandLine@@QAEXH@Z @ 6 NONAME ; public: void __thiscall CCommandLine::Delete(int)
+	?GetNextCommand@CCommandLineProcessor@@QAEXXZ @ 7 NONAME ; public: void __thiscall CCommandLineProcessor::GetNextCommand(void)
+	?NewL@CCommandLine@@SAPAV1@ABVTDesC16@@@Z @ 8 NONAME ; public: static class CCommandLine * __cdecl CCommandLine::NewL(class TDesC16 const &)
+	?NewL@CCommandLine@@SAPAV1@XZ @ 9 NONAME ; public: static class CCommandLine * __cdecl CCommandLine::NewL(void)
+	?NewL@CCommandLineProcessor@@SAPAV1@AAVCConsoleBase@@AAVMCommandHandler@@@Z @ 10 NONAME ; public: static class CCommandLineProcessor * __cdecl CCommandLineProcessor::NewL(class CConsoleBase &,class MCommandHandler &)
+	?StartScriptL@CCommandLineProcessor@@QAEXABVTDesC16@@@Z @ 11 NONAME ; public: void __thiscall CCommandLineProcessor::StartScriptL(class TDesC16 const &)
+

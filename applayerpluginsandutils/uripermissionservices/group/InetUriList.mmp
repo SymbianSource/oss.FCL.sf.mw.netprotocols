@@ -1,0 +1,48 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// ineturilist.dll Internet Uri List client
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET          ineturilist.dll
+TARGETTYPE      dll
+UID      	0x102078CB
+
+CAPABILITY	ALL -TCB 
+
+USERINCLUDE	../client/inc
+USERINCLUDE	../server/inc
+USERINCLUDE	../inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH	../client/src
+SOURCE		ineturilistsession.cpp
+SOURCE		ineturilist.cpp
+SOURCE 		ineturilistimpl.cpp
+SOURCE		ineturi.cpp
+SOURCE 		ineturiimpl.cpp
+SOURCE 		ineturiproperties.cpp
+SOURCE		urilistreadstream.cpp
+
+LIBRARY		euser.lib estor.lib inetprotutil.lib bafl.lib
+
+VENDORID 	0x70000001
+
+DEFFILE		ineturilist.def
+SMPSAFE

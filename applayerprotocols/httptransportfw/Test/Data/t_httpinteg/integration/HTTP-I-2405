@@ -1,0 +1,233 @@
+DEFINE TestLogPath    "c:\logs\http_integ\"
+DEFINE TestLogFile    "HTTP-I-2405.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL
+
+DEFINE wapTestURL "http://$waptest$"
+DEFINE PutURL     "http://$waptest$/upload/large.txt"
+DEFINE PutFile    "c:\httptest\integration\large.txt"
+
+// Header 
+
+DEFINE Accept "*/*"
+DEFINE ContentType "text/html" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2405 Other Methods using Multiple Transport frameworks (HTTP) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+CONNECT HTTP H_CON_02
+
+TRANSACTION T_01 H_CON_01 HEAD $wapTestURL$
+TRANSACTION T_02 H_CON_01 PUT  $PutURL$ $PutFile$ 
+
+TRANSACTION T_03 H_CON_02 OPTIONS $wapTestURL$
+TRANSACTION T_04 H_CON_02 PUT $PutURL$ $PutFile$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for a set number of seconds to allow for data 
+// transfer to completed i.e. 60 for NTRas otherwise an extra 
+// 200 seconds  
+//---------------------------------------------------------
+
+hold 60
+
+// PRINT TransSpeed $TransSpeed$
+//
+// IF $TransSpeed$ == $SLOW$ 
+//   
+//    hold 200 
+// ENDIF 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2405 HEAD $wapTestURL$ on Framework 1 Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2405 HEAD $wapTestURL$ on Framework 1 Failed, HTTP Status $T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2405 HEAD $wapTestURL$ on Framework 1 Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2405 PUT $PutURL$ on Framework 1 Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2405 PUT  $PutURL$ on Framework 1 Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2405 PUT  $PutURL$ on Framework 1 Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2405 OPTIONS $wapTestURL$ on Framework 2 Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2405 OPTIONS $wapTestURL$ on Framework 2 Failed, HTTP Status $T_03HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2405 OPTIONS $wapTestURL$ on Framework 2 Failed, last event $T_03LastEvent$ 
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2405 PUT $PutURL$ on Framework 2 Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2405 PUT $PutURL$ on Framework 2 Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2405 PUT $PutURL$ on Framework 2 Failed, last event $T_04LastEvent$  
+ENDIF
+
+endtrans T_04
+ 
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close of framework 1 
+
+connect
+
+// check that can still perform transactions on framework 2 
+
+TRANSACTION T_05 H_CON_02 TRACE $wapTestURL$
+TRANSACTION T_06 H_CON_02 DELETE $PutURL$ 
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for a set number of seconds to allow for data 
+// transfer to completed i.e. 40 for NTRas otherwise an extra 
+// 200 seconds  
+//---------------------------------------------------------
+
+hold 40
+
+// PRINT TransSpeed $TransSpeed$
+//
+// IF $TransSpeed$ == $SLOW$ 
+//   
+//    hold 200 
+// ENDIF 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2405 TRACE $wapTestURL$ on Framework 2 Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2405 TRACE $wapTestURL$ on Framework 2 Failed, HTTP Status $T_05HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2405 TRACE $wapTestURL$ on Framework 2 Failed, last event $T_05LastEvent$ 
+ENDIF
+
+endtrans T_05 
+
+IF $T_06LastEvent$ == $Succeeded$
+
+   IF $T_06HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2405 DELETE $PutURL$ on Framework 2 Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2405 DELETE $PutURL$ on Framework 2 Failed, HTTP Status $T_06HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2405 DELETE $PutURL$ on Framework 2 Failed, last event $T_06LastEvent$  
+ENDIF
+
+endtrans T_06
+ 
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_02
+
+// display state of connections, after close of framework 1 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2405
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

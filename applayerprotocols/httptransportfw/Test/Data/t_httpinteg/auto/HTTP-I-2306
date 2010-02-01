@@ -1,0 +1,140 @@
+//---------------------------------------------------------
+
+CASE HTTP-I-2306 Put and Delete file using Transport framework (HTTP) over Default bearer  
+
+//---------------------------------------------------------
+//
+// create the file http://waptest.symbian.com/upload/pic01.jpg 
+
+CONNECT HTTP 2306_H_CON_01
+
+TRANSACTION  2306_T_01 2306_H_CON_01 PUT $PutURL01$ $PutFile01$
+  
+hold 40
+
+TRANSACTION  2306_T_02 2306_H_CON_01 DELETE $DeleteURL01$ 
+TRANSACTION  2306_T_03 2306_H_CON_01 PUT $PutURL02$ $PutFile02$
+    
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 60 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 60
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans 
+
+
+// Now delete the file you have put onto the server 
+
+TRANSACTION  2306_T_04 2306_H_CON_01 DELETE $DeleteURL02$ 
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+hold 60 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $2306_T_01LastEvent$ == $Succeeded$
+
+   IF $2306_T_01HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2306 PUT Passed
+   ELSE 
+      PRINT Result: HTTP-I-2306 PUT Failed, HTTP Status $2306_T_01HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2306 PUT Failed, last event $2306_T_01LastEvent$  
+ENDIF
+
+endtrans 2306_T_01 
+
+IF $2306_T_02LastEvent$ == $Succeeded$
+
+   IF $2306_T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2306 DELETE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2306 DELETE Failed, HTTP Status $2306_T_02HttpStatus$   
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2306 DELETE Failed, last event $2306_T_02LastEvent$   
+ENDIF
+
+endtrans 2306_T_02 
+
+IF $2306_T_03LastEvent$ == $Succeeded$
+
+   IF $2306_T_03HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2306 PUT Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2306 PUT Failed, HTTP Status $2306_T_03HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2306 PUT Failed, last event $2306_T_03LastEvent$    
+ENDIF
+
+endtrans 2306_T_03
+
+IF $2306_T_04LastEvent$ == $Succeeded$
+
+   IF $2306_T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2306 DELETE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2306 DELETE Failed, HTTP Status $2306_T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2306 DELETE Failed, last event $2306_T_04LastEvent$    
+ENDIF
+
+endtrans 2306_T_04
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2306_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2306

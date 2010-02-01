@@ -1,0 +1,19 @@
+EXPORTS
+	_ZN15CWbxmlConverter12ProcessDataLER6HBufC8 @ 1 NONAME
+	_ZN15CWbxmlConverter25CWbxmlConverter_Reserved1Ev @ 2 NONAME
+	_ZN15CWbxmlConverter4NewLER3RFsP23MWbxmlConverterObserver @ 3 NONAME
+	_ZN15CWbxmlConverter4NewLER3RFsP23MWbxmlConverterObserverPK7TDesC16 @ 4 NONAME
+	_ZN15CWbxmlConverter5NewLCER3RFsP23MWbxmlConverterObserver @ 5 NONAME
+	_ZN15CWbxmlConverter7CommitLEv @ 6 NONAME
+	_ZN23MWbxmlConverterObserver33MWbxmlConverterObserver_Reserved1Ev @ 7 NONAME
+	_ZTI15CWbxmlConverter @ 8 NONAME ; #<TI>#
+	_ZTI23MWbxmlConverterObserver @ 9 NONAME ; #<TI>#
+	_ZTV15CWbxmlConverter @ 10 NONAME ; #<VT>#
+	_ZTV23MWbxmlConverterObserver @ 11 NONAME ; #<VT>#
+	_ZTI11CWbxmlToken @ 12 NONAME ; #<TI>#
+	_ZTI5CItem @ 13 NONAME ; #<TI>#
+	_ZTI9CByteList @ 14 NONAME ; #<TI>#
+	_ZTV11CWbxmlToken @ 15 NONAME ; #<VT>#
+	_ZTV5CItem @ 16 NONAME ; #<VT>#
+	_ZTV9CByteList @ 17 NONAME ; #<VT>#
+

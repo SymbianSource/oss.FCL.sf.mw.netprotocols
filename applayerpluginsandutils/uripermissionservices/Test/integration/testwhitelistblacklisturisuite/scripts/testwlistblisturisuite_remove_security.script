@@ -1,0 +1,63 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Script file for Testing White/Black list uri service capability test.
+// @internalAll
+// 
+//
+
+
+PRINT Running_WLsitBListUriService_Test
+
+// Load the test
+LOAD_SUITE TestWListBListUriServer
+
+
+START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0001
+//Remove_Uri_For_CapabilityTest
+
+//! @file			TestWListBListUriSuite_Remove_Security.script
+//! @SYMTestCaseID		IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0001
+//! @SYMTestCaseDesc 		Remove uris which are added/modified while doing capability test.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!		                2) Open RUriDatabase and call RUriDatabase::RemoveL() 
+//!				3) Check that it has been added successfully
+//! @SYMTestExpectedResults 	URI should be removed.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadWriteCap_Remove_ReadWrite_Uri_WhiteList
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  WriteCap_Add_Uri_WhiteList
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0001
+
+
+START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0002
+//Remove_ExistingDB
+
+//! @file			TestWListBListUriSuite_Remove_Security.script
+//! @SYMTestCaseID		IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0002
+//! @SYMTestCaseDesc 		Remove the existing database.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Remove the existing database.
+//! @SYMTestExpectedResults 	Existing database should be removed.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveDBStep
+END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE_REMOVE_SECURITY-0002
+
+

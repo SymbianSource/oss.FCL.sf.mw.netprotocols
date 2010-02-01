@@ -1,0 +1,65 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Transport Framework and HTTP/WSP client support
+// 
+//
+
+/**
+ @file
+*/
+
+PRJ_EXPORTS
+
+
+
+// rom definition file
+http.iby	/epoc32/rom/include/http.iby
+
+PRJ_TESTEXPORTS
+
+
+// WSP api includes (note, these should all be part of the wap-stack subsystem)
+../wspinc/CWspTransportHandler.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/cwsptransporthandler.h)
+../wspinc/CWspTransportHandler.inl			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/cwsptransporthandler.inl)
+../wspinc/MWspProxyInfoProvider.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspproxyinfoprovider.h)
+../wspinc/MWspSessionHeadersProvider.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspsessionheadersprovider.h)
+../wspinc/MWspCapabilityProvider.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcapabilityprovider.h)
+../wspinc/MWspCapabilitySetter.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcapabilitysetter.h)
+../wspinc/MWspCapabilityViewer.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcapabilityviewer.h)
+../wspinc/MWspCLMethodCallback.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspclmethodcallback.h)
+../wspinc/MWspCLMethodInvoker.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspclmethodinvoker.h)
+../wspinc/MWspCLPushCallback.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspclpushcallback.h)
+../wspinc/MWspCLPushInvoker.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspclpushinvoker.h)
+../wspinc/MWspCOPushCallback.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcopushcallback.h)
+../wspinc/MWspCOPushInvoker.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcopushinvoker.h)
+../wspinc/MWspCOSessionCallback.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcosessioncallback.h)
+../wspinc/MWspCOSessionInvoker.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcosessioninvoker.h)
+../wspinc/MWspCOMethodCallback.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcomethodcallback.h)
+../wspinc/MWspCOMethodInvoker.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspcomethodinvoker.h)
+../wspinc/MWspAliasAddresses.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspaliasaddresses.h)
+../wspinc/MWspExtendedMethods.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspextendedmethods.h)
+../wspinc/MWspHeaderCodePages.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspheadercodepages.h)
+../wspinc/MWspUnknownCapabilities.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/mwspunknowncapabilities.h)
+
+// rom definition file for WSP
+wsp.iby		/epoc32/rom/include/wsp.iby
+
+PRJ_MMPFILES
+// And the mmp files
+../group/httpclient.mmp
+../group/corefilters.mmp
+../group/httpclientcodec.mmp
+
+PRJ_TESTMMPFILES
+

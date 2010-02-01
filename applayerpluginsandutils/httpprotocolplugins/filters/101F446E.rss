@@ -1,0 +1,65 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Registration data for transport framework core filters interface implementation collection
+// 
+//
+
+
+#include "101F446E.rls"
+#include <ecom/registryinfo.rh>
+RESOURCE REGISTRY_INFO theInfo
+	{
+	dll_uid = 0x101F446E;
+	interfaces=
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = 0x101F446D;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F446F;
+					version_no = 1;
+					display_name = STRING_theInfo1;
+					default_data = "HTTP/REDIRECT||WSP/REDIRECT";
+					opaque_data = "";
+					},
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F447B;
+					version_no = 1;
+					display_name = STRING_theInfo2;
+					default_data = "HTTP/+VALIDATION||WSP/+VALIDATION";
+					opaque_data = "";
+					}
+				};
+			},
+		INTERFACE_INFO
+			{
+			interface_uid = 0x101F447D;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F447C;
+					version_no = 1;
+					display_name = STRING_theInfo3;
+					default_data = "HTTP/-AUTHENTICATION||WSP/-AUTHENTICATION";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}

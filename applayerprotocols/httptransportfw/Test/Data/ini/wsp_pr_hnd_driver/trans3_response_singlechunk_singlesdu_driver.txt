@@ -1,0 +1,90 @@
+## Include script - trans3 response data in one chunk, single SDU
+#
+# Body data -
+# response_data_1_driver.txt
+#
+# Header data- 
+# Content-Type : application/vnd.wap.wmlc
+#
+# The method will be in the Null state
+#
+SCRIPT trans3_response_singlechunk_singlesdu_driver
+#
+# Expect the S-MethodResult.ind primitive - first the headers event...
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans3
+			VALIDATE aEvent EGotResponseHeaders
+		ENDINVOCATION
+	ENDEXPECT
+#
+# ...then the body data event
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans3
+			VALIDATE aEvent EGotResponseBodyData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Check the status code and the content-type header and server header
+#
+	SLEEP 500
+	SEND
+		INVOKE trans3 GetStatusCode
+			VALIDATE :RETURN: 200
+		ENDINVOKE
+		INVOKE trans3 GetHeaderL
+			PARAMETER aFieldName Content-Type
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue application/vnd.wap.wmlc
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+		INVOKE trans3 GetHeaderL
+			PARAMETER aFieldName Server
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue bunny
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+#
+# Get the response body data supplier and the data
+#
+	SEND
+		INVOKE trans3 GetBody
+			STOREITEM :RETURN: respBody3
+		ENDINVOKE
+		INVOKE respBody3 MHTTPDataSupplier::OverallDataSize
+			VALIDATE :RETURN: 150
+		ENDINVOKE
+		INVOKE respBody3 MHTTPDataSupplier::GetNextDataPart
+			VALIDATE aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\response_data_1_driver.txt$file$>
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE respBody3 MHTTPDataSupplier::ReleaseData
+		ENDINVOKE
+	ENDSEND
+#
+# Expect the response complete event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans3
+			VALIDATE aEvent EResponseComplete
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the succeeded event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans3
+			VALIDATE aEvent ESucceeded
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT

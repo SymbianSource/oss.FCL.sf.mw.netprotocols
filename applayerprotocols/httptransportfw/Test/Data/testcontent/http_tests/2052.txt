@@ -1,0 +1,8 @@
+HTTP/1.0 205 Reset Content 
+Server: Fakeserver.pl
+Date: Tue, 20 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+
+
+

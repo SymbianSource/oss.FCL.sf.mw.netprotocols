@@ -1,0 +1,48 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET t_securitypolicy.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+// ECom Recogniction UID followed by Unique 3rd UID
+UID 0x10009D8D 0x101F4487
+VENDORID 0x70000001
+
+SOURCEPATH .
+SOURCE ctestsecuritypolicy.cpp t_securitypolicymain.cpp
+
+USERINCLUDE . ../../../httptransportfw/Test/t_utils ../../../httptransportfw/inc/framework
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION	
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+
+start resource 101F4487.rss
+#ifdef SYMBIAN_SECURE_ECOM
+target t_securitypolicy.rsc
+#endif
+end
+
+LIBRARY euser.lib ecom.lib inetprotutil.lib httptestutils.lib bafl.lib
+
+SMPSAFE

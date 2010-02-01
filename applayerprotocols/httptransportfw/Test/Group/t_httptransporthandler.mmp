@@ -1,0 +1,59 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET			t_httptransporthandler.exe
+TARGETTYPE		exe
+CAPABILITY TrustedUI ProtServ NetworkServices
+ 
+
+SYSTEMINCLUDE ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include
+SYSTEMINCLUDE	/epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+USERINCLUDE		../t_httptransporthandler ../t_utils ../../inc/framework
+
+SOURCEPATH 		../t_httptransporthandler
+SOURCE			t_httptransporthandler.cpp
+SOURCE			cdriverbase.cpp
+SOURCE			ctestengine.cpp
+
+SOURCE			csocketdriver.cpp
+SOURCE			cserversocketdriver.cpp
+SOURCE			cclientsocketdriver.cpp
+
+SOURCE			csocketlistenerdriver.cpp
+SOURCE			csocketconnectordriver.cpp
+
+SOURCE			ctestsocketreader.cpp
+SOURCE			ctestsocketwriter.cpp
+
+LIBRARY		euser.lib ecom.lib httptestutils.lib esock.lib
+
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are 0x102729D2 to 0x10272A35.  The UID name is KUidIWSTestSuit.
+UID 0x1000007A 0x102729D6
+SMPSAFE

@@ -1,0 +1,98 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+//! @file			tld_query_preconfig_test.script
+//
+// Description:
+
+PRINT Running_TLD_Functionality_Test
+
+// Load the test
+LOAD_SUITE	TestWListBListUriServer
+//Load for Backup and Restore
+LOAD_SUITE  burtestserver
+
+START_TESTCASE                IWS-WLBL-TLD-CIT-POS-0007
+//! @SYMTestCaseID              IWS-WLBL-TLD-CIT-POS-0007
+//! @SYMTestCaseDesc            Test the Querying on TLD Policy data functionality.
+//!                             The Policy data in the pre-configuration file should be added to database when database is initialised.
+//!                             When client Query for TLD Policy data, InetUriListServer should be able to fetch the requested White/Black List character set.
+//! @SYMTestPriority            High
+//! @SYMTestActions             1. Place the pre-configuration file which contains Policy data in corresponding directory.
+//!                             2. This Policy file should be read and added to the database when database is initialised by the InetUriListServer.
+//!                             3. Client Query for TLD Policy data (available in pre-configuration file) with required parameters.
+//!                             4. InetUriListServer fetches the requested White/Black List character set for requested TLD.
+//! @SYMTestExpectedResults     The expected policy data is fetched for requested TLD (available in pre-configuration file).
+//! @SYMREQ						REQ11517, REQ11519, REQ11521, REQ11664, REQ11665, REQ11666
+//! @SYMTestType                CIT
+//! @SYMTestStatus              1. Under Development
+
+PRINT  Executing Deletion of existing database
+//! Delete the existing database and forcing to create new database
+RUN_UTILS DeleteFile c:\private\10281e17\[20009D70]URIList.dat
+
+PRINT  Executing With NO INSTALLATION
+PRINT  Querying in Policy Data available with ROM only
+
+PRINT  Executing Query TLD List Type
+//! White List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_4
+//Armenian
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_6
+
+//! Black List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_4
+//! Greek
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_9
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_7
+//! cyrellic language character is added in this test
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_6
+//Armenian
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_BlackList_10
+//! Unknown List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Unknown_1
+
+PRINT  Executing Query TLD Policy data
+//! White List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_5
+//! Black List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_8
+
+PRINT ----------------------------------------------
+PRINT  Test Backup
+PRINT ----------------------------------------------
+RUN_TEST_STEP 100 burtestserver TestBackup c:\testdata\ini\TestWListBListUriSuite.ini backuprestore
+
+PRINT ----------------------------------------------
+PRINT  Test Restore
+PRINT ----------------------------------------------
+RUN_TEST_STEP 100 burtestserver TestRestore c:\testdata\ini\TestWListBListUriSuite.ini backuprestore
+PRINT ----------------------------------------------
+PRINT  Testing the tests after Restore
+PRINT ----------------------------------------------
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_2
+//Armenian
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_6
+//! White List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_2
+//! Black List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_2
+END_TESTCASE                  IWS-WLBL-TLD-CIT-POS-0007

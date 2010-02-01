@@ -1,0 +1,20 @@
+## Include script - do connect and wait for ConnectedOK event
+#
+SCRIPT do_connectok_driver
+#
+# Send connect request
+#
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT

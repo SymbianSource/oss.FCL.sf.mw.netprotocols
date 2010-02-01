@@ -1,0 +1,8 @@
+HTTP/1.0 202 Accepted 
+Server: Fakeserver.pl
+Date: Tue, 20 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+I accept your request but cant be asked to do anything about it.
+Lators.
+

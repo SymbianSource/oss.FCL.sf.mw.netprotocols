@@ -1,0 +1,4 @@
+EXPORTS
+	GetVersion__12CFtpProtocol @ 1 NONAME R3UNUSED ; CFtpProtocol::GetVersion(void)
+	NewL__12CFtpProtocolP20MFtpProtocolNotifier @ 2 NONAME R3UNUSED ; CFtpProtocol::NewL(MFtpProtocolNotifier *)
+

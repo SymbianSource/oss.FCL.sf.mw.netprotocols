@@ -1,0 +1,209 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// WriteDeviceData capability tests.
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0018-HP-0001
+//Db_Opened_Manager_With_WriteUserData
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0018-HP-0001
+//! @SYMTestCaseDesc 		Should be able to open the database in manager mode when the application has WriteUserData
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to open DB in manager mode when application has WriteUserData
+//! @SYMTestExpectedResults 	The database is successfully opened in manager mode.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestBookmarksBaseStep	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Db_Open_Manager_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0018-HP-0001
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0019-HP-0001
+//Db_Opened_Manager_Access_All_Items
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0019-HP-0001
+//! @SYMTestCaseDesc 		A DevMan application should be able to access all items
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.2, Application-Protocols/Bookmarks/ITEMDATA.10
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a public folder when DB is open in manager mode.
+//!				2. Open a private read-only folder when DB is open in manager mode.
+//!				3. Open a public read-only bookmark when DB is open in manager mode.
+//!				4. Open a public folder containing a private bookmark when DB is open in manager mode.
+//!				5. Open a private writeable bookmark when DB is open in manager mode.
+//! @SYMTestExpectedResults 	When DB is opened in manager mode, the application can access all items.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Main_Folder_In_Manager_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_In_Manager_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1_In_Manager_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder2_In_Manager_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_In_Manager_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0019-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0043-HP-0001
+//All_Items_Modifiable_By_DevMan
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0043-HP-0001
+//! @SYMTestCaseDesc 		All items including Read-Only are writable by a Device Management application
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.10
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Do a write operation on a read-only folder when DB is opened in manager mode
+//!				2. Do a write operation on a read-only bookmark when DB is opened in manager mode
+//!				3. Do a write operation on a writeable folder when DB is opened in manager mode
+//!				4. Do a write operation on a writeable bookmark when DB is opened in manager mode
+//! @SYMTestExpectedResults 	A device management application can read/write to any item even if it is read-only.
+//! @SYMTestType 		Integration
+// allowed to modify read-only data
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_SetTitle
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetDescription
+
+// Changes should be reflected
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_GetTitle_Changed
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetDescription_Changed
+
+// Writeable items can be modified as usual
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetTitle
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_SetDescription
+
+// Changes should be reflected
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetTitle
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_GetDescription
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0043-HP-0001
+
+// Revert the titles, as other test steps need it
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_SetTitle_Revert
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetTitle_Revert
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0046-HP-0001
+//DevMan_Getting_Owner_Of_Item
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0046-HP-0001
+//! @SYMTestCaseDesc 		Device Management application can get the owner of an item
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.9
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Get the owner of a folder private to another application when DB is opened in manager mode
+//!				2. Get the owner of a bookmark private to another application when DB is opened in manager mode
+//! @SYMTestExpectedResults 	A device management application can retreive the owner of an item.
+//! @SYMTestType 		Integration
+// Folder1 and Bookmark2 are private to another application
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_GetOwner
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_GetOwner
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0046-HP-0001
+
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0045-HP-0001
+//DevMan_Setting_Owner_Of_Item
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0045-HP-0001
+//! @SYMTestCaseDesc 		Device Management application can set an item to be private to another application
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.9
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the ownership of a public folder to another application when DB is opened in manager mode
+//!				2. Set the ownership of a public bookmark to another application when DB is opened in manager mode
+//!				3. Get the owners of the above items and verify that the change of ownership has been reflected
+//!				4. Check the visibility of the above items and verify that they have become private now
+//! @SYMTestExpectedResults 	A device management application can set an item to be private to another application.
+//! @SYMTestType 		Integration
+// Set Folder2 and Bookmark1 also to be private to another application
+// Check original ownership...should be public
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetOwner_Original
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetOwner_Original
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetPublic_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetPublic_True
+// Set new ownership
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetOwner
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetOwner
+
+// As owner has been set, these items should be private to that owner.
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetOwner
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetOwner
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetPublic_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetPublic_False
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0045-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0055-HP-0001
+//Set_And_Get_Last_Visited
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0055-HP-0001
+//! @SYMTestCaseDesc 		Set and get last visited time when application has required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last visited time of a bookmark when the application has WriteDeviceData
+//! @SYMTestExpectedResults 	A device management application can set the last visited time attribute of a bookmark.
+//! @SYMTestType 		Integration
+// RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep      c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastVisited
+// RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	 c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetLastVisited
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0055-HP-0001
+
+START_TESTCASE	IWS-APPPROT-BM-CAP_00000020_TESTBOOKMARKS-0001
+//Set_And_Get_Last_Modified
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-CAP_00000020_TESTBOOKMARKS-0001
+//! @SYMTestCaseDesc 		Set and get last modified time when application has required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last modified time of a bookmark when the application has WriteUserData
+//! @SYMTestExpectedResults 	A device management application can set the last modified time attribute of a bookmark.
+//! @SYMTestType 		Integration
+  RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep      c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastModified
+  RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	 c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetLastModified
+END_TESTCASE	IWS-APPPROT-BM-CAP_00000020_TESTBOOKMARKS-0001
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0048-HP-0001
+//DevMan_Modifying_Writeable
+
+//! @file			Cap_00000020_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0048-HP-0001
+//! @SYMTestCaseDesc 		Device Management application can set a RW item to RO and vice versa
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.9
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set a Read-Write folder to Read-Only when DB is opened in manager mode
+//!				2. Set a Read-Write bookmark to Read-Only when DB is opened in manager mode
+//!				3. Set a Read-Only folder to Read-Write when DB is opened in manager mode
+//!				3. Set a Read-Only bookmark to Read-Write when DB is opened in manager mode
+//! @SYMTestExpectedResults 	A device management application is able to set a Read-Write item to Read-Only and vice versa
+//! @SYMTestType 		Integration
+// Make RW items RO
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetWriteable_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark2_SetWriteable_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetWriteable_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark2_GetWriteable_False
+// Vice Versa
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetWriteable_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark2_SetWriteable_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetWriteable_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark2_GetWriteable_True
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0048-HP-0001
+
+
+

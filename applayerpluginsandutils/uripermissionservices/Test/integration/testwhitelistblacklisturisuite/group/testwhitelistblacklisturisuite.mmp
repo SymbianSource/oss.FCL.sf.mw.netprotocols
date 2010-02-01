@@ -1,0 +1,54 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		testwlistblisturiserver.exe
+TARGETTYPE	exe
+UID 0 0xA0002702
+
+CAPABILITY 	ReadDeviceData WriteDeviceData AllFiles
+
+VENDORID 	0x70000001
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE 	/epoc32/include /epoc32/include/test
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE 	/epoc32/include/platform/test
+SYSTEMINCLUDE 	/epoc32/include/mw
+#endif
+
+USERINCLUDE     ../inc
+
+LIBRARY		euser.lib efsrv.lib estor.lib
+
+//For File Uri API
+LIBRARY		inetprotutil.lib ineturilist.lib
+
+//For TEF
+LIBRARY		testexecuteutils.lib testexecutelogclient.lib
+
+SOURCEPATH	../src
+SOURCE		testwlistblisturiserver.cpp	  testwlistblisturibasestep.cpp
+SOURCE		testadduristep.cpp   testremoveuristep.cpp  testmatchuristep.cpp
+SOURCE		testmatchuritypestep.cpp  testupdateurilisttypestep.cpp
+SOURCE		testupdateurifavnamestep.cpp   testurilisttypestep.cpp 
+SOURCE		testuricountstep.cpp testwithoutdbconnectionstep.cpp
+SOURCE		testcopypreconfigxmlstep.cpp testremovedbstep.cpp
+SOURCE		testtldpolicystep.cpp 
+
+
+
+
+
+SMPSAFE

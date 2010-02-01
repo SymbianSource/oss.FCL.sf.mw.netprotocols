@@ -1,0 +1,66 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.4.3
+## Driver chat script
+#
+# Test Synopsis
+# * Connect while in Connected state 
+# The function ConnectReq will be called 
+
+# Expected Result
+# * Expected result: no action results from this request
+
+
+SCRIPT UnitTestDriver2.1.4.3 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+
+#
+# Set the proxy info
+#
+INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+
+#
+# connect
+#
+INCLUDE "C:\httptest\wsp_pr_hnd_driver\doconnect_accept_driver.txt"
+
+#
+# Do another connect. Since we are in the connected state there should be no action
+#
+	ECHO "Driver Sending Connect"
+	SEND
+		ALLOWREENTRANCY
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+
+#
+# Expect the Already Conneting event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EAlreadyConnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

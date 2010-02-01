@@ -1,0 +1,46 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __HTTPTEST_IBY__
+#define __HTTPTEST_IBY__
+
+#include <t_http.iby>
+#include <t_httpoffline.iby>
+#include <t_httponline.iby>
+#include <t_filtertest.iby>
+#include <httpservicetest.iby>
+
+// Test Filters
+ECOM_PLUGIN(t_testfilters.dll,101f447f.rsc)
+ECOM_PLUGIN(htmlparserplugin.dll,htmlparserplugin.rsc)
+
+// The script file for T_HttpRegression
+data=\epoc32\winscw\c\httptest\regression\regressiontests.ini	httptest\regression\regressiontests.ini
+data=\epoc32\winscw\c\httptest\settings\settings.ini		httptest\settings\settings.ini
+
+file=ABI_DIR\BUILD_DIR\httpexampleclient.exe 		System\Programs\httpexampleclient.exe
+file=ABI_DIR\BUILD_DIR\t_httpmessage.exe 		System\Programs\t_httpmessage.exe
+file=ABI_DIR\BUILD_DIR\t_httptransporthandler.exe 	System\Programs\t_httptransporthandler.exe
+file=ABI_DIR\BUILD_DIR\t_httpregression.exe 		System\Programs\t_httpregression.exe
+file=ABI_DIR\BUILD_DIR\t_httppipeliningtest.exe 	System\Programs\t_httppipeliningtest.exe
+file=ABI_DIR\BUILD_DIR\t_URIShortcutParser.exe		System\Programs\t_URIShortcutParser.exe
+file=ABI_DIR\BUILD_DIR\t_codecplugin.exe		System\Programs\t_codecplugin.exe
+file=ABI_DIR\BUILD_DIR\testwebbrowser.exe 		System\Programs\testwebbrowser.exe
+file=ABI_DIR\BUILD_DIR\testhttpmessage.exe 		System\Programs\testhttpmessage.exe
+
+
+data=\epoc32\release\winscw\urel\z\HttpTest\ip.etesthook.esk 	HttpTest\ip.etesthook.esk
+
+#endif

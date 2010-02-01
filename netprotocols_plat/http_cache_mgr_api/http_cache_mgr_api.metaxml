@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="0d61afa6a5d81680a62cb0349e3530e4" dataversion="1.0">
+  <name>HTTP Cache Manager API</name>
+  <description>HTTP cache manager interface.</description>
+  <type>c++</type>
+  <subsystem>WebEngine</subsystem>
+  <libs>
+     <lib name = "BrowserEngine.lib" />
+  </libs>
+  <release category="domain" sinceversion="3.2"/>
+  <attributes>
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,47 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.2.12
+## Driver chat script
+#
+# Test Synopsis
+# * Connect while in Suspending state, server accepts connection
+# The function ResumeReq will be called, and the result will be returned by the callback ResumeCnf 
+
+# Expected Result
+# * Expected result: connection is resumed
+
+
+SCRIPT UnitTestDriver2.1.2.12 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+
+INCLUDE "C:\httptest\wsp_pr_hnd_driver\setSR.txt"
+
+#
+# Inital connect and disconnect to get it to suspended
+#
+INCLUDE "C:\httptest\wsp_pr_hnd_driver\unittest_driver2_1_1_1.txt"
+
+#
+# Second connect
+#
+
+INCLUDE "C:\httptest\wsp_pr_hnd_driver\unittest_driver2_1_1_1.txt"
+
+
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

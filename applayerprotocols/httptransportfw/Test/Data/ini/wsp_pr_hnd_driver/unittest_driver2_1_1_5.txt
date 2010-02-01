@@ -1,0 +1,51 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.1.5
+## Driver chat script
+#
+# Test Synopsis
+# * Connect while in null state, server fails to respond before connection timeout
+# The function ConnectReq will be called and a ConnectionTimeOut returned by the callback DissconectInd
+
+# Expected Result
+# * Expected result: connection fails 
+
+
+SCRIPT UnitTestDriver2.1.1.5 
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+			PARAMETER aTimeOut 2000000
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the timeout event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectionTimedOut
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

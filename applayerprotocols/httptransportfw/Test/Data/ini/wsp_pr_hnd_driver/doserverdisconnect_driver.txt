@@ -1,0 +1,20 @@
+## Include script - do server disconnect for driver
+#
+# Server disconnects the client
+#
+# The session will be in either Null state or the Suspended state
+#
+SCRIPT doserverdisconnect_driver
+
+#
+# Wait for ind - this is given by EDisconnected
+#
+	ECHO "Waiting for ind"
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT
+

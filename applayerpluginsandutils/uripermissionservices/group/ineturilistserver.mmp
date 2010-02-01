@@ -1,0 +1,79 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// ineturilistserver.exe Internet Uri List server
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET 		ineturilistserver.exe
+TARGETTYPE 	exe
+
+CAPABILITY	ProtServ
+
+UID		0 0x20009D70
+
+START STRINGTABLE ../StringDictionary/URIList.st
+
+END
+
+START STRINGTABLE ../StringDictionary/urischema.st
+
+END
+
+START STRINGTABLE ../StringDictionary/tldschema.st
+
+END
+
+START STRINGTABLE ../StringDictionary/tldlist.st
+
+END
+
+SOURCEPATH	../server/src
+
+
+SOURCE		ineturilistserver.cpp
+SOURCE 		sqldbaccessor.cpp
+SOURCE 		urilistinterface.cpp
+SOURCE 		sqldbtransaction.cpp
+SOURCE 		urilistwritestream.cpp
+SOURCE		urilistinitializer.cpp
+SOURCE 		uriqueryfilter.cpp
+SOURCE		tldlistinitializer.cpp
+SOURCE		tldproperties.cpp
+
+SOURCEPATH	../client/src
+SOURCE 		ineturiimpl.cpp
+SOURCE 		ineturiproperties.cpp
+
+USERINCLUDE	../server/inc
+USERINCLUDE	../client/inc
+USERINCLUDE	../inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY		euser.lib 
+LIBRARY		estor.lib 
+LIBRARY		sqldb.lib 
+LIBRARY		inetprotutil.lib
+LIBRARY		bafl.lib
+LIBRARY 	xmlframework.lib
+LIBRARY 	efsrv.lib
+LIBRARY 	sishelper.lib 
+LIBRARY		sisregistryclient.lib
+
+VENDORID 	0x70000001
+SMPSAFE

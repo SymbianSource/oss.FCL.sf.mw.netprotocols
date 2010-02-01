@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="FTP Engine">
+  <purpose>
+    Support for FTP clients.
+  </purpose>
+  
+  <defect number="DEF130175" title="FTP client is too slow " revision="001">
+  The socket reads with the file writes is overlapped and the frequency of the progress updates is reduced as well as the use of the info-tip is discontinued.
+  </defect>
+</relnotes>

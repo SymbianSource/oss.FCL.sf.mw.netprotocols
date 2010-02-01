@@ -1,0 +1,128 @@
+EXPORTS
+	_ZN11CScriptFile10ItemValueLER14CHTTPTestUtilsRK7TDesC16S4_S4_S4_i @ 1 NONAME
+	_ZN11CScriptFile11GetNextWordER6TLex165TCharR7TPtrC16 @ 2 NONAME
+	_ZN11CScriptFile11GetNextWordER6TLex165TCharRi @ 3 NONAME
+	_ZN11CScriptFile11ItemValueLCER14CHTTPTestUtilsRK7TDesC16S4_S4_S4_S4_ @ 4 NONAME
+	_ZN11CScriptFile11ReadScriptLERK7TDesC16 @ 5 NONAME
+	_ZN11CScriptFile4NewLER14CHTTPTestUtilsRK7TDesC16 @ 6 NONAME
+	_ZN11CScriptFile4NewLER14CHTTPTestUtilsRK7TDesC16S4_ @ 7 NONAME
+	_ZN11CScriptFile5NewLCER14CHTTPTestUtilsRK7TDesC16 @ 8 NONAME
+	_ZN11CScriptFile5NewLCER14CHTTPTestUtilsRK7TDesC16S4_ @ 9 NONAME
+	_ZN11CScriptFile8ReplaceLERK7TDesC16S2_RP7HBufC16 @ 10 NONAME
+	_ZN11CScriptFile9ItemValueERK7TDesC16S2_S2_ @ 11 NONAME
+	_ZN11CScriptFile9ItemValueERK7TDesC16S2_i @ 12 NONAME
+	_ZN11CScriptFile9ReplaceLCERK7TDesC16S2_S2_ @ 13 NONAME
+	_ZN11CScriptFileD0Ev @ 14 NONAME
+	_ZN11CScriptFileD1Ev @ 15 NONAME
+	_ZN11CScriptFileD2Ev @ 16 NONAME
+	_ZN12CDummyServer4NewLEii @ 17 NONAME
+	_ZN12CDummyServer4RunLEv @ 18 NONAME
+	_ZN12CDummyServer7ListenLEv @ 19 NONAME
+	_ZN12CDummyServer8DoCancelEv @ 20 NONAME
+	_ZN12CDummyServer8RunErrorEi @ 21 NONAME
+	_ZN12CDummyServerD0Ev @ 22 NONAME
+	_ZN12CDummyServerD1Ev @ 23 NONAME
+	_ZN12CDummyServerD2Ev @ 24 NONAME
+	_ZN13CHttpTestBase18CompleteOwnRequestEv @ 25 NONAME
+	_ZN13CHttpTestBase18ExpectedStatusCodeEv @ 26 NONAME
+	_ZN13CHttpTestBase4RunLEv @ 27 NONAME
+	_ZN13CHttpTestBase8RunErrorEi @ 28 NONAME
+	_ZN13CHttpTestBase9BeginTestEv @ 29 NONAME
+	_ZN13CHttpTestBaseC2Ev @ 30 NONAME
+	_ZN14CHTTPTestUtils10GetAnEntryERK7TDesC16R6TDes16 @ 31 NONAME
+	_ZN14CHTTPTestUtils10InitCommsLEv @ 32 NONAME
+	_ZN14CHTTPTestUtils10ReadFileLCERK7TDesC16 @ 33 NONAME
+	_ZN14CHTTPTestUtils10StartTestLERK7TDesC16 @ 34 NONAME
+	_ZN14CHTTPTestUtils11JustEndTestEv @ 35 NONAME
+	_ZN14CHTTPTestUtils11PressAnyKeyEv @ 36 NONAME
+	_ZN14CHTTPTestUtils11ResolveFileERK7TDesC16S2_R6TParse @ 37 NONAME
+	_ZN14CHTTPTestUtils12GetSelectionERK7TDesC16S2_ @ 38 NONAME
+	_ZN14CHTTPTestUtils14JustStartTestLERK7TDesC16 @ 39 NONAME
+	_ZN14CHTTPTestUtils18ReleaseConnectionLEv @ 40 NONAME
+	_ZN14CHTTPTestUtils19HoldOpenConnectionLEv @ 41 NONAME
+	_ZN14CHTTPTestUtils4NewLERK7TDesC16 @ 42 NONAME
+	_ZN14CHTTPTestUtils5LogItE11TRefByValueIK7TDesC16Ez @ 43 NONAME
+	_ZN14CHTTPTestUtils5NewLCERK7TDesC16 @ 44 NONAME
+	_ZN14CHTTPTestUtils7EndTestEi @ 45 NONAME
+	_ZN14CHTTPTestUtils8DumpDataERK6TDesC8i @ 46 NONAME
+	_ZN14CHTTPTestUtils8NextStepERK7TDesC16 @ 47 NONAME
+	_ZN14CHTTPTestUtils8OverflowER6TDes16 @ 48 NONAME
+	_ZN14CHTTPTestUtils9SetScriptER5RFile @ 49 NONAME
+	_ZN14CHTTPTestUtilsclEi @ 50 NONAME
+	_ZN14CHTTPTestUtilsclEii @ 51 NONAME
+	_ZN14CScriptSection12DeleteItemsLERK7TDesC16 @ 52 NONAME
+	_ZN14CScriptSection12ReplaceItemLERK7TDesC16S2_ @ 53 NONAME
+	_ZN14CScriptSection18AddItemIfNotExistLERK7TDesC16S2_ @ 54 NONAME
+	_ZN14CScriptSection4ItemERK7TDesC16 @ 55 NONAME
+	_ZN14CScriptSection5NewLCERK7TDesC16 @ 56 NONAME
+	_ZN14CScriptSection5NewLCERK7TDesC16RS_ @ 57 NONAME
+	_ZN14CScriptSection6CopyLCEv @ 58 NONAME
+	_ZN14CScriptSection8AddItemLERK7TDesC16S2_ @ 59 NONAME
+	_ZN14CScriptSection9ItemValueERK7TDesC16S2_ @ 60 NONAME
+	_ZN14CScriptSection9ItemValueERK7TDesC16i @ 61 NONAME
+	_ZN14CScriptSectionD0Ev @ 62 NONAME
+	_ZN14CScriptSectionD1Ev @ 63 NONAME
+	_ZN14CScriptSectionD2Ev @ 64 NONAME
+	_ZN15CHttpTestEngine11PressAnyKeyEv @ 65 NONAME
+	_ZN15CHttpTestEngine13TestCompletedEi @ 66 NONAME
+	_ZN15CHttpTestEngine16ConfigureTestSetE13RPointerArrayI13CHttpTestBaseE @ 67 NONAME
+	_ZN15CHttpTestEngine20SetCurrentStatusCodeEi @ 68 NONAME
+	_ZN15CHttpTestEngine4NewLERK7TDesC16i @ 69 NONAME
+	_ZN15CHttpTestEngine9SetSilentEi @ 70 NONAME
+	_ZN15CHttpTestEngineD0Ev @ 71 NONAME
+	_ZN15CHttpTestEngineD1Ev @ 72 NONAME
+	_ZN15CHttpTestEngineD2Ev @ 73 NONAME
+	_ZN18CHttpTestTransBase11MHFRunErrorEi16RHTTPTransactionRK10THTTPEvent @ 74 NONAME
+	_ZN18CHttpTestTransBase11ReleaseDataEv @ 75 NONAME
+	_ZN18CHttpTestTransBase15DumpRespHeadersER16RHTTPTransaction @ 76 NONAME
+	_ZN18CHttpTestTransBase15GetNextDataPartER6TPtrC8 @ 77 NONAME
+	_ZN18CHttpTestTransBase15OverallDataSizeEv @ 78 NONAME
+	_ZN18CHttpTestTransBase16DumpResponseBodyER16RHTTPTransaction @ 79 NONAME
+	_ZN18CHttpTestTransBase5ResetEv @ 80 NONAME
+	_ZN18CHttpTestTransBase7MHFRunLE16RHTTPTransactionRK10THTTPEvent @ 81 NONAME
+	_ZN18CHttpTestTransBaseC2Ev @ 82 NONAME
+	_ZN18CScriptSectionItem5NewLCER14CScriptSectionRK7TDesC16S4_ @ 83 NONAME
+	_ZN18CScriptSectionItemD0Ev @ 84 NONAME
+	_ZN18CScriptSectionItemD1Ev @ 85 NONAME
+	_ZN18CScriptSectionItemD2Ev @ 86 NONAME
+	_ZNK14CTestScheduler5ErrorEi @ 87 NONAME
+	_ZNK15CHttpTestEngine11TestSummaryERiS0_ @ 88 NONAME
+	_ZNK15CHttpTestEngine5UtilsEv @ 89 NONAME
+	_ZNK15CHttpTestEngine7ConsoleEv @ 90 NONAME
+	_ZTI12CDummyServer @ 91 NONAME ; #<TI>#
+	_ZTI13CHttpTestBase @ 92 NONAME ; #<TI>#
+	_ZTI14CHTTPTestUtils @ 93 NONAME ; #<TI>#
+	_ZTI14CTestScheduler @ 94 NONAME ; #<TI>#
+	_ZTI18CHttpTestTransBase @ 95 NONAME ; #<TI>#
+	_ZTV12CDummyServer @ 96 NONAME ; #<VT>#
+	_ZTV13CHttpTestBase @ 97 NONAME ; #<VT>#
+	_ZTV14CHTTPTestUtils @ 98 NONAME ; #<VT>#
+	_ZTV14CTestScheduler @ 99 NONAME ; #<VT>#
+	_ZTV18CHttpTestTransBase @ 100 NONAME ; #<VT>#
+	_ZThn4_N14CHTTPTestUtils8OverflowER6TDes16 @ 101 NONAME ; #<thunk>#
+	_ZThn52_N18CHttpTestTransBase11ReleaseDataEv @ 102 NONAME ABSENT ; #<thunk>#
+	_ZThn52_N18CHttpTestTransBase15GetNextDataPartER6TPtrC8 @ 103 NONAME ABSENT ; #<thunk>#
+	_ZThn52_N18CHttpTestTransBase15OverallDataSizeEv @ 104 NONAME ABSENT ; #<thunk>#
+	_ZThn52_N18CHttpTestTransBase5ResetEv @ 105 NONAME ABSENT ; #<thunk>#
+	_ZN11TSrvAddrVal16LogUsing8BitDesLEP15CHttpTestEngineRK6TDesC8 @ 106 NONAME
+	_ZN11TSrvAddrVal16ReplaceHostNameLERK6TDesC8P11CScriptFile @ 107 NONAME
+	_ZN11TSrvAddrVal16ReplaceHostNameLERK7TDesC16P11CScriptFile @ 108 NONAME
+	_ZTI11CScriptFile @ 109 NONAME ; #<TI>#
+	_ZTI14CScriptSection @ 110 NONAME ; #<TI>#
+	_ZTI15CDetectKeyPress @ 111 NONAME ; #<TI>#
+	_ZTI15CHttpTestEngine @ 112 NONAME ; #<TI>#
+	_ZTI18CScriptSectionItem @ 113 NONAME ; #<TI>#
+	_ZTIN14CHTTPTestUtils9CTestInfoE @ 114 NONAME ; #<TI>#
+	_ZTV11CScriptFile @ 115 NONAME ; #<VT>#
+	_ZTV14CScriptSection @ 116 NONAME ; #<VT>#
+	_ZTV15CDetectKeyPress @ 117 NONAME ; #<VT>#
+	_ZTV15CHttpTestEngine @ 118 NONAME ; #<VT>#
+	_ZTV18CScriptSectionItem @ 119 NONAME ; #<VT>#
+	_ZTVN14CHTTPTestUtils9CTestInfoE @ 120 NONAME ; #<VT>#
+	_ZThn56_N18CHttpTestTransBase11ReleaseDataEv @ 121 NONAME ; #<thunk>#
+	_ZThn56_N18CHttpTestTransBase15GetNextDataPartER6TPtrC8 @ 122 NONAME ; #<thunk>#
+	_ZThn56_N18CHttpTestTransBase15OverallDataSizeEv @ 123 NONAME ; #<thunk>#
+	_ZThn56_N18CHttpTestTransBase5ResetEv @ 124 NONAME ; #<thunk>#
+	_ZN14CHTTPTestUtils23CleanupFailedTestsArrayEv @ 125 NONAME
+	_ZN14CHTTPTestUtils23CreateFailedTestsArrayLEv @ 126 NONAME
+

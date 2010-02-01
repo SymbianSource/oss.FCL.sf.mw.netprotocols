@@ -1,0 +1,35 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.3.3.6
+## Driver chat script
+#
+# Test Synopsis
+# * Disconnect session after invoking POST method with acknowledgement
+
+# Expected Result
+# * Expected result: Invoke is aborted and the session disconnects 
+
+
+SCRIPT UnitTestDriver2.3.3.6 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Step 1
+#
+
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

@@ -1,0 +1,4 @@
+GET http://waptest:9000/tryit?req=4141.txt&resp=4142.txt
+User-Agent: acme-http-client-1.0
+Host: waptest:9000
+Accept: */*

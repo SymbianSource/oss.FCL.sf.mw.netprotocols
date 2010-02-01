@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Build information for the Download Mgr Api Extension.
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/deflatefilterinterface.h                   MW_LAYER_PLATFORM_EXPORT_PATH(deflatefilterinterface.h)
+../inc/httpfiltercommonstringsaddition.h          MW_LAYER_PLATFORM_EXPORT_PATH(httpfiltercommonstringsaddition.h)
+../inc/httpfiltercommonstringsext.h               MW_LAYER_PLATFORM_EXPORT_PATH(httpfiltercommonstringsext.h)
+../inc/httpfilterconnhandlerinterface.h           MW_LAYER_PLATFORM_EXPORT_PATH(httpfilterconnhandlerinterface.h)
+../inc/mconnectioncallback.h                      MW_LAYER_PLATFORM_EXPORT_PATH(mconnectioncallback.h)
+../inc/httpfilteriopinterface.h                   MW_LAYER_PLATFORM_EXPORT_PATH(httpfilteriopinterface.h)
+../inc/httpfilterproxyinterface.h                 MW_LAYER_PLATFORM_EXPORT_PATH(httpfilterproxyinterface.h)
+../inc/uaproffilter_interface.h                   MW_LAYER_PLATFORM_EXPORT_PATH(uaproffilter_interface.h)
+../inc/uaproffilter_interface.inl                 MW_LAYER_PLATFORM_EXPORT_PATH(uaproffilter_interface.inl)
+../inc/httpfilteracceptheaderinterface.h          MW_LAYER_PLATFORM_EXPORT_PATH(httpfilteracceptheaderinterface.h)
+#ifdef __HTTP_DIGEST_AUTH
+../inc/httpfilterdigestauthenticationinterface.h  MW_LAYER_PLATFORM_EXPORT_PATH(httpfilterauthenticationinterface.h)
+#else
+../inc/httpfilterauthenticationinterface.h        MW_LAYER_PLATFORM_EXPORT_PATH(httpfilterauthenticationinterface.h)
+#endif
+
+PRJ_MMPFILES

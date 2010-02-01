@@ -1,0 +1,32 @@
+#
+# Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+# Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+#
+# Description: 
+#
+
+component	http_transport-framework
+source	\sf\mw\netprotocols\applayerprotocols\httptransportfw
+binary	\sf\mw\netprotocols\applayerprotocols\httptransportfw\group	all
+exports	\sf\mw\netprotocols\applayerprotocols\httptransportfw\group
+
+-export_file	"\sf\mw\netprotocols\applayerprotocols\httptransportfw\docs\HTTP Client Public API.chm"	\epoc32\EngDoc\application-protocols\HTTPClientPublicAPI.chm
+-export_file	"\sf\mw\netprotocols\applayerprotocols\httptransportfw\docs\HTTP Client Internal Documentation.chm"	\epoc32\EngDoc\application-protocols\HTTPClientInternalDocumentation.chm
+
+
+
+notes_source	\component_defs\release.src
+
+
+ipr E 
+ipr T \sf\mw\netprotocols\applayerprotocols\httptransportfw\Test
+

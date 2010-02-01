@@ -1,0 +1,41 @@
+## Include script - trans1 GET aborted by server
+#
+# Client creates a GET transaction - trans1 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+# User-Agent: T_WspProtHnd
+#
+SCRIPT trans1_get_serverabort_driver
+#
+# Create a GET method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue T_WspProtHnd
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+   		INVOKE trans1 SubmitL
+   		ENDINVOKE
+	ENDSEND
+#
+# Proxy aborts the transaction - sends an EFailed event
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EFailed
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT
+

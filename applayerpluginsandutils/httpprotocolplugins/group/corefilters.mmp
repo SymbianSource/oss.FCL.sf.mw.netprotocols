@@ -1,0 +1,50 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// tfcorefilters.dll Core protocol filters for the HTTP Transport Framework
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET tfcorefilters.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+// ECom Recogniction UID followed by Unique 3rd UID
+UID 0x10009D8D 0x101F446E
+VENDORID 0x70000001
+
+SOURCEPATH ../filters
+SOURCE redirect.cpp ValidationFilter.cpp corefiltersmain.cpp corefilterspanic.cpp Authentication.cpp
+
+USERINCLUDE  ../../../applayerprotocols/httptransportfw/inc/framework
+USERINCLUDE  ../../../applayerprotocols/httptransportfw/inc/http
+USERINCLUDE ../../../applayerprotocols/httptransportfw/utils
+USERINCLUDE ../../../applayerprotocols/httptransportfw/core
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+start resource 101F446E.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET tfcorefilters.rsc
+#endif
+//HEADER	- not needed
+END
+
+LIBRARY euser.lib ecom.lib http.lib bafl.lib inetprotutil.lib hash.lib
+
+SMPSAFE

@@ -1,0 +1,572 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// HTTPPipeliningTest.script
+//
+// Script file for running IOP tests
+//
+//! @file			HTTPPipeliningTest.script
+//
+
+
+PRINT Running_Pipelining_Test
+
+// Load the test
+LOAD_SUITE HTTPPipeliningTest
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0001
+//PIPELINING1
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0001
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING1
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0001
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0002
+PIPELINING2
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0002
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING2
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0002
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0003
+//PIPELINING3
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0003
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING3
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0003
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0004
+//PIPELINING4
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0004
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING4
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0004
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0005
+//PIPELINING5
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0005
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING5
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0005
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0006
+//PIPELINING6
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0006
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING6
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0006
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0007
+//PIPELINING7
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0007
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING7
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0007
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0008
+//PIPELINING8
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0008
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING8
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0008
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0009
+//PIPELINING9
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0009
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING9
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0009
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0010
+//PIPELINING10
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0010
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	700 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING10
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0010
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0011
+//PIPELINING11
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0011
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING11
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0011
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0012
+//PIPELINING12
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0012
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING12
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0012
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0013
+//PIPELINING13
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0013
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING13
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0013
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0014
+//PIPELINING14
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0014
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING14
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0014
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0015
+//PIPELINING15
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0015
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING15
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0015
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0016
+//PIPELINING16
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0016
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING16
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0016
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0017
+//PIPELINING17
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0017
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING17
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0017
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0018
+//PIPELINING18
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0018
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING18
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0018
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0019
+//PIPELINING19
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0019
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING19
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0019
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0020
+//PIPELINING20
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0020
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING20
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0020
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0021
+//PIPELINING21
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0021
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING21
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0021
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0022
+//PIPELINING22
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0022
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING22
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0022
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0023
+//PIPELINING23
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0023
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING23
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0023
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0024
+//PIPELINING24
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0024
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING24
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0024
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0025
+//PIPELINING25
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0025
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING25
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0025
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0026
+//PIPELINING26
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0026
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING26
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0026
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0027
+//PIPELINING27
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0027
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING27
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0027
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0028
+//PIPELINING28
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0028
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING28
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0028
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0029
+//PIPELINING29
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0029
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING29
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0029
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0030
+//PIPELINING30
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0030
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING30
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0030
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0031
+//PIPELINING31
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0031
+//! @SYMTestCaseDesc	PIPELINING tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PIPELINING31
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PIPELINING-0031
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0001
+//CONFIG_TEST1
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0001
+//! @SYMTestCaseDesc	CONFIG_TEST tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	CONFIG_TEST1
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0001
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0002
+//CONFIG_TEST2
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0002
+//! @SYMTestCaseDesc	CONFIG_TEST tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	CONFIG_TEST2
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0002
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0003
+//CONFIG_TEST3
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0003
+//! @SYMTestCaseDesc	CONFIG_TEST tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	CONFIG_TEST3
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0003
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0004
+//CONFIG_TEST4
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0004
+//! @SYMTestCaseDesc	CONFIG_TEST tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	CONFIG_TEST4
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-CONFIG_TEST-0004
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-TSWDEFECT_JKUN-7VVGB6_TEST-0001
+//TSWDEFECT
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-TSWDEFECT_JKUN-7VVGB6_TEST-0001
+//! @SYMTestCaseDesc	TSWDEFECTS
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPPipeliningTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	TSWDEFECT1
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-TSWDEFECT_JKUN-7VVGB6_TEST-0001
+
+PRINT Finished_Pipelining_Test
+

@@ -1,0 +1,14 @@
+EXPORTS
+	__14RCookieManagerG11RStringPool @ 1 NONAME R3UNUSED ; RCookieManager::RCookieManager(RStringPool)
+	Attribute__C7CCookieQ27CCookie20TCookieAttributeNameR11THTTPHdrVal @ 2 NONAME R3UNUSED ; CCookie::Attribute(CCookie::TCookieAttributeName, THTTPHdrVal &) const
+	ClearCookies__14RCookieManagerRi @ 3 NONAME R3UNUSED ; RCookieManager::ClearCookies(int &)
+	Connect__14RCookieManager @ 4 NONAME R3UNUSED ; RCookieManager::Connect(void)
+	GetCookiesL__14RCookieManagerRC6TDesC8Rt13RPointerArray1Z7CCookieRi @ 5 NONAME ; RCookieManager::GetCookiesL(TDesC8 const &, RPointerArray<CCookie> &, int &)
+	NewL__7CCookieG11RStringPool @ 6 NONAME R3UNUSED ; CCookie::NewL(RStringPool)
+	NewL__7CCookieG12RHTTPHeadersiG8RStringFG11RStringPoolRC6TUriC8 @ 7 NONAME ; CCookie::NewL(RHTTPHeaders, int, RStringF, RStringPool, TUriC8 const &)
+	SetAttribute__7CCookieQ27CCookie20TCookieAttributeNameRC11THTTPHdrVal @ 8 NONAME R3UNUSED ; CCookie::SetAttribute(CCookie::TCookieAttributeName, THTTPHdrVal const &)
+	StartCookieServer__FPv @ 9 NONAME R3UNUSED ; StartCookieServer(void *)
+	StoreCookie__14RCookieManagerRC7CCookieRC6TUriC8 @ 10 NONAME R3UNUSED ; RCookieManager::StoreCookie(CCookie const &, TUriC8 const &)
+	"_._7CCookie" @ 11 NONAME R3UNUSED ; CCookie::~CCookie(void)
+	AddToRequestL__C7CCookieG12RHTTPHeadersi @ 12 NONAME R3UNUSED ; CCookie::AddToRequestL(RHTTPHeaders, int) const
+

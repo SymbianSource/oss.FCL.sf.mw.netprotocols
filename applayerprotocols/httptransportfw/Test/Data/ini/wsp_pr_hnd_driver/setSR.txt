@@ -1,0 +1,10 @@
+## Include script - set the Suspend Resume cabability
+#
+#
+SCRIPT setSR
+	ECHO "Setting client capability Suspend Resume"
+	SEND
+		INVOKE SetUseSuspendResumeL
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT

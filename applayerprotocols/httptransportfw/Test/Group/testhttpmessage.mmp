@@ -1,0 +1,39 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		  testhttpmessage.exe
+TARGETTYPE	  exe
+UID			 0 0xE30FF9B5
+
+USERINCLUDE	    ../testhttpMessage ../t_utils
+SYSTEMINCLUDE	 ../../httpmessage
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/http
+#else
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/mw/http
+#endif
+
+SOURCEPATH	  ../testhttpMessage
+SOURCE		  ctestengine.cpp ctestmessagecomposer.cpp testhttpmessage.cpp ctestmessageparser.cpp 
+
+LIBRARY		 euser.lib http.lib inetprotutil.lib bafl.lib httpmessage.lib efsrv.lib httptestutils.lib
+
+#ifdef ENABLE_ABIV2_MODE
+DEBUGGABLE_UDEBONLY
+#endif
+
+SMPSAFE

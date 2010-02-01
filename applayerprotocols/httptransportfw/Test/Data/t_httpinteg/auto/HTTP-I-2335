@@ -1,0 +1,151 @@
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2335 Other Methods using Transport framework (HTTPS) over Default bearer  
+
+//---------------------------------------------------------
+
+// Select the specified bearer 1 from the current commdb 
+
+DEFINE IAP 1 
+
+CONNECT HTTP 2335_H_CON_01
+
+TRANSACTION  2335_T_01 2335_H_CON_01 HEAD $wapTest2URL$
+TRANSACTION  2335_T_02 2335_H_CON_01 PUT $Put2URL$ $PutFile$
+TRANSACTION  2335_T_03 2335_H_CON_01 OPTIONS $wapTest2URL$
+TRANSACTION  2335_T_04 2335_H_CON_01 TRACE $wapTest2URL$
+    
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 100 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 100 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// ---------------------------------------------------------
+// display all active transactions 
+
+showtrans
+
+// now do the delete, the Put should have completed 
+
+TRANSACTION  2335_T_05 2335_H_CON_01 DELETE $Put2URL$ 
+
+// wait for delete to complete 
+
+hold 60 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $2335_T_01LastEvent$ == $Succeeded$
+
+   IF $2335_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TEST HTTP-I-2335 HEAD Passed      
+   ELSE 
+      PRINT Result: TEST HTTP-I-2335 HEAD Failed, HTTP Status $2335_T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: TEST HTTP-I-2335 HEAD Failed, last event $2335_T_01LastEvent$ 
+ENDIF
+
+endtrans 2335_T_01 
+
+IF $2335_T_02LastEvent$ == $Succeeded$
+
+   IF $2335_T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2335 PUT Passed
+   ELSE 
+      PRINT Result: TEST HTTP-I-2335 PUT Failed, HTTP Status $2335_T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2335 PUT Failed, last event $2335_T_02LastEvent$  
+ENDIF
+
+endtrans 2335_T_02 
+
+IF $2335_T_03LastEvent$ == $Succeeded$
+
+   IF $2335_T_03HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2335 OPTIONS Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2335 OPTIONS Failed, HTTP Status $2335_T_03HttpStatus$   
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2335 OPTIONS Failed, last event $2335_T_03LastEvent$   
+ENDIF
+
+endtrans 2335_T_03 
+
+IF $2335_T_04LastEvent$ == $Succeeded$
+
+   IF $2335_T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2335 TRACE Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2335 TRACE Failed, HTTP Status $2335_T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2335 TRACE Failed, last event $2335_T_04LastEvent$    
+ENDIF
+
+endtrans 2335_T_04 
+
+IF $2335_T_05LastEvent$ == $Succeeded$
+
+   IF $2335_T_05HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2335 DELETE Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2335 DELETE Failed, HTTP Status $2335_T_05HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2335 DELETE Failed, last event $2335_T_05LastEvent$    
+ENDIF
+
+endtrans 2335_T_05 
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2335_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2335

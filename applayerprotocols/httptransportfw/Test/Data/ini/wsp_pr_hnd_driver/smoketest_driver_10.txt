@@ -1,0 +1,109 @@
+## Chat scripts, smoke test 10 - driver script.
+#
+# Testing Tx data object. Non failing method invocations
+# LDT support -> all methods sent in multiple SDUs.
+# trans1 -> simple POST, data received from client in 1 chunk, overall data size is known. Response in 2 SDUs, both in 2 chunks
+# trans2 -> simple POST, data received from client in 1 chunk, overall data size is unknown. Response in 2 SDUs, both in 2 chunks
+# trans3 -> complex POST, data received from client in 3 chunks, overall data size is known. Response in 2 SDUs, both in 2 chunks
+# trans4 -> complex POST, data received from client in 3 chunks, overall data size is unknown. Response in 2 SDUs, both in 2 chunks
+#
+# Smoke test 10
+#
+SCRIPT SmokeTestDriver10
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Set Server msg capability - 125 bytes
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\set_servermsg_125_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# simple POST, data received from client in 1 chunk, overall data size is known
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_post_singlebody_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_response_multichunk_multisdu_driver.txt"
+#
+# TRANS 2
+#
+#
+# simple POST, data received from client in 1 chunk, overall data size is unknown
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_post_singlebody_unknownsize_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_response_multichunk_multisdu_driver.txt"
+#
+# TRANS 3
+#
+#
+# complex POST, data received from client in 3 chunks, overall data size is known.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_post_multibody_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_response_multichunk_multisdu_driver.txt"
+#
+# TRANS 4
+#
+#
+# complex POST, data received from client in 3 chunks, overall data size is unknown.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans4_post_multibody_unknownsize_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans4_response_multichunk_multisdu_driver.txt"
+#
+# Close all the transactions...
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans2 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans3 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans4 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

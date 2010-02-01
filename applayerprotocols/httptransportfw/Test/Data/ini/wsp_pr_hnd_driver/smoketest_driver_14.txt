@@ -1,0 +1,90 @@
+## Chat scripts, smoke test 14 - driver script.
+#
+# Testing unlimited Message Size & SDU size
+#
+# trans1 -> simple POST - all data received from client in one chunk. Overall data size known. Response in single body
+# trans2 -> simple POST, with trailers, data received from client in 1 chunk, overall data size is known.
+#			Data fits in 2 SDUs, trailers go in 2nd SDU.
+#			Response in 2 SDUs, with trailers in 2nd.
+# trans5 -> complex POST - data received from client in 3 chunks. Overall data size unknown. Response in single chunk
+#
+# Smoke test 14
+#
+SCRIPT SmokeTestDriver14
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Set Server msg capability - 0 bytes
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\set_servermsg_0_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# Simple POST - all data received from client in one chunk. Overall data size known.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_post_singlebody_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_response_singlechunk_singlesdu_driver.txt"
+
+#
+# TRANS 2
+#
+#
+# simple POST, data received from client in 1 chunk, overall data size is known
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_post_singlebody_withtrailers_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_response_trailers_multisdu_driver.txt"
+#
+# TRANS 5
+#
+#
+# Complex POST - data received from client in 3 chunks. Overall data size unknown.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans5_post_multibody_unknownsize_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans5_response_singlechunk_singlesdu_driver.txt"
+#
+# Close all the transactions...
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+		INVOKE trans2 Close
+		ENDINVOKE
+		INVOKE trans5 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+ENDSCRIPT

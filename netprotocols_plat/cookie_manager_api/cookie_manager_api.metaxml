@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="7cefeb366bc5d71c6c80884e82c4cb71" dataversion="1.0">
+  <name>Cookie Manager API</name>
+  <description>HTTP Filter which manages HTTP cookies on behalf of client app.</description>
+  <type>c++</type>
+  <subsystem>HttpFilters</subsystem>
+  <libs>
+  </libs>
+  <release category="domain" sinceversion="5.1"/>
+  <attributes>
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

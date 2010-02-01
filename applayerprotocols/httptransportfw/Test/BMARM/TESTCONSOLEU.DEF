@@ -1,0 +1,13 @@
+EXPORTS
+	"_._21CCommandLineProcessor" @ 1 NONAME ; CCommandLineProcessor::~CCommandLineProcessor(void)
+	AppendL__12CCommandLineRC7TDesC16 @ 2 NONAME ; CCommandLine::AppendL(TDesC16 const &)
+	CancelGetCommand__21CCommandLineProcessor @ 3 NONAME ; CCommandLineProcessor::CancelGetCommand(void)
+	Delete__12CCommandLinei @ 4 NONAME ; CCommandLine::Delete(int)
+	GetNextCommand__21CCommandLineProcessor @ 5 NONAME ; CCommandLineProcessor::GetNextCommand(void)
+	NewL__12CCommandLine @ 6 NONAME ; CCommandLine::NewL(void)
+	NewL__12CCommandLineRC7TDesC16 @ 7 NONAME ; CCommandLine::NewL(TDesC16 const &)
+	NewL__21CCommandLineProcessorR12CConsoleBaseR15MCommandHandler @ 8 NONAME ; CCommandLineProcessor::NewL(CConsoleBase &, MCommandHandler &)
+	"_._12CCommandLine" @ 9 NONAME ; CCommandLine::~CCommandLine(void)
+	AppendL__12CCommandLineP7HBufC16 @ 10 NONAME ; CCommandLine::AppendL(HBufC16 *)
+	StartScriptL__21CCommandLineProcessorRC7TDesC16 @ 11 NONAME R3UNUSED ; CCommandLineProcessor::StartScriptL(TDesC16 const &)
+

@@ -1,0 +1,39 @@
+<action>
+	<actionname>Initializing a CUnifiedCertStore</actionname>
+	<actiontype>init</actiontype>
+	<actionbody>
+		<mode>write</mode>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Add the certificate wapca2006</actionname>
+	<actiontype>addcert</actiontype>
+	<actionbody>
+		<format>X509</format>
+		<label>wapca2006</label>
+		<issuerkey></issuerkey>
+		<subjectkey></subjectkey>
+		<certstore>0</certstore>
+		<certfile>c:\wapca2006.cer</certfile>
+		<certowner>CA</certowner>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Set applications for wapca2006</actionname>
+	<actiontype>setapplications</actiontype>
+	<actionbody>
+		<label>wapca2006</label>
+		<uid>268441661</uid>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>

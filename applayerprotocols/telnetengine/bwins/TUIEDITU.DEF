@@ -1,0 +1,5 @@
+EXPORTS
+	?ClientStubOrdinal1@@YAXXZ @ 1 NONAME ; void ClientStubOrdinal1(void)
+	?Edit@CLineEdit@@QAEXABVTDesC16@@PAVTDes16@@@Z @ 2 NONAME ; public: void __thiscall CLineEdit::Edit(class TDesC16 const &,class TDes16 *)
+	?NewL@CLineEdit@@SAPAV1@PAVCConsoleBase@@H@Z @ 3 NONAME ; public: static class CLineEdit * __cdecl CLineEdit::NewL(class CConsoleBase *,int)
+

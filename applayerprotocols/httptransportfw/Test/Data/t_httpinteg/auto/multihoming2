@@ -1,0 +1,192 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "Multihoming2.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL 
+
+DEFINE wapTestURL "http://$wapTest$"
+DEFINE dfURL      "http://$wapTest$/perl/dumpform.pl" 
+DEFINE df1File     "c:\httptest\integration\dumpform1.txt" 
+DEFINE df2File     "c:\httptest\integration\dumpform2.txt" 
+DEFINE df3File     "c:\httptest\integration\dumpform3.txt" 
+
+// Header 
+
+DEFINE Accept "text/plain, image/gif"
+DEFINE AcceptEncoding "gzip, compress"
+DEFINE ContentType "text/html" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE Multihoming2 Basic Methods using Transport framework (HTTP) over Specified bearer  
+
+//---------------------------------------------------------
+
+// Select the specified bearer 1 from the current commdb 
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION T_01 H_CON_01 GET $wapTestURL$
+//TRANSACTION T_02 H_CON_01 POST $dfURL$ $df1File$ 
+
+DEFINE IAP 1 
+
+CONNECT HTTP H_CON_02
+
+TRANSACTION T_03 H_CON_02 GET $wapTestURL$
+//TRANSACTION T_04 H_CON_02 POST $dfURL$ $df2File$ 
+
+DEFINE IAP 4 
+
+CONNECT HTTP H_CON_03
+
+TRANSACTION T_05 H_CON_02 GET $wapTestURL$
+//TRANSACTION T_06 H_CON_02 POST $dfURL$ $df3File$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for 200 seconds to allow for data transfer to 
+// completed 
+//---------------------------------------------------------
+
+hold 200
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT TEST Multihoming2 GET $wapTestURL$ Passed      
+   ELSE 
+      PRINT TEST Multihoming2 GET $wapTestURL$ Failed, HTTP Status $T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT TEST Multihoming2 GET $wapTestURL$ Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT TEST Multihoming2 POST $dfURL$ Passed 
+   ELSE 
+      PRINT TEST Multihoming2 POST $dfURL$ Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT TEST Multihoming2 POST $dfURL$ Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT TEST Multihoming2 GET $wapTestURL$ Passed      
+   ELSE 
+      PRINT TEST Multihoming2 GET $wapTestURL$ Failed, HTTP Status $T_03HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT TEST Multihoming2 GET $wapTestURL$ Failed, last event $T_03LastEvent$ 
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT TEST Multihoming2 POST $dfURL$ Passed 
+   ELSE 
+      PRINT TEST Multihoming2 POST $dfURL$ Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT TEST Multihoming2 POST $dfURL$ Failed, last event $T_04LastEvent$  
+ENDIF
+
+endtrans T_04
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+
+      PRINT TEST Multihoming2 GET $wapTestURL$ Passed      
+   ELSE 
+      PRINT TEST Multihoming2 GET $wapTestURL$ Failed, HTTP Status $T_05HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT TEST Multihoming2 GET $wapTestURL$ Failed, last event $T_05LastEvent$ 
+ENDIF
+
+endtrans T_05 
+
+IF $T_06LastEvent$ == $Succeeded$
+
+   IF $T_06HttpStatus$ == $HTTP_OK$
+            
+      PRINT TEST Multihoming2 POST $dfURL$ Passed 
+   ELSE 
+      PRINT TEST Multihoming2 POST $dfURL$ Failed, HTTP Status $T_06HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT TEST Multihoming2 POST $dfURL$ Failed, last event $T_06LastEvent$  
+ENDIF
+
+endtrans T_06
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE Multihoming2
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

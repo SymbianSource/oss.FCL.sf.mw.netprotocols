@@ -1,0 +1,9 @@
+EXPORTS
+	?CWbxmlConverter_Reserved1@CWbxmlConverter@@EAEXXZ @ 1 NONAME ; private: virtual void __thiscall CWbxmlConverter::CWbxmlConverter_Reserved1(void)
+	?CommitL@CWbxmlConverter@@QAEXXZ @ 2 NONAME ; public: void __thiscall CWbxmlConverter::CommitL(void)
+	?MWbxmlConverterObserver_Reserved1@MWbxmlConverterObserver@@EAEXXZ @ 3 NONAME ; private: virtual void __thiscall MWbxmlConverterObserver::MWbxmlConverterObserver_Reserved1(void)
+	?NewL@CWbxmlConverter@@SAPAV1@AAVRFs@@PAVMWbxmlConverterObserver@@@Z @ 4 NONAME ; public: static class CWbxmlConverter * __cdecl CWbxmlConverter::NewL(class RFs &,class MWbxmlConverterObserver *)
+	?NewLC@CWbxmlConverter@@SAPAV1@AAVRFs@@PAVMWbxmlConverterObserver@@@Z @ 5 NONAME ; public: static class CWbxmlConverter * __cdecl CWbxmlConverter::NewLC(class RFs &,class MWbxmlConverterObserver *)
+	?ProcessDataL@CWbxmlConverter@@QAEXAAVHBufC8@@@Z @ 6 NONAME ; public: void __thiscall CWbxmlConverter::ProcessDataL(class HBufC8 &)
+	?NewL@CWbxmlConverter@@SAPAV1@AAVRFs@@PAVMWbxmlConverterObserver@@PBVTDesC16@@@Z @ 7 NONAME ; public: static class CWbxmlConverter * __cdecl CWbxmlConverter::NewL(class RFs &,class MWbxmlConverterObserver *,class TDesC16 const *)
+

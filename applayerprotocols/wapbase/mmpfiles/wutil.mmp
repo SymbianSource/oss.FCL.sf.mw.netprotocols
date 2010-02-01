@@ -1,0 +1,62 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// wutil.dll WAP utilities (URL class)
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET			wutil.dll
+TARGETTYPE		dll
+CAPABILITY ALL -TCB
+
+// WAP Engine  WAP Application //
+// UID		0x1000008d	0x1000517C
+UID	0x1000008d	0x1000517C
+VENDORID 0x70000001
+
+
+SOURCEPATH	../wutil
+
+SOURCE			WUTIL.cpp ATTRLUT.cpp curl.cpp
+
+USERINCLUDE		../inc 
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+// The resource file containing WAP error messages, generated for the system error resolver.
+SOURCEPATH 		../inc
+START RESOURCE	WapBaseErr.rss
+#ifdef __SECURE_DATA__
+TARGETPATH		/resource/errors
+#else
+TARGETPATH		\SYSTEM\ERRORS
+#endif //__SECURE_DATA__
+LANG			01
+END
+
+
+//
+LIBRARY			euser.lib inetprotutil.lib
+
+#ifdef WINSCW
+DEFFILE			wutil.def
+#endif
+
+#ifdef ARMV5
+DEFFILE			WUtil.def
+#endif
+SMPSAFE

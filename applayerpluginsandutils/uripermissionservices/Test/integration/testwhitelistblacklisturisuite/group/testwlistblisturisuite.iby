@@ -1,0 +1,64 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The IBY file for the White\BlackList URI service Integration Test Suite
+// 
+//
+
+#ifndef __Test_WListBList_Uri_Suite_IBY__
+
+#define __Test_WListBList_Uri_Suite_IBY__
+
+// Test server
+file=ABI_DIR\DEBUG_DIR\testwlistblisturiserver.exe	sys\bin\testwlistblisturiserver.exe
+
+// Script file for testing the functionality.
+data=\epoc32\data\c\testdata\scripts\testwlistblisturisuite.script		    testdata\scripts\testwlistblisturisuite.script
+data=\epoc32\data\c\testdata\scripts\testwlistblisturisuite_addmoreuris.script      testdata\scripts\testwlistblisturisuite_addmoreuris.script
+
+// Script files for testing the capability.
+data=\epoc32\data\c\testdata\scripts\cap_00000000_testwlistblisturi.script          testdata\scripts\cap_00000000_testwlistblisturi.script  
+data=\epoc32\data\c\testdata\scripts\cap_00000010_testwlistblisturi.script          testdata\scripts\cap_00000010_testwlistblisturi.script 
+data=\epoc32\data\c\testdata\scripts\cap_00000020_testwlistblisturi.script          testdata\scripts\cap_00000020_testwlistblisturi.script
+data=\epoc32\data\c\testdata\scripts\cap_00000030_testwlistblisturi.script          testdata\scripts\cap_00000030_testwlistblisturi.script
+data=\epoc32\data\c\testdata\scripts\testwlistblisturisuite_security.script         testdata\scripts\testwlistblisturisuite_security.script
+data=\epoc32\data\c\testdata\scripts\testwlistblisturisuite_add_security.script     testdata\scripts\testwlistblisturisuite_add_security.script
+data=\epoc32\data\c\testdata\scripts\testwlistblisturisuite_remove_security.script  testdata\scripts\testwlistblisturisuite_remove_security.script
+
+//Script files for testing TLD functionality
+data=\epoc32\data\c\testdata\scripts\tld_preconfigtest.script  						testdata\scripts\tld_preconfigtest.script
+data=\epoc32\data\c\testdata\scripts\tld_query_post-config_test.script  			testdata\scripts\tld_query_post-config_test.script
+data=\epoc32\data\c\testdata\scripts\tld_query_preconfig_test.script  				testdata\scripts\tld_query_preconfig_test.script
+data=\epoc32\data\c\testdata\scripts\tld_config_duplicate_test.script  				testdata\scripts\tld_config_duplicate_test.script
+
+// Ini files
+data=\epoc32\data\c\testdata\ini\testwlistblisturisuite.ini			    testdata\ini\testwlistblisturisuite.ini
+data=\epoc32\data\c\testdata\ini\testwlistblisturisuite_addmoreuris.ini             testdata\ini\testwlistblisturisuite_addmoreuris.ini
+data=\epoc32\data\c\testdata\ini\testldpolicy.ini			    					testdata\ini\testldpolicy.ini
+
+// The batch file to run the functionality tests
+data=EPOCROOT##Epoc32\tools\testwlistblisturisuite.bat	testwlistblisturisuite.bat
+// The batch file to run the security tests
+data=EPOCROOT##Epoc32\tools\testwlistblisturisuite_security.bat	testwlistblisturisuite_security.bat
+
+// IBY file for pre-configuration xml file.
+#include <testwlistblisturisuite_preconfigxml.iby>
+
+// Other dependencies
+//#include <testexecute.iby>
+//#include <ineturilist.iby>
+//#include <setcap.iby>
+//#include <sql.iby>
+
+#endif
+

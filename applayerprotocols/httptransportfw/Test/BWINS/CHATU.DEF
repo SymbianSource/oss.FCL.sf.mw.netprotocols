@@ -1,0 +1,58 @@
+EXPORTS
+	??0CChatCommand@@IAE@XZ @ 1 NONAME ; protected: __thiscall CChatCommand::CChatCommand(void)
+	??0CChatParameter@@IAE@XZ @ 2 NONAME ; protected: __thiscall CChatParameter::CChatParameter(void)
+	??0CChatValidator@@IAE@XZ @ 3 NONAME ; protected: __thiscall CChatValidator::CChatValidator(void)
+	??1CChatEngine@@UAE@XZ @ 4 NONAME ; public: virtual __thiscall CChatEngine::~CChatEngine(void)
+	??1CChatValidator@@UAE@XZ @ 5 NONAME ; public: virtual __thiscall CChatValidator::~CChatValidator(void)
+	?AdoptParameter@CChatMethodInvocation@@QAEXPAVCChatParameter@@@Z @ 6 NONAME ; public: void __thiscall CChatMethodInvocation::AdoptParameter(class CChatParameter *)
+	?AdoptValidator@CChatMethodInvocation@@QAEXPAVCChatValidator@@@Z @ 7 NONAME ; public: void __thiscall CChatMethodInvocation::AdoptValidator(class CChatValidator *)
+	?BooleanValue@CChatTBoolValidator@@QBEHXZ @ 8 NONAME ; public: int __thiscall CChatTBoolValidator::BooleanValue(void)const 
+	?CompleteSelf@CChatCommand@@IAEXXZ @ 9 NONAME ; protected: void __thiscall CChatCommand::CompleteSelf(void)
+	?ConstructL@CChatParameter@@IAEXABVTDesC16@@0@Z @ 10 NONAME ; protected: void __thiscall CChatParameter::ConstructL(class TDesC16 const &,class TDesC16 const &)
+	?ConstructL@CChatValidator@@IAEXABVTDesC16@@@Z @ 11 NONAME ; protected: void __thiscall CChatValidator::ConstructL(class TDesC16 const &)
+	?DesC8Value@CChatTDesC8Validator@@QBEABVTDesC8@@XZ @ 12 NONAME ; public: class TDesC8 const & __thiscall CChatTDesC8Validator::DesC8Value(void)const 
+	?DumpIt@CChatEngine@@QAEXW4TLogLevel@1@ABVTDesC8@@@Z @ 13 NONAME ; public: void __thiscall CChatEngine::DumpIt(enum CChatEngine::TLogLevel,class TDesC8 const &)
+	?GetParameter@CChatMethodInvocation@@QBEPBVCChatParameter@@ABVTDesC16@@@Z @ 14 NONAME ; public: class CChatParameter const * __thiscall CChatMethodInvocation::GetParameter(class TDesC16 const &)const 
+	?GetValidator@CChatMethodInvocation@@QBEPBVCChatValidator@@ABVTDesC16@@@Z @ 15 NONAME ; public: class CChatValidator const * __thiscall CChatMethodInvocation::GetValidator(class TDesC16 const &)const 
+	?IntValue@CChatTIntValidator@@QBEHXZ @ 16 NONAME ; public: int __thiscall CChatTIntValidator::IntValue(void)const 
+	?InvocationItem@CChatMethodInvocation@@QBEABVTDesC16@@XZ @ 17 NONAME ; public: class TDesC16 const & __thiscall CChatMethodInvocation::InvocationItem(void)const 
+	?ItemStoreId@CChatCreatedParameter@@QBEABVTDesC16@@XZ @ 18 NONAME ; public: class TDesC16 const & __thiscall CChatCreatedParameter::ItemStoreId(void)const 
+	?ItemValue@CChatItemStoreValidator@@QBE?AVTStoredItemBase@@XZ @ 19 NONAME ; public: class TStoredItemBase  __thiscall CChatItemStoreValidator::ItemValue(void)const 
+	?LogIt@CChatEngine@@QAAXW4TLogLevel@1@V?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 20 NONAME ; public: void __cdecl CChatEngine::LogIt(enum CChatEngine::TLogLevel,class TRefByValue<class TDesC16 const >,...)
+	?MethodName@CChatMethodInvocation@@QBEABVTDesC16@@XZ @ 21 NONAME ; public: class TDesC16 const & __thiscall CChatMethodInvocation::MethodName(void)const 
+	?NewL@CChatEngine@@SAPAV1@ABVTDesC16@@0W4TLogLevel@1@VRFs@@AAVRFileLogger@@AAVMChatSendTrigger@@AAVMChatItemStore@@AAVMChatEngineObserver@@@Z @ 22 NONAME ; public: static class CChatEngine * __cdecl CChatEngine::NewL(class TDesC16 const &,class TDesC16 const &,enum CChatEngine::TLogLevel,class RFs,class RFileLogger &,class MChatSendTrigger &,class MChatItemStore &,class MChatEngineObserver &)
+	?NewL@CChatItemStoreValidator@@SAPAV1@ABVCChatParameter@@@Z @ 23 NONAME ; public: static class CChatItemStoreValidator * __cdecl CChatItemStoreValidator::NewL(class CChatParameter const &)
+	?NewL@CChatItemStoreValidator@@SAPAV1@ABVTDesC16@@VTStoredItemBase@@@Z @ 24 NONAME ; public: static class CChatItemStoreValidator * __cdecl CChatItemStoreValidator::NewL(class TDesC16 const &,class TStoredItemBase)
+	?NewL@CChatMethodInvocation@@SAPAV1@AAVCChatEngine@@ABVTDesC16@@1@Z @ 25 NONAME ; public: static class CChatMethodInvocation * __cdecl CChatMethodInvocation::NewL(class CChatEngine &,class TDesC16 const &,class TDesC16 const &)
+	?NewL@CChatParameter@@SAPAV1@ABVTDesC16@@0@Z @ 26 NONAME ; public: static class CChatParameter * __cdecl CChatParameter::NewL(class TDesC16 const &,class TDesC16 const &)
+	?NewL@CChatTBoolValidator@@SAPAV1@ABVCChatParameter@@@Z @ 27 NONAME ; public: static class CChatTBoolValidator * __cdecl CChatTBoolValidator::NewL(class CChatParameter const &)
+	?NewL@CChatTBoolValidator@@SAPAV1@ABVTDesC16@@H@Z @ 28 NONAME ; public: static class CChatTBoolValidator * __cdecl CChatTBoolValidator::NewL(class TDesC16 const &,int)
+	?NewL@CChatTDesC8Validator@@SAPAV1@ABVCChatParameter@@@Z @ 29 NONAME ; public: static class CChatTDesC8Validator * __cdecl CChatTDesC8Validator::NewL(class CChatParameter const &)
+	?NewL@CChatTDesC8Validator@@SAPAV1@ABVTDesC16@@ABVTDesC8@@@Z @ 30 NONAME ; public: static class CChatTDesC8Validator * __cdecl CChatTDesC8Validator::NewL(class TDesC16 const &,class TDesC8 const &)
+	?NewL@CChatTIntValidator@@SAPAV1@ABVCChatParameter@@@Z @ 31 NONAME ; public: static class CChatTIntValidator * __cdecl CChatTIntValidator::NewL(class CChatParameter const &)
+	?NewL@CChatTIntValidator@@SAPAV1@ABVTDesC16@@H@Z @ 32 NONAME ; public: static class CChatTIntValidator * __cdecl CChatTIntValidator::NewL(class TDesC16 const &,int)
+	?NumParameters@CChatMethodInvocation@@QBEHXZ @ 33 NONAME ; public: int __thiscall CChatMethodInvocation::NumParameters(void)const 
+	?NumValidators@CChatMethodInvocation@@QBEHXZ @ 34 NONAME ; public: int __thiscall CChatMethodInvocation::NumValidators(void)const 
+	?ParamName@CChatParameter@@QBEABVTDesC16@@XZ @ 35 NONAME ; public: class TDesC16 const & __thiscall CChatParameter::ParamName(void)const 
+	?ParamStringValue@CChatParameter@@QBEABVTDesC16@@XZ @ 36 NONAME ; public: class TDesC16 const & __thiscall CChatParameter::ParamStringValue(void)const 
+	?Start@CChatEngine@@QAEXXZ @ 37 NONAME ; public: void __thiscall CChatEngine::Start(void)
+	?TestExpectation@CChatEngine@@QAEXAAVCChatMethodInvocation@@@Z @ 38 NONAME ; public: void __thiscall CChatEngine::TestExpectation(class CChatMethodInvocation &)
+	?ValidateL@CChatMethodInvocation@@QAEHAAV1@AAVTDes16@@@Z @ 39 NONAME ; public: int __thiscall CChatMethodInvocation::ValidateL(class CChatMethodInvocation &,class TDes16 &)
+	?WriteComment@CChatEngine@@QAEXW4TLogLevel@1@ABVTDesC16@@@Z @ 40 NONAME ; public: void __thiscall CChatEngine::WriteComment(enum CChatEngine::TLogLevel,class TDesC16 const &)
+	?WriteComment@CChatEngine@@QAEXW4TLogLevel@1@ABVTDesC8@@@Z @ 41 NONAME ; public: void __thiscall CChatEngine::WriteComment(enum CChatEngine::TLogLevel,class TDesC8 const &)
+	?SetNewMethod@CChatMethodInvocation@@QAEXAAVCChatEngine@@ABVTDesC16@@1@Z @42 NONAME ; public: void __thiscall CChatMethodInvocation::SetNewMethod(class CChatEngine &,class TDesC16 const &,class TDesC16 const &)
+	?SetNewParam@CChatTIntValidator@@QAEXABVCChatParameter@@@Z @ 43 NONAME ; public: void __thiscall CChatTIntValidator::SetNewParam(class CChatParameter const &)
+	?SetNewParamName@CChatParameter@@IAEXABVTDesC16@@@Z @ 44 NONAME ; protected: void __thiscall CChatParameter::SetNewParamName(class TDesC16 const &)
+	?SetNewTInt@CChatTIntValidator@@QAEXABVTDesC16@@H@Z @ 45 NONAME ; public: void __thiscall CChatTIntValidator::SetNewTInt(class TDesC16 const &,int)
+	?SetNewItem@CChatItemStoreValidator@@QAEXABVTDesC16@@VTStoredItemBase@@@Z @ 46 NONAME ; public: void __thiscall CChatItemStoreValidator::SetNewItem(class TDesC16 const &,class TStoredItemBase)
+	?SetNewParam@CChatItemStoreValidator@@QAEXABVCChatParameter@@@Z @ 47 NONAME ; public: void __thiscall CChatItemStoreValidator::SetNewParam(class CChatParameter const &)
+	?SetNewParam@CChatTBoolValidator@@QAEXABVCChatParameter@@@Z @ 48 NONAME ; public: void __thiscall CChatTBoolValidator::SetNewParam(class CChatParameter const &)
+	?SetNewParam@CChatTDesC8Validator@@QAEXABVCChatParameter@@@Z @ 49 NONAME ; public: void __thiscall CChatTDesC8Validator::SetNewParam(class CChatParameter const &)
+	?SetNewTBool@CChatTBoolValidator@@QAEXABVTDesC16@@H@Z @ 50 NONAME ; public: void __thiscall CChatTBoolValidator::SetNewTBool(class TDesC16 const &,int)
+	?SetNewTDesC8@CChatTDesC8Validator@@QAEXABVTDesC16@@ABVTDesC8@@@Z @ 51 NONAME ; public: void __thiscall CChatTDesC8Validator::SetNewTDesC8(class TDesC16 const &,class TDesC8 const &)
+	?NewL@CChatMethodInvocation@@SAPAV1@XZ @52 NONAME ; public: static class CChatMethodInvocation * __cdecl CChatMethodInvocation::NewL(void)
+	?AddParameter@CChatMethodInvocation@@QAEXAAVCChatParameter@@@Z @ 53 NONAME ; public: void __thiscall CChatMethodInvocation::AddParameter(class CChatParameter &)
+	?AddValidator@CChatMethodInvocation@@QAEXAAVCChatValidator@@@Z @ 54 NONAME ; public: void __thiscall CChatMethodInvocation::AddValidator(class CChatValidator &)
+	?SetOwningCommand@CChatMethodInvocation@@QAEXAAVCChatCommand@@@Z @ 55 NONAME ; public: void __thiscall CChatMethodInvocation::SetOwningCommand(class CChatCommand &)
+	?Restart@CChatEngine@@QAEXXZ @ 56 NONAME ; public: void __thiscall CChatEngine::Restart(void)
+

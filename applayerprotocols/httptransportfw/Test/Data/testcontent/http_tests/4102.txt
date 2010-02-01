@@ -1,0 +1,7 @@
+HTTP/1.0 410 Gone
+Server: Fakeserver.pl
+Date: Tue, 20 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+
+The URL has gone - but there wasn't anything there in the first place.

@@ -1,0 +1,707 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Script file for HTTP Integration Test.
+// @internalAll
+// 
+//
+
+
+PRINT Running_Http_Test
+
+// Load the test
+LOAD_SUITE testhttpsuite
+
+
+START_TESTCASE	IWS-HTTP-CIT-POS-01-0001
+//	HttpEbo_1
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-01-0001
+//! @SYMTestCaseDesc 		Http transaction without enabling the HttpDataOpt feature.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_1
+END_TESTCASE 	IWS-HTTP-CIT-POS-01-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-02-0001
+//	HttpEbo_2
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-02-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_2
+END_TESTCASE 	IWS-HTTP-CIT-POS-02-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-03-0001
+//	HttpEbo_3
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-03-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_3
+END_TESTCASE 	IWS-HTTP-CIT-POS-03-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-04-0001
+//	HttpEbo_4
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-04-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_4
+END_TESTCASE 	IWS-HTTP-CIT-POS-04-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-05-0001
+//	HttpEbo_5
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-05-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_5
+END_TESTCASE 	IWS-HTTP-CIT-POS-05-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-06-0001
+//	HttpEbo_6
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-06-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_6
+END_TESTCASE 	IWS-HTTP-CIT-POS-06-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-07-0001
+//	HttpEbo_7
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-07-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_7
+END_TESTCASE 	IWS-HTTP-CIT-POS-07-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-08-0001
+//	HttpEbo_8
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-08-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_8
+END_TESTCASE 	IWS-HTTP-CIT-POS-08-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-09-0001
+//	HttpEbo_9
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-09-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_9
+END_TESTCASE 	IWS-HTTP-CIT-POS-09-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-10-0001
+//	HttpEbo_10
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-10-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_10
+END_TESTCASE 	IWS-HTTP-CIT-POS-10-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-04-0001
+//	HttpEbo_11
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-04-0001
+//! @SYMTestCaseDesc 		3.2.4	Http with enabling the HttpDataOpt feature using session where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_11
+END_TESTCASE 	IWS-HTTP-CIT-NEG-04-0001
+
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-05-0001
+//	HttpEbo_12
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-05-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_12
+END_TESTCASE 	IWS-HTTP-CIT-NEG-05-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-06-0001
+//	HttpEbo_13
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-06-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_13
+END_TESTCASE 	IWS-HTTP-CIT-NEG-06-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-01-0001
+//	HttpEbo_14
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-01-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_14
+END_TESTCASE 	IWS-HTTP-CIT-NEG-01-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-02-0001
+//	HttpEbo_15
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-02-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_15
+END_TESTCASE 	IWS-HTTP-CIT-NEG-02-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-03-0001
+//	HttpEbo_16
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-03-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_16
+END_TESTCASE 	IWS-HTTP-CIT-NEG-03-0001
+
+START_TESTCASE	IWS-HTTP-CIT-POS-01-0002
+//	HttpEbo_17
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-01-0002
+//! @SYMTestCaseDesc 		Http transaction without enabling the HttpDataOpt feature.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_17
+END_TESTCASE 	IWS-HTTP-CIT-POS-01-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-02-0002
+//	HttpEbo_18
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-02-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_18
+END_TESTCASE 	IWS-HTTP-CIT-POS-02-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-03-0002
+//	HttpEbo_19
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-03-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_19
+END_TESTCASE 	IWS-HTTP-CIT-POS-03-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-04-0002
+//	HttpEbo_20
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-04-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL. 
+//!				Check that request has been encoded before sending out and response has been decoded before parsing at client side.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_20
+END_TESTCASE 	IWS-HTTP-CIT-POS-04-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-05-0002
+//	HttpEbo_21
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-05-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_21
+END_TESTCASE 	IWS-HTTP-CIT-POS-05-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-06-0002
+//	HttpEbo_22
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-06-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_22
+END_TESTCASE 	IWS-HTTP-CIT-POS-06-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-07-0002
+//	HttpEbo_23
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-07-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction and fail the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_23
+END_TESTCASE 	IWS-HTTP-CIT-POS-07-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-08-0002
+//	HttpEbo_24
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-08-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_24
+END_TESTCASE 	IWS-HTTP-CIT-POS-08-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-09-0002
+//	HttpEbo_25
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-09-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_25
+END_TESTCASE 	IWS-HTTP-CIT-POS-09-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-10-0001
+//	HttpEbo_26
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-10-0001
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction and fail the transaction without decoding the response.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Transaction should be cancelled successfully.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_26
+END_TESTCASE 	IWS-HTTP-CIT-POS-10-0001
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-04-0002
+//	HttpEbo_27
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-04-0002
+//! @SYMTestCaseDesc 		3.2.4	Http with enabling the HttpDataOpt feature using session where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_27
+END_TESTCASE 	IWS-HTTP-CIT-NEG-04-0002
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-05-0002
+//	HttpEbo_28
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-05-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_28
+END_TESTCASE 	IWS-HTTP-CIT-NEG-05-0002
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-06-0002
+//	HttpEbo_29
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-06-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction where decoded response is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_29
+END_TESTCASE 	IWS-HTTP-CIT-NEG-06-0002
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-01-0002
+//	HttpEbo_30
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-01-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Enable the HttpDataOpt feature using session.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_30
+END_TESTCASE 	IWS-HTTP-CIT-NEG-01-0002
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-02-0002
+//	HttpEbo_31
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-02-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using transaction where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_31
+END_TESTCASE 	IWS-HTTP-CIT-NEG-02-0002
+
+START_TESTCASE	IWS-HTTP-CIT-NEG-03-0002
+//	HttpEbo_32
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-NEG-03-0002
+//! @SYMTestCaseDesc 		Http with enabling the HttpDataOpt feature using session & transaction where encoded request is NULL.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http transaction.
+//!				3) Create the transaction with GET method and some requesting URL.
+//!				4) Enable the HttpDataOpt feature using session & transaction.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	It fails with PANIC.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=0   100 	testhttpsuite TestHttpEboClientStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_32
+END_TESTCASE 	IWS-HTTP-CIT-NEG-03-0002
+
+START_TESTCASE	IWS-HTTP-CIT-POS-07-0003
+//	HttpEbo_33
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-07-0003
+//! @SYMTestCaseDesc 		EBO feature with pipelining disabled and trans optimiser disabled for the 3rd trans
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Disable Pipelining.
+//!				3) Disable Session optimiser and transaction optimiser for 3rd transaction.
+//!				4) Enable transaction optimiser for 1st, 2nd & 4th transaction.
+//! @SYMTestExpectedResults 	Transactions should succeed.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	1000 	testhttpsuite TestHttpEboClientConditionalStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_33
+END_TESTCASE 	IWS-HTTP-CIT-POS-07-0003
+
+START_TESTCASE	IWS-HTTP-CIT-POS-08-0003
+//	HttpEbo_34
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-HTTP-CIT-POS-08-0003
+//! @SYMTestCaseDesc 		EBO feature with pipelining disabled, optimiser set for the session and trans optimiser disabled for the 3rd trans.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Disable Pipelining.
+//!				3) Enable Session optimiser and disable transaction optimiser for 3rd transaction.
+//!				4) Enable transaction optimiser for 1st, 2nd & 4th transaction.
+//! @SYMTestExpectedResults 	Transactions should succeed.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	1000 	testhttpsuite TestHttpEboClientConditionalStep	c:\testdata\ini\testhttpsuite.ini  HttpEbo_34
+END_TESTCASE 	IWS-HTTP-CIT-POS-08-0003
+
+START_TESTCASE	IWS-T_HTTP_BUFFERSIZE-0001
+//	T_Http_Buffer_Size_1
+//! @file			testhttpsuite.script
+//! @SYMTestCaseID		IWS-T_HTTP_BUFFERSIZE-0001
+//! @SYMTestCaseDesc 		Http transaction enabling the HttpBuffer Size feature.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open Http session.
+//!				2) Set the proxy to http session.
+//!				3) Enable the HttpBuffer Size feature.
+//!				4) Create the transaction with GET method and some requesting URL.
+//!				5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the requested URL.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	1000 	testhttpsuite TestHttpBufferSizeStep	c:\testdata\ini\testhttpsuite.ini  Http_Buffer_Size_1
+END_TESTCASE 	IWS-T_HTTP_BUFFERSIZE-0001
+
+START_TESTCASE	IWS-EXPLICIT_SESSION_TEST-0001
+//	Explicit_Session_Test_1
+//! @file				testhttpsuite.script
+//! @SYMTestCaseID		IWS-EXPLICIT_SESSION_TEST-0001
+//! @SYMTestCaseDesc 	Testing RExplicitHTTPSession with IAP 0.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 	Critical
+//! @SYMTestActions 	1) Open RExplicitHttpSession.
+//!						2) Set the IAP to 0.
+//!						4) Create the transaction with GET method and URL read from INI.
+//!						5) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the response for the requested URL.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	1000 	testhttpsuite TestExplicitSessionStep	c:\testdata\ini\testhttpsuite.ini  Explicit_Session_Test_1
+END_TESTCASE 	IWS-EXPLICIT_SESSION_TEST-0001
+
+
+START_TESTCASE	IWS-FILTRER_SUSPEND_TEST-0001
+//Filter_Suspend_Test_1
+//! @file				testhttpsuite.script
+//! @SYMTestCaseID		IWS-FILTRER_SUSPEND_TEST-0001
+//! @SYMTestCaseDesc 	Testing suspending and resuming the transaction.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 	Critical
+//! @SYMTestActions 	1) Open RExplicitHttpSession.					
+//!						2) Create the transaction with GET method and URL read from INI.
+//!						3) Submit the transaction.
+//! @SYMTestExpectedResults 	Client should receive the response for the requested URL.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	1000 	testhttpsuite TestHttpFilterSuspendStep	c:\testdata\ini\testhttpsuite.ini  Filter_Suspend_Test_1
+				
+END_TESTCASE 	IWS-FILTRER_SUSPEND_TEST-0001
+
+START_TESTCASE	IWS-FILTRER_SUSPEND_TEST-0002
+//Filter_Suspend_Test_2
+//! @file				testhttpsuite.script
+//! @SYMTestCaseID		IWS-FILTRER_SUSPEND_TEST-0002
+//! @SYMTestCaseDesc 	Testing Failing transaction for Invalid event.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 	Critical
+//! @SYMTestActions 	1) Open RExplicitHttpSession.						
+//!						2) Create the transaction with GET method and URL read from INI.
+//!						3) Sending Resume event.
+//! @SYMTestExpectedResults 	It Fails with panic code InvalidEvent
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	!PanicCode=17 1000	testhttpsuite TestHttpFilterSuspendStep	c:\testdata\ini\testhttpsuite.ini  Filter_Suspend_Test_2
+				
+END_TESTCASE 	IWS-FILTRER_SUSPEND_TEST-0002

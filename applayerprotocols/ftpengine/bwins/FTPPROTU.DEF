@@ -1,0 +1,5 @@
+EXPORTS
+; NEW:
+	?GetVersion@CFtpProtocol@@SAKXZ @ 1 NONAME ; public: static unsigned long __cdecl CFtpProtocol::GetVersion(void)
+	?NewL@CFtpProtocol@@SAPAV1@PAVMFtpProtocolNotifier@@@Z @ 2 NONAME ; public: static class CFtpProtocol * __cdecl CFtpProtocol::NewL(class MFtpProtocolNotifier *)
+

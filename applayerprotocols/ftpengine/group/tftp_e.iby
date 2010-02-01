@@ -1,0 +1,25 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+#ifndef __TFTP_E_IBY__
+#define __TFTP_E_IBY__
+
+#include <ftp_e.iby>
+
+file=ABI_DIR\DEBUG_DIR\ftptest1.exe		Test\ftptest1.exe
+file=ABI_DIR\DEBUG_DIR\ftptest2.exe		Test\ftptest2.exe
+
+#endif // __FTP_E_IBY__

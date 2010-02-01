@@ -1,0 +1,45 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+target          tineturilist.exe
+targettype      exe
+CAPABILITY ReadDeviceData WriteDeviceData
+
+SYSTEMINCLUDE   ../inc
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE   /epoc32/include
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+#endif
+USERINCLUDE   	../Test
+
+SOURCEPATH	../Test
+SOURCE  tineturilist.cpp
+SOURCE	testutils.cpp
+SOURCE  tineturilisttests.cpp
+SOURCE	tineturilisttester.cpp
+
+LIBRARY	euser.lib 
+LIBRARY ineturilist.lib
+LIBRARY	bafl.lib
+LIBRARY efsrv.lib
+LIBRARY estor.lib
+LIBRARY inetprotutil.lib
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are ...
+UID 0x1000007A 0xA00026FE
+SMPSAFE

@@ -1,0 +1,30 @@
+## Include script - create a GET transaction trans3
+#
+# Client creates a GET transaction - trans3 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans3_get_driver
+#
+# Create a GET method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans3
+		ENDINVOKE
+		INVOKE trans3 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+   		INVOKE trans3 SubmitL
+   		ENDINVOKE
+	ENDSEND
+
+ENDSCRIPT

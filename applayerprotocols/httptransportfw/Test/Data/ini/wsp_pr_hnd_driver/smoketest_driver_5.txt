@@ -1,0 +1,44 @@
+## Chat scripts, smoke test 5 - driver script.
+#
+# Smoke test 5
+# Client requests connect to proxy
+# Delay occurs at the proxy
+# Client times out before getting the cnf.
+# Client disconnects
+#
+SCRIPT SmokeTestDriver5
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Client connect request - set a few properties, although ask for default capabilities
+#
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+			PARAMETER aTimeOut 30
+		ENDINVOKE
+		INVOKE SessionConnectL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the timeout event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectionTimedOut
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Build information for the Cookie Manager Api
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/cookie.h                    MW_LAYER_PLATFORM_EXPORT_PATH(cookie.h)
+../inc/cookie.inl                  MW_LAYER_PLATFORM_EXPORT_PATH(cookie.inl)
+../inc/cookieipc.h                 MW_LAYER_PLATFORM_EXPORT_PATH(cookieipc.h)
+../inc/cookiemanagerclient.h       MW_LAYER_PLATFORM_EXPORT_PATH(cookiemanagerclient.h)
+../inc/cookiefilterinterface.h     MW_LAYER_PLATFORM_EXPORT_PATH(cookiefilterinterface.h)
+
+PRJ_MMPFILES

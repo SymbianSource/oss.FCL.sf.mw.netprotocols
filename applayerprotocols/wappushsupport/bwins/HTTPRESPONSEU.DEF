@@ -1,0 +1,25 @@
+EXPORTS
+	??0CHTTPResponse@@IAE@XZ @ 1 NONAME ; protected: __thiscall CHTTPResponse::CHTTPResponse(void)
+	??1CHTTPResponse@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CHTTPResponse::~CHTTPResponse(void)
+	?AddResponse@CHTTPResponse@@QAEXPAVHBufC8@@@Z @ 3 NONAME ; public: void __thiscall CHTTPResponse::AddResponse(class HBufC8 *)
+	?CharSet@CHTTPResponse@@IBEPBEH@Z @ 4 NONAME ; protected: unsigned char const * __thiscall CHTTPResponse::CharSet(int)const 
+	?CharSet@CHTTPResponse@@QBEHAAVTPtrC8@@@Z @ 5 NONAME ; public: int __thiscall CHTTPResponse::CharSet(class TPtrC8 &)const 
+	?ConstructL@CHTTPResponse@@IAEXXZ @ 6 NONAME ; protected: void __thiscall CHTTPResponse::ConstructL(void)
+	?ContentType@CHTTPResponse@@IBEPBEH@Z @ 7 NONAME ; protected: unsigned char const * __thiscall CHTTPResponse::ContentType(int)const 
+	?ContentType@CHTTPResponse@@QBEXAAVTPtrC8@@@Z @ 8 NONAME ; public: void __thiscall CHTTPResponse::ContentType(class TPtrC8 &)const 
+	?DetailedStatusCode@CHTTPResponse@@QBE?AW4THttpStatusCode@@XZ @ 9 NONAME ; public: enum THttpStatusCode  __thiscall CHTTPResponse::DetailedStatusCode(void)const 
+	?Extend_CHTTPResponse@CHTTPResponse@@EAEPAXPAX@Z @ 10 NONAME ; private: virtual void * __thiscall CHTTPResponse::Extend_CHTTPResponse(void *)
+	?Extend_CHTTPResponse_const@CHTTPResponse@@EBEPAXPAX@Z @ 11 NONAME ; private: virtual void * __thiscall CHTTPResponse::Extend_CHTTPResponse_const(void *)const 
+	?ExtractCacheControlTime@CHTTPResponse@@QBEHW4TCacheControlFieldValue@@AAVTTime@@@Z @ 12 NONAME ; public: int __thiscall CHTTPResponse::ExtractCacheControlTime(enum TCacheControlFieldValue,class TTime &)const 
+	?FindBinaryDescField@CHTTPResponse@@QBEHW4THttpHeaderField@@AAVTPtrC8@@H@Z @ 13 NONAME ; public: int __thiscall CHTTPResponse::FindBinaryDescField(enum THttpHeaderField,class TPtrC8 &,int)const 
+	?FindCacheControlFieldValue@CHTTPResponse@@QBEHW4TCacheControlFieldValue@@@Z @ 14 NONAME ; public: int __thiscall CHTTPResponse::FindCacheControlFieldValue(enum TCacheControlFieldValue)const 
+	?FindField@CHTTPResponse@@QBEHW4THttpHeaderField@@AAVTPtrC8@@H@Z @ 15 NONAME ; public: int __thiscall CHTTPResponse::FindField(enum THttpHeaderField,class TPtrC8 &,int)const 
+	?FindField@CHTTPResponse@@QBEHW4THttpHeaderField@@AAVTTime@@H@Z @ 16 NONAME ; public: int __thiscall CHTTPResponse::FindField(enum THttpHeaderField,class TTime &,int)const 
+	?FindRealm@CHTTPResponse@@QBEHAAVTPtrC8@@@Z @ 17 NONAME ; public: int __thiscall CHTTPResponse::FindRealm(class TPtrC8 &)const 
+	?LocateField@CHTTPResponse@@IBEHW4THttpHeaderField@@H@Z @ 18 NONAME ; protected: int __thiscall CHTTPResponse::LocateField(enum THttpHeaderField,int)const 
+	?NewL@CHTTPResponse@@SAPAV1@XZ @ 19 NONAME ; public: static class CHTTPResponse * __cdecl CHTTPResponse::NewL(void)
+	?Reset@CHTTPResponse@@QAEXXZ @ 20 NONAME ; public: void __thiscall CHTTPResponse::Reset(void)
+	?Response@CHTTPResponse@@QBEAAVHBufC8@@XZ @ 21 NONAME ; public: class HBufC8 & __thiscall CHTTPResponse::Response(void)const 
+	?SetStatusCode@CHTTPResponse@@QAEXH@Z @ 22 NONAME ; public: void __thiscall CHTTPResponse::SetStatusCode(int)
+	?StatusCode@CHTTPResponse@@QBE?AW4THttpStatusCode@@XZ @ 23 NONAME ; public: enum THttpStatusCode  __thiscall CHTTPResponse::StatusCode(void)const 
+

@@ -1,0 +1,128 @@
+## Include script - create a post transaction trans3
+#
+# Client creates a POST trans action - trans3. 
+#
+# Body data - 
+# post_data_1_driver.txt in 3 parts; 1a, 1b, 1c
+#
+# Header data - 
+# Accept : application/vnd.wap.wmlc
+# Content-Type : application/x-www-form-urlencoded.
+#
+# SDU type, URI info and header info is 29 bytes.
+#
+# Overall data size is known
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans3_post_multibody_driver
+#
+# Create a POST method transaction - first part
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod POST
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans3
+		ENDINVOKE
+		INVOKE trans3 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans3 AddHeaderL
+			PARAMETER aFieldName Content-Type
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/x-www-form-urlencoded
+		ENDINVOKE
+		INVOKE trans3 AddBody
+			CREATEITEM aBody CDriverDataSupplier body3
+		ENDINVOKE
+		INVOKE trans3 SubmitL
+		ENDINVOKE
+	ENDSEND
+#
+# Expect call to OverallDataSize
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 48
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect another call to OverallDataSize invoked from the validation filter
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 48
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the post data to be extracted - first part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\post_data_1a_driver.txt$file$>
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the release of the data - first part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Inform the protocol handler that there is more data - second part
+#
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trans3 MoreRequestBodyDataL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+#
+# Expect the post data to be extracted - second part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\post_data_1b_driver.txt$file$>
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the release of the data  - second part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Inform the protocol handler that there is more data - third part
+#
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trans3 MoreRequestBodyDataL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+#
+# Expect the post data to be extracted - third part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\post_data_1c_driver.txt$file$>
+			PARAMETER :RETURN: ETrue
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the release of the data - third part
+#
+	EXPECT
+		INVOCATION body3 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT

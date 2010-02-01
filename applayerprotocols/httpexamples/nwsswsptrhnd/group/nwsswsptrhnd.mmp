@@ -1,0 +1,48 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+OPTION CW   -w off
+TARGET nwsswsptrhnd.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+UID	0x10009D8D 	0x1000A44B
+VENDORID 0x70000001
+
+SYSTEMINCLUDE	\epoc32\include \epoc32\include\ecom
+USERINCLUDE		 ..\ ..\..\..\..\..\..\os\unref\orphan\comgen\application-protocols\http\inc
+
+SOURCEPATH 	..\
+
+SOURCE		nwsswsptrhnd.cpp 
+#include	"nwsswsptrhndsource.mmpi"
+
+
+start resource 1000a44b.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET nwsswsptrhnd.rsc
+#endif
+end
+
+SOURCEPATH		+\build\generated\http
+SOURCE			SecurityPolicyPluginStrings.cpp 
+
+// Get GDB symbols included?
+SRCDBG
+
+LIBRARY	EUSER.LIB ECOM.LIB WAPSTKCLI.LIB CAPCODEC.LIB
+LIBRARY BAFL.LIB INETPROTUTIL.LIB
+DEBUGLIBRARY EFSRV.LIB FLOGGER.LIB
+SMPSAFE

@@ -1,0 +1,1307 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// HTTPIOPTest.SCRIPT
+//
+// Script file for running IOP tests
+//
+//! @file			HTTPIOPTest.script
+//
+
+
+
+PRINT Running_IOP_Test
+
+// Load the test
+LOAD_SUITE HTTPIOPTest
+
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0001
+//IOP1
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0001
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP1
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0001
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0002
+//IOP2
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0002
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP2
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0002
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0003
+//IOP3
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0003
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP3
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0003
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0004
+//IOP4
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0004
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP4
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0004
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0005
+//IOP5
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0005
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP5
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0005
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0006
+//IOP6
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0006
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP6
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0006
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0007	
+//IOP7
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0007
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP7
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0007
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0008	
+//IOP8
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0008
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP8
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0008
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0009
+//IOP9
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0009
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP9
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0009
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0010	
+//IOP10
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0010
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP10
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0010
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0011
+//IOP11
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0011
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP11
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0011
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0012	
+//IOP12
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0012
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP12
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0012
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0013
+//IOP13
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0013
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP13
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0013
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0014	
+//IOP14
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0014
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP14
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0014
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0015
+//IOP15
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0015
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP15
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0015
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0016	
+//IOP16
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0016
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP16
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0016
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0017
+//IOP17
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0017
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP17
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0017
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0018
+//IOP18
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0018
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP18
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0018
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0019
+//IOP19
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0019
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP19
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0019
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0020	
+//IOP20
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0020
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP20
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0020
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0021
+//IOP21
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0021
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP21
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0021
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0022	
+//IOP22
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0022
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP22
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0022
+
+START_TESTCASE	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0023
+//IOP23
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0023
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP23
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0023
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0024
+//IOP24
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0024
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP24
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0024
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0025
+//IOP25
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0025
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP25
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0025
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0026
+//IOP26
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0026
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP26
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0026
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0027
+//IOP27
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0027
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP27
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0027
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0028
+//IOP28
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0028
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP28
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0028
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0029
+//IOP29
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0029
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP29
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0029
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0030
+//IOP30
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0030
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP30
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0030
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0031
+//IOP31
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0031
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP31
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0031
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0032
+//IOP32
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0032
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP32
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0032
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0033
+//IOP33
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0033
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP33
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0033
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0034
+//IOP34
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0034
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP34
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0034
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0035
+//IOP35
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0035
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP35
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0035
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0036
+//IOP36
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0036
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP36
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0036
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0037
+//IOP37
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0037
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP37
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0037
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0038
+//IOP38
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0038
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP38
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0038
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0039
+//IOP39
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0039
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP39
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0039
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0040
+//IOP40
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0040
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP40
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0040
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0041
+//IOP41
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0041
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP41
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0041
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0042
+//IOP42
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0042
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP42
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0042
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0043
+//IOP43
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0043
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP43
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0043
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0044
+//IOP44
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0044
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP44
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0044
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0045
+//IOP45
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0045
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP45
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0045
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0046
+//IOP46
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0046
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP46
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0046
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0047
+//IOP47
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0047
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP47
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0047
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0048
+//IOP48
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0048
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP48
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0048
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0049
+//IOP49
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0049
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP49
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0049
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0050
+//IOP50
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0050
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP50
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0050
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0051
+//IOP51
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0051
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP51
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0051
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0052
+//IOP52
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0052
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP52
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0052
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0053
+//IOP53
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0053
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP53
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0053
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0054
+//IOP54
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0054
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP54
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0054
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0055
+//IOP55
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0055
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP55
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0055
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0056
+//IOP56
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0056
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP56
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0056
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0057
+//IOP57
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0057
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP57
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0057
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0058
+//IOP58
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0058
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	!PanicCode=0 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP58
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0058
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0059
+//IOP59
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0059
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP59
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0059
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0060
+//IOP60
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0060
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP60
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0060
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0061
+//IOP61
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0061
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP61
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0061
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0062
+//IOP62
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0062
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP62
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0062
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0063
+//IOP63
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0063
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP63
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0063
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0064
+//IOP64
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0064
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP64
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0064
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0065
+//IOP65
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0065
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP65
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0065
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0066
+//IOP66
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0066
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP66
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0066
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0067
+//IOP67
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0067
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP67
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0067
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0068
+//IOP68
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0068
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP68
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0068
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0069
+//IOP69
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0069
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP69
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0069
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0070
+//IOP70
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0070
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP70
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0070
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0071
+//IOP71
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0071
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP71
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0071
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0072
+//IOP72
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0072
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP72
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0072
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0073
+//IOP73
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0073
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP73
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0073
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0074
+//IOP74
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0074
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP74
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0074
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0075
+//IOP75
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0075
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP   !Error=-1 600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP75
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0075
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0076
+//IOP76
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0076
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP76
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0076
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-IOP-0077
+//IOP77
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0077
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	IOP77
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-IOP-0077
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0001
+//PERFORMANCE1
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0001
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE1
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0001
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0002
+//PERFORMANCE2
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0002
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE2
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0002
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0003
+//PERFORMANCE3
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0003
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE3
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0003
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0004
+//PERFORMANCE4
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0004
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE4
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0004
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0005
+//PERFORMANCE5
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0005
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	700 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE5
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0005
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0006
+//PERFORMANCE6
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0006
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE6
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0006
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0007
+//PERFORMANCE7
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0007
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+
+RUN_TEST_STEP 	600 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE7
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0007
+
+START_TESTCASE  IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0009
+//PERFORMANCE9
+
+//! @SYMTestCaseID	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0009
+//! @SYMTestCaseDesc	IOP tests
+//! @SYMFssID			
+//! @SYMTestStatus	Released
+//! @SYMTestPriority
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//! @SYMTestType
+RUN_TEST_STEP 	700 	HTTPIOPTest 	TestScriptTestStep 	C:\HttpTest\pipelining\pipelining.ini 	PERFORMANCE9
+END_TESTCASE 	IWS-APPPROT-HTTP-FRAMEWORK-PERFORMANCE-0009
+
+PRINT Finished_IOP_Test
+
+

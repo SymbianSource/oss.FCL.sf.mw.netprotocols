@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /home/httpd/html/http_tests
+/usr/bin/perl /usr/local/bin/fakeserver.pl

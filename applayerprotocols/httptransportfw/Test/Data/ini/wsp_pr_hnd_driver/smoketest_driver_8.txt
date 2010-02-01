@@ -1,0 +1,127 @@
+## Chat scripts, smoke test 8 - driver script.
+#
+# Testing Tx data object. Non failing method invocations
+# No LDT support -> all methods sent in single SDU.
+# trans1 -> simple GET. Response in multiple chunks.
+# trans2 -> simple POST - all data received from client in one chunk. Overall data size known. Response has no body
+# trans3 -> complex POST - data received from client in 3 chunks. Overall data size known. Response in single chunk
+# trans4 -> simple POST - all data received from client in one chunk. Overall data size unknown. Response in single chunk
+# trans5 -> complex POST - data received from client in 3 chunks. Overall data size unknown. Response in single chunk
+#
+# Smoke test 8
+#
+SCRIPT SmokeTestDriver8
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Set Server msg capability - 100 bytes
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\set_servermsg_100_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# Simple GET
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_get_driver.txt"
+#
+# Wait for response
+# 
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_response_multichunk_singlesdu_driver.txt"
+#
+# TRANS 2
+#
+#
+# Simple POST - all data received from client in one chunk. Overall data size known.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_post_singlebody_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_response_nobody_singlesdu_driver.txt"
+#
+# TRANS 3
+#
+#
+# Complex POST - data received from client in 3 chunks. Overall data size known.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_post_multibody_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_response_singlechunk_singlesdu_driver.txt"
+
+#
+# TRANS 4
+#
+#
+# simple POST - all data received from client in one chunk. Overall data size unknown.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans4_post_singlebody_unknownsize_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans4_response_singlechunk_singlesdu_driver.txt"
+#
+# TRANS 5
+#
+#
+# Complex POST - data received from client in 3 chunks. Overall data size unknown.
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans5_post_multibody_unknownsize_driver.txt"
+#
+# Wait for response
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans5_response_singlechunk_singlesdu_driver.txt"
+#
+# Close all the transactions...
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans2 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans3 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans4 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans5 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

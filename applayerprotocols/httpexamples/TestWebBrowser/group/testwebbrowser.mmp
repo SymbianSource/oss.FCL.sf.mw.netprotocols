@@ -1,0 +1,61 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// TestBrowser.MMP
+// testwebbrowser.exe Implementing a test harness which mimics the behaviour of a web browser.
+// 
+//
+
+/**
+ @file
+*/
+
+OPTION CW   -w off
+TARGET          testwebbrowser.exe  
+TARGETTYPE      EXE
+CAPABILITY ALL -TCB
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+USERINCLUDE	../inc
+USERINCLUDE	../../httpexampleclient
+
+START STRINGTABLE ../data/htmltagstable.st
+
+END
+
+START STRINGTABLE ../data/htmlattributestable.st
+
+END
+
+SOURCEPATH	../../httpexampleclient
+SOURCE httpexampleutils.cpp 
+
+SOURCEPATH	../src
+SOURCE Main.cpp 
+SOURCE testwebbrowser.cpp 
+SOURCE browsertransaction.cpp 
+SOURCE htmlhandler.cpp
+
+
+LIBRARY c32.lib 
+LIBRARY euser.lib 
+LIBRARY efsrv.lib 
+LIBRARY http.lib 
+LIBRARY inetprotutil.lib 
+LIBRARY bafl.lib 
+LIBRARY ecom.lib 
+LIBRARY xmlframework.lib
+
+
+VENDORID 0x70000001
+SMPSAFE

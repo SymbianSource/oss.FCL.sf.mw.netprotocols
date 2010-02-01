@@ -1,0 +1,46 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// httpsecuresocket.dll   Ecom plugin to imlpement secure sockets for HTTP 
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET httpsecuresocket.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+UID			0x10009D8D 	0x101F55F7
+VENDORID 0x70000001
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE		../httptransporthandler
+
+SOURCEPATH 		../httptransporthandler
+SOURCE 			httpsecuresocketmain.cpp csecuresocketcontroller.cpp
+SOURCE			thttptrlayerpanic.cpp
+
+
+start resource 101f55f7.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET httpsecuresocket.rsc
+#endif
+end
+
+LIBRARY 		euser.lib securesocket.lib  
+LIBRARY			x509.lib ecom.lib esock.lib
+SMPSAFE

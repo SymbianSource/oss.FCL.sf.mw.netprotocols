@@ -1,0 +1,47 @@
+EXPORTS
+	??1CNode@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CNode::~CNode(void)
+	?AddAttributeL@CNode@@QAEXPAXPAVCBase@@@Z @ 2 NONAME ; public: void __thiscall CNode::AddAttributeL(void *,class CBase *)
+	?AddDataAndAttributeL@CNode@@QAEXPAVHBufC16@@PAXPAVCBase@@@Z @ 3 NONAME ; public: void __thiscall CNode::AddDataAndAttributeL(class HBufC16 *,void *,class CBase *)
+	?AppendNodeL@CNode@@QAEAAV1@PAX@Z @ 4 NONAME ; public: class CNode & __thiscall CNode::AppendNodeL(void *)
+	?AppendNodeToThisNodeL@CNode@@QAEXPAV1@@Z @ 5 NONAME ; public: void __thiscall CNode::AppendNodeToThisNodeL(class CNode *)
+	?Attribute@CNode@@QBEPAVCBase@@PAX@Z @ 6 NONAME ; public: class CBase * __thiscall CNode::Attribute(void *)const 
+	?AttributeByIndex@CNode@@QBEPAVCBase@@H@Z @ 7 NONAME ; public: class CBase * __thiscall CNode::AttributeByIndex(int)const 
+	?AttributeCount@CNode@@QBEHXZ @ 8 NONAME ; public: int __thiscall CNode::AttributeCount(void)const 
+	?AttributeExists@CNode@@QBEHPAX@Z @ 9 NONAME ; public: int __thiscall CNode::AttributeExists(void *)const 
+	?AttributeTypeByIndex@CNode@@QBEPAXH@Z @ 10 NONAME ; public: void * __thiscall CNode::AttributeTypeByIndex(int)const 
+	?Child@CNode@@QBEPAV1@H@Z @ 11 NONAME ; public: class CNode * __thiscall CNode::Child(int)const 
+	?ClearSetDataNoDeleteL@CNode@@QAEXXZ @ 12 NONAME ; public: void __thiscall CNode::ClearSetDataNoDeleteL(void)
+	?Data@CNode@@QBEPAVHBufC16@@XZ @ 13 NONAME ; public: class HBufC16 * __thiscall CNode::Data(void)const 
+	?DeleteAllAttributes@CNode@@QAEXXZ @ 14 NONAME ; public: void __thiscall CNode::DeleteAllAttributes(void)
+	?DeleteAllChildNodes@CNode@@QAEXXZ @ 15 NONAME ; public: void __thiscall CNode::DeleteAllChildNodes(void)
+	?DeleteAttribute@CNode@@QAEXPAX@Z @ 16 NONAME ; public: void __thiscall CNode::DeleteAttribute(void *)
+	?DeleteChildNode@CNode@@QAEXPAV1@@Z @ 17 NONAME ; public: void __thiscall CNode::DeleteChildNode(class CNode *)
+	?NewL@CNode@@SAPAV1@PAXPAV1@@Z @ 18 NONAME ; public: static class CNode * __cdecl CNode::NewL(void *,class CNode *)
+	?NextChild@CNode@@QBEPAV1@PBV1@@Z @ 19 NONAME ; public: class CNode * __thiscall CNode::NextChild(class CNode const *)const 
+	?NextSibling@CNode@@QBEPAV1@XZ @ 20 NONAME ; public: class CNode * __thiscall CNode::NextSibling(void)const 
+	?NumberImmediateChildren@CNode@@QBEHXZ @ 21 NONAME ; public: int __thiscall CNode::NumberImmediateChildren(void)const 
+	?Parent@CNode@@QBEPAV1@XZ @ 22 NONAME ; public: class CNode * __thiscall CNode::Parent(void)const 
+	?PrevChild@CNode@@QBEPAV1@ABV1@@Z @ 23 NONAME ; public: class CNode * __thiscall CNode::PrevChild(class CNode const &)const 
+	?PrevSibling@CNode@@QBEPAV1@XZ @ 24 NONAME ; public: class CNode * __thiscall CNode::PrevSibling(void)const 
+	?RemoveAttributeNoDelete@CNode@@QAEXPAX@Z @ 25 NONAME ; public: void __thiscall CNode::RemoveAttributeNoDelete(void *)
+	?ReparentL@CNode@@QAEXPAV1@@Z @ 26 NONAME ; public: void __thiscall CNode::ReparentL(class CNode *)
+	?ResetDataPointer@CNode@@QAEXPAVHBufC16@@@Z @ 27 NONAME ; public: void __thiscall CNode::ResetDataPointer(class HBufC16 *)
+	?Root@CNode@@QBEABV1@XZ @ 28 NONAME ; public: class CNode const & __thiscall CNode::Root(void)const 
+	?SetDataL@CNode@@QAEXPAVHBufC16@@@Z @ 29 NONAME ; public: void __thiscall CNode::SetDataL(class HBufC16 *)
+	?SetDataNoDeleteL@CNode@@QAEXXZ @ 30 NONAME ; public: void __thiscall CNode::SetDataNoDeleteL(void)
+	?SetType@CNode@@QAEXPAX@Z @ 31 NONAME ; public: void __thiscall CNode::SetType(void *)
+	?Type@CNode@@QBEPAXXZ @ 32 NONAME ; public: void * __thiscall CNode::Type(void)const 
+	??0CBNFNode@@IAE@H@Z @ 33 NONAME ; protected: __thiscall CBNFNode::CBNFNode(int)
+	??1CBNFNode@@UAE@XZ @ 34 NONAME ; public: virtual __thiscall CBNFNode::~CBNFNode(void)
+	?KNMoreCount@CBNFNode@@SAPBVTDesC16@@XZ @ 35 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KNMoreCount(void)
+	?KNMoreMaximum@CBNFNode@@SAPBVTDesC16@@XZ @ 36 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KNMoreMaximum(void)
+	?KNMoreMinimum@CBNFNode@@SAPBVTDesC16@@XZ @ 37 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KNMoreMinimum(void)
+	?KPostRuleCallback@CBNFNode@@SAPBVTDesC16@@XZ @ 38 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KPostRuleCallback(void)
+	?KPreRuleCallback@CBNFNode@@SAPBVTDesC16@@XZ @ 39 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KPreRuleCallback(void)
+	?KRangeEnd@CBNFNode@@SAPBVTDesC16@@XZ @ 40 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KRangeEnd(void)
+	?KRangeStart@CBNFNode@@SAPBVTDesC16@@XZ @ 41 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KRangeStart(void)
+	?KReference@CBNFNode@@SAPBVTDesC16@@XZ @ 42 NONAME ; public: static class TDesC16 const * __cdecl CBNFNode::KReference(void)
+	?NewL@CBNFNode@@SAPAV1@H@Z @ 43 NONAME ; public: static class CBNFNode * __cdecl CBNFNode::NewL(int)
+	?SetFileDataL@CNode@@QAEXPAVHBufC16@@@Z @ 44 NONAME ; public: void __thiscall CNode::SetFileDataL(class HBufC16 *)
+	?AttributeByIndex@CNode@@QBEPAVCBase@@HAAPAX@Z @ 45 NONAME ; public: class CBase * __thiscall CNode::AttributeByIndex(int,void * &)const 
+

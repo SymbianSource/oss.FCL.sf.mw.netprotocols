@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+/**
+@file
+
+@SYMPurpose bnf.dll BNF rule tree parser
+*/
+
+TARGET			bnf.dll
+TARGETTYPE		dll
+CAPABILITY ALL -TCB
+UID				0x1000008d 0x10005183
+VENDORID 0x70000001
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+USERINCLUDE ../bnf
+USERINCLUDE		../inc ../bnf
+
+SOURCEPATH		../bnf
+SOURCE			CBNFParser.cpp CFragmentedString.cpp BNF.cpp
+LIBRARY			euser.lib wnode.lib wutil.lib
+#if defined EABI || defined X86GCC
+LIBRARY			efsrv.lib
+#endif
+#ifdef WINSCW
+DEFFILE			cw_bnf.def
+#else
+DEFFILE			BNF.def
+#endif
+
+SMPSAFE

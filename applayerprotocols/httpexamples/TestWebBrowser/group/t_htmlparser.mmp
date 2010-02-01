@@ -1,0 +1,50 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET t_htmlparser.exe
+TARGETTYPE exe
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include 
+SYSTEMINCLUDE	/epoc32/include/libc
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+SYSTEMINCLUDE	/epoc32/include/libc
+#endif
+
+START STRINGTABLE ../data/htmltagstable.st
+
+END
+
+USERINCLUDE ../htmlparserplugin/test/t_htmlparser/inc
+
+SOURCEPATH ../htmlparserplugin/test/t_htmlparser/src
+SOURCE t_htmlparser.cpp 
+SOURCE contenthandlers.cpp 
+
+LIBRARY euser.lib 
+LIBRARY efsrv.lib 
+LIBRARY ecom.lib 
+LIBRARY bafl.lib 
+LIBRARY xmlframework.lib 
+
+VENDORID 0x70000001
+
+SMPSAFE

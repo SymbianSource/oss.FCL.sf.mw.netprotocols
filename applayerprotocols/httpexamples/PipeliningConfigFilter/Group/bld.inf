@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+
+PRJ_TESTEXPORTS
+PipeliningConfigFilter.iby		/epoc32/rom/include/pipeliningconfigfilter.iby
+../Test/Group/T_FilterTest.iby		/epoc32/rom/include/t_filtertest.iby
+../Test/Data/FilterTestCases.ini	/epoc32/wins/c/httptest/filters/filtertestcases.ini
+../Test/Data/FilterTestCases.ini	/epoc32/winscw/c/httptest/filters/filtertestcases.ini
+../Test/Data/DomainStrings.st		/epoc32/build/generated/http/domainstrings.st
+
+PRJ_TESTMMPFILES
+../Group/PipeliningConfigFilter.mmp
+gnumakefile ../Test/Group/domainstringtable.mak
+../Test/Group/T_PipeliningConfigFilter.mmp

@@ -1,0 +1,21 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Cleanup
+
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite_Security.ini		Delete_MainFolder_Manager_Mode
+RUN_TEST_STEP 100 	 TestBookmarksServer_Cap	TestDeleteItemsInFolderStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Delete_Root_Children_Manager_Mode

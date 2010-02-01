@@ -1,0 +1,119 @@
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2355 Transport framework (HTTP) with max number of concurrent methods 
+
+//---------------------------------------------------------
+
+CONNECT HTTP 2355_H_CON_01
+
+TRANSACTION  2355_T_01 2355_H_CON_01 PUT $PutURL01$ $PutFile01$
+TRANSACTION  2355_T_02 2355_H_CON_01 PUT $PutURL02$ $PutFile02$
+TRANSACTION  2355_T_03 2355_H_CON_01 PUT $PutURL03$ $PutFile03$
+TRANSACTION  2355_T_04 2355_H_CON_01 PUT $PutURL04$ $PutFile04$
+    
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 120 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 120 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+
+IF $2355_T_01LastEvent$ == $Succeeded$
+
+   IF $2355_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2355 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2355 Put Failed, HTTP Status $2355_T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2355 Put Failed, last event $2355_T_01LastEvent$ 
+ENDIF
+
+endtrans 2355_T_01 
+
+IF $2355_T_02LastEvent$ == $Succeeded$
+
+   IF $2355_T_02HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2355 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2355 Put Failed, HTTP Status $2355_T_02HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2355 Put Failed, last event $2355_T_02LastEvent$ 
+ENDIF
+
+endtrans 2355_T_02
+
+IF $2355_T_03LastEvent$ == $Succeeded$
+
+   IF $2355_T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2355 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2355 Put Failed, HTTP Status $2355_T_03HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2355 Put Failed, last event $2355_T_03LastEvent$ 
+ENDIF
+
+endtrans 2355_T_03 
+
+IF $2355_T_04LastEvent$ == $Succeeded$
+
+   IF $2355_T_04HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2355 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2355 Put Failed, HTTP Status $2355_T_04HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2355 Put Failed, last event $2355_T_04LastEvent$ 
+ENDIF
+
+endtrans 2355_T_04
+
+// --------------------------------------------------------
+// display connections 
+
+connect
+
+DISCONNECT 2355_H_CON_01
+
+// --------------------------------------------------------
+// display connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2355

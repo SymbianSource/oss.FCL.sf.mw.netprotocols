@@ -1,0 +1,31 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;Package file for ineturilist stub
+
+;Languages
+&EN
+
+;Header
+#{"InetUriList-EN"}, (0x2000A471), 1, 0, 0
+
+%{"Vendor"}
+:"Symbian Software Ltd."
+
+;Files to be eclipsed
+""-"z:\sys\bin\ineturilistserver.exe"
+""-"z:\private\20009d70\ineturilist.xml"
+""-"z:\private\20009d70\tldpolicy.xml"
+;End of file

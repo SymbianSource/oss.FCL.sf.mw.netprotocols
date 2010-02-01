@@ -1,0 +1,357 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "DEF010977.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL - external sites 
+
+call c:\httptest\integration\externalSites 
+
+// Header 
+
+DEFINE Accept "*/*"
+
+// Speed performance, switch off the screen logging 
+//
+// ECHO OFF 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE DEF010977 Test for Defect 0170977; Hang when you open more than 8 frameworks   
+
+//---------------------------------------------------------
+
+CONNECT HTTP h01
+CONNECT HTTP h02
+CONNECT HTTP h03
+CONNECT HTTP h04
+CONNECT HTTP h05
+CONNECT HTTP h06
+CONNECT HTTP h07
+CONNECT HTTP h08
+CONNECT HTTP h09
+CONNECT HTTP h10
+CONNECT HTTP h11
+CONNECT HTTP h12
+CONNECT HTTP h13
+CONNECT HTTP h14
+CONNECT HTTP h15
+CONNECT HTTP h16
+
+TRANSACTION t01 h01 GET $bbc$
+TRANSACTION t02 h02 GET $amazon$
+TRANSACTION t03 h03 GET $nokia$
+TRANSACTION t04 h04 GET $tomshardware$
+
+TRANSACTION t05 h05 GET $bbc2$
+TRANSACTION t06 h06 GET $thereg$
+TRANSACTION t07 h07 GET $symbian$
+TRANSACTION t08 h08 GET $netscape$
+
+TRANSACTION t09 h09 GET $google$
+TRANSACTION t10 h10 GET $pcpro$
+TRANSACTION t11 h11 GET $yahoo$
+TRANSACTION t12 h12 GET $independent$
+
+TRANSACTION t13 h13 GET $cdnow$
+TRANSACTION t14 h14 GET $lycos$
+TRANSACTION t15 h15 GET $london$
+TRANSACTION t16 h16 GET $guardian$
+
+// ---------------------------------------------------------
+// display all connectons   
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+// wait 160 seconds 
+
+hold 160 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $t01LastEvent$ == $Succeeded$
+
+   IF $t01HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t01 GET $bbc$ Passed 
+   ELSE
+      PRINT Result: t01 GET $bbc$ Failed, HTTP Status $t01HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t01 GET $bbc$ Failed, last event $t01LastEvent$ 
+ENDIF
+
+endtrans t01 
+
+IF $t02LastEvent$ == $Succeeded$
+
+   IF $t02HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t02 GET $amazon$ Passed 
+   ELSE
+      PRINT Result: t02 GET $amazon$ Failed, HTTP Status $t02HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t02 GET $amazon$ Failed, last event $t02LastEvent$ 
+ENDIF
+
+endtrans t02
+
+IF $t03LastEvent$ == $Succeeded$
+
+   IF $t03HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t03 GET $nokia$ Passed 
+   ELSE
+      PRINT Result: t03 GET $nokia$ Failed, HTTP Status $t03HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t03 GET $nokia$ Failed, last event $t03LastEvent$ 
+ENDIF
+
+endtrans t03 
+
+IF $t04LastEvent$ == $Succeeded$
+
+   IF $t04HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t04 GET $tomshardware$ Passed 
+   ELSE
+      PRINT Result: t04 GET $tomshardware$ Failed, HTTP Status $t04HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t04 GET $tomshardware$ Failed, last event $t04LastEvent$ 
+ENDIF
+
+endtrans t04 
+
+IF $t05LastEvent$ == $Succeeded$
+
+   IF $t05HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t05 GET $bbc2$ Passed 
+   ELSE
+      PRINT Result: t05 GET $bbc2$ Failed, HTTP Status $t05HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t05 GET $bbc2$ Failed, last event $t05LastEvent$ 
+ENDIF
+
+endtrans t05 
+
+IF $t06LastEvent$ == $Succeeded$
+
+   IF $t06HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t06 GET $thereg$ Passed 
+   ELSE
+      PRINT Result: t06 GET $thereg$ Failed, HTTP Status $t06HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t06 GET $thereg$ Failed, last event $t06LastEvent$ 
+ENDIF
+
+endtrans t06 
+
+IF $t07LastEvent$ == $Succeeded$
+
+   IF $t07HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t07 GET $symbian$ Passed 
+   ELSE
+      PRINT Result: t07 GET $symbian$ Failed, HTTP Status $t07HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t07 GET $symbian$ Failed, last event $t07LastEvent$ 
+ENDIF
+
+endtrans t07 
+
+IF $t08LastEvent$ == $Succeeded$
+
+   IF $t08HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t08 GET $netscape$ Passed 
+   ELSE
+      PRINT Result: t08 GET $netscape$ Failed, HTTP Status $t08HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t08 GET $netscape$ Failed, last event $t08LastEvent$ 
+ENDIF
+
+endtrans t08 
+
+IF $t09LastEvent$ == $Succeeded$
+
+   IF $t09HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t09 GET $google$ Passed 
+   ELSE
+      PRINT Result: t09 GET $google$ Failed, HTTP Status $t09HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t09 GET $google$ Failed, last event $t09LastEvent$ 
+ENDIF
+
+endtrans t09 
+
+IF $t10LastEvent$ == $Succeeded$
+
+   IF $t10HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t10 GET $pcpro$ Passed 
+   ELSE
+      PRINT Result: t10 GET $pcpro$ Failed, HTTP Status $t10HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t10 GET $pcpro$ Failed, last event $t10LastEvent$ 
+ENDIF
+
+endtrans t10 
+
+IF $t11LastEvent$ == $Succeeded$
+
+   IF $t11HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t11 GET $yahoo$ Passed 
+   ELSE
+      PRINT Result: t11 GET $yahoo$ Failed, HTTP Status $t11HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t11 GET $yahoo$ Failed, last event $t11LastEvent$ 
+ENDIF
+
+endtrans t11 
+
+IF $t12LastEvent$ == $Succeeded$
+
+   IF $t12HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t12 GET $independent$ Passed 
+   ELSE
+      PRINT Result: t12 GET $independent$ Failed, HTTP Status $t12HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t12 GET $independent$ Failed, last event $t12LastEvent$ 
+ENDIF
+
+endtrans t12  
+
+IF $t13LastEvent$ == $Succeeded$
+
+   IF $t13HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t13 GET $cdnow$ Passed 
+   ELSE
+      PRINT Result: t13 GET $cdnow$ Failed, HTTP Status $t13HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t13 GET $cdnow$ Failed, last event $t13LastEvent$ 
+ENDIF
+
+endtrans t13 
+
+IF $t14LastEvent$ == $Succeeded$
+
+   IF $t14HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t14 GET $lycos$ Passed 
+   ELSE
+      PRINT Result: t14 GET $lycos$ Failed, HTTP Status $t14HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t14 GET $lycos$ Failed, last event $t14LastEvent$ 
+ENDIF
+
+endtrans t14 
+
+IF $t15LastEvent$ == $Succeeded$
+
+   IF $t15HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t15 GET $london$ Passed 
+   ELSE
+      PRINT Result: t15 GET $london$ Failed, HTTP Status $t15HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t15 GET $london$ Failed, last event $t15LastEvent$ 
+ENDIF
+
+endtrans t15
+
+IF $t16LastEvent$ == $Succeeded$
+
+   IF $t16HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: t16 GET $guardian$ Passed 
+   ELSE
+      PRINT Result: t16 GET $guardian$ Failed, HTTP Status $t16HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: t16 GET $guardian$ Failed, last event $t16LastEvent$ 
+ENDIF
+  
+endtrans t16 
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT h01
+DISCONNECT h02
+DISCONNECT h03
+DISCONNECT h04
+DISCONNECT h05
+DISCONNECT h06
+DISCONNECT h07
+DISCONNECT h08 
+DISCONNECT h09
+DISCONNECT h10
+DISCONNECT h11
+DISCONNECT h12
+DISCONNECT h13
+DISCONNECT h14
+DISCONNECT h15
+DISCONNECT h16 
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE DEF010977
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

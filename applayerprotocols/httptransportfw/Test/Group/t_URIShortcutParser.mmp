@@ -1,0 +1,55 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+// t_URIShortcutParser.MMP
+
+
+OPTION CW   -w off
+TARGET          t_urishortcutparser.exe
+  
+TARGETTYPE      EXE
+CAPABILITY ALL -TCB
+    
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include
+SYSTEMINCLUDE	/epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+SOURCEPATH	    ../URLShortcuts
+SOURCE		turishortcutparser8.cpp turishortcutparser16.cpp  
+
+SOURCEPATH	    ../t_URIShortcutParser
+SOURCE		t_UriShortcutTestAutomatic.cpp t_UriShortcutTestMain.cpp t_UriShortcutTestManual.cpp
+
+USERINCLUDE		../URLShortcuts
+USERINCLUDE		../t_URIShortcutParser
+
+
+LIBRARY     	c32.lib euser.lib efsrv.lib http.lib inetprotutil.lib bafl.lib ecom.lib
+
+
+VENDORID 0x70000001
+
+
+SMPSAFE

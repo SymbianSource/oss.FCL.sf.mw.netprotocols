@@ -1,0 +1,28 @@
+UTIL Release Notes
+====================
+
+Version 0.0.003
+===============
+Made by Simon 18/10/99
+
+Changes:
+- Rolled AttrLUT Debug methods into a single selector based method to avoid polluting release symbol table with debug code.
+- AttrLUT Ctr now private; you now need to use NewL
+
+Version 0.0.002
+===============
+Made by Rasel 2:31 PM 9/7/99
+
+Changes:
+1. Added CUrl // Urlbase.cpp in the mmp file
+2. CUrl can now accept a TParseBase and therefore take a filepath spec parameter in its NewL
+3. Fixed a bug which causes CUrl to crash due to temporary variables not being created where expected.
+
+
+Version 0.0.001
+===============
+Made by Ray 17/08/99
+
+Changes:
+First Release
+

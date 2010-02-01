@@ -1,0 +1,48 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		testbookmarksserver.exe
+TARGETTYPE	exe
+
+CAPABILITY ReadUserData WriteUserData
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE 	/epoc32/include /epoc32/include/test
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE /epoc32/include/platform/test
+SYSTEMINCLUDE /epoc32/include/platform/mw
+#endif
+
+LIBRARY		euser.lib inetprotutil.lib 
+LIBRARY		efsrv.lib
+
+//For Bookmarks API
+LIBRARY		bookmarkdb.lib
+
+//For TEF
+LIBRARY		testexecuteutils.lib testexecutelogclient.lib
+
+SOURCEPATH	.
+SOURCE		TestBookmarksServer.cpp			TestBookmarksBaseStep.cpp		TestCreateBookmarkItemsStep.cpp
+SOURCE		TestSetPropertyStep.cpp			TestGetPropertyStep.cpp			TestDeleteFolderStep.cpp
+SOURCE		TestOpenItemStep.cpp			TestDeleteItemsInFolderStep.cpp		TestCustomPropertyStep.cpp
+SOURCE		TestVersionStep.cpp			TestUpdateVisitedStep.cpp
+
+VENDORID 	0x70000001
+
+// Allocated UID range for IWS tests are 0x102729D2 to 0x10272A35.  The UID name is KUidIWSTestSuit.
+UID 0x1000007A 0x102729DF
+SMPSAFE

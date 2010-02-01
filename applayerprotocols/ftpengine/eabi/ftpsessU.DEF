@@ -1,0 +1,6 @@
+EXPORTS
+	_ZN11CFTPSession10GetVersionEv @ 1 NONAME ; CFTPSession::GetVersion(void)
+	_ZN11CFTPSession4NewLEP19MFtpSessionNotifier @ 2 NONAME ; CFTPSession::NewL(MFtpSessionNotifier*)
+	_ZTI11CFTPSession @ 3 NONAME ; #<TI>#
+	_ZTV11CFTPSession @ 4 NONAME ; #<VT>#
+

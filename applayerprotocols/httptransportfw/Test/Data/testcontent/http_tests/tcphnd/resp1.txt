@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Server: T_DummyServer(EPOC32/6.2)
+Connection: close
+Content-Length: 330
+Content-Type: application/vnd.syncml+xml
+
+<?xml version="1.0" encoding="UTF-8"?><SyncML xmlns='SYNCML:SYNCML1.0'><SyncHdr><VerDTD>1.0</VerDTD><VerProto>SyncML/1.0</VerProto><SessionID>1</SessionID><MsgID>1</MsgID><Target><LocURI>ABCDEFG</LocURI></Target><Source><LocURI>servlet/fde.sync.SyncML</LocURI></Source><Meta><MaxMsgSize xmlns='syncml:metinf'>12288</MaxMsgSize></Meta></SyncHdr><SyncBody><Status><CmdID>1</CmdID><MsgRef>1</MsgRef><CmdRef>0</CmdRef><Cmd>SyncHdr</Cmd><TargetRef>servlet/fde.sync.SyncML</TargetRef><SourceRef>ABCDEFG</SourceRef><Data>200</Data></Status><Status><CmdID>2</CmdID><MsgRef>1</MsgRef><CmdRef>1</CmdRef><Cmd>Alert</Cmd><TargetRef>CONTACTS</TargetRef><SourceRef>C:\Documents\contacts</SourceRef><Data>508</Data></Status><Alert><CmdID>3</CmdID><Data>201</Data><Item><Target><LocURI>C:\Documents\contacts</LocURI></Target><Source><LocURI>CONTACTS</LocURI></Source><Meta><Anchor xmlns='syncml:metinf'><Last xmlns='syncml:metinf'>20010309T091058</Last><Next xmlns='syncml:metinf'>20010309T110557</Next></Anchor></Meta></Item></Alert><Final/></SyncBody></SyncML>

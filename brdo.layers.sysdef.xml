@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd"
+  [ <!ENTITY layer_real_source_path "sf/mw/netprotocols" > ]>
+
+<SystemDefinition name="netprotocols" schema="1.4.0">
+  <systemModel>
+    <layer name="mw_layer">
+      <module name="netprotocols_plat">
+        <unit unitID="cookie_manager_api" name="cookie_manager_api" bldFile="&layer_real_source_path;/netprotocols_plat/cookie_manager_api/group" mrp=""/>
+        <unit unitID="http_cache_mgr_api" name="http_cache_mgr_api" bldFile="&layer_real_source_path;/netprotocols_plat/http_cache_mgr_api/group" mrp=""/>
+        <unit unitID="http_filters_api" name="http_filters_api" bldFile="&layer_real_source_path;/netprotocols_plat/http_filters_api/group" mrp=""/>          
+      </module>
+      <module name="httpfilters">
+        <unit unitID="cookie" name="cookie"  bldFile="&layer_real_source_path;/httpfilters/cookie/group" mrp=""/>
+        <unit unitID="deflatefilter" name="deflatefilter"  bldFile="&layer_real_source_path;/httpfilters/deflatefilter/group" mrp=""/>
+        <unit unitID="httpfilteracceptheader" name="httpfilteracceptheader"  bldFile="&layer_real_source_path;/httpfilters/httpfilteracceptheader/group" mrp=""/>
+        <unit unitID="httpfilterauthentication" name="httpfilterauthentication"  bldFile="&layer_real_source_path;/httpfilters/httpfilterauthentication/group" mrp=""/>
+        <unit unitID="httpfiltercommon" name="httpfiltercommon"  bldFile="&layer_real_source_path;/httpfilters/httpfiltercommon/group" mrp=""/>
+        <unit unitID="httpfilterconnhandler" name="httpfilterconnhandler"  bldFile="&layer_real_source_path;/httpfilters/httpfilterconnhandler/group" mrp=""/>
+        <unit unitID="httpfilteriop" name="httpfilteriop"  bldFile="&layer_real_source_path;/httpfilters/httpfilteriop/group" mrp=""/>
+        <unit unitID="httpfilterproxy" name="httpfilterproxy" bldFile="&layer_real_source_path;/httpfilters/httpfilterproxy/group" mrp=""/>
+        <unit unitID="uaproffilter" name="uaproffilter"  bldFile="&layer_real_source_path;/httpfilters/uaproffilter/group" mrp=""/>
+      </module>
+    </layer>
+  </systemModel>
+</SystemDefinition>

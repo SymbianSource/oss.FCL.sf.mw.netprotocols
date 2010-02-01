@@ -1,0 +1,120 @@
+EXPORTS
+	_ZN11RBkBookmark10IsHomePageEv @ 1 NONAME
+	_ZN11RBkBookmark13UpdateVisitedEv @ 2 NONAME
+	_ZN11RBkBookmark15AuthenticationLEv @ 3 NONAME
+	_ZN11RBkBookmark15SetLastVisitedLE5TTime @ 4 NONAME
+	_ZN11RBkBookmark18SetAuthenticationLERK15CAuthentication @ 5 NONAME
+	_ZN11RBkBookmark7SetNapLEm @ 6 NONAME
+	_ZN11RBkBookmark7SetUriLERK6TDesC8 @ 7 NONAME
+	_ZN11RBkBookmark9SetProxyLEm @ 8 NONAME
+	_ZN11RBkBookmarkC1Ev @ 9 NONAME
+	_ZN11RBkBookmarkC2Ev @ 10 NONAME
+	_ZN11RBkDatabase11CreateIconLERK6TDesC8 @ 11 NONAME
+	_ZN11RBkDatabase11DeleteIconLEm @ 12 NONAME
+	_ZN11RBkDatabase11DeleteItemLEmi @ 13 NONAME
+	_ZN11RBkDatabase13CreateFolderLERK7TDesC16P9RBkFolder @ 14 NONAME
+	_ZN11RBkDatabase13SetDefaultNapEm @ 15 NONAME
+	_ZN11RBkDatabase13SetSearchUriLERK6TDesC8 @ 16 NONAME
+	_ZN11RBkDatabase15CreateBookmarkLEP9RBkFolder @ 17 NONAME
+	_ZN11RBkDatabase15SetDefaultProxyEm @ 18 NONAME
+	_ZN11RBkDatabase16SetHomePageTextLERK7TDesC16 @ 19 NONAME
+	_ZN11RBkDatabase18SetCustomPropertyLE4TUidRK6TDesC8 @ 20 NONAME
+	_ZN11RBkDatabase18SetCustomPropertyLE4TUidRK7TDesC16 @ 21 NONAME
+	_ZN11RBkDatabase18SetCustomPropertyLE4TUidd @ 22 NONAME
+	_ZN11RBkDatabase18SetCustomPropertyLE4TUidi @ 23 NONAME
+	_ZN11RBkDatabase23RegisterFolderPropertyLE4TUidN8Bookmark13TPropertyTypeE @ 24 NONAME
+	_ZN11RBkDatabase25DeregisterFolderPropertyLE4TUid @ 25 NONAME
+	_ZN11RBkDatabase25RegisterBookmarkPropertyLE4TUidN8Bookmark13TPropertyTypeE @ 26 NONAME
+	_ZN11RBkDatabase25RegisterDatabasePropertyLE4TUidN8Bookmark13TPropertyTypeE @ 27 NONAME
+	_ZN11RBkDatabase27DeregisterBookmarkPropertyLE4TUid @ 28 NONAME
+	_ZN11RBkDatabase27DeregisterDatabasePropertyLE4TUid @ 29 NONAME
+	_ZN11RBkDatabase5CloseEv @ 30 NONAME
+	_ZN11RBkDatabase5OpenLEN8Bookmark11TVisibilityEP17MBookmarkObserver @ 31 NONAME
+	_ZN11RBkDatabase7CommitLEv @ 32 NONAME
+	_ZN11RBkDatabase8SetHomeLERK11RBkBookmark @ 33 NONAME
+	_ZN11RBkDatabase8RefreshLEv @ 34 NONAME
+	_ZN11RBkDatabaseC1Ev @ 35 NONAME
+	_ZN11RBkDatabaseC2Ev @ 36 NONAME
+	_ZN7RBkNode10SetIconIdLEm @ 37 NONAME
+	_ZN7RBkNode10SetParentLER9RBkFolder @ 38 NONAME
+	_ZN7RBkNode10SetPublicLEi @ 39 NONAME
+	_ZN7RBkNode12SetWritableLEi @ 40 NONAME
+	_ZN7RBkNode15SetDescriptionLERK7TDesC16 @ 41 NONAME
+	_ZN7RBkNode18SetCustomPropertyLE4TUidRK6TDesC8 @ 42 NONAME
+	_ZN7RBkNode18SetCustomPropertyLE4TUidRK7TDesC16 @ 43 NONAME
+	_ZN7RBkNode18SetCustomPropertyLE4TUidd @ 44 NONAME
+	_ZN7RBkNode18SetCustomPropertyLE4TUidi @ 45 NONAME
+	_ZN7RBkNode5CloseEv @ 46 NONAME
+	_ZN7RBkNode9SetOwnerLE9TSecureId @ 47 NONAME
+	_ZN7RBkNode9SetTitleLERK7TDesC16 @ 48 NONAME
+	_ZN7RBkNodeC1Ev @ 49 NONAME
+	_ZN7RBkNodeC2Ev @ 50 NONAME
+	_ZN9RBkFolder4MoveEii @ 51 NONAME
+	_ZN9RBkFolder7AppendLER7RBkNode @ 52 NONAME
+	_ZN9RBkFolder7InsertLER7RBkNodei @ 53 NONAME
+	_ZN9RBkFolder9OpenItemLEi @ 54 NONAME
+	_ZN9RBkFolderC1Ev @ 55 NONAME
+	_ZN9RBkFolderC2Ev @ 56 NONAME
+	_ZNK11RBkBookmark11LastVisitedEv @ 57 NONAME
+	_ZNK11RBkBookmark3UriEv @ 58 NONAME
+	_ZNK11RBkBookmark6ProxyLEv @ 59 NONAME
+	_ZNK11RBkBookmark7GetNapLEv @ 60 NONAME
+	_ZNK11RBkDatabase10DefaultNapEv @ 61 NONAME
+	_ZNK11RBkDatabase11OpenFolderLERK7TDesC16 @ 62 NONAME
+	_ZNK11RBkDatabase11OpenFolderLEm @ 63 NONAME
+	_ZNK11RBkDatabase12DefaultProxyEv @ 64 NONAME
+	_ZNK11RBkDatabase12HomePageTextEv @ 65 NONAME
+	_ZNK11RBkDatabase13OpenBookmarkLEm @ 66 NONAME
+	_ZNK11RBkDatabase18GetCustomPropertyLE4TUidR5TDes8 @ 67 NONAME
+	_ZNK11RBkDatabase18GetCustomPropertyLE4TUidR6TDes16 @ 68 NONAME
+	_ZNK11RBkDatabase18GetCustomPropertyLE4TUidRd @ 69 NONAME
+	_ZNK11RBkDatabase18GetCustomPropertyLE4TUidRi @ 70 NONAME
+	_ZNK11RBkDatabase7VersionEv @ 71 NONAME
+	_ZNK11RBkDatabase8GetIconLEm @ 72 NONAME
+	_ZNK11RBkDatabase9OpenHomeLEv @ 73 NONAME
+	_ZNK11RBkDatabase9OpenRootLEv @ 74 NONAME
+	_ZNK11RBkDatabase9SearchUriEv @ 75 NONAME
+	_ZNK7RBkNode10IsWritableEv @ 76 NONAME
+	_ZNK7RBkNode11OpenFolderLEv @ 77 NONAME
+	_ZNK7RBkNode11OpenParentLEv @ 78 NONAME
+	_ZNK7RBkNode12DescriptionLEv @ 79 NONAME
+	_ZNK7RBkNode13OpenBookmarkLEv @ 80 NONAME
+	_ZNK7RBkNode18GetCustomPropertyLE4TUidR5TDes8 @ 81 NONAME
+	_ZNK7RBkNode18GetCustomPropertyLE4TUidR6TDes16 @ 82 NONAME
+	_ZNK7RBkNode18GetCustomPropertyLE4TUidRd @ 83 NONAME
+	_ZNK7RBkNode18GetCustomPropertyLE4TUidRi @ 84 NONAME
+	_ZNK7RBkNode2IdEv @ 85 NONAME
+	_ZNK7RBkNode4TypeEv @ 86 NONAME
+	_ZNK7RBkNode5TitleEv @ 87 NONAME
+	_ZNK7RBkNode6OwnerLEv @ 88 NONAME
+	_ZNK7RBkNode7IconIdLEv @ 89 NONAME
+	_ZNK7RBkNode8IsPublicEv @ 90 NONAME
+	_ZNK9RBkFolder5CountEv @ 91 NONAME
+	_ZNK9RBkFolder5IndexERK7RBkNode @ 92 NONAME
+	_ZTI11CBookmarkDb @ 93 NONAME ; #<TI>#
+	_ZTI12CPropertyReg @ 94 NONAME ; #<TI>#
+	_ZTI13CBkmrkWatcher @ 95 NONAME ; #<TI>#
+	_ZTI13CBookmarkBase @ 96 NONAME ; #<TI>#
+	_ZTI13CPropertyList @ 97 NONAME ; #<TI>#
+	_ZTI15CBookmarkFolder @ 98 NONAME ; #<TI>#
+	_ZTI15CCustomProperty @ 99 NONAME ; #<TI>#
+	_ZTI16CBkmrkAttachment @ 100 NONAME ; #<TI>#
+	_ZTI16CBkmrkProperties @ 101 NONAME ; #<TI>#
+	_ZTI19CRepositoryAccessor @ 102 NONAME ; #<TI>#
+	_ZTI24CBkmrkExtendedProperties @ 103 NONAME ; #<TI>#
+	_ZTI9CBookmark @ 104 NONAME ; #<TI>#
+	_ZTV11CBookmarkDb @ 105 NONAME ; #<VT>#
+	_ZTV12CPropertyReg @ 106 NONAME ; #<VT>#
+	_ZTV13CBkmrkWatcher @ 107 NONAME ; #<VT>#
+	_ZTV13CBookmarkBase @ 108 NONAME ; #<VT>#
+	_ZTV13CPropertyList @ 109 NONAME ; #<VT>#
+	_ZTV15CBookmarkFolder @ 110 NONAME ; #<VT>#
+	_ZTV15CCustomProperty @ 111 NONAME ; #<VT>#
+	_ZTV16CBkmrkAttachment @ 112 NONAME ; #<VT>#
+	_ZTV16CBkmrkProperties @ 113 NONAME ; #<VT>#
+	_ZTV19CRepositoryAccessor @ 114 NONAME ; #<VT>#
+	_ZTV24CBkmrkExtendedProperties @ 115 NONAME ; #<VT>#
+	_ZTV9CBookmark @ 116 NONAME ; #<VT>#
+	_ZN7RBkNode16SetLastModifiedLERK5TTime @ 117 NONAME
+	_ZNK7RBkNode13LastModifiedLEv @ 118 NONAME
+

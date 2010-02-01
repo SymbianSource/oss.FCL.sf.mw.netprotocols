@@ -1,0 +1,184 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "HTTP-I-2325.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+// URL
+
+DEFINE wapTest2URL "https://$wapTest2$"
+DEFINE Put2URL     "https://$wapTest2$/upload/large.txt" 
+DEFINE PutFile     "c:\httptest\integration\large.txt"
+
+// Header 
+
+DEFINE Accept "text/plain, image/gif"
+DEFINE AcceptEncoding "gzip, compress"
+DEFINE ContentType "text/html" 
+ 
+//---------------------------------------------------------
+//  Define the expected return result if required
+
+DEFINE Succeeded 8
+DEFINE Failed    9 
+
+// These values need to change for JetStream, i.e. Succeeded 9  
+
+DEFINE HTTP_OK         200 
+DEFINE HTTP_NOT_FOUND  404
+DEFINE HTTP_NOT_ACCEPT 406
+
+DEFINE ExpectedStatus $HTTP_NOT_ACCEPT$
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2325 Other Methods using Transport framework (HTTPS) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION  T_01 H_CON_01 HEAD $wapTest2URL$
+TRANSACTION  T_02 H_CON_01 PUT $Put2URL$ $PutFile$
+TRANSACTION  T_03 H_CON_01 OPTIONS $wapTest2URL$
+TRANSACTION  T_04 H_CON_01 TRACE $wapTest2URL$
+    
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 100 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 100 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// ---------------------------------------------------------
+// display all active transactions 
+
+showtrans
+
+// now do the delete, the Put should have completed 
+
+TRANSACTION  T_05 H_CON_01 DELETE $Put2URL$ 
+
+// wait for delete to complete 
+
+hold 60 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TEST HTTP-I-2325 HEAD Passed      
+   ELSE 
+      PRINT Result: TEST HTTP-I-2325 HEAD Failed, HTTP Status $T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: TEST HTTP-I-2325 HEAD Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2325 PUT Passed
+   ELSE 
+      PRINT Result: TEST HTTP-I-2325 PUT Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2325 PUT Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2325 OPTIONS Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2325 OPTIONS Failed, HTTP Status $T_03HttpStatus$   
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2325 OPTIONS Failed, last event $T_03LastEvent$   
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2325 TRACE Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2325 TRACE Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2325 TRACE Failed, last event $T_04LastEvent$    
+ENDIF
+
+endtrans T_04 
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: TEST HTTP-I-2325 DELETE Passed 
+   ELSE 
+      PRINT Result: TEST HTTP-I-2325 DELETE Failed, HTTP Status $T_05HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: TEST HTTP-I-2325 DELETE Failed, last event $T_05LastEvent$    
+ENDIF
+
+endtrans T_05 
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2325
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

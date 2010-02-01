@@ -1,0 +1,38 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET			cookiemanager.dll
+TARGETTYPE		DLL
+CAPABILITY ALL -TCB
+
+UID	0x1000008D 	0x101F55E7
+VENDORID 0x70000001
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/http
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+USERINCLUDE	../example ../inc ../core
+
+SOURCEPATH ../example
+SOURCE examplecookiemanagermain.cpp examplecookiemanager.cpp	
+
+LIBRARY euser.lib http.lib bafl.lib inetprotutil.lib
+SMPSAFE

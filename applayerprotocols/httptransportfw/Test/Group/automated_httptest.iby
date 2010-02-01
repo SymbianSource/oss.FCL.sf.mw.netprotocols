@@ -1,0 +1,41 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef 	__HTTPTEST_IBY__ 
+#define		__HTTPTEST_IBY__
+
+
+#include <t_filtertest.iby>
+
+// Test Filters
+ECOM_PLUGIN(t_testfilters.dll,101f447f.rsc)
+
+// The script file for T_HttpRegression
+data=\epoc32\wins\c\httptest\regression\regressiontests.ini	httptest\regression\regressiontests.ini
+
+file=ABI_DIR\BUILD_DIR\httpexampleclient.exe 		System\Programs\httpexampleclient.exe
+file=ABI_DIR\BUILD_DIR\t_httpmessage.exe 		System\Programs\t_httpmessage.exe
+//file=ABI_DIR\BUILD_DIR\t_httptransporthandler.exe 	System\Programs\t_httptransporthandler.exe
+file=ABI_DIR\BUILD_DIR\t_httpregression.exe 		System\Programs\t_httpregression.exe
+file=ABI_DIR\BUILD_DIR\t_httppipeliningtest.exe 	System\Programs\t_httppipeliningtest.exe
+
+data=\epoc32\wins\c\wapca2006.cer				wapca2006.cer
+data=\epoc32\wins\c\system\data\certclients.dat		system\data\certclients.dat
+
+
+#endif //	__HTTPTEST_IBY__
+
+
+

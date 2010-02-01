@@ -1,0 +1,6 @@
+GET http://waptest:9000/anything?req=4061.txt&resp=4062.txt
+User-Agent: acme-http-client-1.0
+Host: waptest:9000
+
+
+

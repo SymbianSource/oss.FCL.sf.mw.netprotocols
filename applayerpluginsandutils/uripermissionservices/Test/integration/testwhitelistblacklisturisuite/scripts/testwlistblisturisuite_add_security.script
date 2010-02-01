@@ -1,0 +1,45 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// TESTWLISTBLISTURISUITE.SCRIPT
+// Script file for Testing White/Black list uri service capability test.
+// @internalAll
+// 
+//
+
+
+PRINT Running_WLsitBListUriService_Test
+
+// Load the test
+LOAD_SUITE TestWListBListUriServer
+
+
+START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE_ADD_SECURITY-0001
+//Add_Uri_For_CapabilityTest
+
+//! @file			TestWListBListUriSuite_Add_Security.script
+//! @SYMTestCaseID		IWS-WLBL-TESTWLISTBLISTURISUITE_ADD_SECURITY-0001
+//! @SYMTestCaseDesc 		Add uris for capability test.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!	                        2) Open RUriDatabase and call RUriDatabase::AddL() 
+//!				3) Check that it has been added successfully
+//! @SYMTestExpectedResults 	URI should be added to with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_5
+END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE_ADD_SECURITY-0001
+

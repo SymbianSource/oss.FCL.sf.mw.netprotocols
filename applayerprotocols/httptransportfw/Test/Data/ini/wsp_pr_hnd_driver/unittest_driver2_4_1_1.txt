@@ -1,0 +1,49 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.4.1.1
+## Driver chat script
+#
+# Test Synopsis
+# * Abort GET method immediately, before receiving invoke cnf
+
+# Expected Result
+# * Expected result: The method invocation gets aborted
+
+
+SCRIPT UnitTestDriver2.4.1.1 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Set the proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+
+#
+# Get the session connected
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doconnect_accept_driver.txt"
+#
+# Create a GET method and sbort the methods
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_get_clientabort_driver.txt"
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

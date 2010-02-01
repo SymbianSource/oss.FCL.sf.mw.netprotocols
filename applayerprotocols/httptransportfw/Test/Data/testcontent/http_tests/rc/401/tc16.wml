@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+
+
+<wml>
+  <card id="card1" title="WAP Deck for Test Case 16">
+    <p>
+      This page will test http return code 401 and initiate a dilog box which will require you to enter a valid username and password. This information can be found in the test set up data sheet.
+<br/>
+Please select the link below to continue the test.....
+<br/> 
+<anchor>Authentication Test<go href="private/index.wml"/></anchor><br/>       
+
+    </p>
+  </card>
+
+</wml>
+

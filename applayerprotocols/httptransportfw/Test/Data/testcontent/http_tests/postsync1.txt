@@ -1,0 +1,8 @@
+POST http://waptest:9000/tryit?req=postsync1.txt&resp=postsync2.txt
+User-Agent: acme-http-client-1.0
+Host: waptest:9000
+Accept: application/vnd.syncml-xml, text/*
+Content-type: application/vnd.syncml-xml, text/*
+Content-length: 22
+
+posting syncml content

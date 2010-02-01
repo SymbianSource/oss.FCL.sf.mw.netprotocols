@@ -1,0 +1,50 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET          bookmarkdb.dll
+TARGETTYPE      dll
+UID      0x102078CB
+VENDORID 0x70000001
+CAPABILITY ALL -TCB
+
+USERINCLUDE   ../inc
+USERINCLUDE   ../src
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH	../src           
+SOURCE  bookmarkdb.cpp
+SOURCE  bookmarkbase.cpp
+SOURCE  bookmark.cpp
+SOURCE  bookmarkfolder.cpp
+
+// internal classes
+SOURCE  bkmrkdb.cpp
+SOURCE  bkmrkattachment.cpp
+SOURCE  bkmrk.cpp
+SOURCE  bkmrkfolder.cpp
+SOURCE  bkmrkbase.cpp
+SOURCE  bkmrkproperties.cpp
+SOURCE  bkmrkextendedproperties.cpp
+SOURCE  bkmrkwatcher.cpp
+SOURCE  propertylist.cpp
+SOURCE  repository.cpp
+SOURCE  propertyreg.cpp
+SOURCE  customproperty.cpp
+
+LIBRARY	euser.lib centralrepository.lib inetprotutil.lib bafl.lib
+
+DEFFILE			bookmarkdb.def
+
+SMPSAFE

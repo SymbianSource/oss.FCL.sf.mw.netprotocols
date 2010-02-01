@@ -1,0 +1,43 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		  	httputils.dll
+TARGETTYPE	  	dll
+UID			 	0x1000008d 0x2001B926
+
+CAPABILITY		ALL -TCB
+
+USERINCLUDE		../httputils/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH 		../httputils/src
+SOURCE 			rexplicithttpsession.cpp
+
+LIBRARY		 	euser.lib
+LIBRARY		 	commdb.lib
+LIBRARY		 	commsdat.lib
+LIBRARY		 	http.lib
+LIBRARY		 	bafl.lib
+LIBRARY		 	inetprotutil.lib
+LIBRARY		 	esock.lib
+
+#ifdef WINSCW
+DEFFILE			httputils.def
+#endif
+
+#ifdef ARMV5
+DEFFILE			httputils.def
+#endif
+SMPSAFE

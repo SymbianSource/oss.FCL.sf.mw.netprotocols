@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+ All rights reserved.
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ Nokia Corporation - initial contribution.
+
+ Contributors:
+
+ Description:
+ Ineturilist pre-configuration Policy File
+ Blank character is used as a separator in Whitelist / Blacklist policy datafor more clarity.
+ open this file with notepad for clear visibility. And this file in Unicode format
+
+-->
+
+
+
+
+ <PolicyData version="0">
+	<TLD name="TEST">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="TWT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+	</TLD>
+	<TLD name="TBL">
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CYL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			А Б В Г Д Є Ж Ѕ З И І К Л М Н О П Ҁ Р С Т Ѹ Ф Х Ѡ Ц Ч Ш Щ Ъ ЪІ Ь Ѣ Ю Ꙗ Ѧ Ѩ Ѫ Ѭ Ѯ Ѱ Ѳ Ѵ Ѥ
+		</Blacklist>
+	</TLD>
+	<TLD name="GRK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			α ν β ξ	γ ο δ π ε Ρ Ζ Σ Η Τ Θ Υ Ι ι Φ Κ κ Χ χ Λ Ψ ψ Μ μ	Ω ω
+		</Blacklist>
+	</TLD>
+	<TLD name="ARM">
+		<Whitelist>
+			w a r m A R M W Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ Հ Ձ Ղ Ճ Մ Յ Ն Շ Ո Չ Պ Ջ Ռ Ս Վ Տ Ր Ց Ւ Փ Ք Օ Ֆ ՛ ՜ ՝ ՞ ՟ ա բ գ դ ե զ է ը թ ժ ի լ խ ծ կ հ ձ ղ ճ մ յ ն շ ո չ պ ջ ռ ս վ 
+		</Whitelist>
+		<Blacklist>
+			b c d e f g h i j k l n o p s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - B C D E F G H I J K L N O P S T U V W Y
+		</Blacklist>
+	</TLD>
+
+	
+ </PolicyData>
+ 
+ 

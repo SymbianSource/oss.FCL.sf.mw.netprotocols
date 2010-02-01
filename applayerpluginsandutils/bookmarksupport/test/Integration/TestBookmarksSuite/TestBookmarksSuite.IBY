@@ -1,0 +1,62 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The IBY file for the File URI handler Integration Test Suite
+// 
+//
+
+#ifndef __Test_Bookmarks_Suite_IBY__
+
+#define __Test_Bookmarks_Suite_IBY__
+
+// Test server
+#if (!defined EKA2)
+// Setcap works only on RAM executables
+data=ABI_DIR\DEBUG_DIR\TestBookmarksServer.exe			System\Libs\TestBookmarksServer.exe
+#else
+data=ABI_DIR\DEBUG_DIR\TestBookmarksServer.exe			Sys\Bin\TestBookmarksServer.exe
+#endif
+
+// Script and ini files
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\TestBookmarksSuite.script		TestData\Scripts\TestBookmarksSuite.script
+data=EPOCROOT##epoc32\data\c\testdata\Ini\TestBookmarksSuite.ini			TestData\Ini\TestBookmarksSuite.ini
+
+// The batch file to run the tests
+data=EPOCROOT##Epoc32\tools\TestBookmarksSuite.bat		TestBookmarksSuite.bat
+
+// Security test scripts
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\TestBookmarksSuite_Security.script	TestData\Scripts\TestBookmarksSuite_Security.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Preliminary.script					TestData\Scripts\Preliminary.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cleanup.script						TestData\Scripts\Cleanup.script				
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00000000_TestBookmarks.script	TestData\Scripts\Cap_00000000_TestBookmarks.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00000010_TestBookmarks.script	TestData\Scripts\Cap_00000010_TestBookmarks.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00000020_TestBookmarks.script	TestData\Scripts\Cap_00000020_TestBookmarks.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00008000_TestBookmarks.script	TestData\Scripts\Cap_00008000_TestBookmarks.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00010000_TestBookmarks.script	TestData\Scripts\Cap_00010000_TestBookmarks.script
+data=EPOCROOT##epoc32\data\c\testdata\Scripts\Cap_00018000_TestBookmarks.script	TestData\Scripts\Cap_00018000_TestBookmarks.script
+
+// Security tests Ini
+data=EPOCROOT##epoc32\data\c\testdata\Ini\TestBookmarksSuite_Security.ini	TestData\Ini\TestBookmarksSuite_Security.ini
+
+// Security test bat file
+data=EPOCROOT##Epoc32\tools\TestBookmarksSuite_Security.bat	TestBookmarksSuite_Security.bat
+
+// Other dependencies
+#include <testexecute.iby>
+#include <centralrepository.iby>
+#include <bookmarkdb.iby>
+
+#include <setcap.iby>
+
+#endif
+

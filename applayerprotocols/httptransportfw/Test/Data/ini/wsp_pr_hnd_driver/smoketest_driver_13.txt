@@ -1,0 +1,92 @@
+## Chat scripts, smoke test 13 - driver script.
+#
+# Testing EOutOfMemory reason code from transport handler
+#
+# Smoke test 13
+#
+SCRIPT SmokeTestDriver13
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Set Server msg capability - 100 bytes
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\set_servermsg_100_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# simple GET, aborted with KErrNoMemory
+#
+	SLEEP 500
+#
+# Create a GET method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue T_WspProtHnd
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+   		INVOKE trans1 SubmitL
+   		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent -4
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EFailed
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Close all the transactions...
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Session disconnected with KErrNoMemory
+# 
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent -4
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+ENDSCRIPT

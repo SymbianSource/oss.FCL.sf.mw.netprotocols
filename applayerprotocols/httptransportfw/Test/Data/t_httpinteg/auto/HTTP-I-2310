@@ -1,0 +1,87 @@
+//---------------------------------------------------------
+
+CASE HTTP-I-2310 Basic Methods using Transport framework (HTTP) over Specified bearer  
+
+//---------------------------------------------------------
+
+// Select the specified bearer 1 from the current commdb 
+
+DEFINE IAP 1 
+
+CONNECT HTTP 2310_H_CON_01
+
+TRANSACTION 2310_T_01 2310_H_CON_01 GET $wapTestURL$
+TRANSACTION 2310_T_02 2310_H_CON_01 POST $dfURL$ $dfFile$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for 60 seconds to allow for data transfer to 
+// completed 
+//---------------------------------------------------------
+
+hold 60
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $2310_T_01LastEvent$ == $Succeeded$
+
+   IF $2310_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT TEST HTTP-I-2310 Get Passed      
+   ELSE 
+      PRINT TEST HTTP-I-2310 Get Failed, HTTP Status $2310_T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT TEST HTTP-I-2310 Get Failed, last event $2310_T_01LastEvent$ 
+ENDIF
+
+endtrans 2310_T_01 
+
+IF $2310_T_02LastEvent$ == $Succeeded$
+
+   IF $2310_T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT TEST HTTP-I-2310 Get Passed 
+   ELSE 
+      PRINT TEST HTTP-I-2310 Get Failed, HTTP Status $2310_T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT TEST HTTP-I-2310 Get Failed, last event $2310_T_02LastEvent$  
+ENDIF
+
+endtrans 2310_T_02
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2310_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2310

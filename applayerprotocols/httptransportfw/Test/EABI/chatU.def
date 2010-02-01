@@ -1,0 +1,101 @@
+EXPORTS
+	_ZN11CChatEngine12WriteCommentENS_9TLogLevelERK6TDesC8 @ 1 NONAME
+	_ZN11CChatEngine12WriteCommentENS_9TLogLevelERK7TDesC16 @ 2 NONAME
+	_ZN11CChatEngine15TestExpectationER21CChatMethodInvocation @ 3 NONAME
+	_ZN11CChatEngine4NewLERK7TDesC16S2_NS_9TLogLevelE3RFsR11RFileLoggerR16MChatSendTriggerR14MChatItemStoreR19MChatEngineObserver @ 4 NONAME
+	_ZN11CChatEngine5LogItENS_9TLogLevelE11TRefByValueIK7TDesC16Ez @ 5 NONAME
+	_ZN11CChatEngine5StartEv @ 6 NONAME
+	_ZN11CChatEngine6DumpItENS_9TLogLevelERK6TDesC8 @ 7 NONAME
+	_ZN11CChatEngine7RestartEv @ 8 NONAME
+	_ZN11CChatEngineD0Ev @ 9 NONAME
+	_ZN11CChatEngineD1Ev @ 10 NONAME
+	_ZN11CChatEngineD2Ev @ 11 NONAME
+	_ZN12CChatCommand12CompleteSelfEv @ 12 NONAME
+	_ZN12CChatCommandC2Ev @ 13 NONAME
+	_ZN14CChatParameter10ConstructLERK7TDesC16S2_ @ 14 NONAME
+	_ZN14CChatParameter15SetNewParamNameERK7TDesC16 @ 15 NONAME
+	_ZN14CChatParameter4NewLERK7TDesC16S2_ @ 16 NONAME
+	_ZN14CChatParameterC1Ev @ 17 NONAME
+	_ZN14CChatParameterC2Ev @ 18 NONAME
+	_ZN14CChatValidator10ConstructLERK7TDesC16 @ 19 NONAME
+	_ZN14CChatValidatorC2Ev @ 20 NONAME
+	_ZN14CChatValidatorD0Ev @ 21 NONAME
+	_ZN14CChatValidatorD1Ev @ 22 NONAME
+	_ZN14CChatValidatorD2Ev @ 23 NONAME
+	_ZN18CChatTIntValidator10SetNewTIntERK7TDesC16i @ 24 NONAME
+	_ZN18CChatTIntValidator11SetNewParamERK14CChatParameter @ 25 NONAME
+	_ZN18CChatTIntValidator4NewLERK14CChatParameter @ 26 NONAME
+	_ZN18CChatTIntValidator4NewLERK7TDesC16i @ 27 NONAME
+	_ZN19CChatTBoolValidator11SetNewParamERK14CChatParameter @ 28 NONAME
+	_ZN19CChatTBoolValidator11SetNewTBoolERK7TDesC16i @ 29 NONAME
+	_ZN19CChatTBoolValidator4NewLERK14CChatParameter @ 30 NONAME
+	_ZN19CChatTBoolValidator4NewLERK7TDesC16i @ 31 NONAME
+	_ZN20CChatTDesC8Validator11SetNewParamERK14CChatParameter @ 32 NONAME
+	_ZN20CChatTDesC8Validator12SetNewTDesC8ERK7TDesC16RK6TDesC8 @ 33 NONAME
+	_ZN20CChatTDesC8Validator4NewLERK14CChatParameter @ 34 NONAME
+	_ZN20CChatTDesC8Validator4NewLERK7TDesC16RK6TDesC8 @ 35 NONAME
+	_ZN21CChatMethodInvocation12AddParameterER14CChatParameter @ 36 NONAME
+	_ZN21CChatMethodInvocation12AddValidatorER14CChatValidator @ 37 NONAME
+	_ZN21CChatMethodInvocation12SetNewMethodER11CChatEngineRK7TDesC16S4_ @ 38 NONAME
+	_ZN21CChatMethodInvocation14AdoptParameterEP14CChatParameter @ 39 NONAME
+	_ZN21CChatMethodInvocation14AdoptValidatorEP14CChatValidator @ 40 NONAME
+	_ZN21CChatMethodInvocation16SetOwningCommandER12CChatCommand @ 41 NONAME
+	_ZN21CChatMethodInvocation4NewLER11CChatEngineRK7TDesC16S4_ @ 42 NONAME
+	_ZN21CChatMethodInvocation4NewLEv @ 43 NONAME
+	_ZN21CChatMethodInvocation9ValidateLERS_R6TDes16 @ 44 NONAME
+	_ZN23CChatItemStoreValidator10SetNewItemERK7TDesC1615TStoredItemBase @ 45 NONAME
+	_ZN23CChatItemStoreValidator11SetNewParamERK14CChatParameter @ 46 NONAME
+	_ZN23CChatItemStoreValidator4NewLERK14CChatParameter @ 47 NONAME
+	_ZN23CChatItemStoreValidator4NewLERK7TDesC1615TStoredItemBase @ 48 NONAME
+	_ZNK14CChatParameter16ParamStringValueEv @ 49 NONAME
+	_ZNK14CChatParameter9ParamNameEv @ 50 NONAME
+	_ZNK18CChatTIntValidator8IntValueEv @ 51 NONAME
+	_ZNK19CChatTBoolValidator12BooleanValueEv @ 52 NONAME
+	_ZNK20CChatTDesC8Validator10DesC8ValueEv @ 53 NONAME
+	_ZNK21CChatCreatedParameter11ItemStoreIdEv @ 54 NONAME
+	_ZNK21CChatMethodInvocation10MethodNameEv @ 55 NONAME
+	_ZNK21CChatMethodInvocation12GetParameterERK7TDesC16 @ 56 NONAME
+	_ZNK21CChatMethodInvocation12GetValidatorERK7TDesC16 @ 57 NONAME
+	_ZNK21CChatMethodInvocation13NumParametersEv @ 58 NONAME
+	_ZNK21CChatMethodInvocation13NumValidatorsEv @ 59 NONAME
+	_ZNK21CChatMethodInvocation14InvocationItemEv @ 60 NONAME
+	_ZNK23CChatItemStoreValidator9ItemValueEv @ 61 NONAME
+	_ZTI11CChatEngine @ 62 NONAME ; #<TI>#
+	_ZTI12CChatCommand @ 63 NONAME ; #<TI>#
+	_ZTI14CChatParameter @ 64 NONAME ; #<TI>#
+	_ZTI14CChatValidator @ 65 NONAME ; #<TI>#
+	_ZTV11CChatEngine @ 66 NONAME ; #<VT>#
+	_ZTV12CChatCommand @ 67 NONAME ; #<VT>#
+	_ZTV14CChatParameter @ 68 NONAME ; #<VT>#
+	_ZTV14CChatValidator @ 69 NONAME ; #<VT>#
+	_ZTI11CChatScript @ 70 NONAME ; #<TI>#
+	_ZTI16CChatEchoCommand @ 71 NONAME ; #<TI>#
+	_ZTI16CChatSendCommand @ 72 NONAME ; #<TI>#
+	_ZTI17CChatSleepCommand @ 73 NONAME ; #<TI>#
+	_ZTI18CChatExpectCommand @ 74 NONAME ; #<TI>#
+	_ZTI18CChatTIntValidator @ 75 NONAME ; #<TI>#
+	_ZTI19CChatIncludeCommand @ 76 NONAME ; #<TI>#
+	_ZTI19CChatTBoolValidator @ 77 NONAME ; #<TI>#
+	_ZTI20CChatLogLevelCommand @ 78 NONAME ; #<TI>#
+	_ZTI20CChatStoredParameter @ 79 NONAME ; #<TI>#
+	_ZTI20CChatTDesC8Validator @ 80 NONAME ; #<TI>#
+	_ZTI21CChatCreatedParameter @ 81 NONAME ; #<TI>#
+	_ZTI21CChatMethodInvocation @ 82 NONAME ; #<TI>#
+	_ZTI23CChatItemStoreValidator @ 83 NONAME ; #<TI>#
+	_ZTIN11CChatEngine19CExpectationCheckerE @ 84 NONAME ; #<TI>#
+	_ZTV11CChatScript @ 85 NONAME ; #<VT>#
+	_ZTV16CChatEchoCommand @ 86 NONAME ; #<VT>#
+	_ZTV16CChatSendCommand @ 87 NONAME ; #<VT>#
+	_ZTV17CChatSleepCommand @ 88 NONAME ; #<VT>#
+	_ZTV18CChatExpectCommand @ 89 NONAME ; #<VT>#
+	_ZTV18CChatTIntValidator @ 90 NONAME ; #<VT>#
+	_ZTV19CChatIncludeCommand @ 91 NONAME ; #<VT>#
+	_ZTV19CChatTBoolValidator @ 92 NONAME ; #<VT>#
+	_ZTV20CChatLogLevelCommand @ 93 NONAME ; #<VT>#
+	_ZTV20CChatStoredParameter @ 94 NONAME ; #<VT>#
+	_ZTV20CChatTDesC8Validator @ 95 NONAME ; #<VT>#
+	_ZTV21CChatCreatedParameter @ 96 NONAME ; #<VT>#
+	_ZTV21CChatMethodInvocation @ 97 NONAME ; #<VT>#
+	_ZTV23CChatItemStoreValidator @ 98 NONAME ; #<VT>#
+	_ZTVN11CChatEngine19CExpectationCheckerE @ 99 NONAME ; #<VT>#
+

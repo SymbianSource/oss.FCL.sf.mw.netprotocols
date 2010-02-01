@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for UAProfFilter filter.   
+*      
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          uaproffilter.dll
+TARGETTYPE		PLUGIN
+
+CAPABILITY	    CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+UID             0x10009D8D 0x101F8539
+
+SOURCEPATH      ../src
+SOURCE          uaproffilter.cpp
+SOURCE          dllentrypoint.cpp 
+
+MW_LAYER_SYSTEMINCLUDE 
+
+USERINCLUDE    ../inc
+USERINCLUDE     ../../HttpFilterCommon/inc
+
+START RESOURCE 101f8539.rss
+TARGET uaproffilter.rsc
+END
+
+LIBRARY         EUSER.LIB
+LIBRARY         BAFL.LIB
+LIBRARY         HTTP.LIB
+LIBRARY         ECOM.LIB
+LIBRARY			WEBUTILS.LIB
+LIBRARY			FEATMGR.LIB
+LIBRARY			ETEL.LIB
+LIBRARY			ETELMM.LIB
+
+LIBRARY CenRepNotifHandler.lib
+LIBRARY Centralrepository.lib

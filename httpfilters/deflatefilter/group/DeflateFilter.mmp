@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*	  Makefile for Deflate.
+*
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET DeflateFilter.DLL
+TARGETTYPE      PLUGIN
+
+// ECom Recogniction UID followed by Unique 3rd UID
+UID 0x10009D8D 0x101F9712
+VENDORID        VID_DEFAULT
+
+SOURCEPATH ../Src
+SOURCE DeflateFilterMain.cpp DeflateFilter.cpp DeflateDataSupplier.cpp StreamBufMgr.cpp DecmpStream.cpp
+
+USERINCLUDE ../inc
+USERINCLUDE ../../HttpFilterCommon/inc
+
+MW_LAYER_SYSTEMINCLUDE 
+
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+START RESOURCE 101F9712.rss
+TARGET      DeflateFilter.rsc
+END
+
+LIBRARY HttpFilterCommon.lib euser.lib ecom.lib http.lib bafl.lib
+LIBRARY ezlib.lib estor.lib
+
+//#define _ENABLE_LOGGING		// uncomment this to enable logging
+
+#ifdef _ENABLE_LOGGING
+MACRO _DEBUG_LOGGING
+DEBUGLIBRARY flogger.lib
+#endif

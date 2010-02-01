@@ -1,0 +1,48 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_TESTMMPFILES
+
+TestBookmarksSuite.mmp
+
+
+PRJ_TESTEXPORTS
+
+// Main Script file
+TestBookmarksSuite.script		C:\TestData\Scripts\TestBookmarksSuite.script
+// Main ini file
+TestBookmarksSuite.ini			C:\TestData\Ini\TestBookmarksSuite.ini
+// Main Bat file to help running the tests
+TestBookmarksSuite.bat			\epoc32\tools\TestBookmarksSuite.bat
+
+// Security tests scripts
+TestBookmarksSuite_Security.script	C:\TestData\Scripts\TestBookmarksSuite_Security.script
+Preliminary.script			C:\TestData\Scripts\Preliminary.script
+Cleanup.script				C:\TestData\Scripts\Cleanup.script
+Cap_00000000_TestBookmarks.script	C:\TestData\Scripts\Cap_00000000_TestBookmarks.script
+Cap_00000010_TestBookmarks.script	C:\TestData\Scripts\Cap_00000010_TestBookmarks.script
+Cap_00000020_TestBookmarks.script	C:\TestData\Scripts\Cap_00000020_TestBookmarks.script
+Cap_00008000_TestBookmarks.script	C:\TestData\Scripts\Cap_00008000_TestBookmarks.script
+Cap_00010000_TestBookmarks.script	C:\TestData\Scripts\Cap_00010000_TestBookmarks.script
+Cap_00018000_TestBookmarks.script	C:\TestData\Scripts\Cap_00018000_TestBookmarks.script
+
+// Security tests ini
+TestBookmarksSuite_Security.ini		C:\TestData\Ini\TestBookmarksSuite_Security.ini
+
+// Security tests bat file
+TestBookmarksSuite_Security.bat		\epoc32\tools\TestBookmarksSuite_Security.bat
+
+// IBY file for H/W
+TestBookmarksSuite.IBY			\epoc32\rom\include\TestBookmarksSuite.IBY

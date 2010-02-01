@@ -1,0 +1,8 @@
+POST http://10.35.2.4:9000/tryit?req=postnohost1.txt&resp=postnohost2.txt
+User-Agent: acme-http-client-1.0
+Host: 
+Accept: */*
+Content-type: text/plain
+Content-length: 152
+
+the requested URI does not include an Internet host name for the service being requested, then the Host header field MUST be given with an empty value. 

@@ -1,0 +1,83 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// WriteUserData capability tests
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0042-HP-0001
+//User_App_Can_Modify_Only_Writeable_Items
+
+//! @file			Cap_00010000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0042-HP-0001
+//! @SYMTestCaseDesc 		Only items set as Read/Write are writable by an application which can write user data
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the title of a read-only folder when the application has only WriteUserData
+//!				2. Set the title of a read-only bookmark when the application has only WriteUserData
+//!				3. Set the title of a writeable folder when the application has only WriteUserData
+//!				4. Set the title of a writeable bookmark when the application has only WriteUserData
+//! @SYMTestExpectedResults 	All actions must pass.
+//! @SYMTestType 		Integration
+// Not allowed to modify read-only data
+RUN_TEST_STEP  	!Error=-7154 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_SetTitleNotManager
+RUN_TEST_STEP  	!Error=-7154 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetDescriptionNotManager
+
+// Values should be unchanged 
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_GetTitle_Unchanged
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetDescription_Unchanged
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder1_GetTitle_Unchanged
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetDescription_Unchanged
+
+// Writeable items can be modified
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetTitle
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_SetDescription
+
+// Changes should be reflected
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetTitle
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_GetDescription
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0042-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0002
+//Set_Last_Visited_WriteUserData
+
+//! @file			Cap_00010000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0056-HP-0002
+//! @SYMTestCaseDesc 		Set last visited time when application is having required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last visited time of a bookmark when the application has only WriteUserData
+//! @SYMTestExpectedResults 	The operation must pass
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastVisited
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0002
+
+START_TESTCASE	IWS-APPPROT-BM-CAP_00010000_TESTBOOKMARKS-0001
+//Set_Last_Modified_WriteUserData
+
+//! @file			Cap_00010000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-CAP_00010000_TESTBOOKMARKS-0001
+//! @SYMTestCaseDesc 		Set last visited time when application is having required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last modified time of a bookmark when the application has only WriteUserData
+//! @SYMTestExpectedResults 	The operation must pass
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastModified
+END_TESTCASE	IWS-APPPROT-BM-CAP_00010000_TESTBOOKMARKS-0001

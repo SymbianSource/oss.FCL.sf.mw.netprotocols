@@ -1,0 +1,75 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET			httpclientcodec.dll
+TARGETTYPE		plugin
+CAPABILITY ALL -TCB
+
+
+
+// speed optimisations 
+#ifdef MARM_ARMV5
+ OPTION ARMCC -O3 -Otime 
+#endif
+
+UID				0x10009D8D 	0x10272E5B
+VENDORID 0x70000001
+
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE		../inc/httpheadercodec
+USERINCLUDE		../../../applayerprotocols/httptransportfw/core
+USERINCLUDE		../../../applayerprotocols/httptransportfw/inc/framework
+USERINCLUDE             ../../../applayerprotocols/httptransportfw/utils
+
+SOURCEPATH		../httpheadercodec
+
+SOURCE			chttpheaderreader.cpp
+SOURCE			chttpheaderwriter.cpp
+
+SOURCE			chttpgeneralheadercodec.cpp
+SOURCE			chttpgeneralheaderreader.cpp
+SOURCE			chttpgeneralheaderwriter.cpp
+
+SOURCE			chttpdefaultheadercodec.cpp
+SOURCE			chttpdefaultheaderreader.cpp
+SOURCE			chttpdefaultheaderwriter.cpp
+
+SOURCE			chttpclientheadercodec.cpp
+SOURCE			chttpclientheaderreader.cpp
+SOURCE			chttpclientheaderwriter.cpp
+
+SOURCE			httpclientcodecpluginmain.cpp
+
+SOURCE			chttpserverheadercodec.cpp
+SOURCE			chttpserverheaderreader.cpp
+SOURCE			chttpserverheaderwriter.cpp
+
+
+// Get GDB symbols included?
+SRCDBG
+
+START RESOURCE	10272E5B.RSS
+
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET httpclientcodec.rsc
+#endif
+end
+
+LIBRARY			euser.lib inetprotutil.lib bafl.lib http.lib ecom.lib
+
+
+SMPSAFE

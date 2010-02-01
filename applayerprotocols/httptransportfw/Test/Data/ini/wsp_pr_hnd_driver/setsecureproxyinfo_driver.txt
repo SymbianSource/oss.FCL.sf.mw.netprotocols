@@ -1,0 +1,20 @@
+## Include script - set secure proxy info for driver
+#
+# Client connect to proxy
+# Server accepts the connection
+#
+SCRIPT setsecureproxyinfo_driver
+
+	ECHO "Setting the secure proxy info"
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure ETrue
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+	ENDSEND
+#
+# Done!
+#
+
+ENDSCRIPT

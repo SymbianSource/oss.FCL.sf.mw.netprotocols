@@ -1,0 +1,2940 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+ All rights reserved.
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ Nokia Corporation - initial contribution.
+
+ Contributors:
+
+ Description:
+ Ineturilist pre-configuration Policy File
+ Open file with notepad for clear or correct visibility.
+ Here TEST, TWT and TBL are duplicate entries, already available with ROM
+
+-->
+
+
+
+
+ <PolicyData version="1">
+ 	<TLD name="TEST">
+		<Whitelist>
+			A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 
+		</Blacklist>
+	</TLD>
+	<TLD name="TWT">
+		<Whitelist>
+			A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+	</TLD>
+	<TLD name="TBL">
+		<Blacklist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0
+		</Blacklist>
+	</TLD>
+	<TLD name="AC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="XN--0ZWM56D">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="AV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="AZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="BV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+		<TLD name="CC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="CV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="CZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+		<TLD name="DC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="DV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+		<TLD name="EC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ED">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ER">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ES">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ET">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="EV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="FV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="GV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="HV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ID">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="II">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="IV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="JV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="JZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="KV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="KZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="LV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="LZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ME">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ML">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="MV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="MZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ND">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="NV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="NZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OD">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OF">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OG">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OH">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OJ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OL">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="ON">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OO">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OP">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OQ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OR">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OS">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OT">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OU">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>	
+	<TLD name="OV">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OW">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OX">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OY">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="OZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+		<TLD name="COM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+ </PolicyData>

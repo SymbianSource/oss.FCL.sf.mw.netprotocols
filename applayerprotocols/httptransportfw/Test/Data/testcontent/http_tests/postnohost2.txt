@@ -1,0 +1,7 @@
+HTTP/1.0 200 OK
+Server: Fakeserver.pl
+Date: Tue Mar 6 12:00:00 2001
+Content-Type: text/*
+
+
+This is the body of a POST request where the requested URI does not include an internet host name.

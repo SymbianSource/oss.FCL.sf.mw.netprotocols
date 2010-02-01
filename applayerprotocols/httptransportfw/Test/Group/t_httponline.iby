@@ -1,0 +1,36 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __T_HTTPONLINE_IBY__
+#define __T_HTTPONLINE_IBY__
+
+#include <httptestutils.iby>
+
+REM T_httponline
+file=ABI_DIR\BUILD_DIR\T_HTTPONLINE.exe	 System\Programs\T_HTTPONLINE.exe	stack=0x8000
+
+file=ABI_DIR\BUILD_DIR\COOKIEMANAGER.DLL System\Libs\COOKIEMANAGER.DLL 
+ECOM_PLUGIN(httpcookie.dll,1000a448.rsc)
+
+file=ABI_DIR\BUILD_DIR\TESTCPIMANAGER.DLL System\Libs\TESTCPIMANAGER.DLL
+ECOM_PLUGIN(uaprof.dll,101f55e8.rsc)
+
+// The script files for the system
+data=\epoc32\winscw\c\httptest\online\UnitTests.ini	httptest\online\UnitTests.ini
+data=\epoc32\data\z\req1.txt	req1.txt
+data=\epoc32\data\z\resp1.txt	resp1.txt
+data=\epoc32\winscw\c\wapca2006.cer	wapca2006.cer
+
+#endif

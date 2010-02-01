@@ -1,0 +1,107 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "HTTP-I-2341.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Don't use basic settings file, but must use test network to get access 
+// to WAP Gateway
+ 
+DEFINE	waptest		"10.35.2.4" 
+
+// WSP Settings 
+
+DEFINE ProxyAddress 	"10.35.2.62"
+
+//---------------------------------------------------------
+//  set up required definitions
+
+DEFINE wapTestURL "http://$waptest$/wap/wstiot/welcome.wml"
+DEFINE dfURL      "http://$waptest$/perl/dumpform.pl" 
+DEFINE dfFile     "c:\httptest\integration\dumpform.txt" 
+
+DEFINE Accept "*/*"
+DEFINE ContentType "*/*"
+
+//---------------------------------------------------------
+// Define the expected return result 
+// These values need to change for JetStream, i.e. Succeeded 9  
+
+DEFINE Succeeded 8
+DEFINE Failed    9 
+
+// common HTTP/WSP return codes 
+
+DEFINE HTTP_OK         200 
+DEFINE HTTP_NOT_FOUND  404
+DEFINE HTTP_NOT_ACCEPT 406
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2341 Transport framework (WSP) Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT WSP WSP_CON_01
+
+TRANSACTION T_01 WSP_CON_01 GET $wapTestURL$
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for 200 seconds to allow for data transfer to 
+// completed 
+//---------------------------------------------------------
+
+hold 200
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2340 Get Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2340 Get Failed, HTTP Status $T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2340 Get Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2341
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

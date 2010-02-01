@@ -1,0 +1,40 @@
+## Include script - trans1 GET aborted by client
+#
+# Client creates a GET transaction - trans1 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+# User-Agent: T_WspProtHnd
+#
+SCRIPT trans1_get_clientabort_driver
+#
+# Create a GET method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue T_WspProtHnd
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+   		INVOKE trans1 SubmitL
+   		ENDINVOKE
+	ENDSEND
+#
+# Client aborts the method transaction - wait quite a while so that cnf is received
+#
+	SLEEP 2000
+	SEND
+		INVOKE trans1 Cancel
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT
+

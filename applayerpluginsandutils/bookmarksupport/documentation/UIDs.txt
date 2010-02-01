@@ -1,0 +1,10 @@
+UID Number (Decimal)	UID Number (Hex.)	Quantity	Allocated To	UID Name
+270563531 -> 270563534	102078CB -> 102078CE	4	Content and Messaging	KUidBookmarkDb
+
+DLL
+270563531 (102078CB) - bookmarkdb.dll
+
+Test
+270563532 (102078CC) - tbookmark.exe
+270563533 (102078CD) - tbkmrkunit.exe
+270563534 (102078CE) - tbookmark_sec.exe

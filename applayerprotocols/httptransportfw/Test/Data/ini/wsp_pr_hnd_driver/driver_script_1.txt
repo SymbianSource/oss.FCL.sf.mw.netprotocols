@@ -1,0 +1,77 @@
+## Chat scripts, test case 1 - driver script.
+SCRIPT TestDriver1
+#
+	ECHO DriverSleepingForHalfSec
+	SLEEP 500
+	ECHO DriverSendingConnect
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+		INVOKE SetClientMessageSizeL
+			PARAMETER aSize 32768
+		ENDINVOKE
+		INVOKE SetServerMessageSizeL
+			PARAMETER aSize 32768
+		ENDINVOKE
+		INVOKE SetMethodMORL
+			PARAMETER aMOR 4
+		ENDINVOKE
+		INVOKE SetUseAcknowledgementsL
+		ENDINVOKE
+		INVOKE SetUseSuspendResumeL
+		ENDINVOKE
+		INVOKE SessionConnectL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedWithReducedCapabilities
+		ENDINVOCATION
+	ENDEXPECT
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod POST
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderWithParamL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue text/html
+			PARAMETER aParamName q
+			PARAMETER aParamType TInt
+			PARAMETER aParamValue 100
+		ENDINVOKE
+		INVOKE trans1 AddBody
+			CREATEITEM aBody CDriverDataSupplier body1
+		ENDINVOKE
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\body1.txt$file$>
+			PARAMETER :RETURN: ETrue
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+	SLEEP 2000
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+# Give the stub a chance to finish before exiting
+	SLEEP 500
+ENDSCRIPT

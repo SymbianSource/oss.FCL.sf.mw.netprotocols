@@ -1,0 +1,6 @@
+EXPORTS
+	GetCookiesL__21CExampleCookieManagerG16RHTTPTransactionRt6RArray1ZP7CCookieRi @ 1 NONAME ; CExampleCookieManager::GetCookiesL(RHTTPTransaction, RArray<CCookie *> &, int &)
+	NewL__21CExampleCookieManagerG11RStringPool @ 2 NONAME R3UNUSED ; CExampleCookieManager::NewL(RStringPool)
+	StoreCookieL__21CExampleCookieManagerP7CCookieRC6TUriC8 @ 3 NONAME R3UNUSED ; CExampleCookieManager::StoreCookieL(CCookie *, TUriC8 const &)
+	"_._21CExampleCookieManager" @ 4 NONAME R3UNUSED ; CExampleCookieManager::~CExampleCookieManager(void)
+

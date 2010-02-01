@@ -1,0 +1,6 @@
+EXPORTS
+	??1CExampleCookieManager@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CExampleCookieManager::~CExampleCookieManager(void)
+	?GetCookiesL@CExampleCookieManager@@UAEXVRHTTPTransaction@@AAV?$RArray@PAVCCookie@@@@AAH@Z @ 2 NONAME ; public: virtual void __thiscall CExampleCookieManager::GetCookiesL(class RHTTPTransaction,class RArray<class CCookie *> &,int &)
+	?NewL@CExampleCookieManager@@SAPAV1@VRStringPool@@@Z @ 3 NONAME ; public: static class CExampleCookieManager * __cdecl CExampleCookieManager::NewL(class RStringPool)
+	?StoreCookieL@CExampleCookieManager@@UAEXPAVCCookie@@ABVTUriC8@@@Z @ 4 NONAME ; public: virtual void __thiscall CExampleCookieManager::StoreCookieL(class CCookie *,class TUriC8 const &)
+

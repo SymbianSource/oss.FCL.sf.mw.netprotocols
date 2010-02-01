@@ -1,0 +1,39 @@
+/*
+* Copyright (c) 2002 - 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Additional common string tables
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+// specify the platforms your component needs to be built for here
+// defaults to WINS MARM so you can ignore this if you just build these
+DEFAULT
+//WINS THUMB ARMI ARM4 WINSCW
+
+PRJ_EXPORTS
+../rom/HttpFilterCommon.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(HttpFilterCommon.iby)
+
+PRJ_MMPFILES
+// Specify the .mmp files required for building the important component
+// releasables.
+//
+// Specify "tidy" if the component you need to build doesn't need to be
+// released. Specify "ignore" if the MMP file exists but should be
+// ignored.
+// Example:
+./HttpFilterCommon.mmp
+
+//  End of File

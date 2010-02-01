@@ -1,0 +1,8 @@
+EXPORTS
+	??1CTestCpiManager@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CTestCpiManager::~CTestCpiManager(void)
+	?GetProfileDiffs@CTestCpiManager@@UAEAAV?$RPointerArray@VHBufC8@@@@XZ @ 2 NONAME ; public: virtual class RPointerArray<class HBufC8> & __thiscall CTestCpiManager::GetProfileDiffs(void)
+	?GetProfiles@CTestCpiManager@@UAEAAV?$RPointerArray@VHBufC8@@@@XZ @ 3 NONAME ; public: virtual class RPointerArray<class HBufC8> & __thiscall CTestCpiManager::GetProfiles(void)
+	?NewL@CTestCpiManager@@SAPAV1@VRStringPool@@@Z @ 4 NONAME ; public: static class CTestCpiManager * __cdecl CTestCpiManager::NewL(class RStringPool)
+	?SetProfileDataL@CTestCpiManager@@QAEXPAVHBufC8@@@Z @ 5 NONAME ; public: void __thiscall CTestCpiManager::SetProfileDataL(class HBufC8 *)
+	?SetProfileDiffDataL@CTestCpiManager@@QAEXPAVHBufC8@@@Z @ 6 NONAME ; public: void __thiscall CTestCpiManager::SetProfileDiffDataL(class HBufC8 *)
+

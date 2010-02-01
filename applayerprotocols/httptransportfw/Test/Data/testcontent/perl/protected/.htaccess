@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName HTTP_Tsets_For_T4
+AuthUserFile "/home/httpd/etc/htpasswd"
+
+<Limit GET POST>
+require user scooby
+</Limit>

@@ -1,0 +1,181 @@
+DEFINE TestLogPath    "c:\logs\http_integ\"
+DEFINE TestLogFile    "HTTP-I-2358.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+// URL
+
+DEFINE GetURL01   "http://$wapTest$/upload/pic01.jpg"
+DEFINE GetURL02   "http://$wapTest$/upload/pic02.jpg"
+DEFINE GetURL03   "http://$wapTest$/upload/pic03.jpg"
+DEFINE GetURL04   "http://$wapTest$/upload/pic04.jpg"
+DEFINE GetURL05   "http://$wapTest$/upload/pic05.jpg"
+DEFINE GetURL06   "http://$wapTest$/upload/pic06.jpg"
+
+//  Header 
+
+DEFINE ContentType "*/*"
+DEFINE Accept 	   "*/*" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2358 Transport framework (HTTP) with greater than max number of concurrent methods
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION  T_01 H_CON_01 GET $GetURL01$ 
+TRANSACTION  T_02 H_CON_01 GET $GetURL02$ 
+TRANSACTION  T_03 H_CON_01 GET $GetURL03$ 
+TRANSACTION  T_04 H_CON_01 GET $GetURL04$ 
+TRANSACTION  T_05 H_CON_01 GET $GetURL05$ 
+TRANSACTION  T_06 H_CON_01 GET $GetURL06$ 
+            
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 300 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 200 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL01$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL01$ Failed, HTTP Status $T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL01$ Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL02$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL02$ Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL02$ Failed, last event $T_02LastEvent$ 
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL03$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL03$ Failed, HTTP Status $T_03HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL03$ Failed, last event $T_03LastEvent$ 
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL04$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL04$ Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL04$ Failed, last event $T_04LastEvent$ 
+ENDIF
+
+endtrans T_04 
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL05$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL05$ Failed, HTTP Status $T_05HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL05$ Failed, last event $T_05LastEvent$ 
+ENDIF
+
+endtrans T_05
+
+IF $T_06LastEvent$ == $Succeeded$
+
+   IF $T_06HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2358 GET $GetURL06$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2358 GET $GetURL06$ Failed, HTTP Status $T_06HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2358 GET $GetURL06$ Failed, last event $T_06LastEvent$ 
+ENDIF
+
+endtrans T_06
+
+// --------------------------------------------------------
+// display connections 
+
+connect
+
+DISCONNECT H_CON_01
+
+// --------------------------------------------------------
+// display connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2358
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

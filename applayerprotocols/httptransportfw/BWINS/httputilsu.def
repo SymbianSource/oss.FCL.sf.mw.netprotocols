@@ -1,0 +1,8 @@
+EXPORTS
+	??0RExplicitHTTPSession@@QAE@XZ @ 1 NONAME ; RExplicitHTTPSession::RExplicitHTTPSession(void)
+	?CancelStart@RExplicitHTTPSession@@QAEXXZ @ 2 NONAME ; void RExplicitHTTPSession::CancelStart(void)
+	?Close@RExplicitHTTPSession@@QAEXXZ @ 3 NONAME ; void RExplicitHTTPSession::Close(void)
+	?HTTPSession@RExplicitHTTPSession@@QAEAAVRHTTPSession@@XZ @ 4 NONAME ; class RHTTPSession & RExplicitHTTPSession::HTTPSession(void)
+	?OpenL@RExplicitHTTPSession@@QAEXABVTUriC8@@KH@Z @ 5 NONAME ; void RExplicitHTTPSession::OpenL(class TUriC8 const &, unsigned long, int)
+	?StartConnection@RExplicitHTTPSession@@QAEXAAVTRequestStatus@@@Z @ 6 NONAME ; void RExplicitHTTPSession::StartConnection(class TRequestStatus &)
+

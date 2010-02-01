@@ -1,0 +1,35 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __INETURILIST_IBY__
+#define __INETURILIST_IBY__
+
+REM Inet URI List
+
+file=ABI_DIR\BUILD_DIR\ineturilist.dll		system\libs\ineturilist.dll
+file=ABI_DIR\BUILD_DIR\ineturilistserver.exe	system\programs\ineturilistserver.exe
+
+data=EPOCROOT##epoc32\data\Z\private\20009d70\backup_registration.xml	private\20009d70\backup_registration.xml
+
+//Dummy ineturilist.xml file is Exported to Z: path and it can be upgarded by using Upgrade.sis
+data=EPOCROOT##epoc32\data\Z\private\20009d70\ineturilist.xml	private\20009d70\ineturilist.xml
+
+//tldpolicy.xml is Exported to Z: path and it can be upgarded by using Upgrade.sis
+data=EPOCROOT##epoc32\data\Z\private\20009d70\tldpolicy.xml 	private\20009d70\tldpolicy.xml
+
+data=EPOCROOT##epoc32\data\Z\system\install\ineturilist_stub.SIS  system\install\ineturilist_stub.SIS
+#include <sql.iby>
+
+#endif // __INETURILIST_IBY__

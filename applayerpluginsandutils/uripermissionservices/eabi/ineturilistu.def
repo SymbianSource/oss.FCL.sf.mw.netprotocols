@@ -1,0 +1,25 @@
+EXPORTS
+	_ZN12RInetUriList11GetListTypeERK6TDesC8N11InetUriList12TServiceTypeERNS3_9TListTypeE @ 1 NONAME
+	_ZN12RInetUriList12OpenInetUriLERK6TDesC8N11InetUriList12TServiceTypeE @ 2 NONAME
+	_ZN12RInetUriList4AddLERK8RInetUri @ 3 NONAME
+	_ZN12RInetUriList5CloseEv @ 4 NONAME
+	_ZN12RInetUriList5CountEN11InetUriList12TServiceTypeENS0_9TListTypeE @ 5 NONAME
+	_ZN12RInetUriList5OpenLEv @ 6 NONAME
+	_ZN12RInetUriList7RemoveLERK8RInetUri @ 7 NONAME
+	_ZN12RInetUriList7UpdateLERK8RInetUri @ 8 NONAME
+	_ZN12RInetUriList9QueryUriLERK10TQueryArgsP21MQueryResultsCallbackP14MUriCustomiser @ 9 NONAME
+	_ZN12RInetUriListC1Ev @ 10 NONAME
+	_ZN12RInetUriListC2Ev @ 11 NONAME
+	_ZN8RInetUri11SetListTypeEN11InetUriList9TListTypeE @ 12 NONAME
+	_ZN8RInetUri17SetFavouriteNameLERK6TDesC8 @ 13 NONAME
+	_ZN8RInetUri5CloseEv @ 14 NONAME
+	_ZN8RInetUri7CreateLERK6TDesC8N11InetUriList12TServiceTypeENS3_9TListTypeE @ 15 NONAME
+	_ZN8RInetUriC1Ev @ 16 NONAME
+	_ZN8RInetUriC2Ev @ 17 NONAME
+	_ZNK8RInetUri10PermissionEv @ 18 NONAME
+	_ZNK8RInetUri11ServiceTypeEv @ 19 NONAME
+	_ZNK8RInetUri13FavouriteNameEv @ 20 NONAME
+	_ZNK8RInetUri3UriEv @ 21 NONAME
+	_ZNK8RInetUri8ListTypeEv @ 22 NONAME
+	_ZN12RInetUriList13QueryTldInfoLERK16TPolicyQueryArgsR13TQueryResults @ 23 NONAME
+

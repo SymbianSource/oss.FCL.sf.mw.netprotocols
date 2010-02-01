@@ -1,0 +1,527 @@
+//---------------------------------------------------------
+
+CASE HTTP-I-2305e Other Methods using Transport framework (HTTP) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP 2305e_H_CON_01
+
+TRANSACTION 2305e_T_01 2305e_H_CON_01 OPTIONS $bbc$
+TRANSACTION 2305e_T_02 2305e_H_CON_01 TRACE $ukgov$
+TRANSACTION 2305e_T_03 2305e_H_CON_01 TRACE $nokia$
+TRANSACTION 2305e_T_04 2305e_H_CON_01 HEAD $tomshardware$
+TRANSACTION 2305e_T_05 2305e_H_CON_01 OPTIONS $bbc2$
+TRANSACTION 2305e_T_06 2305e_H_CON_01 TRACE $thereg$
+TRANSACTION 2305e_T_07 2305e_H_CON_01 OPTIONS $symbian$
+TRANSACTION 2305e_T_08 2305e_H_CON_01 HEAD $netscape$
+TRANSACTION 2305e_T_09 2305e_H_CON_01 HEAD $google$
+TRANSACTION 2305e_T_10 2305e_H_CON_01 OPTIONS $pcpro$
+TRANSACTION 2305e_T_11 2305e_H_CON_01 OPTIONS $channel4$
+TRANSACTION 2305e_T_12 2305e_H_CON_01 HEAD $yahoo$
+TRANSACTION 2305e_T_13 2305e_H_CON_01 HEAD $lycos$
+TRANSACTION 2305e_T_14 2305e_H_CON_01 HEAD $aol$
+TRANSACTION 2305e_T_15 2305e_H_CON_01 TRACE $infoseek$
+TRANSACTION 2305e_T_16 2305e_H_CON_01 HEAD $ft$
+TRANSACTION 2305e_T_17 2305e_H_CON_01 OPTIONS $guardian$
+TRANSACTION 2305e_T_18 2305e_H_CON_01 TRACE $london$
+TRANSACTION 2305e_T_19 2305e_H_CON_01 HEAD $oxfordshire$
+TRANSACTION 2305e_T_20 2305e_H_CON_01 OPTIONS $newsci$
+TRANSACTION 2305e_T_21 2305e_H_CON_01 TRACE $excite$
+TRANSACTION 2305e_T_22 2305e_H_CON_01 TRACE $multimap$
+TRANSACTION 2305e_T_23 2305e_H_CON_01 OPTIONS $times$
+TRANSACTION 2305e_T_24 2305e_H_CON_01 TRACE $itn$
+TRANSACTION 2305e_T_25 2305e_H_CON_01 OPTIONS $dilbert$
+TRANSACTION 2305e_T_26 2305e_H_CON_01 HEAD $itv$
+TRANSACTION 2305e_T_27 2305e_H_CON_01 TRACE $cnn$   
+TRANSACTION 2305e_T_28 2305e_H_CON_01 HEAD $lemonde$   
+TRANSACTION 2305e_T_29 2305e_H_CON_01 OPTIONS $dotmusic$  
+TRANSACTION 2305e_T_30 2305e_H_CON_01 TRACE $watford$
+TRANSACTION 2305e_T_31 2305e_H_CON_01 OPTIONS $iconbar$
+TRANSACTION 2305e_T_32 2305e_H_CON_01 HEAD $independent$
+    
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+hold 200
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans
+
+// --------------------------------------------------------
+// report results 
+
+IF $2305e_T_01LastEvent$ == $Succeeded$
+
+   IF $2305e_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $bbc$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $bbc$ Failed, HTTP Status $2305e_T_01HttpStatus$
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $bbc$ Failed, last event $2305e_T_01LastEvent$ 
+ENDIF
+
+endtrans 2305e_T_01 
+
+IF $2305e_T_02LastEvent$ == $Succeeded$
+
+   IF $2305e_T_02HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $ukgov$ Passed 
+   ELSE
+      PRINT Result: TRACE $ukgov$ Failed, HTTP Status $2305e_T_02HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $ukgov$ Failed, last event $2305e_T_02LastEvent$  
+ENDIF
+
+endtrans 2305e_T_02 
+
+IF $2305e_T_03LastEvent$ == $Succeeded$
+
+   IF $2305e_T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $nokia$ Passed 
+   ELSE
+      PRINT Result: TRACE $nokia$ Failed, HTTP Status $2305e_T_03HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $nokia$ Failed, last event $2305e_T_03LastEvent$  
+ENDIF
+
+endtrans 2305e_T_03 
+
+IF $2305e_T_04LastEvent$ == $Succeeded$
+
+   IF $2305e_T_04HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $tomshardware$ Passed 
+   ELSE
+      PRINT Result: HEAD $tomshardware$ Failed, HTTP Status $2305e_T_04HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $tomshardware$ Failed, last event $2305e_T_04LastEvent$  
+ENDIF
+
+endtrans 2305e_T_04
+ 
+IF $2305e_T_05LastEvent$ == $Succeeded$
+
+   IF $2305e_T_05HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $bbc2$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $bbc2$ Failed, HTTP Status $2305e_T_05HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $bbc2$ Failed, last event $2305e_T_05LastEvent$ 
+ENDIF
+
+endtrans 2305e_T_05
+
+IF $2305e_T_06LastEvent$ == $Succeeded$
+
+   IF $2305e_T_06HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $thereg$ Passed 
+   ELSE
+      PRINT Result: TRACE $thereg$ Failed, HTTP Status $2305e_T_06HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $thereg$ Failed, last event $2305e_T_06LastEvent$  
+ENDIF
+
+endtrans 2305e_T_06
+
+IF $2305e_T_07LastEvent$ == $Succeeded$
+
+   IF $2305e_T_07HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $symbian$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $symbian$ Failed, HTTP Status $2305e_T_07HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $symbian$ Failed, last event $2305e_T_07LastEvent$  
+ENDIF
+
+endtrans 2305e_T_07
+
+IF $2305e_T_08LastEvent$ == $Succeeded$
+
+   IF $2305e_T_08HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $netscape$ Passed 
+   ELSE
+      PRINT Result: HEAD $netscape$ Failed, HTTP Status $2305e_T_08HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $netscape$ Failed, last event $2305e_T_08LastEvent$  
+ENDIF
+
+endtrans 2305e_T_08
+
+IF $2305e_T_09LastEvent$ == $Succeeded$
+
+   IF $2305e_T_09HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $google$ Passed 
+   ELSE
+      PRINT Result: HEAD $google$ Failed, HTTP Status $2305e_T_09HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $google$ Failed, last event $2305e_T_09LastEvent$  
+ENDIF
+
+endtrans 2305e_T_09
+
+IF $2305e_T_10LastEvent$ == $Succeeded$
+
+   IF $2305e_T_10HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $pcpro$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $pcpro$ Failed, HTTP Status $2305e_T_10HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $pcpro$ Failed, last event $2305e_T_10LastEvent$  
+ENDIF
+
+endtrans 2305e_T_10
+
+IF $2305e_T_11LastEvent$ == $Succeeded$
+
+   IF $2305e_T_11HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $channel4$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $channel4$ Failed, HTTP Status $2305e_T_11HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $channel4$ Failed, last event $2305e_T_11LastEvent$  
+ENDIF
+
+endtrans 2305e_T_11
+
+IF $2305e_T_12LastEvent$ == $Succeeded$
+
+   IF $2305e_T_12HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $yahoo$ Passed 
+   ELSE
+      PRINT Result: HEAD $yahoo$ Failed, HTTP Status $2305e_T_12HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $yahoo$ Failed, last event $2305e_T_12LastEvent$  
+ENDIF
+
+endtrans 2305e_T_12
+
+IF $2305e_T_13LastEvent$ == $Succeeded$
+
+   IF $2305e_T_13HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $lycos$ Passed 
+   ELSE
+      PRINT Result: HEAD $lycos$ Failed, HTTP Status $2305e_T_13HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $lycos$ Failed, last event $2305e_T_13LastEvent$  
+ENDIF
+
+endtrans 2305e_T_13
+
+IF $2305e_T_14LastEvent$ == $Succeeded$
+
+   IF $2305e_T_14HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $aol$ Passed 
+   ELSE
+      PRINT Result: HEAD $aol$ Failed, HTTP Status $2305e_T_14HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $aol$ Failed, last event $2305e_T_14LastEvent$  
+ENDIF
+
+endtrans 2305e_T_14
+
+IF $2305e_T_15LastEvent$ == $Succeeded$
+
+   IF $2305e_T_15HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $infoseek$ Passed 
+   ELSE
+      PRINT Result: TRACE $infoseek$ Failed, HTTP Status $2305e_T_15HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $infoseek$ Failed, last event $2305e_T_15LastEvent$  
+ENDIF
+
+endtrans 2305e_T_15
+
+IF $2305e_T_16LastEvent$ == $Succeeded$
+
+   IF $2305e_T_16HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $ft$ Passed 
+   ELSE
+      PRINT Result: HEAD $ft$ Failed, HTTP Status $2305e_T_16HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $ft$ Failed, last event $2305e_T_16LastEvent$  
+ENDIF
+
+endtrans 2305e_T_16
+
+IF $2305e_T_17LastEvent$ == $Succeeded$
+
+   IF $2305e_T_17HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $guardian$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $guardian$ Failed, HTTP Status $2305e_T_17HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $guardian$ Failed, last event $2305e_T_17LastEvent$  
+ENDIF
+
+endtrans 2305e_T_17
+
+IF $2305e_T_18LastEvent$ == $Succeeded$
+
+   IF $2305e_T_18HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $london$ Passed 
+   ELSE
+      PRINT Result: TRACE $london$ Failed, HTTP Status $2305e_T_18HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $london$ Failed, last event $2305e_T_18LastEvent$  
+ENDIF
+
+endtrans 2305e_T_18
+
+IF $2305e_T_19LastEvent$ == $Succeeded$
+
+   IF $2305e_T_19HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $oxfordshire$ Passed 
+   ELSE
+      PRINT Result: HEAD $oxfordshire$ Failed, HTTP Status $2305e_T_19HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $oxfordshire$ Failed, last event $2305e_T_19LastEvent$  
+ENDIF
+
+endtrans 2305e_T_19
+
+IF $2305e_T_20LastEvent$ == $Succeeded$
+
+   IF $2305e_T_20HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $newsci$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $newsci$ Failed, HTTP Status $2305e_T_20HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $newsci$ Failed, last event $2305e_T_20LastEvent$  
+ENDIF
+
+endtrans 2305e_T_20
+
+IF $2305e_T_21LastEvent$ == $Succeeded$
+
+   IF $2305e_T_21HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $excite$ Passed 
+   ELSE
+      PRINT Result: TRACE $excite$ Failed, HTTP Status $2305e_T_21HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $excite$ Failed, last event $2305e_T_21LastEvent$  
+ENDIF
+
+endtrans 2305e_T_21
+
+IF $2305e_T_22LastEvent$ == $Succeeded$
+
+   IF $2305e_T_22HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $multimap$ Passed 
+   ELSE
+      PRINT Result: TRACE $multimap$ Failed, HTTP Status $2305e_T_22HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $multimap$ Failed, last event $2305e_T_22LastEvent$ 
+ENDIF
+
+endtrans 2305e_T_22
+
+IF $2305e_T_23LastEvent$ == $Succeeded$
+
+   IF $2305e_T_23HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $times$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $times$ Failed, HTTP Status $2305e_T_23HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $times$ Failed, last event $2305e_T_23LastEvent$  
+ENDIF
+
+endtrans 2305e_T_23
+
+IF $2305e_T_24LastEvent$ == $Succeeded$
+
+   IF $2305e_T_24HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $itn$ Passed 
+   ELSE
+      PRINT Result: HEAD $itn$ Failed, HTTP Status $2305e_T_24HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $itn Failed, last event $2305e_T_24LastEvent$  
+ENDIF
+
+endtrans 2305e_T_24
+
+IF $2305e_T_25LastEvent$ == $Succeeded$
+
+   IF $2305e_T_25HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $dilbert$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $dilbert$ Failed, HTTP Status $2305e_T_25HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $dilbert$ Failed, last event $2305e_T_25LastEvent$  
+ENDIF
+
+endtrans 2305e_T_25
+
+IF $2305e_T_26LastEvent$ == $Succeeded$
+
+   IF $2305e_T_26HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $itv$ Passed 
+   ELSE
+      PRINT Result: HEAD $itv$ Failed, HTTP Status $2305e_T_26HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $itv$ Failed, last event $2305e_T_26LastEvent$  
+ENDIF
+
+endtrans 2305e_T_26
+
+IF $2305e_T_27LastEvent$ == $Succeeded$
+
+   IF $2305e_T_27HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $cnn$ Passed 
+   ELSE
+      PRINT Result: TRACE $cnn$ Failed, HTTP Status $2305e_T_27HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $cnn$ Failed, last event $2305e_T_27LastEvent$  
+ENDIF
+
+endtrans 2305e_T_27
+
+IF $2305e_T_28LastEvent$ == $Succeeded$
+
+   IF $2305e_T_28HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $lemonde$ Passed 
+   ELSE
+      PRINT Result: HEAD $lemonde$ Failed, HTTP Status $2305e_T_28HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $lemonde$ Failed, last event $2305e_T_28LastEvent$  
+ENDIF
+
+endtrans 2305e_T_28
+
+IF $2305e_T_29LastEvent$ == $Succeeded$
+
+   IF $2305e_T_29HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $dotmusic$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $dotmusic$ Failed, HTTP Status $2305e_T_29HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $dotmusic$ Failed, last event $2305e_T_29LastEvent$  
+ENDIF
+
+endtrans 2305e_T_29
+
+IF $2305e_T_30LastEvent$ == $Succeeded$
+
+   IF $2305e_T_30HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: TRACE $watford$ Passed 
+   ELSE
+      PRINT Result: TRACE $watford$ Failed, HTTP Status $2305e_T_30HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE $watford$ Failed, last event $2305e_T_30LastEvent$  
+ENDIF
+
+endtrans 2305e_T_30
+
+IF $2305e_T_31LastEvent$ == $Succeeded$
+
+   IF $2305e_T_31HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS $iconbar$ Passed 
+   ELSE
+      PRINT Result: OPTIONS $iconbar$ Failed, HTTP Status $2305e_T_31HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS $iconbar$ Failed, last event $2305e_T_31LastEvent$  
+ENDIF
+
+endtrans 2305e_T_31
+
+IF $2305e_T_32LastEvent$ == $Succeeded$
+
+   IF $2305e_T_32HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HEAD $independent$ Passed 
+   ELSE
+      PRINT Result: HEAD $independent$ Failed, HTTP Status $2305e_T_32HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD $independent$ Failed, last event $2305e_T_32LastEvent$ 
+ENDIF
+
+endtrans 2305e_T_32
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2305e_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2305e

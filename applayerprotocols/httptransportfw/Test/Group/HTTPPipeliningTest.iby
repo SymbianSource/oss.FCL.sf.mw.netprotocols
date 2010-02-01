@@ -1,0 +1,34 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __HTTPPIPELININGTEST_IBY__
+#define __HTTPPIPELININGTEST_IBY__
+
+#include <httptestutils.iby>
+
+file=ABI_DIR\BUILD_DIR\HTTPPipeliningTest.exe	 System\Programs\HTTPPipeliningTest.exe
+
+//The script files for the system
+data=EPOCROOT##epoc32\data\c\TestData\Scripts\HTTPPipeliningTest.script	TestData\Scripts\HTTPPipeliningTest.script
+
+// HTTPPipeliningTest ini 
+data=EPOCROOT##epoc32\data\c\httptest\pipelining\pipelining.ini	  httptest\pipelining\pipelining.ini
+
+// The batch file to run the test
+data=EPOCROOT##Epoc32\tools\HTTPPipeliningTest.bat		HTTPPipeliningTest.bat
+
+#include <testexecute.iby>
+
+#endif

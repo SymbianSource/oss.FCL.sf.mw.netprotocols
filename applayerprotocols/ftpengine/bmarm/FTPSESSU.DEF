@@ -1,0 +1,4 @@
+EXPORTS
+	GetVersion__11CFTPSession @ 1 NONAME R3UNUSED ; CFTPSession::GetVersion(void)
+	NewL__11CFTPSessionP19MFtpSessionNotifier @ 2 NONAME R3UNUSED ; CFTPSession::NewL(MFtpSessionNotifier *)
+

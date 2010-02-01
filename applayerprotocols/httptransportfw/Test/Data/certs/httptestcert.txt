@@ -1,0 +1,86 @@
+<action>
+	<actionname>No Test,Opening a CertificateAppInfoManager</actionname>
+	<actiontype>initappmanager</actiontype>
+	<actionbody></actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>No Test,Adding client SSL</actionname>
+	<actiontype>addclient</actiontype>
+	<actionbody>
+		<name>TLS</name>
+		<uid>268441661</uid>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>No Test,Deleting the CertificateAppInfoManager</actionname>
+	<actiontype>deleteappmanager</actiontype>
+	<actionbody></actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Opening a certificate store manager</actionname>
+	<actiontype>init</actiontype>
+	<actionbody>
+		<mode>write</mode>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Set the trust for HTTP test cert</actionname>
+	<actiontype>settrust</actiontype>
+	<actionbody>
+		<label>wapca2006</label>
+		<trust>1</trust>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Get the trust for HTTP testcert</actionname>
+	<actiontype>gettrusters</actiontype>
+	<actionbody>
+		<label>wapca2006</label>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+		<trust>1</trust>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>Get applications for HTTP test cert</actionname>
+	<actiontype>getapplications</actiontype>
+	<actionbody>
+		<label>wapca2006</label>
+	</actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+		<uid>268441661</uid>
+	</actionresult>
+</action>
+
+<action>
+	<actionname>No Test,Deleting the writable certificate store manager</actionname>
+	<actiontype>delete</actiontype>
+	<actionbody></actionbody>
+	<actionresult>
+		<return>KErrNone</return>
+	</actionresult>
+</action>
+

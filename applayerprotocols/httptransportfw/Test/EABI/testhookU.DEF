@@ -1,0 +1,9 @@
+EXPORTS
+	Install @ 1 NONAME
+	_ZTI13CTestFlowInfo @ 2 NONAME ; #<TI>#
+	_ZTI13CTestProtocol @ 3 NONAME ; #<TI>#
+	_ZTI19CTestProtocolFamily @ 4 NONAME ; #<TI>#
+	_ZTV13CTestFlowInfo @ 5 NONAME ; #<VT>#
+	_ZTV13CTestProtocol @ 6 NONAME ; #<VT>#
+	_ZTV19CTestProtocolFamily @ 7 NONAME ; #<VT>#
+

@@ -1,0 +1,68 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+NAME HCER
+#include "httpclienterr.rls"
+#include <baerrrsvr.rh>
+#include <badef.rh>
+#include <uikon.rh>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE ERROR_SET r_error_res_httpclient
+	{
+	errorarrays=
+		{
+		ERROR_ARRAY
+			{
+			startError=-7200;	// Codec encoding errors for HTTP headers
+			errors=r_error_res_http_text_header_encode_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7260;	// Codec decoding errors for values found in HTTP headers
+			errors=r_error_res_http_text_header_decode_basic_val_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7270;	// Codec decoding errors for HTTP headers
+			errors=r_error_res_http_text_header_decode_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7300;	// Response errors. These represent specific failure cases
+			errors=r_error_res_http_response_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7330;	// Request building errors: cause the Validation Filter to make a transaction fail and terminate
+			errors=r_error_res_http_request_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7360;	// Request building errors: Missing but required header errors
+			errors=r_error_res_http_request_missing_header_errors;
+			},
+		ERROR_ARRAY
+			{
+			startError=-7370;	// Protocol Handler errors 
+			errors=r_error_res_http_protocolhandler_errors;
+			}
+		};
+	}
+
+
+
+#include "HttpClientErr.ra"

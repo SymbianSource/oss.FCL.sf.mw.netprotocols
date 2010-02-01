@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+// t_httpservicetest.mmp
+// Your copyright notice
+
+TARGET				httpserviceapitest.exe
+TARGETTYPE			exe
+UID					0x1000007A 0x2002ABD6 
+CAPABILITY ALL -TCB
+
+//Please add any change under here
+SOURCEPATH			../httpservicetest
+
+SOURCE	TestScriptTestServer.cpp 
+SOURCE	clocaltestserver.cpp 
+SOURCE	ctestserverstreammanager.cpp 
+SOURCE	ctestclienthttpget.cpp 
+SOURCE	ctestclienthttppost.cpp
+SOURCE	ctesthttpclientstep.cpp 
+SOURCE	chttpclienttestparams.cpp
+
+USERINCLUDE 		../../inc
+USERINCLUDE 		../../../httptransportfw/test/t_utils
+USERINCLUDE 		../../../httptransportfw/utils
+SYSTEMINCLUDE 		../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE   	/epoc32/include
+SYSTEMINCLUDE		/epoc32/include/test
+SYSTEMINCLUDE		/epoc32/include/http
+#else
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE		/epoc32/include/platform/test
+SYSTEMINCLUDE		/epoc32/include/mw/http
+#endif
+
+LIBRARY				euser.lib
+LIBRARY				testexecuteutils.lib 
+LIBRARY				testexecutelogclient.lib 
+LIBRARY		 		bafl.lib
+LIBRARY		  		ecom.lib
+LIBRARY		  		http.lib
+LIBRARY		  		inetprotutil.lib
+LIBRARY		  		httpservice.lib
+LIBRARY				efsrv.lib 
+LIBRARY				httptestutils.lib
+LIBRARY				esock.lib insock.lib
+
+SMPSAFE

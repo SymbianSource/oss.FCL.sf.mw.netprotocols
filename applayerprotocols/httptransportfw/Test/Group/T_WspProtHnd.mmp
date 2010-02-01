@@ -1,0 +1,45 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+TARGET			T_WspProtHnd.exe
+TARGETTYPE		exe
+CAPABILITY ALL -TCB
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	\epoc32\include \epoc32\include\http
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE \epoc32\include\http
+SYSTEMINCLUDE \epoc32\include\mw\http
+#endif
+
+
+USERINCLUDE 	..\..\inc\framework
+USERINCLUDE		..\..\inc
+USERINCLUDE		..\testinc ..\testinc\T_WspProtHnd ..\t_utils ..\chat
+USERINCLUDE		..\..\core
+
+SOURCEPATH		..\T_WspProtHnd
+SOURCE			T_WspProtHnd.cpp CWspFileDataSupplier.cpp
+SOURCE			CWspCmdLineProcessor.cpp CWspScriptProcessor.cpp DriverCustomValidators.cpp
+
+LIBRARY			euser.lib http.lib t_wspeventdriver.lib bafl.lib 
+LIBRARY			testconsole.lib inetprotutil.lib httptestutils.lib
+LIBRARY			efsrv.lib flogger.lib chat.lib
+
+VENDORID 0x70000001
+
+SMPSAFE

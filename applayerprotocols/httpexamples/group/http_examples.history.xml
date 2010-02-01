@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="HTTP Examples">
+  <purpose>
+    HTTP Examples describes the usage of HTTP framework and its APIs
+  </purpose>
+
+	<defect number="DEF117127" title="Several warnings are flagged while building HTTP and WAP Push Components " revision="004">
+    Resolved build warnings. 
+	</defect>
+
+	<defect number="DEF116104" title="Httpexampleclient crash with different error code when requesting a POST request" revision="003">
+    Added explicit leave method for returning the proper error code ,and to avoid the application crashing. 
+	</defect>
+
+	<defect number="DEF112765" title="Memory leak not handled in the HTTPEXAMPLECLIENT example code" revision="002">
+	Pushed the objects on the cleanupstack wherever needed and then Popped cleanup items from the cleanup stack, and invoked its cleanup operation.
+	</defect>
+
+	<defect number="DEF110392" title="Mismatch of IPR data in mrp file and distribution policy files" revision="001">
+    Added ipr T in http_examples.mrp file for test files and also added copyright headers in the two header files of htttp/examples/TestWebBrowser.
+	</defect>
+
+</relnotes>

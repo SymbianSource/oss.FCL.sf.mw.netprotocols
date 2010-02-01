@@ -1,0 +1,76 @@
+## Include script - simple POST - all data received from client in one chunk. Overall data size unknown - trans4
+#
+# Body data - 
+# post_data_1_driver.txt
+#
+# Header data - 
+# Accept : application/vnd.wap.wmlc
+# Content-Type : application/x-www-form-urlencoded.
+#
+# SDU type, URI info and header info is 29 bytes.
+#
+# Overall data size is known
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans4_post_singlebody_unknownsize_driver
+#
+# Create a POST method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod POST
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans4
+		ENDINVOKE
+		INVOKE trans4 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans4 AddHeaderL
+			PARAMETER aFieldName Content-Type
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/x-www-form-urlencoded
+		ENDINVOKE
+		INVOKE trans4 AddBody
+			CREATEITEM aBody CDriverDataSupplier body4
+		ENDINVOKE
+		INVOKE trans4 SubmitL
+		ENDINVOKE
+	ENDSEND
+#
+# Expect call to OverallDataSize
+#
+	EXPECT
+		INVOCATION body4 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: -1
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect another call to OverallDataSize invoked from the validation filter
+#
+	EXPECT
+		INVOCATION body4 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: -1
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the post data to be extracted - one part only
+#
+	EXPECT
+		INVOCATION body4 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\post_data_1_driver.txt$file$>
+			PARAMETER :RETURN: ETrue
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the release of the data
+#
+	EXPECT
+		INVOCATION body4 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT

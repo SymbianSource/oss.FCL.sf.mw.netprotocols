@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+#ifndef __T_HTTP_IBY__
+#define __T_HTTP_IBY__
+
+#include <httptestutils.iby>
+
+REM T_http
+file=ABI_DIR\BUILD_DIR\T_http.exe	System\Programs\T_http.exe	stack=0x8000
+
+// The script files for the system
+data=\epoc32\winscw\c\httptest\acceptance\TestCases.ini		httptest\acceptance\TestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\iot.ini		httptest\acceptance\iot.ini
+data=\epoc32\winscw\c\httptest\acceptance\sites.ini		httptest\acceptance\sites.ini
+data=\epoc32\winscw\c\httptest\acceptance\GeneralTestCases.ini	httptest\acceptance\GeneralTestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\DigestTestCases.ini	httptest\acceptance\DigestTestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\ProxyTestCases.ini	httptest\acceptance\ProxyTestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\RedirectTestCases.ini	httptest\acceptance\RedirectTestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\SSLTestCases.ini	httptest\acceptance\SSLTestCases.ini
+data=\epoc32\winscw\c\httptest\acceptance\bodyfile\TC_ITER_2_POST_21.txt	httptest\acceptance\bodyfile\TC_ITER_2_POST_21.txt
+
+// The script files for the TLS certificates
+data=ZPRIVATE\101f72a6\CACerts.dat PRIVATE\101f72a6\CACerts.dat
+data=ZPRIVATE\101f72a6\certclients.dat PRIVATE\101f72a6\certclients.dat
+
+
+#endif

@@ -1,0 +1,48 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// None capability tests
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0001
+//No_WriteDeviceData_Manager_Mode_Not_Allowed
+
+//! @file			Cap_00000000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0017-HP-0001
+//! @SYMTestCaseDesc 		Should not be able to open the database in manager mode when the application does not have WriteDeviceData
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1, Application-Protocols/Bookmarks/VISIBILITY.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to open DB in manager mode when application has none of the capabilities
+//! @SYMTestExpectedResults 	The OpenL function must leave with KErrPermissionDenied.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestBookmarksBaseStep	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Db_Open_Manager_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0001
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0002
+//No_Capability_Open_Not_Allowed
+
+//! @file			Cap_00000000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0017-HP-0002
+//! @SYMTestCaseDesc 		Should not be able to open the database in manager mode when the application does not have WriteDeviceData
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1, Application-Protocols/Bookmarks/VISIBILITY.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to open the DB when application has none of the capabilities
+//! @SYMTestExpectedResults 	The OpenL function must leave with KErrPermissionDenied.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestBookmarksBaseStep	c:\testdata\ini\TestBookmarksSuite_Security.ini 
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0002

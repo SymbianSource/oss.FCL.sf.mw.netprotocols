@@ -1,0 +1,71 @@
+## Chat scripts, smoke test 6 - driver script.
+#
+# Smoke test 6
+# Client attempts to connect to a proxy
+# Proxy (temporarily) redirects client to a different proxy
+# WSP PH makes automatic connection to the new proxy
+# Client disconnects from the proxy
+#
+SCRIPT SmokeTestDriver6
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Client connect request - set a few properties, although ask for default capabilities
+#
+	ECHO DriverSendingConnect
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the redirection event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent ERedirected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Get the redirection proxy address
+#
+	SEND
+		INVOKE GetConnectionProperties
+			VALIDATE aProxyAddress 10.29.23.2
+			VALIDATE aBearer _010
+			VALIDATE aIsSecure _01A
+			VALIDATE aRemotePort 9203
+		ENDINVOKE
+	ENDSEND
+#
+# Client disconnect
+#
+	SLEEP 2000
+	SEND
+		INVOKE SessionDisconnectL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for ind - this is given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

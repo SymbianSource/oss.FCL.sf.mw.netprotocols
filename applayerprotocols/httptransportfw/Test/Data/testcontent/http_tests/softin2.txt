@@ -1,0 +1,8 @@
+HTTP/1.0 200 OK
+Server: Fakeserver.pl
+Date: Tuesday, 06-Mar-01 12:00:00 GMT
+Content-Type: application/ocsp-response, text/*
+
+
+This is the body of a GET request for software install content using the MIME type:
+application/ocsp-response

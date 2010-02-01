@@ -1,0 +1,32 @@
+## Include script - create a GET transaction trans2
+#
+# Client creates a GET transaction - trans2 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+# User-Agent: T_WspProtHnd
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans2_get_driver
+#
+# Create a GET method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans2
+		ENDINVOKE
+		INVOKE trans2 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans2 SubmitL
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT
+
+

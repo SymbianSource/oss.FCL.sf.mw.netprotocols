@@ -1,0 +1,460 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// ReadUserData and WriteUserData capability tests
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0014-HP-0001
+//	Db_Opened_Public
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0014-HP-0001
+//! @SYMTestCaseDesc 		Db opened in Public mode. Only public items should be visible.
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a public folder when the DB is open in public mode
+//!				2. Open a public bookmark when the DB is open in public mode
+//!				3. Open a private folder when the DB is open in public mode
+//!				4. Open a private bookmark when the DB is open in public mode
+//!				5. Set a property of a private bookmark when the DB is open in public mode
+//! @SYMTestExpectedResults 	Only the first two steps must succeed.
+//! @SYMTestType 		Integration
+// When DB is opened in public mode only public items should be visible
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder2_In_Public_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1_In_Public_Mode
+
+// Private items should be inaccessible
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_In_Public_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Open_Bookmark2_In_Public_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark2_GetPublic_PublicMode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0014-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0020-HP-0001
+//	User_Application_Access_Restrictions
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0020-HP-0001
+//! @SYMTestCaseDesc 		User Application cannot access another application's Private Item
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a folder private to another application when the DB is open in default mode when the application has ReadUserData and WriteUserData
+//!				2. Open a folder private to another application when the DB is open in public mode when the application has ReadUserData and WriteUserData
+//!				3. Open a folder private to another application when the DB is open in private mode when the application has ReadUserData and WriteUserData
+//!				4. Open a folder private to another application when the DB is open in all mode when the application has ReadUserData and WriteUserData
+//!				5. Repeat steps 1 to 4 with a bookmark private to another application.
+//!				6. Open a public folder when the application has ReadUserData and WriteUserData
+//!				7. Open a public bookmark when the application has ReadUserData and WriteUserData
+//!				8. Open a folder private to this application when the DB is open in default mode when the application has ReadUserData and WriteUserData
+//!				9. Open a bookmark private to this application when the DB is open in default mode when the application has ReadUserData and WriteUserData
+//! @SYMTestExpectedResults 	Only steps 6, 7, 8 and 9 must succeed.
+//! @SYMTestType 		Integration
+// Can not open items private to another app
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_Default_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_Public_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_Private_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_All_Mode
+
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_Default_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_Public_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_Private_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_All_Mode
+
+// Must be able to open the non-private ones 
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder2
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1
+
+// and the ones private to this application
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder3
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark3
+// The following two test cases test Test Case IWS-APPPROT-BM-PREQ171-I-0044-HP-0001 also
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder3_SetPrivate
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark3_SetPrivate
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder3
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark3
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0020-HP-0001
+
+
+// It is better to keep this test case here, 
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0012-HP-0001
+//	FolderTitlesGloballyUnique
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0012-HP-0001
+//! @SYMTestCaseDesc 		Folder titles should be globally unique
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestCaseDependencies	Test case IWS-APPPROT-BM-PREQ171-I-0020-HP-0001 has to be run before this test case as the main test folder is only now visible to this application, when db is 
+//! 				opened in private mode, as this application has now created some private items under it, viz., Folder3 and Bookmark3.
+//! @SYMTestActions 		1. Create a folder with the same title as that of another folder which is private to another application and hence not visible to this user-application when the DB is opened in default mode
+//!				2. Repeat step 1 when DB is opened in public, private and all mode
+//!				3. Rename a folder to a title as that of another folder which is private to another application and hence not visible to this user-application when the DB is opened in default mode
+//!				4. Repeat step 3 when DB is opened in public, private and all mode
+//! @SYMTestExpectedResults 	All these steps must fail with error -7162.
+//! @SYMTestType 		Integration
+// Folder1 is private to another application, so not visible. But still we should not be allowed to create one with the same name.
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Default_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Public_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Private_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_All_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Under_Root_Default_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Under_Root_Private_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Under_Root_Public_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Create_Folder1_Under_Root_All_Mode
+
+// Try renaming Folder2 to Folder1
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestSetPropertyStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Rename_Folder2_To_Folder1_Default_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestSetPropertyStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Rename_Folder2_To_Folder1_Public_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestSetPropertyStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Rename_Folder3_To_Folder1_Private_Mode
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer_Cap	TestSetPropertyStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Rename_Folder2_To_Folder1_All_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0012-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0015-HP-0001
+//	Db_Opened_Private_Only_Items_Visible
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0015-HP-0001
+//! @SYMTestCaseDesc 		When DB is opened in private mode. Only items private to this application should be visible.
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a folder private to this application when the DB is open in private mode
+//!				2. Open a bookmark private to this application when the DB is open in private
+//!				3. Retreive a property of a bookmark private to this application when the DB is open in private mode
+//!				4. Open a public bookmark when the DB is open in private mode
+//!				5. Open a public folder when the DB is open in private mode
+//!				6. Open a public folder that contains a bookmark private to another appication when the DB is open in private mode
+//! @SYMTestExpectedResults 	Only steps 1, 2 and 3 must succeed.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder3_In_Private_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini		Open_Bookmark3_In_Private_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark3_GetPublic_PrivateMode
+// Attempting to open public items in private mode. Should fail
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1_In_Private_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder4_In_Private_Mode
+
+// Folder2 is a public folder that contains Bookmark2 that is private to another application. So Folder2 should be invisible
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder2_In_Private_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0015-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0021-HP-0001
+//	Db_Opened_Private_Open_Public_Folder_With_Private_Child
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0021-HP-0001
+//! @SYMTestCaseDesc 		A public folder which has a private child must be visible, when DB is opened in Private mode.
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.4
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a public folder which has a folder private to this application as its child when the DB is open in private mode
+//!				2. Open a public folder which has a bookmark private to this application as its child when the DB is open in private mode
+//! @SYMTestExpectedResults 	A public folder which has a private child must be visible, when DB is opened in Private mode.
+//! @SYMTestType 		Integration
+// The main folder has some items private to this application
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Main_Folder_In_Private_Mode
+
+// Set Folder3 to be public
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder3_SetPublic_All_Mode
+
+// But Folder3 still has Bookmark3 that is private to this application and hence be accessible
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder3_In_Private_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0021-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0022-HP-0001
+//	Db_Opened_Public_Open_Public_Bookmark_Under_Private_Folder
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0022-HP-0001
+//! @SYMTestCaseDesc 		If a private folder contains a public bookmark, the bookmark must be visible in private only mode, under the root folder
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open a private folder which has a public bookmark when the DB is open in public mode
+//!				2. Open a the public child-bookmark mentioned in step 1 when the DB is open in private mode
+//!				3. Query the parent attribute of the public child-bookmark mentioned in step 1 and verify it to be the root folder, when the DB is open in private mode
+//! @SYMTestExpectedResults 	Steps 2 and 3 succeed, while step 1 does not.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_In_Public_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1_In_Public_Mode
+// Check the parent to be root
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetParent_PublicMode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0022-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0023-HP-0001
+//	Db_Opened_PrivateOrPublic_Visibility_Non_Modifiable
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0023-HP-0001
+//! @SYMTestCaseDesc 		Visibility of an item cannot be changed if the DB is opened in private-only or public-only mode
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.6
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set a private folder to public when the DB is open in public mode
+//!				2. Set a public bookmark to private when the DB is open in private mode
+//! @SYMTestExpectedResults 	Both the operations must fail with KErrPermissionDenied
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetPrivate_PublicMode
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark3_SetPublic_PrivateMode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0023-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0024-HP-0001
+//	Db_Opened_Public_Only_Public_Items_Are_Allowed
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0024-HP-0001
+//! @SYMTestCaseDesc 		Creation of only public items is possible if the DB is opened in public-only mode
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.7
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Create a folder when the DB is open in public mode
+//!				2. Create a bookmark when the DB is open in public mode
+//!				3. Check the visibility of the folder created in step 1 and verify it to be public
+//!				4. Check the visibility of the bookmark created in step 2 and verify it to be public
+//!				5. Change the visibility of the folder created in step 1 to private, when DB is open in public mode and verify that the operation fails with KErrPermissionDenied
+//!				6. Change the visibility of the bookmark created in step 2 to private, when DB is open in public mode and verify that the operation fails with KErrPermissionDenied
+//! @SYMTestExpectedResults 	Creation of only public items is allowed if the DB is opened in public-only mode
+//! @SYMTestType 		Integration
+// Delete if already present
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Delete_Folder6_All_Mode
+// Create
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder6_PublicMode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark6_PublicMode
+// Check visibility to be public
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder6_GetPublic_PublicMode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark6_GetPublic_PublicMode
+// Changing visibility to private should not be allowed
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder6_SetPrivate_PublicMode
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark6_SetPrivate_PublicMode
+// Clean up
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Delete_Folder6_All_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0024-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0058-HP-0001
+//	Items_Public_By_Default_Even_If_Db_Opened_Private
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0058-HP-0001
+//! @SYMTestCaseDesc 		Even if DB is opened in private-only mode, the items created are public by default
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Create a folder when the DB is open in private mode
+//!				2. Open the folder created in step 1 when DB is open in public mode and verify that it is visible
+//!				3. Check the visibility of the folder created in step 1 and verify it to be public
+//!				4. Change the visibility of the folder created in step 1 to private, and create a bookmark under it after opening the DB in private mode 
+//!				5. Open the bookmark created in step 4 when DB is open in public mode and verify that it is visible
+//!				6. Check the visibility of the bookmark created in step 4 and verify it to be public				
+//! @SYMTestExpectedResults 	Even if DB is opened in private-only mode, the items created are public by default
+//! @SYMTestType 		Integration
+// Delete if already present
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Delete_Folder7_All_Mode
+
+// Create folder in private mode 
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder7_PrivateMode
+
+// Check visibility to be public
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder7_In_Public_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder7_GetPublic_All_Mode
+
+// Set folder private and then create bookmark under it in private mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder7_SetPrivate_All_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark7_Private_Mode
+
+// Check visibility to be public
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestOpenItemStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark7_In_Public_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark7_GetPublic_All_Mode
+
+// Clean up
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Delete_Folder7_All_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0058-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0033-HP-0001
+//	Top_Folder_Uneditable
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0033-HP-0001
+//! @SYMTestCaseDesc 		The top of the bookmark folder tree is uneditable and has no properties, and is visible in all modes
+//! @SYMFssID			Application-Protocols/Bookmarks/TREE.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Open the root folder when the DB is open in default mode
+//!				2. Open the root folder when the DB is open in public mode
+//!				3. Open the root folder when the DB is open in private mode
+//!				4. Open the root folder when the DB is open in all mode
+//!				5. Set the root folder's visibility to private.	
+//! @SYMTestExpectedResults 	Steps 1 to 4 must succeed and step 5 must fail.
+//! @SYMTestType 		Integration
+// Delete if already present
+// First try opening root folder in all modes...it should open
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Root_In_Default_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Root_In_Private_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Root_In_Public_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Root_In_All_Mode
+
+// Try to set it private...other properties have been tested in the non-security script
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Root_SetPrivate
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0033-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0035-HP-0001
+//	Home_Page_Bookmark
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0035-HP-0001
+//! @SYMTestCaseDesc 		Getting and Setting the home page bookmark
+//! @SYMFssID			Application-Protocols/Bookmarks/HOME.1, Application-Protocols/Bookmarks/HOME.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Create a new bookmark and and set it as the homepage
+//!				2. Get the homepage and verify it to be the one set in step 1 when the DB is open in default mode
+//!				3. Get the homepage and verify it to be the one set in step 1 when the DB is open in public mode
+//!				4. Get the homepage and verify it to be the one set in step 1 when the DB is open in private mode
+//!				5. Get the homepage and verify it to be the one set in step 1 when the DB is open in all mode
+//!				6. Query the IsHome flag of the bookmark created in step 1 and verify it to be true
+//!				7. Create another new bookmark and and set it as the homepage
+//!				8. Query the IsHome flag of the bookmark created in step 1 and verify it to be false now
+//!				9. Query the IsHome flag of the new bookmark created in step 7 and verify it to be true.
+//! @SYMTestExpectedResults 	The setting of home page bookmark is performed consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder_HomePageTest
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark9
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Set_Home_Page_Bookmark_Bookmark8
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_DefaultMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_PublicMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_PrivateMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_AllMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8_IsHomePage_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Set_Home_Page_Bookmark_Bookmark9
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8_IsHomePage_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark9_IsHomePage_True
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0035-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0036-HP-0001
+//	Home_Page_Bookmark_Never_Private
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0036-HP-0001
+//! @SYMTestCaseDesc 		Home page bookmark can never be made private
+//! @SYMFssID			Application-Protocols/Bookmarks/HOME.3
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestCaseDependencies	Test case IWS-APPPROT-BM-PREQ171-I-0035-HP-0001 has to be run before this test case.
+//! @SYMTestActions 		1. Set the bookmark created in step 7 of test case IWS-APPPROT-BM-PREQ171-I-0035-HP-0001 to private
+//! @SYMTestExpectedResults 	As this bookmark has been set as the homepage, it cannot be made private.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark9_SetPrivate
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0036-HP-0001
+
+// Cleanup Home Page Test Folder
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite.ini 	Folder_HomePageTest
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0003
+//	Set_Last_Visited_ReadUserDataWriteUserData
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0056-HP-0003
+//! @SYMTestCaseDesc 		Set last visited time when application does not have required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last visited time of a bookmark when the application has only ReadUserData and WriteUserData
+//! @SYMTestExpectedResults 	The operation must fail with KErrPermissionDenied
+//! @SYMTestType 		Integration
+// RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	// c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastVisited
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0003
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0047-HP-0001
+//	User_Application_Cannot_Set_RW_TO_RO
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0047-HP-0001
+//! @SYMTestCaseDesc 		User Application cannot set a writeable item to read-only
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.9
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set a writeable folder to read-only.
+//!				2. Set a writeable bookmark to read-only.
+//! @SYMTestExpectedResults 	Both the operations must fail with KErrPermissionDenied
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_SetWriteable_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark3_SetWriteable_False
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0047-HP-0001
+
+// Test Case 4.49 - User Application cannot set a read-only item to writeable
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0049-HP-0001
+//	User_Application_Cannot_Set_RO_TO_RW
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0049-HP-0001
+//! @SYMTestCaseDesc 		User Application cannot set a read-only item to writeable
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.9
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set a read-only folder to writeable
+//!				2. Set a read-only bookmark to writeable.
+//! @SYMTestExpectedResults 	Both the operations must fail with KErrPermissionDenied.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder4_SetWriteable_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite_Security.ini		Bookmark1_SetWriteable_True
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0049-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0016-HP-0001
+//	Db_Opened_All_Mode_Access_Restrictions
+
+//! @file			Cap_00018000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0016-HP-0001
+//! @SYMTestCaseDesc 		DB opened in All mode, all public items and items private to this application should be visible
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		When DB is opened in All mode:
+//!				1. Try to open another application's private folder
+//!				2. Try to open another application's private bookmark
+//!				3. Try to open a public folder
+//!				4. Try to open a public bookmark
+//!				5. Try to open a folder private to this application
+//!				6. Try to open a bookmark private to this application
+//! @SYMTestExpectedResults 	Steps 1 and 2 must fail and the others must succeed.
+//! @SYMTestType 		Integration
+// Cannot access another applictions private items
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder1_All_Mode
+RUN_TEST_STEP 	!Error=-1	100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark2_All_Mode
+
+// Can access all public items
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder2_All_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark1_All_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder4_All_Mode
+
+// Can access all private items of this application
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Folder3_All_Mode
+RUN_TEST_STEP 			100 	 TestBookmarksServer_Cap	TestOpenItemStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Open_Bookmark3_All_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0016-HP-0001

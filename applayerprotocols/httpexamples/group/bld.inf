@@ -1,0 +1,65 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// examples
+// 
+//
+
+/**
+ @file
+*/
+
+
+PRJ_EXPORTS
+// specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in \epoc32\include
+
+
+
+
+PRJ_TESTEXPORTS
+
+// .ini files for the test harnesses
+
+../t_securitypolicy/test/securitypolicy.ini /epoc32/wins/c/httptest/securitypolicy/securitypolicy.ini
+
+// .ini files for winscw build
+
+../t_securitypolicy/test/securitypolicy.ini /epoc32/winscw/c/httptest/securitypolicy/securitypolicy.ini
+
+
+
+
+PRJ_MMPFILES
+// And the mmp files
+// The sample application (an simple console client)
+../httpexampleclient/httpexampleclient.mmp
+
+#include "../cookies/group/bld.inf"
+#include "../uaprof/group/bld.inf"
+#include "../PipeliningConfigFilter/Group/bld.inf"
+#include "../TestWebBrowser/group/bld.inf"
+
+PRJ_TESTMMPFILES
+
+
+// Test filter package 
+../T_TestFilters/T_TestFilters.mmp
+
+// T_SECRUITYPOLICY Test Security Policy Pluging
+../t_securitypolicy/test/t_securitypolicy
+
+// Test CPIManager
+../testcpimanager/TestCpiManager.mmp

@@ -1,0 +1,80 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// http.dll HTTP Client API & Core framework
+// 
+//
+
+/**
+ @file
+*/
+
+OPTION CW   -w off
+TARGET			http.dll 
+TARGETTYPE		dll
+CAPABILITY 		ALL -TCB
+ 
+UID	0x1000008d 	0x1000A441
+VENDORID 0x70000001
+
+#ifdef MARM_ARMV5
+OPTION ARMCC -O3 -Otime 
+#endif
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+USERINCLUDE		../core
+USERINCLUDE		../utils
+USERINCLUDE		../inc
+USERINCLUDE		../inc/framework
+
+#if defined(SYMBIAN_ENABLE_SPLIT_HEADERS)
+	DEFFILE	 httphs.def
+#else
+	DEFFILE			http.def
+#endif	//SYMBIAN_ENABLE_SPLIT_HEADERS
+
+SOURCEPATH		../core
+SOURCE			http.cpp
+SOURCE			CHTTPManager.cpp  // included here because it use the DLL class, can't be used in EXE's
+SOURCE			thttptable.cpp
+#include		"../core/coresource.mmpi"
+
+SOURCEPATH	../strings
+START STRINGTABLE HttpStringConstants.st
+	EXPORTPATH	/epoc32/include
+END
+
+
+SOURCEPATH ../utils
+#include "../utils/utilssource.mmpi"
+
+
+// The resource file containing HTTP error messages, generated for the system error resolver.
+SOURCEPATH 		../group
+START RESOURCE	HttpClientErr.rss
+TARGETPATH		/resource/errors
+LANG			01
+END
+
+
+
+// Uncomment this for target debugging
+//SRCDBG
+//LIBRARY ESTOR.LIB
+
+// bizarrely, ESTOR.LIB appears to be needed when SRCDBG is on, due to some FileStoreFactory symbols that get introduced by IMUT??!
+LIBRARY	euser.lib inetprotutil.lib bafl.lib ecom.lib commsdat.lib efsrv.lib
+DEBUGLIBRARY flogger.lib
+
+
+SMPSAFE

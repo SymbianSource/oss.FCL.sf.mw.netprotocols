@@ -1,0 +1,365 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RESOURCE ARRAY  r_error_res_http_text_header_encode_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_default;	//-7200	
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_accept;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_accept_charset;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_qvalue;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_authorization;				
+			}, 
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_basic_auth;	//-7205			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_digest_auth;					
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_connection;					
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_content_length;					
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_content_type;				
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_host;		//-7210		
+			},
+		SINGLE_ERROR
+			{
+			text= r_http_error_encode_host_port;			
+			},
+		SINGLE_ERROR
+			{
+			text= r_http_error_encode_transfer_encoding;				
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_user_agent;					
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_date;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_cookie;  // -7215
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_cache_control;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_pragma;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_if_match;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_if_none_match;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_if_modified_since; // -7220
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_if_unmodified_since;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_encode_cookie2;
+			}
+		};
+	}
+
+
+RESOURCE ARRAY  r_error_res_http_text_header_decode_basic_val_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_date;		//-7260
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_year;				
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_month;		
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_day;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_wkday;
+			},
+		SINGLE_ERROR
+			{
+			text= r_http_error_decode_malformed_weekday;			//-7265	
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_integer;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_malformed_quotedstr;			
+			}
+		};
+	}
+
+
+RESOURCE ARRAY  r_error_res_http_text_header_decode_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_accept;					//-7270
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_connection;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_content_length;	
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_content_type;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_transfer_encoding;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_www_authenticate;				//-7275		
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_unknown_auth_scheme;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_basic_auth;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_digest_auth;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_decode_cookie;
+			}
+		};
+	}
+
+
+RESOURCE ARRAY  r_error_res_http_response_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_redirect_exceeded_limit;		//-7300	
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_redirect_use_proxy ;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_redirect_no_location_field;		
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_unknown_parse_state;			
+			}
+		};
+	}
+
+
+RESOURCE ARRAY  r_error_res_http_request_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text= r_http_error_request_has_body;		//-7330			
+			},
+		SINGLE_ERROR
+			{
+			text= r_http_error_request_body_missing;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_trace_req_without_max_forward_header;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_post_req_body_without_size_on_http10;
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_invalid_header_in_request;			
+			}
+		};
+	}
+
+
+RESOURCE ARRAY  r_error_res_http_request_missing_header_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_entity_header_missing_content_type;			 // -7360
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_general_header_missing_host;			
+			}
+		};
+	}
+
+RESOURCE ARRAY r_error_res_http_protocolhandler_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_http_error_cant_reset_request_body;			
+			},
+		SINGLE_ERROR
+			{
+			text=r_http_error_transaction_not_initalised;			
+			}
+		};
+	}
+
+// Errors -7200 to -7222 (Codec encoding errors for HTTP headers)
+RESOURCE TBUF r_http_error_encode_default { buf=STRING_r_http_error_encode_default; }
+RESOURCE TBUF r_http_error_encode_accept{ buf=STRING_No_Label1; }
+RESOURCE TBUF r_http_error_encode_accept_charset { buf=STRING_r_http_error_encode_accept_charset; }
+RESOURCE TBUF r_http_error_encode_qvalue { buf=STRING_r_http_error_encode_qvalue; }
+RESOURCE TBUF r_http_error_encode_authorization { buf=STRING_r_http_error_encode_authorization; }
+RESOURCE TBUF r_http_error_encode_basic_auth { buf=STRING_r_http_error_encode_basic_auth; }
+RESOURCE TBUF r_http_error_encode_digest_auth { buf=STRING_r_http_error_encode_digest_auth; }
+RESOURCE TBUF r_http_error_encode_connection { buf=STRING_r_http_error_encode_connection; }
+RESOURCE TBUF r_http_error_encode_content_length { buf=STRING_r_http_error_encode_content_length; }
+RESOURCE TBUF r_http_error_encode_content_type { buf=STRING_r_http_error_encode_content_type; }
+RESOURCE TBUF r_http_error_encode_host { buf=STRING_r_http_error_encode_host; }
+RESOURCE TBUF r_http_error_encode_host_port { buf=STRING_r_http_error_encode_host_port; }
+RESOURCE TBUF r_http_error_encode_transfer_encoding { buf=STRING_r_http_error_encode_transfer_encoding; }
+RESOURCE TBUF r_http_error_encode_user_agent { buf=STRING_r_http_error_encode_user_agent; }
+RESOURCE TBUF r_http_error_encode_date { buf=STRING_r_http_error_encode_date; }
+RESOURCE TBUF r_http_error_encode_cookie { buf=STRING_r_http_error_encode_cookie; }
+RESOURCE TBUF r_http_error_encode_cache_control { buf=STRING_r_http_error_encode_cache_control; }
+RESOURCE TBUF r_http_error_encode_pragma { buf=STRING_r_http_error_encode_pragma; }
+RESOURCE TBUF r_http_error_encode_if_match { buf=STRING_r_http_error_encode_if_match; }
+RESOURCE TBUF r_http_error_encode_if_none_match { buf=STRING_r_http_error_encode_if_none_match; }
+RESOURCE TBUF r_http_error_encode_if_modified_since { buf=STRING_r_http_error_encode_if_modified_since; }
+RESOURCE TBUF r_http_error_encode_if_unmodified_since { buf=STRING_r_http_error_encode_if_unmodified_since; }
+RESOURCE TBUF r_http_error_encode_cookie2 { buf=STRING_r_http_error_encode_cookie2; }
+
+
+
+// Errors -7260 to -7267 (Codec decoding errors for values found in HTTP headers)
+RESOURCE TBUF r_http_error_decode_malformed_date { buf=STRING_r_http_error_decode_malformed_date; }
+RESOURCE TBUF r_http_error_decode_malformed_year { buf=STRING_r_http_error_decode_malformed_year; }
+RESOURCE TBUF r_http_error_decode_malformed_month { buf=STRING_r_http_error_decode_malformed_month; }
+RESOURCE TBUF r_http_error_decode_malformed_day { buf=STRING_r_http_error_decode_malformed_day; }
+RESOURCE TBUF r_http_error_decode_malformed_wkday { buf=STRING_r_http_error_decode_malformed_wkday; }
+RESOURCE TBUF r_http_error_decode_malformed_weekday { buf=STRING_r_http_error_decode_malformed_weekday; }
+RESOURCE TBUF r_http_error_decode_malformed_integer { buf=STRING_r_http_error_decode_malformed_integer; }
+RESOURCE TBUF r_http_error_decode_malformed_quotedstr { buf=STRING_r_http_error_decode_malformed_quotedstr; }
+
+
+
+// Errors -7270 to -7279 (Codec decoding errors for HTTP headers)
+RESOURCE TBUF r_http_error_decode_accept{ buf=STRING_No_Label2; }
+RESOURCE TBUF r_http_error_decode_connection{ buf=STRING_No_Label3; }
+RESOURCE TBUF r_http_error_decode_content_length { buf=STRING_r_http_error_decode_content_length; }
+RESOURCE TBUF r_http_error_decode_content_type { buf=STRING_r_http_error_decode_content_type; }
+RESOURCE TBUF r_http_error_decode_transfer_encoding { buf=STRING_r_http_error_decode_transfer_encoding; }
+RESOURCE TBUF r_http_error_decode_www_authenticate { buf=STRING_r_http_error_decode_www_authenticate; }
+RESOURCE TBUF r_http_error_decode_unknown_auth_scheme { buf=STRING_r_http_error_decode_unknown_auth_scheme; }
+RESOURCE TBUF r_http_error_decode_basic_auth { buf=STRING_r_http_error_decode_basic_auth; }
+RESOURCE TBUF r_http_error_decode_digest_auth { buf=STRING_r_http_error_decode_digest_auth; }
+RESOURCE TBUF r_http_error_decode_cookie { buf=STRING_r_http_error_decode_cookie; }
+
+
+
+// Errors -7300 to -7304 (Response errors. These represent specific failure cases)
+RESOURCE TBUF r_http_error_redirect_exceeded_limit { buf=STRING_r_http_error_redirect_exceeded_limit; }
+RESOURCE TBUF r_http_error_redirect_use_proxy { buf=STRING_r_http_error_redirect_use_proxy; }
+RESOURCE TBUF r_http_error_redirect_no_location_field { buf=STRING_r_http_error_redirect_no_location_field; }
+RESOURCE TBUF r_http_error_unknown_parse_state { buf=STRING_r_http_error_unknown_parse_state; }
+
+
+
+// Errors -7330 to -7334 (Request building errors: cause the Validation Filter to make a transaction fail and terminate)
+RESOURCE TBUF r_http_error_request_has_body { buf=STRING_r_http_error_request_has_body; }
+RESOURCE TBUF r_http_error_request_body_missing { buf=STRING_r_http_error_request_body_missing; }
+RESOURCE TBUF r_http_error_trace_req_without_max_forward_header { buf=STRING_r_http_error_trace_req_without_max_forward_header; }
+RESOURCE TBUF r_http_error_post_req_body_without_size_on_http10 { buf=STRING_r_http_error_post_req_body_without_size_on_http10; }
+RESOURCE TBUF r_http_error_invalid_header_in_request { buf=STRING_r_http_error_invalid_header_in_request; }
+
+
+
+// Errors -7360 to -7361 (Request building errors: Missing but required header errors)
+RESOURCE TBUF r_http_error_entity_header_missing_content_type { buf=STRING_r_http_error_entity_header_missing_content_type; }
+RESOURCE TBUF r_http_error_general_header_missing_host { buf=STRING_r_http_error_general_header_missing_host; }
+
+
+
+// Errors -7370 to -7371 (Protocol Handler Errors)
+RESOURCE TBUF r_http_error_cant_reset_request_body { buf=STRING_r_http_error_cant_reset_request_body; }
+RESOURCE TBUF r_http_error_transaction_not_initalised { buf=STRING_r_http_error_transaction_not_initalised; }
+

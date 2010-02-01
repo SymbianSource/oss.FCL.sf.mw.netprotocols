@@ -1,0 +1,20 @@
+
+Bookmarks Release 0.1 08-Feb-2005
+====================================
+Released into:	GT Mainline 03482
+Built against:  GT Mainline 03474 (WINS, WINSCW, ARMv5 and ARM4)
+Released By:	Charles Myers
+Changelist:	????? pending(500763)
+
+
+Summary:
+========
+
+First release to the Mainline of the Bookmarks component.  This component provides a global store for bookmark information. It is tended to be shared by browsing and messaging applications and services and also used by device management.
+
+Also contains support for file URIs.
+
+Includes:
+PREQ 171 Remote Management of  File Uris and Bookmarks
+NC-5005
+

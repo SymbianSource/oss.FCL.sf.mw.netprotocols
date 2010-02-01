@@ -1,0 +1,159 @@
+-----------------
+ 01-Jun-2000 TPK
+-----------------
+ Description: Error fix - EDNTKYN-4KVDZ9
+ Corrected streaming errors on bytelist and converter.
+-----------------
+ Affected files:
+ WbConverter.cpp
+ Bytelist.cpp
+
+-----------------
+ 01-Jun-2000 TPK
+-----------------
+ Description: Error fix - EDNSOVL-4KUJUH
+ Corrected converter to handle string table length correctly.
+-----------------
+ Affected files:
+ WbConverter.cpp
+ WbConverter.h
+
+-----------------
+ 26-May-2000 TPK
+-----------------
+ Description: Error fix - EDNDCUO-4KDDYV
+ Properly removed the unnecessary code.
+-----------------
+ Affected files:
+ WbConverter.cpp
+
+-----------------
+ 22-May-2000 TPK
+-----------------
+ Description: Error fix - EDNTKYN-4KGC9Q
+ Added recognition of variables encoded as references to string table.
+-----------------
+ Affected files:
+ WbConverter.cpp
+
+-----------------
+ 17-May-2000 TPK
+-----------------
+ Description: Error fix - ?
+ Modified ouput from internal string or string table to be passed through TUin32 Ouput
+ routine, character by character. This way we get "correct" interpretation of
+ the character entities.
+-----------------
+ Affected files:
+ WbConverter.cpp
+
+==================================================
+ WBXMLLIB DELIVERY for SYMBIAN WAP RELEASE 031 / Tomi Kyllönen
+-------------
+ 17/05/2000
+-------------
+ Build against OAK 46
+==================================================
+
+-----------------
+ 15-May-2000 TPK
+-----------------
+ Description: Error fix - EDNUSHH-4JKC43
+ Removed pragmas, reported errors
+-----------------
+ Affected files:
+ WbConverter.cpp
+
+-----------------
+ 10-May-2000 TPK
+-----------------
+ Description: Defect fix EDNTKYN-4JXQPU
+ Corrected memory leaks.
+-----------------
+ Affected files:
+ WbConverter.cpp
+
+==================================================
+ WBXMLLIB DELIVERY for SYMBIAN WAP RELEASE 028 / Tomi Kyllönen
+-------------
+ 01/05/2000
+-------------
+  Build against OAK 44
+==================================================
+
+-----------------
+ 01-May-2000 TPK
+-----------------
+ Description: Improvement
+ Integrated changes from Jouni, which include enhanced error handling and BC-proofing.
+ Constructor changed to accept Fs as parameter.
+-----------------
+
+==================================================
+ WAPAPP RELEASE 019 / Ari Vikstrom
+-------------
+ 24/03/2000
+-------------
+  Build against OAK 38
+==================================================
+
+==================================================
+ WAPAPP RELEASE 018 / Ari Vikstrom
+-------------
+ 10/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+6 March 2000 JOM in COAK36
+- Output from internal stringtable ok
+- Output from streamed inline data ok
+
+==================================================
+ WAPAPP RELEASE 017 / Erkki Kemilä
+-------------
+ 03/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+3 March 2000 JOM in COAK36
+- Converter token file in C:\system\data\plugins (exported in bld.inf)
+
+==================================================
+ WAPAPP RELEASE 016 / Erkki Kemilä
+-------------
+ 22/02/2000
+-------------
+  Build against OAK 34
+==================================================
+
+==================================================
+ WAPAPP RELEASE 015 / Ari Vikstrom
+-------------
+ 10/02/2000
+-------------
+  Build against OAK 32
+==================================================
+
+==================================================
+ WAPAPP RELEASE 014 / Erkki Kemilä
+-------------
+ 26/01/2000
+-------------
+  Build against OAK 30
+==================================================
+
+14 Jan 2000 EJK in OAK30
+
+29 Dec 1999 JOM in OAK24
+- First release, not in use
+- Compiled wins udeb, armi urel, thumb urel
+- Seems to be functional (with Test Harness :)
+- TODO: what to do with Charset
+- TODO: output from stringtable in one buffer
+- TODO: default Public Id and token tables (unexpected special case)
+- TODO: Public Id in stringtable (unexpected special case)
+
+18 Nov 1999 JOM in OAK22
+- Created

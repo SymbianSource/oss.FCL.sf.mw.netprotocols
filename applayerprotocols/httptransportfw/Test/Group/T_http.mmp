@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+TARGET		t_http.exe
+TARGETTYPE	exe
+CAPABILITY TrustedUI ProtServ NetworkServices WriteDeviceData NetworkControl
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION 
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE /epoc32/include/ecom
+SYSTEMINCLUDE /epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+USERINCLUDE 	../Acceptance
+USERINCLUDE	../Acceptance/Iter1 
+USERINCLUDE	../Acceptance/Iter2 
+USERINCLUDE	../Acceptance/Iter3
+USERINCLUDE	../Acceptance/Iter5
+USERINCLUDE	../t_utils
+USERINCLUDE	../../inc
+USERINCLUDE ../../inc/framework
+SOURCEPATH 	../Acceptance
+SOURCE		T_Http.cpp	CHttpAcceptTestBase.cpp CHttpTestChunkedBase.cpp
+
+SOURCEPATH 	../Acceptance/Iter1 
+SOURCE		Tc1.cpp Tc2.cpp  Tc4.cpp Tc5.cpp Tc6.cpp Tc7.cpp Tc8.cpp Tc9.cpp 
+SOURCE		Tc10.cpp Tc11.cpp Tc12.cpp 
+SOURCEPATH 	../Acceptance/Iter2 
+SOURCE		get12.cpp get13.cpp get14.cpp Get17.cpp Get18.cpp get21.cpp
+SOURCE		post12.cpp post13.cpp post14.cpp post23.cpp
+SOURCE		SingleTrans.cpp multitrans.cpp trans.cpp
+SOURCE		WspTestTransactions.cpp EofTransactionResubmission.cpp
+SOURCE		3BasicAuthTransactions.cpp 3DigestAuthTransactions.cpp
+SOURCEPATH 	../Acceptance/Iter3
+SOURCE		Iter3Post6.cpp Iter3Post7.cpp
+SOURCEPATH  ../Acceptance/Iter5
+SOURCE		Iter5Chunked1.cpp Iter5Chunked2.cpp
+
+LIBRARY		euser.lib http.lib httptestutils.lib inetprotutil.lib bafl.lib esock.lib ecom.lib
+LIBRARY		efsrv.lib commdb.lib commsdat.lib
+
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are 0x102729D2 to 0x10272A35.  The UID name is KUidIWSTestSuit.
+UID 0x1000007A 0x102729D2
+SMPSAFE

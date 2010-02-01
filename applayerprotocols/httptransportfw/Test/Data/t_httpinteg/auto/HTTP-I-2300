@@ -1,0 +1,85 @@
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2300 Basic Methods using Transport framework (HTTP) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP 2300_H_CON_01
+
+TRANSACTION 2300_T_01 2300_H_CON_01 GET $wapTestURL$
+TRANSACTION 2300_T_02 2300_H_CON_01 POST $dfURL$ $dfFile$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for a set number of seconds to allow for data 
+// transfer to completed i.e. the default is 40 for NTRas 
+// otherwise the first arguemnt is used, 200 is recommended  
+//---------------------------------------------------------
+
+hold 40 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $2300_T_01LastEvent$ == $Succeeded$
+
+   IF $2300_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2300 GET $wapTestURL$ Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2300 GET $wapTestURL$ Failed, HTTP Status $2300_T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2300 GET $wapTestURL$ Failed, last event $2300_T_01LastEvent$ 
+ENDIF
+
+endtrans 2300_T_01 
+
+IF $2300_T_02LastEvent$ == $Succeeded$
+
+   IF $2300_T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2300 POST $dfURL$ Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2300 POST $dfURL$ Failed, HTTP Status $2300_T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2300 POST $dfURL$ Failed, last event $2300_T_02LastEvent$  
+ENDIF
+
+endtrans 2300_T_02 
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2300_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2300

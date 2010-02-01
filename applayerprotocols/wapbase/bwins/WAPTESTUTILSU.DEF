@@ -1,0 +1,15 @@
+EXPORTS
+	??RCWapTestHarness@@QAEXH@Z @ 1 NONAME ; public: void __thiscall CWapTestHarness::operator()(int)
+	??RCWapTestHarness@@QAEXHH@Z @ 2 NONAME ; public: void __thiscall CWapTestHarness::operator()(int,int)
+	?EndTest@CWapTestHarness@@QAEXH@Z @ 3 NONAME ; public: void __thiscall CWapTestHarness::EndTest(int)
+	?LogIt@CWapTestHarness@@QAAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 4 NONAME ; public: void __cdecl CWapTestHarness::LogIt(class TRefByValue<class TDesC16 const >,...)
+	?NewL@CWapTestHarness@@SAPAV1@ABVTDesC16@@@Z @ 5 NONAME ; public: static class CWapTestHarness * __cdecl CWapTestHarness::NewL(class TDesC16 const &)
+	?NewLC@CWapTestHarness@@SAPAV1@ABVTDesC16@@@Z @ 6 NONAME ; public: static class CWapTestHarness * __cdecl CWapTestHarness::NewLC(class TDesC16 const &)
+	?StartTestL@CWapTestHarness@@QAEXABVTDesC16@@@Z @ 7 NONAME ; public: void __thiscall CWapTestHarness::StartTestL(class TDesC16 const &)
+	?DumpData@CWapTestHarness@@QAEXAAVHBufC8@@H@Z @ 8 NONAME ; public: void __thiscall CWapTestHarness::DumpData(class HBufC8 &,int)
+	?GetAnEntry@CWapTestHarness@@QAEXABVTDesC16@@AAVTDes16@@@Z @ 9 NONAME ; public: void __thiscall CWapTestHarness::GetAnEntry(class TDesC16 const &,class TDes16 &)
+	?NextStep@CWapTestHarness@@QAEXABVTDesC16@@@Z @ 10 NONAME ; public: void __thiscall CWapTestHarness::NextStep(class TDesC16 const &)
+	?PressAnyKey@CWapTestHarness@@QAEXXZ @ 11 NONAME ; public: void __thiscall CWapTestHarness::PressAnyKey(void)
+	?GetSelection@CWapTestHarness@@QAEHABVTDesC16@@0@Z @ 12 NONAME ; public: int __thiscall CWapTestHarness::GetSelection(class TDesC16 const &,class TDesC16 const &)
+	?SetScript@CWapTestHarness@@QAEXAAVRFile@@@Z @ 13 NONAME ; public: void __thiscall CWapTestHarness::SetScript(class RFile &)
+

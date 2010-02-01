@@ -1,0 +1,45 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  IOP filter
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          httpfilterIop.dll
+TARGETTYPE      PLUGIN
+
+UID	0x10009D8D 	0x101F8592
+VENDORID        VID_DEFAULT
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+USERINCLUDE     ../Inc
+USERINCLUDE     ../../HttpFilterCommon/inc
+
+MW_LAYER_SYSTEMINCLUDE 
+
+SOURCEPATH      ../Src
+
+SOURCE	httpFilterIop.cpp
+SOURCE	HttpFilterIopMain.cpp
+
+SOURCEPATH      ../Data
+
+START RESOURCE 101F8592.rss
+TARGET      httpfilterIop.rsc
+END
+
+LIBRARY HttpFilterCommon.lib http.lib euser.lib bafl.lib ecom.lib INETPROTUTIL.lib

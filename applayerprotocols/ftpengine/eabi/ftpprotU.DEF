@@ -1,0 +1,6 @@
+EXPORTS
+	_ZN12CFtpProtocol10GetVersionEv @ 1 NONAME ; CFtpProtocol::GetVersion(void)
+	_ZN12CFtpProtocol4NewLEP20MFtpProtocolNotifier @ 2 NONAME ; CFtpProtocol::NewL(MFtpProtocolNotifier*)
+	_ZTI12CFtpProtocol @ 3 NONAME ; #<TI>#
+	_ZTV12CFtpProtocol @ 4 NONAME ; #<VT>#
+

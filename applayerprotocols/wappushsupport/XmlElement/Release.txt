@@ -1,0 +1,104 @@
+==================================================
+ XMLELEMENT DELIVERY for SYMBIAN WAP RELEASE 031 / Tomi Kyllönen
+-------------
+ 17/05/2000
+-------------
+  Build against OAK 46
+==================================================
+
+-----------------
+ 15-May-2000 TPK
+-----------------
+ Description: Improvement with defect fix - EDNUSHH-4JKC43
+ Removed build warnings and did some cleanup.
+-----------------
+ Affected files:
+ XmlElement.cpp
+ XmlElement.h
+
+==================================================
+ WAPAPP RELEASE 020 / Ari Vikstrom
+-------------
+ 03/04/2000
+-------------
+  Build against OAK 40
+==================================================
+
+==================================================
+ WAPAPP RELEASE 019 / Ari Vikstrom
+-------------
+ 24/03/2000
+-------------
+  Build against OAK 38
+==================================================
+
+==================================================
+ WAPAPP RELEASE 018 / Ari Vikstrom
+-------------
+ 10/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+==================================================
+ WAPAPP RELEASE 017 / Erkki Kemilä
+-------------
+ 03/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+-----------------
+ 21-Feb-2000 TPK
+-----------------
+- Added ChildIndex method.
+- More changes are due for the XmlElement class, since the tree dumping code will
+  be removed from here to Xml/Wmllib.
+
+==================================================
+ WAPAPP RELEASE 015 / Ari Vikstrom
+-------------
+ 10/02/2000
+-------------
+  Build against OAK 32
+==================================================
+
+==================================================
+ WAPAPP RELEASE 014 / Erkki Kemilä
+-------------
+ 26/01/2000
+-------------
+  Build against OAK 30
+==================================================
+
+==================================================
+ WAPAPP RELEASE 013 / Erkki Kemilä
+-------------
+ 14/01/2000
+-------------
+  Build against OAK 30
+==================================================
+
+
+==================================================
+ WAPAPP RELEASE 012 / Ari Vikström
+-------------
+ 22/12/1999
+-------------
+  Build against OAK 24
+==================================================
+
+Changes made by: GAF
+xmlelement.cpp	CXmlElement	DataItem				Changed
+
+==================================================
+ WAPAPP RELEASE 011 / Ari Vikström
+-------------
+ 01/12/1999
+-------------
+  Build against OAK 24
+==================================================
+18 Nov 1999 JOM in OAK22
+- Moved project from WapPlugins into WapBase
+29 Nov 1999 JOM in OAK24
+- Moved from WapBase to WapPlugins

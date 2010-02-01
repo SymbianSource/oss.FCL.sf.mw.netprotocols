@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="HTTP Transport Framework">
+  <purpose>
+    Framework enabling clients to establish a transport session for HTTP like protocols, provides core APIs for Transport Sessions, Transactions, and Messages
+  </purpose>
+ 
+ <defect number="PDEF127685" title="SEV1 > 50474 - GSM/WCDMA - OTC - Cannot establish Java HTTP connection" revision="058">
+    GetRawField() API modified to support multiline header values for custom header fields.
+ </defect>
+
+ <defect number="PDEF126952  " title="Timeout for a abnormal TCP disconnect in HTTP " revision="057">
+    A timer is incorporated which generates timeout event if the data is not sent or received within the specified time.
+ </defect>
+  
+ <defect number="DEF122664" title="Unable to retrieve max age value" revision="056">
+   CHttpGeneralHeaderReader::DecodeCacheControlL() is modified to check for '=' character and retrieve the max age value properly.
+ </defect>
+
+ <defect number="DEF122777" title="Fuzzed HTTP header coming from a http server causes the client http.dll panic" revision="055">
+     CHttpResponseParser::StartLineL() API is modified to handle the malformed start line in http response properly.
+ </defect>
+
+ <defect number="DEF122222" title="F/W crashes with malformed start line in the response" revision="054">
+     CHttpResponseParser::StartLineL() API is modified to handle the malformed start line in http response properly.
+ </defect>
+
+ <defect number="PDEF122357" title="LIBpp00742 - VF_IT_IOT: crash detected trying to download wrong DD file" revision="053">
+     Checking the transaction is still valid or not  when returning from the callback. 
+ </defect>
+
+ <defect number="PDEF120096" title="HTTP 100 (Continue) responses are not propagated to the client" revision="052">
+     In order to receive a 100-Continue response from the server. The client has to explicitly set the "Expect" request header with the "100-Continue". 
+ </defect>
+
+ <defect number="PDEF118044" title="SDK API RHTTPHeaders::GetRawField() is not working as it should be" revision="051">
+     Since the GetRawField() API returns just the 1st part value for the headers whose field parts are separated by the newline character, the documentations has been updated appropriately.  
+  </defect>
+ 
+  <defect number="PDEF116857" title="CHttpClientHeaderReader::DecodeWWWAuthenticateL does not handle NTLM " revision="050">
+	Aany value that follows the NTLM scheme should be considered as the next part. RHTTPHeaders::GetField() can be used to retrieve the base64 encoded string.
+  </defect>
+
+  <defect number="PDEF116497" title="RemoteSync: Internet account 'Preferred' in profile does not use" revision="049">
+    The variable 'serviceId' was declared and initialized but never used. Added the line "primingProxyRecord->iService = serviceId;" to narrow down the search result to max 1 proxy
+  </defect>
+
+  <defect number="PDEF115320" title="OSEV-PPD5132-PROGRESSIVE_DOWNLOAD-H3G: file with invalid header cannot play" revision="048">
+     If the content-length header has no value , it will not call ExtractIntegerValueL() method to extract integer and will directly pass the value of number which is KErrNotFound so that EUnknown switch case is called and parses the body data.
+  </defect>
+  
+  <defect number="DEF113796" title="Filename Policy non-conformance generates build warnings" revision="047">
+       The directory name in the path /framework/group/bld.inf are modified as specified in Filename policy.
+  </defect>
+  
+  <defect number="PDEF113076" title="Exported headers missing interface management tags in application-protocols_http" revision="046">
+    The missing interface management tags were added to the exported header file (http.h).  
+  </defect>
+
+  <defect number="PDEF112527" title="OA_W950i_3_IT : Issue : # 92923 : Problem in JTWI connection" revision="045">
+    New test INC110203 has been added to t_httponline.This test sends a HTTP GET request with the Content-Type header. 
+  </defect>
+
+  <preq number="1805" title="HTTP Whole Message Filter" revision="044">
+    The existing Symbian OS HTTP Transport Framework has been extended by the introduction of new APIs to allow a filter to be inserted into the HTTP session or individual transaction after the complete message has been formed but before it is dispatched. The filter will also operate on incoming HTTP messages before any other parsing of the message takes place.
+  </preq>
+
+  <cr number="1130" title="Make HTTP receive data buffer size a session variable" revision="043">
+    The HTTP stack receive data buffer size shall be changed from a constant to a variable which can be set at the start of the HTTP session.
+  </cr>
+
+  <defect number="PDEF109796" title="The digest authentication does not work on www.sharemation.com " revision="042">
+    Modifying the value of the string constant in the string table will be a safe fix for this defect.
+  </defect>
+
+  <defect number="DEF109550" title="Filename Case Check errors" revision="041">
+    Filenames in the path framework/Test/T_HttpOnline are modified as specified in Filename policy.
+  </defect>
+
+  <defect number="PDEF102806" title="Renegotiation of TCP link in response to HTTP/1.1 302 when proxy is in use" revision="040">
+    Symbian HTTP stack must not teardown the TCP connection, When a proxy is in use, and the header "Proxy-Connection: keep-alive" has been returned.
+  </defect>
+
+  <preq number="775" title="Alignment of CBR and System Model components" revision="039">
+    The directory stucture of HTTP framework has been modified.
+  </preq>
+
+  <defect number="PDEF106803" title="DownloadMgrServer crash when downloading large files" revision="038">
+    Support in HTTP framework to provide disconnect notification to the application.
+  </defect>
+
+  <defect number="PDEF103219" title="OSS Browser on S60 3.1 (&amp; 3.0): whitespace (%20) character in link is interprete" revision="037">
+    Removed two exported APIs ,EscapeEncodePathLC and EscapeEncodeQueryLC ,and made changes in one exported API ,EscapeEncodeUriL to eliminate the reescaping.
+  </defect>
+
+  <defect number="PDEF106097" title="HTTPPipeliningTest, test 23 fails." revision="036">
+    Fixed issues with HTTPPipeliningTest Pipelining23.
+  </defect>
+
+  <defect number="DEF105292" title="HTTP Pipelining test is failing" revision="035">
+    Increased the time out in HTTPPipeliningTest.script which avoided the abortion of HTTPPipeliningTest.
+  </defect>
+
+  <defect number="PDEF102806" title="Renegotiation of TCP link in response to HTTP/1.1 302 when proxy is in use" revision="034">
+    The TCP connection, which was previously being closed when a redirection to a location within the same host occurred, does not happen anymore.
+  </defect>
+
+  <defect number="PDEF105304" title="RHTTPFilterCollection::AddFilterL can produce a resource leak under OOM" revision="033">
+    Fixed memory leak produced by RHTTPFilterCollection::AddFilterL() under OOM condition.
+  </defect>
+
+  <defect number="DEF105591" title="PREQ1182 submission has caused build failure" revision="032">
+    Resolved build failures.
+  </defect>
+
+  <preq number="1182" title="GNU Make-based build system" revision="031">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations
+  </preq>
+
+  <ec number="067" title="Performance test for HTTP Transport Framework" revision="030">
+    Included performance test for HTTP Transport Framework.
+  </ec>
+
+  <minorchange revision="029">
+    Replaced obsolete web link "www.watford.co.uk" with "www.guardian.co.uk" in sites.ini
+  </minorchange>
+
+  <minorchange revision="028">
+    Though the connection count is 1 in the Pipelining.ini file, when the error is KErrDisconnected, the Transport Framework tries to reconnect to the server thrice. This is as part of the fix for INC099971. The test in the ini file had to be modified to support this change.
+  </minorchange>
+
+  <defect number="PDEF103219" title="OSS Browser on S60 3.1 (&amp; 3.0): whitespace (%20) character in link is interprete" revision="027">
+    The HTTP stack is not % encoding the Redirect URL. The solution is to % encode the redirected URL before submision.
+  </defect>
+
+  <defect number="PDEF102538" title="Malformed packets are not handled by the http framework" revision="026">
+    When the server connection timeouts, Message response parser reports KErrHttpNonPipeliningError for serving pending reponses(if any)
+  </defect>
+
+  <defect number="PDEF103161" title="Syncml framework - http connection is not set up correctly when using default..." revision="025">
+    Added new exported API, RHTTPSession::SetupDefaultProxyFromCommsDatL(), which sets default proxy for current HTTP session.
+  </defect>
+
+  <milestone project="GT0295" number="3.4" revision="024"/>
+
+  <defect number="INC100037" title="In HTTP core framework, debug logging assumes that HTTP method can be max. 8 cha" revision="023">
+    There is code a in HTTP core that assumes that HTTP methods are maximum of 8 characters which is hard coded. This assumption has been removed.
+  </defect>
+
+  <defect number="INC099650" title="Include hierarchy error in /EPOC32/include/http/cauthenticationfilterinterface.h" revision="022">
+    Modified CAuthenticationFilterInterface.h to include &lt;ecom/ecom.h&gt; instead of &lt;ecom.h&gt; to resolve error in include hierarchy.
+  </defect>
+
+  <defect number="DEF086741" title="OOM test code for HTTP needs to be added" revision="021">
+    Included out of memory conditions in t_http test harness.
+  </defect>
+
+  <defect number="DEF100013" title="Adding Test Cases to Improve Conditioncal Coverage of HttpTransport Handler" revision="020">
+    Adding test code to improve HttpTransportHandler conditional coverage
+  </defect>
+
+  <defect number="DEF099988" title="Adding Negative Test Code for testing CSocketWriter and Secure connections" revision="019">
+    Adding Negative test code to increase conditional coverage in SocketWriter and SecureSocketConnector of HttpTransportHandler
+  </defect>
+
+  <defect number="DEF099770" title="Adding Negative Test Code for testing CSocketReader and CSocketListener" revision="018">
+    Added negative test cases for increasing conditional coverage of Socket Reader and Socket Listener of HttpTransportHandler.
+  </defect>
+
+  <defect number="DEF099145" title="T_httptransporthandler results vary for debug and release modes" revision="017">
+    Test harness T_HttpTransportHandler was modified to execute 9 tests instead of 8 in the release mode.
+  </defect>
+
+  <defect number="DEF097069" title="t_http and t_HttpTransportHandler tests failed on hardware" revision="016">
+    t_http and t_HttpTransportHandler tests failed because external test server was changed from non-secure to secure. Fixed by using a new external server.
+  </defect>
+
+  <defect number="PDEF097067" title="Downloading 6 files to the secure downloads simultaneously crashes the.." revision="015">
+    The CHttpResponseParser::ReleaseData() now only removes the first body chunk if it has more than one. This fixes a panic when downloading multiple files.
+  </defect>
+
+  <defect number="DEF094978" title="Bad dependency on messaging" revision="014">
+    Replaced base64 dependency on messaging (imut.dll) with functions in inetprotutil
+  </defect>
+
+  <defect number="DEF093712" title="SSL certificates have expired" revision="013">
+    SSL certificates have expired
+  </defect>
+
+  <defect number="DEF093413" title="Bad distribution.policy file Schedule 12 category" revision="012">
+    Modified bad distribution.policy files
+  </defect>
+
+  <defect number="DEF092726" title="Resource leak in stringpool implementation in CHTTPSession." revision="011">
+    Resource leak in stringpool implementation in CHTTPSession.
+  </defect>
+
+  <defect number="DEF092724" title="TFCoreF: 2 panic in core filters with OOM test" revision="010">
+    TFCoreF: 2 panic in core filters with OOM test
+  </defect>
+
+  <defect number="DEF092723" title="USER : 0 panic in httpclienthandler with OOM test" revision="009">
+    USER : 0 panic in httpclienthandler with OOM test
+  </defect>
+
+  <defect number="DEF092145" title="Tag Scan Error in http Subsystem" revision="008">
+    Unidentified tags removed
+  </defect>
+
+  <minorchange revision="007">
+    RHTTPSession::OpenL fn no longer leaves when failing to create an optional filter (-4)
+  </minorchange>
+
+  <defect number="DEF091123" title="TF is not able parse an Upgrade header with comma separated list of values." revision="006">
+    The TF is now able to parse the Upgrade header with a comma separated list of values
+  </defect>
+
+  <defect number="PDEF080697" title="Cookies: When sending a request to an origin server, Browser is not sending the" revision="005">
+    Now browser is able to send the port attribute of the Cookie request
+  </defect>
+
+  <defect number="PDEF081270" title="HTTP authentication is not leave safe, leaks memory" revision="004">
+    Memory was leaking when leaving from the GetCredentialsL() callback. Is solved in this fix.
+  </defect>
+
+  <minorchange revision="003">
+    Fixed problems caused when trying to log on to www.kauppalehti.fi.
+  </minorchange>
+
+  <minorchange revision="002">
+    Fix for a bug where quotes were mistakenly included around the following keys in the Authorization header: Nc, Uri, Algorithm, and Stale
+  </minorchange>
+
+  <minorchange revision="001">
+    Able to send HTTP Post with msg body length= 0 with no Content-Type HTTP header.
+  </minorchange>
+</relnotes>

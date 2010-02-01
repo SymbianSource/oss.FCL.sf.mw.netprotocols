@@ -1,0 +1,65 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// httptransporthandler.dll HTTP Transport Handler
+// 
+//
+
+/**
+ @file
+*/
+
+
+
+TARGET httptransporthandler.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+// speed optimisations 
+ #ifdef MARM_ARMV5
+ OPTION ARMCC -O3 -Otime 
+ #endif
+
+// UIDs - 2nd UID => ECOM implementation, 3rd UID => HttpTransportHandler.dll
+UID				0x10009D8D 	0x101F55EE
+VENDORID 0x70000001
+
+DOCUMENT		../httptransporthandler/httptransporthandlersource.mmpi
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE		../httptransporthandler
+USERINCLUDE             ../../../applayerprotocols/httptransportfw/inc
+
+
+
+SOURCEPATH		../httptransporthandler
+
+SOURCE			httptransporthandler.cpp 
+#include		"../httptransporthandler/httptransporthandlersource.mmpi"
+
+
+start resource 101f55ee.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET httptransporthandler.rsc
+#endif
+end
+
+// Get GDB symbols included?
+SRCDBG
+
+EPOCHEAPSIZE	0x4000 0x1200000
+
+LIBRARY			euser.lib ecom.lib esock.lib insock.lib inetprotutil.lib
+DEBUGLIBRARY	efsrv.lib flogger.lib
+SMPSAFE

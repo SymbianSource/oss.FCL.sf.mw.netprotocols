@@ -1,0 +1,59 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 
+//
+
+/**
+ @file
+*/
+
+PRJ_MMPFILES
+httpservice.mmp
+
+PRJ_EXPORTS
+// specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in \epoc32\include
+
+// top-level includes
+../inc/mhttpcontentsource.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mhttpcontentsource.h)
+../inc/mhttpcontentsink.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mhttpcontentsink.h)
+../inc/httpheaderiter.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(httpheaderiter.h)
+../inc/chttpservice.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(chttpservice.h)
+../inc/thttpheadervaluevariant.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(thttpheadervaluevariant.h)
+../inc/chttpclienttransaction.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(chttpclienttransaction.h)
+../inc/httpservice.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(httpservice.h)
+
+
+// rom definition file
+httpservice.iby	/epoc32/rom/include/httpservice.iby
+../Test/Group/httpservicetest.iby	/epoc32/rom/include/httpservicetest.iby
+
+PRJ_TESTEXPORTS
+../Test/testdata/scripts/HTTPServiceAPITest.script		c:/testdata/scripts/httpserviceapitest.script
+../Test/testdata/ini/httpclient.ini 				c:/httptest/httpservicetest/httpclient.ini
+../Test/testdata/configs/ethernetced_httpserviceapi.xml 		c:/testdata/configs/ethernetced_httpserviceapi.xml
+../Test/testdata/scripts/HTTPServiceAPITest.script		z:/testdata/scripts/httpserviceapitest.script
+../Test/testdata/ini/httpclient.ini 				z:/httptest/httpservicetest/httpclient.ini
+../Test/testdata/configs/ethernetced_httpserviceapi.xml 		z:/testdata/configs/ethernetced_httpserviceapi.xml
+
+../Test/testdata/httpservicetest/testdl.txt 			c:/httptest/httpservicetest/testdl.txt
+../Test/testdata/httpservicetest/testdl2.txt 			c:/httptest/httpservicetest/testdl2.txt
+../Test/testdata/httpservicetest/testdl.txt 			z:/httptest/httpservicetest/testdl.txt
+../Test/testdata/httpservicetest/testdl2.txt 			z:/httptest/httpservicetest/testdl2.txt
+
+
+PRJ_TESTMMPFILES
+../test/group/httpservicetest.mmp

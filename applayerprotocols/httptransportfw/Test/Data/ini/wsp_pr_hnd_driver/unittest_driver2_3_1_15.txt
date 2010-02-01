@@ -1,0 +1,63 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.3.1.15
+## Driver chat script
+#
+# Test Synopsis
+# * Invoke GET method which is larger than the Server SDU size, by
+#   creating a URI of greater length that the Server SDU size 
+
+# Expected Result
+# * Expected result: Method not invoked
+
+
+SCRIPT UnitTestDriver2.3.1.15 
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Open a connection to the proxy, where the server SDU size is small (50 bytes)
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doconnect_accept_caps2_driver.txt"
+#
+# Open a GET transaction, where one header has a value 50 bytes long (guaranteed to blow the SDU)
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_get_largeheader_driver.txt"
+#
+# Expect the transaction to be aborted due to the server SDU size being exceeded
+#
+ 	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent -7384
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent 9
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

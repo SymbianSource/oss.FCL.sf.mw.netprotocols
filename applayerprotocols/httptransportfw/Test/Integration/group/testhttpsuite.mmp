@@ -1,0 +1,50 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//OPTION CW   -w off
+TARGET          testhttpsuite.exe 
+TARGETTYPE      EXE
+CAPABILITY ALL -TCB
+
+UID		0x1000007A 0x200214E9
+    
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE 	/epoc32/include /epoc32/include/test  /epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE /epoc32/include/platform/test
+SYSTEMINCLUDE /epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/ecom
+SYSTEMINCLUDE /epoc32/include/mw
+SYSTEMINCLUDE /epoc32/include/platform/mw
+#endif
+
+USERINCLUDE		../inc
+USERINCLUDE	../../t_utils
+
+SOURCEPATH		../src
+SOURCE			testhttpserver.cpp testhttpbasestep.cpp testhttpeboclientstep.cpp testhttpbuffersizestep.cpp testhttpeboclientconditionalstep.cpp testexplicitsessionstep.cpp testhttpfiltersuspendstep.cpp
+
+LIBRARY     	c32.lib euser.lib estor.lib efsrv.lib http.lib inetprotutil.lib bafl.lib ecom.lib crypto.lib esock.lib httputils.lib
+
+//For TEF
+LIBRARY		testexecuteutils.lib testexecutelogclient.lib httptestutils.lib
+
+
+
+
+
+
+SMPSAFE

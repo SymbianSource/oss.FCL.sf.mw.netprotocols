@@ -1,0 +1,59 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     Resource definition file.
+*
+*
+*/
+
+
+
+
+//  INCLUDES
+#include <ecom/RegistryInfo.rh>
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// ?resource_name
+// ?description
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	dll_uid = 0x101F9712;
+	interfaces=
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = 0x101F9714;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F9713;
+					version_no = 2;
+					display_name = "DeflateFilter";
+					default_data = "HTTP/+DEFLATE";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+
+// End of File

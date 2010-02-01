@@ -1,0 +1,153 @@
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2315 Other Methods using Transport framework (HTTP) over Specified bearer  
+
+//---------------------------------------------------------
+
+// Select the specified bearer 1 from the current commdb 
+
+DEFINE IAP 1 
+
+CONNECT HTTP 2315_H_CON_01
+
+TRANSACTION  2315_T_01 2315_H_CON_01 HEAD $wapTestURL$
+TRANSACTION  2315_T_02 2315_H_CON_01 PUT $PutURL$ $PutFile$
+TRANSACTION  2315_T_03 2315_H_CON_01 OPTIONS $wapTestURL$
+TRANSACTION  2315_T_04 2315_H_CON_01 TRACE $wapTestURL$
+    
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 80 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 80
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+// now do the delete, the Put should have completed 
+
+
+TRANSACTION  2315_T_05 2315_H_CON_01 DELETE $PutURL$ 
+
+hold 80 
+
+// wait for delete to complete 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $2315_T_01LastEvent$ == $Succeeded$
+
+   IF $2315_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2315 HEAD Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2315 HEAD Failed, HTTP Status $2315_T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2315 HEAD Failed, last event $2315_T_01LastEvent$ 
+ENDIF
+
+endtrans 2315_T_01 
+
+IF $2315_T_02LastEvent$ == $Succeeded$
+
+   IF $2315_T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2315 PUT Passed
+   ELSE 
+      PRINT Result: HTTP-I-2315 PUT Failed, HTTP Status $2315_T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2315 PUT Failed, last event $2315_T_02LastEvent$  
+ENDIF
+
+endtrans 2315_T_02 
+
+IF $2315_T_03LastEvent$ == $Succeeded$
+
+   IF $2315_T_03HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2315 OPTIONS Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2315 OPTIONS Failed, HTTP Status $2315_T_03HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2315 OPTIONS Failed, last event $2315_T_03LastEvent$    
+ENDIF
+
+endtrans 2315_T_03
+
+IF $2315_T_04LastEvent$ == $Succeeded$
+
+   IF $2315_T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2315 TRACE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2315 TRACE Failed, HTTP Status $2315_T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2315 TRACE Failed, last event $2315_T_04LastEvent$    
+ENDIF
+
+endtrans 2315_T_04
+
+IF $2315_T_05LastEvent$ == $Succeeded$
+
+   IF $2315_T_05HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2315 DELETE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2315 DELETE Failed, HTTP Status $2315_T_05HttpStatus$   
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2315 DELETE Failed, last event $2315_T_05LastEvent$   
+ENDIF
+
+endtrans 2315_T_05
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2315_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2315

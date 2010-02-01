@@ -1,0 +1,67 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET wspprotocolhandler.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+// UIDs - 2nd UID => CProtocolHandler, 3rd UID => CWspProtocolHandler
+UID					0x10009D8D 	0x101F4489
+VENDORID 0x70000001
+	
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION	
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE	/epoc32/include/platform
+#endif
+USERINCLUDE			../. ../inc ../inc/Wsp ../../../applayerprotocols/httptransportfw/core ../WspProtocolHandler
+USERINCLUDE			../WspHeaderCodec
+USERINCLUDE			../../../applayerprotocols/httptransportfw/inc/framework
+
+SOURCEPATH			../WspProtocolHandler
+
+SOURCE				WspProtocolHandlerMain.cpp 
+#include			"../WspProtocolHandler/WspProtocolHandlerSource.mmpi"
+
+
+start resource 101f4489.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET wspprotocolhandler.rsc
+#endif
+//HEADER - not needed
+END
+
+SOURCEPATH			../WspHeaderCodec
+#include			"../WspHeaderCodec/WspHeaderCodec.mmpi"
+
+SOURCEPATH			+/build/generated/http
+SOURCE			WspParamConstants.cpp WspContentTypes.cpp WspRegContentTypes.cpp WspCharacterSets.cpp
+SOURCE			WspStdConstants.cpp WspLanguages.cpp WspTypeConstants.cpp WspStringConstants.cpp
+
+// Get GDB symbols included?
+SRCDBG
+
+LIBRARY				EUSER.LIB INETPROTUTIL.LIB BAFL.LIB HTTP.LIB ECOM.LIB COMMDB.LIB
+
+SOURCEPATH 		../group
+START RESOURCE	WspErr.rss
+LANG			01
+END
+
+SMPSAFE

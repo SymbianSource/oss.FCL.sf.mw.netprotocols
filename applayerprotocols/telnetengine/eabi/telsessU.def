@@ -1,0 +1,18 @@
+EXPORTS
+	_ZN14CTelnetSession5WriteERK6TDesC8 @ 1 NONAME ; CTelnetSession::Write(TDesC8 const&)
+	_ZN14CTelnetSession7ConnectERK7TDesC16j @ 2 NONAME ; CTelnetSession::Connect(TDesC16 const&, unsigned int)
+	_ZN14CTelnetSession7ConnectERK9TInetAddr @ 3 NONAME ; CTelnetSession::Connect(TInetAddr const&)
+	_ZN14CTelnetSession7ConnectERK9TInetAddrj @ 4 NONAME ; CTelnetSession::Connect(TInetAddr const&, unsigned int)
+	_ZN14CTelnetSession10ConstructLERK13TTelnetConfigPK19MTelnetNotification @ 5 NONAME ; CTelnetSession::ConstructL(TTelnetConfig const&, MTelnetNotification const*)
+	_ZN14CTelnetSession10DisconnectEv @ 6 NONAME ; CTelnetSession::Disconnect(void)
+	_ZN14CTelnetSession13DoForceLogoutEv @ 7 NONAME ; CTelnetSession::DoForceLogout(void)
+	_ZN14CTelnetSession14DoModifyConfigER13TTelnetConfig @ 8 NONAME ; CTelnetSession::DoModifyConfig(TTelnetConfig&)
+	_Z18ClientStubOrdinal1v @ 9 NONAME
+	_ZN14CTelnetSession4NewLERK13TTelnetConfigPK19MTelnetNotification @ 10 NONAME ; CTelnetSession::NewL(TTelnetConfig const&, MTelnetNotification const*)
+	_ZN14CTelnetSession12OptionStatusER13TOptionStatus @ 11 NONAME ; CTelnetSession::OptionStatus(TOptionStatus&)
+	_ZN14CTelnetSession4ReadEv @ 12 NONAME ; CTelnetSession::Read(void)
+	_ZN14CTelnetSession5WriteER18TTelnetUserControl @ 13 NONAME ; CTelnetSession::Write(TTelnetUserControl&)
+	_ZN14CTelnetSession7ConnectERK7TDesC16 @ 14 NONAME ; CTelnetSession::Connect(TDesC16 const&)
+	_ZTI14CTelnetSession @ 15 NONAME ; #<TI>#
+	_ZTV14CTelnetSession @ 16 NONAME ; #<VT>#
+

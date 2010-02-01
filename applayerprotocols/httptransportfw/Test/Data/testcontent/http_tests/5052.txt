@@ -1,0 +1,8 @@
+HTTP/1.0 505 HTTP Version Not Supported 
+Server: Fakeserver.pl
+Date: Tue, 20 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+HTTP 1.2 doesn't exsist.
+Crazy Fool!!
+  

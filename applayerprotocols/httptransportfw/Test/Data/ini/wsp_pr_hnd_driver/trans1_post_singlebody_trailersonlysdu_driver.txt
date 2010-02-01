@@ -1,0 +1,89 @@
+## Include script - simple POST - all data received from client in one chunk. Overall data size known - trans1
+#
+# Body data - 
+# post_data_2_driver.txt
+#
+# Header data - 
+# Accept : application/vnd.wap.wmlc
+# Content-Type : application/x-www-form-urlencoded.
+#
+# Trailer header data - 
+#
+# SDU type, URI info and header info is 31 bytes (includes the trailer header).
+# Trailer header info is 5 bytes.
+#
+# Overall data size is known
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# The method will be in the Waiting state
+#
+SCRIPT trans1_post_singlebody_driver
+#
+# Create a POST method transaction
+#
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod POST
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Content-Type
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/x-www-form-urlencoded
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue X19
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Trailer
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue User-Agent
+		ENDINVOKE
+		INVOKE trans1 AddBody
+			CREATEITEM aBody CDriverDataSupplier body1
+		ENDINVOKE
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+#
+# Expect call to OverallDataSize
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 10
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect another call to OverallDataSize invoked from the validation filter
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 10
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the post data to be extracted - one part only
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\post_data_2_driver.txt$file$>
+			PARAMETER :RETURN: ETrue
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the release of the data
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT

@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+/**
+@file
+
+@SYMPurpose ftpprot.dll FTP protocol support
+*/
+
+TARGET         ftpprot.dll
+TARGETTYPE     dll
+UID            0x1000008d 0x10003d5d
+VENDORID 0x70000001
+SOURCEPATH     ../ftpprot
+SOURCE         FTPPROT.CPP PICHNL.CPP DTPCHNL.CPP 
+SOURCE         ANSPARSE.CPP RESOLVER.CPP PASVANS.CPP 
+USERINCLUDE    ../inc ../ftpprot
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY        c32root.lib
+LIBRARY        euser.lib insock.lib esock.lib
+DEBUGLIBRARY   comsdbgutil.lib
+
+
+CAPABILITY ALL -Tcb
+
+SMPSAFE

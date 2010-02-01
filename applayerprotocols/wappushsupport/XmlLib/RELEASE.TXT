@@ -1,0 +1,122 @@
+-----------------
+ 26-May-2000 TPK
+-----------------
+ Description: Error fix - EDNDCUO-4KDDYV
+ Removed the unnecessary return.
+-----------------
+ Affected files:
+ XmlValid.cpp
+
+==================================================
+ XMLLIB DELIVERY for SYMBIAN WAP RELEASE 031 / Tomi Kyllönen
+-------------
+ 17/05/2000
+-------------
+  Build against OAK 46
+==================================================
+
+-----------------
+ 15-May-2000 TPK
+-----------------
+ Description: Error fix - EDNUSHH-4JKC43
+ Removed pragmas, reported errors
+-----------------
+ Affected files:
+ XmlPars.cpp
+ XmlValid.cpp
+
+==================================================
+ XMLLIB DELIVERY for SYMBIAN WAP RELEASE 028 / Tomi Kyllönen
+-------------
+ 01/05/2000
+-------------
+  Build against OAK 44
+==================================================
+
+-----------------
+ 25-Apr-2000 TPK
+-----------------
+ Description: Improvement
+ Binary Compatibility additions
+-----------------
+ Affected files:
+ XmlLib.cpp
+ XmlLib.h
+ \WapPlugins\BMarm\XMLLIBU.DEF
+ \WapPlugins\BWins\XMLLIBU.DEF
+
+==================================================
+ XMLLIB DELIVERY for SYMBIAN WAP RELEASE 026 / Tomi Kyllönen
+-------------
+ 06/04/2000
+-------------
+  Build against OAK 40
+==================================================
+-----------------
+ 05-Apr-2000 TPK
+-----------------
+- Code changes to make it possible to remove a hack of forced load of XmlLib.DLL from the engine.
+  Related to error EDNTKYN-4GRHR8.
+
+==================================================
+ WAPAPP RELEASE 020 / Ari Vikstrom
+-------------
+ 03/04/2000
+-------------
+  Build against OAK 40
+==================================================
+
+-----------------
+ 02-Apr-2000 TPK
+-----------------
+- Compiled with Symbian WAP 24, changed Tree to TreeL in Xml parser.
+
+-----------------
+ 28-Mar-2000 TPK
+-----------------
+- Code review changes
+
+==================================================
+ WAPAPP RELEASE 019 / Ari Vikstrom
+-------------
+ 24/03/2000
+-------------
+  Build against OAK 38
+==================================================
+
+==================================================
+ WAPAPP RELEASE 018 / Ari Vikstrom
+-------------
+ 10/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+-----------------
+ 08-Mar-2000 TPK
+-----------------
+- Some cosmetic changes from the code review
+
+==================================================
+ WAPAPP RELEASE 017 / Erkki Kemilä
+-------------
+ 03/03/2000
+-------------
+  Build against OAK 36
+==================================================
+
+-----------------
+ 21-Feb-2000 TPK
+-----------------
+- First delivery of the libraries integrated to WAP. Using COak034, CCC WAP Delivery 015/Symbian delivery 018
+- Missing features/things to do:
+	* Unique UID for the library!
+
+FILES COVERED BY THIS RELEASE.TXT
+\WapPlugins\XmlLib\XmlParse.cpp
+\WapPlugins\XmlLib\XmlParse.h
+\WapPlugins\XmlLib\XmlLib.cpp
+\WapPlugins\XmlLib\XmlLib.h
+\WapPlugins\XmlLib\XmlLibDll.cpp
+\WapPlugins\XmlLib\XmlValid.cpp
+\WapPlugins\XmlLib\XmlValid.h

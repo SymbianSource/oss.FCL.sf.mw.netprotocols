@@ -1,0 +1,14 @@
+EXPORTS ?Connect@CTelnetSession@@QAEHABVTDesC16@@@Z @1 NONAME
+EXPORTS ?Connect@CTelnetSession@@QAEHABVTDesC16@@I@Z @2 NONAME
+EXPORTS ?Connect@CTelnetSession@@QAEHABVTInetAddr@@@Z @3 NONAME
+EXPORTS ?Connect@CTelnetSession@@QAEHABVTInetAddr@@I@Z @4 NONAME
+EXPORTS ?ConstructL@CTelnetSession@@IAEXABVTTelnetConfig@@PBVMTelnetNotification@@@Z @5 NONAME
+EXPORTS ?Disconnect@CTelnetSession@@QAEHXZ @6 NONAME
+EXPORTS ?DoForceLogout@CTelnetSession@@QAEHXZ @7 NONAME
+EXPORTS ?DoModifyConfig@CTelnetSession@@QAEHAAVTTelnetConfig@@@Z @8 NONAME
+EXPORTS ?ClientStubOrdinal1@@YAXXZ @9 NONAME ; void ClientStubOrdinal1(void)
+EXPORTS ?NewL@CTelnetSession@@SAPAV1@ABVTTelnetConfig@@PBVMTelnetNotification@@@Z @10 NONAME
+EXPORTS ?OptionStatus@CTelnetSession@@QAEHAAUTOptionStatus@@@Z @11 NONAME
+EXPORTS ?Read@CTelnetSession@@QAEHXZ @12 NONAME
+EXPORTS ?Write@CTelnetSession@@QAEHAAW4TTelnetUserControl@@@Z @13 NONAME
+EXPORTS ?Write@CTelnetSession@@QAEHABVTDesC8@@@Z @14 NONAME

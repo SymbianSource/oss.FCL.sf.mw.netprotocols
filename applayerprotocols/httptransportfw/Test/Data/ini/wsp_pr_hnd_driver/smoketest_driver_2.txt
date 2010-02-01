@@ -1,0 +1,50 @@
+## Chat scripts, smoke test 2 - driver script.
+#
+# Smoke test 2
+# Client connect to proxy
+# Proxy disconnects the client
+#
+SCRIPT SmokeTestDriver2
+#
+# Sleep then start
+#
+	ECHO DriverSleepingForHalfSec
+	SLEEP 500
+#
+# Client connect request - set a few properties, although ask for default capabilities
+#
+	ECHO DriverSendingConnect
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+		INVOKE SessionConnectL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Wait proxy to disconnect the client - this is given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+# Give the stub a chance to finish before exiting
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

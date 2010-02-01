@@ -1,0 +1,35 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Component description file
+// 
+//
+
+
+PRJ_TESTMMPFILES
+
+testhttpsuite.mmp
+
+PRJ_TESTEXPORTS
+
+// Script file for testing the functionality.
+../script/testhttpsuite.script			c:/testdata/scripts/testhttpsuite.script
+
+// Ini file
+../ini/testhttpsuite.ini	            c:/testdata/ini/testhttpsuite.ini
+
+// Functionality tests bat file
+../group/testhttpsuite.bat			/epoc32/tools/testhttpsuite.bat
+
+// IBY file for H/W
+../group/testhttpsuite.iby      		/epoc32/rom/include/testhttpsuite.iby

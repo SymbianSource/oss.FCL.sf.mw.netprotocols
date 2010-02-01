@@ -1,0 +1,67 @@
+EXPORTS
+	?Elements@THttpHeaderIterator@@QBE?AVTHttpHeaderElementIterator@@XZ @ 1 NONAME ; class THttpHeaderElementIterator THttpHeaderIterator::Elements(void) const
+	??1CHttpClientTransaction@@UAE@XZ @ 2 NONAME ; CHttpClientTransaction::~CHttpClientTransaction(void)
+	?DisablePipelining@CHttpClientTransaction@@QAEXXZ @ 3 NONAME ; void CHttpClientTransaction::DisablePipelining(void)
+	?SendRequest@CHttpClientTransaction@@QAEHXZ @ 4 NONAME ; int CHttpClientTransaction::SendRequest(void)
+	?SetNoRetry@CHttpClientTransaction@@QAEXXZ @ 5 NONAME ; void CHttpClientTransaction::SetNoRetry(void)
+	?SetMaxConnections@CHttpService@@QAEXH@Z @ 6 NONAME ; void CHttpService::SetMaxConnections(int)
+	?Release@THttpContentSinkOp@@QAEXXZ @ 7 NONAME ; void THttpContentSinkOp::Release(void)
+	?Name@THttpHeaderIterator@@QBEABVTDesC8@@XZ @ 8 NONAME ; class TDesC8 const & THttpHeaderIterator::Name(void) const
+	??0THttpHeaderParamIterator@@AAE@PBV?$RPointerArray@VCHeaderFieldParam@@@@H@Z @ 9 NONAME ; THttpHeaderParamIterator::THttpHeaderParamIterator(class RPointerArray<class CHeaderFieldParam> const *, int)
+	?Parameters@THttpHeaderIterator@@QBE?AVTHttpHeaderParamIterator@@XZ @ 10 NONAME ; class THttpHeaderParamIterator THttpHeaderIterator::Parameters(void) const
+	?GetData@THttpContentSinkOp@@QAEHAAVTPtrC8@@@Z @ 11 NONAME ; int THttpContentSinkOp::GetData(class TPtrC8 &)
+	?ResponseHeader@CHttpClientTransaction@@QAE?AVTHttpHeaderElementIterator@@ABVTDesC8@@@Z @ 12 NONAME ; class THttpHeaderElementIterator CHttpClientTransaction::ResponseHeader(class TDesC8 const &)
+	??0THttpHeaderElementIterator@@AAE@PBV?$RPointerArray@VCHeaderFieldPart@@@@H@Z @ 13 NONAME ; THttpHeaderElementIterator::THttpHeaderElementIterator(class RPointerArray<class CHeaderFieldPart> const *, int)
+	?AddCustomRequestHeader@CHttpService@@QAEHABVTDesC8@@0@Z @ 14 NONAME ; int CHttpService::AddCustomRequestHeader(class TDesC8 const &, class TDesC8 const &)
+	?SetContentSink@CHttpClientTransaction@@QAEHAAVRFile@@@Z @ 15 NONAME ; int CHttpClientTransaction::SetContentSink(class RFile &)
+	??0THttpHeaderParamIterator@@QAE@XZ @ 16 NONAME ; THttpHeaderParamIterator::THttpHeaderParamIterator(void)
+	?MaxTransactionsToPipeline@CHttpService@@QBEHXZ @ 17 NONAME ; int CHttpService::MaxTransactionsToPipeline(void) const
+	??ETHttpHeaderParamIterator@@QAEAAV0@XZ @ 18 NONAME ; class THttpHeaderParamIterator & THttpHeaderParamIterator::operator++(void)
+	?AddRequestHeader@CHttpClientTransaction@@QAEHABVTDesC8@@ABVTHttpHeaderValueVariant@@01@Z @ 19 NONAME ; int CHttpClientTransaction::AddRequestHeader(class TDesC8 const &, class THttpHeaderValueVariant const &, class TDesC8 const &, class THttpHeaderValueVariant const &)
+	?Store@THttpContentSinkOp@@QAEXXZ @ 20 NONAME ; void THttpContentSinkOp::Store(void)
+	?ResponseHeader@CHttpClientTransaction@@QAE?AVTHttpHeaderElementIterator@@H@Z @ 21 NONAME ; class THttpHeaderElementIterator CHttpClientTransaction::ResponseHeader(int)
+	?ResponseHeaders@CHttpClientTransaction@@QBE?AVTHttpHeaderIterator@@XZ @ 22 NONAME ; class THttpHeaderIterator CHttpClientTransaction::ResponseHeaders(void) const
+	?AddCustomRequestHeader@CHttpClientTransaction@@QAEHABVTDesC8@@0@Z @ 23 NONAME ; int CHttpClientTransaction::AddCustomRequestHeader(class TDesC8 const &, class TDesC8 const &)
+	?CancelRequest@CHttpClientTransaction@@QAEXXZ @ 24 NONAME ; void CHttpClientTransaction::CancelRequest(void)
+	?StatusCode@CHttpClientTransaction@@QBEHXZ @ 25 NONAME ; int CHttpClientTransaction::StatusCode(void) const
+	??ETHttpHeaderElementIterator@@QAE?AV0@H@Z @ 26 NONAME ; class THttpHeaderElementIterator THttpHeaderElementIterator::operator++(int)
+	?ProxyAddress@CHttpService@@QBEABVTDesC8@@XZ @ 27 NONAME ; class TDesC8 const & CHttpService::ProxyAddress(void) const
+	?AtEnd@THttpHeaderParamIterator@@QBEHXZ @ 28 NONAME ; int THttpHeaderParamIterator::AtEnd(void) const
+	?Name@THttpHeaderParamIterator@@QBEABVTDesC8@@XZ @ 29 NONAME ; class TDesC8 const & THttpHeaderParamIterator::Name(void) const
+	?AtEnd@THttpHeaderElementIterator@@QBEHXZ @ 30 NONAME ; int THttpHeaderElementIterator::AtEnd(void) const
+	?OnWarning@CHttpClientTransaction@@UAEXH@Z @ 31 NONAME ; void CHttpClientTransaction::OnWarning(int)
+	??0THttpHeaderIterator@@QAE@XZ @ 32 NONAME ; THttpHeaderIterator::THttpHeaderIterator(void)
+	?AddRequestHeader@CHttpClientTransaction@@QAEHABVTDesC8@@ABVTHttpHeaderValueVariant@@@Z @ 33 NONAME ; int CHttpClientTransaction::AddRequestHeader(class TDesC8 const &, class THttpHeaderValueVariant const &)
+	?AddRequestHeader@CHttpService@@QAEHHABVTHttpHeaderValueVariant@@@Z @ 34 NONAME ; int CHttpService::AddRequestHeader(int, class THttpHeaderValueVariant const &)
+	?SetContentSource@CHttpClientTransaction@@QAEHAAVRFile@@@Z @ 35 NONAME ; int CHttpClientTransaction::SetContentSource(class RFile &)
+	?OnRedirection@CHttpClientTransaction@@UAEHXZ @ 36 NONAME ; int CHttpClientTransaction::OnRedirection(void)
+	?AddRequestHeader@CHttpClientTransaction@@QAEHHABVTHttpHeaderValueVariant@@H0@Z @ 37 NONAME ; int CHttpClientTransaction::AddRequestHeader(int, class THttpHeaderValueVariant const &, int, class THttpHeaderValueVariant const &)
+	??ETHttpHeaderParamIterator@@QAE?AV0@H@Z @ 38 NONAME ; class THttpHeaderParamIterator THttpHeaderParamIterator::operator++(int)
+	?SetResponseTimeout@CHttpClientTransaction@@QAEXH@Z @ 39 NONAME ; void CHttpClientTransaction::SetResponseTimeout(int)
+	?Create@CHttpClientTransaction@@QAEHAAVCHttpService@@ABVTDesC8@@1@Z @ 40 NONAME ; int CHttpClientTransaction::Create(class CHttpService &, class TDesC8 const &, class TDesC8 const &)
+	??1CHttpService@@UAE@XZ @ 41 NONAME ; CHttpService::~CHttpService(void)
+	??ETHttpHeaderElementIterator@@QAEAAV0@XZ @ 42 NONAME ; class THttpHeaderElementIterator & THttpHeaderElementIterator::operator++(void)
+	??0THttpHeaderIterator@@AAE@PBVCHeaders@@H@Z @ 43 NONAME ; THttpHeaderIterator::THttpHeaderIterator(class CHeaders const *, int)
+	??0THttpContentSourceOp@@QAE@XZ @ 44 NONAME ; THttpContentSourceOp::THttpContentSourceOp(void)
+	?OnTransferProgress@CHttpClientTransaction@@UAEXHH@Z @ 45 NONAME ; void CHttpClientTransaction::OnTransferProgress(int, int)
+	?AddRequestHeader@CHttpClientTransaction@@QAEHHABVTHttpHeaderValueVariant@@@Z @ 46 NONAME ; int CHttpClientTransaction::AddRequestHeader(int, class THttpHeaderValueVariant const &)
+	?Value@THttpHeaderParamIterator@@QBE?AVTHttpHeaderValueVariant@@XZ @ 47 NONAME ; class THttpHeaderValueVariant THttpHeaderParamIterator::Value(void) const
+	??0THttpContentSinkOp@@QAE@XZ @ 48 NONAME ; THttpContentSinkOp::THttpContentSinkOp(void)
+	?SetMaxTransactionsToPipeline@CHttpService@@QAEXH@Z @ 49 NONAME ; void CHttpService::SetMaxTransactionsToPipeline(int)
+	?SetContentSource@CHttpClientTransaction@@QAEHAAVMHttpContentSource@@@Z @ 50 NONAME ; int CHttpClientTransaction::SetContentSource(class MHttpContentSource &)
+	?StatusText@CHttpClientTransaction@@QBEABVTDesC8@@XZ @ 51 NONAME ; class TDesC8 const & CHttpClientTransaction::StatusText(void) const
+	?SetProxy@CHttpService@@QAEHABVTDesC8@@@Z @ 52 NONAME ; int CHttpService::SetProxy(class TDesC8 const &)
+	?NewL@CHttpService@@SAPAV1@XZ @ 53 NONAME ; class CHttpService * CHttpService::NewL(void)
+	??ETHttpHeaderIterator@@QAEAAV0@XZ @ 54 NONAME ; class THttpHeaderIterator & THttpHeaderIterator::operator++(void)
+	?SetContentSink@CHttpClientTransaction@@QAEHAAVMHttpContentSink@@@Z @ 55 NONAME ; int CHttpClientTransaction::SetContentSink(class MHttpContentSink &)
+	?SetRequestTimeout@CHttpClientTransaction@@QAEXH@Z @ 56 NONAME ; void CHttpClientTransaction::SetRequestTimeout(int)
+	?Value@THttpHeaderElementIterator@@QBE?AVTHttpHeaderValueVariant@@XZ @ 57 NONAME ; class THttpHeaderValueVariant THttpHeaderElementIterator::Value(void) const
+	??ETHttpHeaderIterator@@QAE?AV0@H@Z @ 58 NONAME ; class THttpHeaderIterator THttpHeaderIterator::operator++(int)
+	?String@CHttpService@@QAEHHAAVTPtrC8@@@Z @ 59 NONAME ; int CHttpService::String(int, class TPtrC8 &)
+	?AtEnd@THttpHeaderIterator@@QBEHXZ @ 60 NONAME ; int THttpHeaderIterator::AtEnd(void) const
+	??0CHttpClientTransaction@@IAE@XZ @ 61 NONAME ; CHttpClientTransaction::CHttpClientTransaction(void)
+	?MaxConnections@CHttpService@@QBEHXZ @ 62 NONAME ; int CHttpService::MaxConnections(void) const
+	??0THttpHeaderElementIterator@@QAE@XZ @ 63 NONAME ; THttpHeaderElementIterator::THttpHeaderElementIterator(void)
+	?Parameter@THttpHeaderElementIterator@@QBE?AVTHttpHeaderParamIterator@@XZ @ 64 NONAME ; class THttpHeaderParamIterator THttpHeaderElementIterator::Parameter(void) const
+	?Notify@THttpContentSourceOp@@QAEXABVTDesC8@@H@Z @ 65 NONAME ; void THttpContentSourceOp::Notify(class TDesC8 const &, int)
+	

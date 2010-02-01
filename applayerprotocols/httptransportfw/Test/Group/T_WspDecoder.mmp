@@ -1,0 +1,57 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WspHeaderReaderTest.mmp
+// 
+//
+
+TARGET WspHeaderReaderTest.exe
+TARGETTYPE EXE
+CAPABILITY TrustedUI ProtServ
+// UIDs for loading
+// TestBed Dll recognition UID followed by the unique UID for this dll
+// @todo generate the unique UID for this dll
+UID 0x101FB5A8 0x10000000
+VENDORID 0x70000001
+
+SOURCEPATH	../t_wspdecoder
+SOURCE		WspHeaderReaderTest.cpp
+SOURCE		WspHeaderReaderUnitTest.cpp
+
+SOURCEPATH	../../../../../../os/unref/orphan/comgen/application-protocols/http/protocol-plugin/wspheadercodec
+SOURCE		CWspHeaderReader.cpp cwspheadercodec.cpp cwspheaderwriter.cpp
+
+SOURCEPATH	../../core
+SOURCE		cheaders.cpp cheaderfield.cpp httppanic.cpp
+
+SOURCEPATH 		+\build\generated\http
+SOURCE			WspStringConstants.cpp WspParamConstants.cpp WspStdConstants.cpp
+SOURCE			WspContentTypes.cpp WspRegContentTypes.cpp WspCharacterSets.cpp
+SOURCE			WspLanguages.cpp WspTypeConstants.cpp
+
+USERINCLUDE 	. ../../../../../../os/unref/orphan/comgen/application-protocols/http/protocol-plugin/wspheadercodec ../../core
+USERINCLUDE ../../inc/framework
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE 	/epoc32/include /epoc32/include/ecom/test_bed
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE 	/epoc32/include/platform/ecom/test_bed
+#endif
+
+
+LIBRARY euser.lib efsrv.lib estor.lib bafl.lib http.lib inetprotutil.lib
+LIBRARY RTestBed.lib
+
+EPOCHEAPSIZE  0x4000 0x8000000
+
+SMPSAFE

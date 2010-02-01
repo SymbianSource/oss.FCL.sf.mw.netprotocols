@@ -1,0 +1,31 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __HTTPSERVICETEST_IBY__
+#define __HTTPSERVICETEST_IBY__
+
+
+
+file=ABI_DIR\BUILD_DIR\httpserviceapitest.exe				System\Programs\httpserviceapitest.exe
+//Script file
+data=\epoc32\data\c\testdata\scripts\httpserviceapitest.script      	testdata\scripts\httpserviceapitest.script
+//ethernetced.xml file
+data=\epoc32\data\z\testdata\configs\ethernetced_httpserviceapi.xml		testdata\configs\ethernetced_httpserviceapi.xml
+// Ini files && data files
+data=\epoc32\data\z\httptest\httpservicetest\httpclient.ini 			  	    httptest\httpservicetest\httpclient.ini
+data=\epoc32\data\z\httptest\httpservicetest\testdl.txt 			    httptest\httpservicetest\testdl.txt
+data=\epoc32\data\z\httptest\httpservicetest\testdl2.txt  			    httptest\httpservicetest\testdl2.txt
+
+#endif

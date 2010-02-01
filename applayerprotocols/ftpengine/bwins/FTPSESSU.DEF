@@ -1,0 +1,5 @@
+EXPORTS
+; NEW:
+	?GetVersion@CFTPSession@@SAKXZ @ 1 NONAME ; public: static unsigned long __cdecl CFTPSession::GetVersion(void)
+	?NewL@CFTPSession@@SAPAV1@PAVMFtpSessionNotifier@@@Z @ 2 NONAME ; public: static class CFTPSession * __cdecl CFTPSession::NewL(class MFtpSessionNotifier *)
+

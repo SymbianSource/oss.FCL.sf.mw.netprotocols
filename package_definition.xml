@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+  <package id="netprotocols" name="High-level Internet Protocols" levels="plugin framework server generic specific">
+    <collection id="httpfilters" name="HTTP Filters" level="plugin">
+      <component id="httpfiltercommon" filter="s60" name="HTTP Filter Common">
+        <unit bldFile="httpfilters/httpfiltercommon/group"/>
+      </component>
+      <component id="cookie" filter="s60" name="Cookie Filter" class="plugin">
+        <unit bldFile="httpfilters/cookie/group"/>
+      </component>
+      <component id="deflatefilter" filter="s60" name="Deflate Filter" class="plugin">
+        <unit bldFile="httpfilters/deflatefilter/group"/>
+      </component>
+      <component id="httpfilteracceptheader" filter="s60" name="Accept Header Filter" class="plugin">
+        <unit bldFile="httpfilters/httpfilteracceptheader/group"/>
+      </component>
+      <component id="httpfilterauthentication" filter="s60" name="Authentication Filter" class="plugin">
+        <unit bldFile="httpfilters/httpfilterauthentication/group"/>
+      </component>
+      <component id="httpfilterconnhandler" filter="s60" name="Connection Handler Fitler" class="plugin">
+        <unit bldFile="httpfilters/httpfilterconnhandler/group"/>
+      </component>
+      <component id="httpfilteriop" filter="s60" name="HTTP IOP Filter" class="plugin">
+        <unit bldFile="httpfilters/httpfilteriop/group"/>
+      </component>
+      <component id="httpfilterproxy" filter="s60" name="HTTP Proxy Filter" class="plugin">
+        <unit bldFile="httpfilters/httpfilterproxy/group"/>
+      </component>
+      <component id="uaproffilter" filter="s60" name="UAProf Filter" class="plugin">
+        <unit bldFile="httpfilters/uaproffilter/group"/>
+      </component>
+    </collection>
+    <collection id="applayerprotocols" name="Application Layer Protocols" level="server">
+      <component id="httptransportfw" name="HTTP Transport Framework" introduced="6.2" purpose="optional">
+        <unit bldFile="applayerprotocols/httptransportfw/group" mrp="applayerprotocols/httptransportfw/group/http_transport-framework.mrp"/>
+      </component>
+      <component id="httpexamples" name="HTTP Examples" introduced="6.2" purpose="development">
+        <unit bldFile="applayerprotocols/httpexamples/group" mrp="applayerprotocols/httpexamples/group/http_examples.mrp"/>
+      </component>
+      <component id="wappushsupport" name="WAP Push Support" introduced="6.2" purpose="optional">
+        <unit bldFile="applayerprotocols/wappushsupport/Group" mrp="applayerprotocols/wappushsupport/Group/wap-browser_wappushsupport.mrp"/>
+      </component>
+      <component id="wapbase" name="WAP Base" introduced="6.0" purpose="optional">
+        <unit bldFile="applayerprotocols/wapbase/Group" mrp="applayerprotocols/wapbase/Group/wap-browser_wapbase.mrp"/>
+      </component>
+      <component id="ftpengine" name="FTP Engine" introduced="6.0" purpose="optional">
+        <unit bldFile="applayerprotocols/ftpengine/group" mrp="applayerprotocols/ftpengine/group/networking_ftp_e.mrp"/>
+      </component>
+      <component id="telnetengine" name="Telnet Engine" introduced="6.0" purpose="optional">
+        <unit bldFile="applayerprotocols/telnetengine/group" mrp="applayerprotocols/telnetengine/group/networking_telnet_e.mrp"/>
+      </component>
+      <component id="httpserviceapi" name="HTTP Service API" introduced="TB9.2" purpose="optional">
+        <unit bldFile="applayerprotocols/httpservice/group" mrp="applayerprotocols/httpservice/group/http_service.mrp"/>
+      </component>
+    </collection>
+    <collection id="applayerpluginsandutils" name="Application Layer Plugins and Utils" level="framework">
+      <component id="uripermissionservices" name="URI Permission Services" introduced="^2" purpose="optional">
+        <unit bldFile="applayerpluginsandutils/uripermissionservices/group" mrp="applayerpluginsandutils/uripermissionservices/group/application-protocols_ineturilist.mrp"/>
+      </component>
+      <component id="bookmarksupport" name="Bookmark Support" introduced="9.1" purpose="optional">
+        <unit bldFile="applayerpluginsandutils/bookmarksupport/group" mrp="applayerpluginsandutils/bookmarksupport/group/application-protocols_bookmarks.mrp"/>
+      </component>
+      <component id="httpprotocolplugins" name="HTTP Protocol Plugins" introduced="6.2" purpose="optional" class="plugin">
+        <unit bldFile="applayerpluginsandutils/httpprotocolplugins/group" mrp="applayerpluginsandutils/httpprotocolplugins/group/http_protocol-plugin.mrp"/>
+      </component>
+      <component id="httptransportplugins" name="HTTP Transport Plugins" introduced="6.2" purpose="optional" class="plugin">
+        <unit bldFile="applayerpluginsandutils/httptransportplugins/group" mrp="applayerpluginsandutils/httptransportplugins/group/http_transport-plugin.mrp"/>
+      </component>
+    </collection>
+    <collection id="netprotocols_info" name="High-level Internet Protocols Info" level="specific">
+      <component id="netprotocols_plat" filter="s60" name="High-level Internet Protocols Platform Interfaces" class="api">
+        <unit bldFile="netprotocols_plat/group"/>
+      </component>
+      <component id="netprotocols_metadata" name="High-level Internet Protocols Metadata" class="config" introduced="^2" purpose="development" target="desktop">
+        <unit mrp="netprotocols_info/netprotocols_metadata/netprotocols_metadata.mrp"/>
+      </component>
+    </collection>
+  </package>
+</SystemDefinition>

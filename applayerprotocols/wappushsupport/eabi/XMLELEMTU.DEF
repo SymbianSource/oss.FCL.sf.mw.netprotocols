@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN11CXmlElement12InsertChildLEiPS_ @ 1 NONAME
+	_ZN11CXmlElement12SetDataItemLEP5CBaseR21CAttributeLookupTable @ 2 NONAME
+	_ZN11CXmlElement13SetAttributeLERK7TDesC16S2_R21CAttributeLookupTable @ 3 NONAME
+	_ZN11CXmlElement14DeleteDataItemER21CAttributeLookupTable @ 4 NONAME
+	_ZN11CXmlElement14WriteIntoFileLEv @ 5 NONAME
+	_ZN11CXmlElement8SetTextLERK7TDesC16 @ 6 NONAME
+	_ZNK11CXmlElement10ChildIndexEPS_ @ 7 NONAME
+	_ZNK11CXmlElement8DataItemEv @ 8 NONAME
+	_ZNK11CXmlElement9AttributeERK7TDesC16 @ 9 NONAME
+

@@ -1,0 +1,68 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// HtmlParserPlugin.dll Html parser plugin
+// 
+//
+
+/**
+ @file
+*/
+
+    
+TARGET htmlparserplugin.dll
+TARGETTYPE plugin
+CAPABILITY All -Tcb
+
+
+// ECom Plugin Dll UID followed by the unique UID for this dll
+// Assigned to UID2 and UID3 respectively
+UID 0x10009D8D 0x10272786
+VENDORID 0x70000001
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include 
+SYSTEMINCLUDE	/epoc32/include/libc
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+SYSTEMINCLUDE	/epoc32/include/libc
+#endif
+
+USERINCLUDE	../htmlparserplugin/inc 
+
+START STRINGTABLE ../data/htmltagstable.st
+
+END
+
+SOURCEPATH	../htmlparserplugin/src
+SOURCE		HtmlParser.cpp 
+SOURCE		HtmlParserPlugin.cpp 
+SOURCE		StringParser.cpp 
+
+
+START RESOURCE htmlparserplugin.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET htmlparserplugin.rsc
+#endif
+END
+
+LIBRARY euser.lib 
+LIBRARY xmlframework.lib 
+LIBRARY estlib.lib 
+LIBRARY bafl.lib
+
+SMPSAFE

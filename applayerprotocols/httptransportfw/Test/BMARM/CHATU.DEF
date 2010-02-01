@@ -1,0 +1,58 @@
+EXPORTS
+	__14CChatValidator @ 1 NONAME ; CChatValidator::CChatValidator(void)
+	AddValidator__21CChatMethodInvocationR14CChatValidator @ 2 NONAME ; CChatMethodInvocation::AddValidator(CChatValidator &)
+	AdoptParameter__21CChatMethodInvocationP14CChatParameter @ 3 NONAME ; CChatMethodInvocation::AdoptParameter(CChatParameter *)
+	AdoptValidator__21CChatMethodInvocationP14CChatValidator @ 4 NONAME ; CChatMethodInvocation::AdoptValidator(CChatValidator *)
+	BooleanValue__C19CChatTBoolValidator @ 5 NONAME ; CChatTBoolValidator::BooleanValue(void) const
+	CompleteSelf__12CChatCommand @ 6 NONAME ; CChatCommand::CompleteSelf(void)
+	ConstructL__14CChatParameterRC7TDesC16T1 @ 7 NONAME ; CChatParameter::ConstructL(TDesC16 const &, TDesC16 const &)
+	ConstructL__14CChatValidatorRC7TDesC16 @ 8 NONAME ; CChatValidator::ConstructL(TDesC16 const &)
+	DesC8Value__C20CChatTDesC8Validator @ 9 NONAME ; CChatTDesC8Validator::DesC8Value(void) const
+	DumpIt__11CChatEngineQ211CChatEngine9TLogLevelRC6TDesC8 @ 10 NONAME ; CChatEngine::DumpIt(CChatEngine::TLogLevel, TDesC8 const &)
+	GetParameter__C21CChatMethodInvocationRC7TDesC16 @ 11 NONAME ; CChatMethodInvocation::GetParameter(TDesC16 const &) const
+	GetValidator__C21CChatMethodInvocationRC7TDesC16 @ 12 NONAME ; CChatMethodInvocation::GetValidator(TDesC16 const &) const
+	IntValue__C18CChatTIntValidator @ 13 NONAME ; CChatTIntValidator::IntValue(void) const
+	InvocationItem__C21CChatMethodInvocation @ 14 NONAME ; CChatMethodInvocation::InvocationItem(void) const
+	ItemStoreId__C21CChatCreatedParameter @ 15 NONAME ; CChatCreatedParameter::ItemStoreId(void) const
+	ItemValue__C23CChatItemStoreValidator @ 16 NONAME ; CChatItemStoreValidator::ItemValue(void) const
+	LogIt__11CChatEngineQ211CChatEngine9TLogLevelGt11TRefByValue1ZC7TDesC16e @ 17 NONAME ; CChatEngine::LogIt(CChatEngine::TLogLevel, TRefByValue<TDesC16 const>,...)
+	MethodName__C21CChatMethodInvocation @ 18 NONAME ; CChatMethodInvocation::MethodName(void) const
+	NewL__11CChatEngineRC7TDesC16T1Q211CChatEngine9TLogLevelG3RFsR11RFileLoggerR16MChatSendTriggerR14MChatItemStoreR19MChatEngineObserver @ 19 NONAME ; CChatEngine::NewL(TDesC16 const &, TDesC16 const &, CChatEngine::TLogLevel, RFs, RFileLogger &, MChatSendTrigger &, MChatItemStore &, MChatEngineObserver &)
+	NewL__14CChatParameterRC7TDesC16T1 @ 20 NONAME ; CChatParameter::NewL(TDesC16 const &, TDesC16 const &)
+	NewL__18CChatTIntValidatorRC14CChatParameter @ 21 NONAME ; CChatTIntValidator::NewL(CChatParameter const &)
+	NewL__18CChatTIntValidatorRC7TDesC16i @ 22 NONAME ; CChatTIntValidator::NewL(TDesC16 const &, int)
+	NewL__19CChatTBoolValidatorRC14CChatParameter @ 23 NONAME ; CChatTBoolValidator::NewL(CChatParameter const &)
+	NewL__19CChatTBoolValidatorRC7TDesC16i @ 24 NONAME ; CChatTBoolValidator::NewL(TDesC16 const &, int)
+	NewL__20CChatTDesC8ValidatorRC14CChatParameter @ 25 NONAME ; CChatTDesC8Validator::NewL(CChatParameter const &)
+	NewL__20CChatTDesC8ValidatorRC7TDesC16RC6TDesC8 @ 26 NONAME ; CChatTDesC8Validator::NewL(TDesC16 const &, TDesC8 const &)
+	NewL__21CChatMethodInvocation @ 27 NONAME ; CChatMethodInvocation::NewL(void)
+	NewL__21CChatMethodInvocationR11CChatEngineRC7TDesC16T2 @ 28 NONAME ; CChatMethodInvocation::NewL(CChatEngine &, TDesC16 const &, TDesC16 const &)
+	NewL__23CChatItemStoreValidatorRC14CChatParameter @ 29 NONAME ; CChatItemStoreValidator::NewL(CChatParameter const &)
+	NewL__23CChatItemStoreValidatorRC7TDesC16G15TStoredItemBase @ 30 NONAME ; CChatItemStoreValidator::NewL(TDesC16 const &, TStoredItemBase)
+	NumParameters__C21CChatMethodInvocation @ 31 NONAME ; CChatMethodInvocation::NumParameters(void) const
+	NumValidators__C21CChatMethodInvocation @ 32 NONAME ; CChatMethodInvocation::NumValidators(void) const
+	ParamName__C14CChatParameter @ 33 NONAME ; CChatParameter::ParamName(void) const
+	ParamStringValue__C14CChatParameter @ 34 NONAME ; CChatParameter::ParamStringValue(void) const
+	SetNewItem__23CChatItemStoreValidatorRC7TDesC16G15TStoredItemBase @ 35 NONAME ; CChatItemStoreValidator::SetNewItem(TDesC16 const &, TStoredItemBase)
+	SetNewMethod__21CChatMethodInvocationR11CChatEngineRC7TDesC16T2 @ 36 NONAME ; CChatMethodInvocation::SetNewMethod(CChatEngine &, TDesC16 const &, TDesC16 const &)
+	SetNewParamName__14CChatParameterRC7TDesC16 @ 37 NONAME ; CChatParameter::SetNewParamName(TDesC16 const &)
+	SetNewParam__18CChatTIntValidatorRC14CChatParameter @ 38 NONAME ; CChatTIntValidator::SetNewParam(CChatParameter const &)
+	SetNewParam__19CChatTBoolValidatorRC14CChatParameter @ 39 NONAME ; CChatTBoolValidator::SetNewParam(CChatParameter const &)
+	SetNewParam__20CChatTDesC8ValidatorRC14CChatParameter @ 40 NONAME ; CChatTDesC8Validator::SetNewParam(CChatParameter const &)
+	SetNewParam__23CChatItemStoreValidatorRC14CChatParameter @ 41 NONAME ; CChatItemStoreValidator::SetNewParam(CChatParameter const &)
+	SetNewTBool__19CChatTBoolValidatorRC7TDesC16i @ 42 NONAME ; CChatTBoolValidator::SetNewTBool(TDesC16 const &, int)
+	SetNewTDesC8__20CChatTDesC8ValidatorRC7TDesC16RC6TDesC8 @ 43 NONAME ; CChatTDesC8Validator::SetNewTDesC8(TDesC16 const &, TDesC8 const &)
+	SetNewTInt__18CChatTIntValidatorRC7TDesC16i @ 44 NONAME ; CChatTIntValidator::SetNewTInt(TDesC16 const &, int)
+	SetOwningCommand__21CChatMethodInvocationR12CChatCommand @ 45 NONAME ; CChatMethodInvocation::SetOwningCommand(CChatCommand &)
+	Start__11CChatEngine @ 46 NONAME ; CChatEngine::Start(void)
+	TestExpectation__11CChatEngineR21CChatMethodInvocation @ 47 NONAME ; CChatEngine::TestExpectation(CChatMethodInvocation &)
+	ValidateL__21CChatMethodInvocationR21CChatMethodInvocationR6TDes16 @ 48 NONAME ; CChatMethodInvocation::ValidateL(CChatMethodInvocation &, TDes16 &)
+	WriteComment__11CChatEngineQ211CChatEngine9TLogLevelRC6TDesC8 @ 49 NONAME ; CChatEngine::WriteComment(CChatEngine::TLogLevel, TDesC8 const &)
+	WriteComment__11CChatEngineQ211CChatEngine9TLogLevelRC7TDesC16 @ 50 NONAME ; CChatEngine::WriteComment(CChatEngine::TLogLevel, TDesC16 const &)
+	"_._11CChatEngine" @ 51 NONAME ; CChatEngine::~CChatEngine(void)
+	"_._14CChatValidator" @ 52 NONAME ; CChatValidator::~CChatValidator(void)
+	__12CChatCommand @ 53 NONAME ; CChatCommand::CChatCommand(void)
+	__14CChatParameter @ 54 NONAME ; CChatParameter::CChatParameter(void)
+	AddParameter__21CChatMethodInvocationR14CChatParameter @ 55 NONAME ; CChatMethodInvocation::AddParameter(CChatParameter &)
+	Restart__11CChatEngine @ 56 NONAME R3UNUSED ; CChatEngine::Restart(void)
+

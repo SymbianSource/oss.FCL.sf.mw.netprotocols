@@ -1,0 +1,11 @@
+# Dodgy .htaccess file - will cause a 500 Internal server error
+AuthType Basic
+AuthName pahtest
+AuthUserFile "C:\Program Files\Apache Group\Apache\etc\htpasswd"
+
+<Limit GET POST>
+order deny,allow
+allow user scooby
+allow user paulha
+deny user leonc
+</Limit>

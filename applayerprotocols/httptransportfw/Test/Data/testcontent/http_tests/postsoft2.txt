@@ -1,0 +1,7 @@
+HTTP/1.0 200 OK
+Server: Fakeserver.pl
+Date: Tue, 06 Mar 2001 12:00:00 GMT
+Content-Type: application/ocsp-response, text/*
+
+
+Your software install content posting has been accepted

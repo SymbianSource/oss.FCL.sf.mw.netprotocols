@@ -1,0 +1,38 @@
+## Include script - do connect with certain capabilities and server accepts some and reduces some
+#
+# Client connect to proxy with the following client capabilities
+# Method MOR		= 2
+# Server Msg Size	= 500 (less than minimum, but who cares!)
+# LDT capability	= True
+#
+# Server accepts the connection and the capabilities + reduces the following
+# Server SDU Size	= 100 (less than minimum, but who cares!)
+#
+SCRIPT doconnect_reduce_caps1_driver
+
+	ECHO "Setting client capabilities"
+	SEND
+		INVOKE SetServerMessageSizeL
+			PARAMETER aSize 500
+		ENDINVOKE
+		INVOKE SetMethodMORL
+			PARAMETER aMOR 2
+		ENDINVOKE
+	ENDSEND
+
+	ECHO "Driver Sending Connect"
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event
+#
+	ECHO "Waiting for cnf"
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedWithReducedCapabilities
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT

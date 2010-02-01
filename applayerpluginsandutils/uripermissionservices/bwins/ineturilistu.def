@@ -1,0 +1,23 @@
+EXPORTS
+	??0RInetUri@@QAE@XZ @ 1 NONAME ; RInetUri::RInetUri(void)
+	??0RInetUriList@@QAE@XZ @ 2 NONAME ; RInetUriList::RInetUriList(void)
+	?AddL@RInetUriList@@QAEXABVRInetUri@@@Z @ 3 NONAME ; void RInetUriList::AddL(class RInetUri const &)
+	?Close@RInetUri@@QAEXXZ @ 4 NONAME ; void RInetUri::Close(void)
+	?Close@RInetUriList@@QAEXXZ @ 5 NONAME ; void RInetUriList::Close(void)
+	?Count@RInetUriList@@QAEHW4TServiceType@InetUriList@@W4TListType@3@@Z @ 6 NONAME ; int RInetUriList::Count(enum InetUriList::TServiceType, enum InetUriList::TListType)
+	?CreateL@RInetUri@@QAEXABVTDesC8@@W4TServiceType@InetUriList@@W4TListType@4@@Z @ 7 NONAME ; void RInetUri::CreateL(class TDesC8 const &, enum InetUriList::TServiceType, enum InetUriList::TListType)
+	?FavouriteName@RInetUri@@QBEABVTDesC8@@XZ @ 8 NONAME ; class TDesC8 const & RInetUri::FavouriteName(void) const
+	?GetListType@RInetUriList@@QAEHABVTDesC8@@W4TServiceType@InetUriList@@AAW4TListType@4@@Z @ 9 NONAME ; int RInetUriList::GetListType(class TDesC8 const &, enum InetUriList::TServiceType, enum InetUriList::TListType &)
+	?ListType@RInetUri@@QBE?AW4TListType@InetUriList@@XZ @ 10 NONAME ; enum InetUriList::TListType RInetUri::ListType(void) const
+	?OpenInetUriL@RInetUriList@@QAE?AVRInetUri@@ABVTDesC8@@W4TServiceType@InetUriList@@@Z @ 11 NONAME ; class RInetUri RInetUriList::OpenInetUriL(class TDesC8 const &, enum InetUriList::TServiceType)
+	?OpenL@RInetUriList@@QAEXXZ @ 12 NONAME ; void RInetUriList::OpenL(void)
+	?Permission@RInetUri@@QBE?AW4TPermission@InetUriList@@XZ @ 13 NONAME ; enum InetUriList::TPermission RInetUri::Permission(void) const
+	?QueryUriL@RInetUriList@@QAEXABVTQueryArgs@@PAVMQueryResultsCallback@@PAVMUriCustomiser@@@Z @ 14 NONAME ; void RInetUriList::QueryUriL(class TQueryArgs const &, class MQueryResultsCallback *, class MUriCustomiser *)
+	?RemoveL@RInetUriList@@QAEXABVRInetUri@@@Z @ 15 NONAME ; void RInetUriList::RemoveL(class RInetUri const &)
+	?ServiceType@RInetUri@@QBE?AW4TServiceType@InetUriList@@XZ @ 16 NONAME ; enum InetUriList::TServiceType RInetUri::ServiceType(void) const
+	?SetFavouriteNameL@RInetUri@@QAEXABVTDesC8@@@Z @ 17 NONAME ; void RInetUri::SetFavouriteNameL(class TDesC8 const &)
+	?SetListType@RInetUri@@QAEXW4TListType@InetUriList@@@Z @ 18 NONAME ; void RInetUri::SetListType(enum InetUriList::TListType)
+	?UpdateL@RInetUriList@@QAEXABVRInetUri@@@Z @ 19 NONAME ; void RInetUriList::UpdateL(class RInetUri const &)
+	?Uri@RInetUri@@QBEABVCUri8@@XZ @ 20 NONAME ; class CUri8 const & RInetUri::Uri(void) const
+	?QueryTldInfoL@RInetUriList@@QAEXABVTPolicyQueryArgs@@AAVTQueryResults@@@Z @ 21 NONAME ; void RInetUriList::QueryTldInfoL(class TPolicyQueryArgs const &, class TQueryResults &)
+

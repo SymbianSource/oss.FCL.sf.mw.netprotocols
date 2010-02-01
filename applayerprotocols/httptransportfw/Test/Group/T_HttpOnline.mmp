@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+TARGET		t_httponline.exe
+TARGETTYPE		exe
+CAPABILITY ALL -TCB
+
+
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE	/epoc32/include
+SYSTEMINCLUDE	/epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+USERINCLUDE	. ../T_HttpOnline ../t_utils ../../inc 
+USERINCLUDE ../../inc/framework ../../../httpexamples/cookies/example ../../../httpexamples/testcpimanager
+SOURCEPATH 	../T_HttpOnline 
+SOURCE		t_httponline.cpp T_CancelMultiTrans.cpp T_CancelSingleTrans.cpp T_MultiTrans.cpp T_MultiTransConcurrent.cpp CINC102380.cpp
+SOURCE		T_PersistentConn.cpp T_PostBodyChunks.cpp T_RespChunkSize.cpp T_Proxies.cpp DEF079378.cpp CINC082448.cpp INC094209.cpp CINC097492.cpp cinc105767.cpp CINC097492_2.cpp CINC097492_3.cpp CINC097492_4.cpp CR1130.cpp crecvbufsizetest1.cpp crecvbufsizetest2.cpp
+
+SOURCE		T_Cookies.cpp T_UAProf.cpp T_MultiTransMalformedStatusLine.cpp
+SOURCE		T_SocketShutdownMode.cpp CINC110203.cpp cinc112633.cpp cinc112633_2.cpp
+SOURCE		t_100continuetest.cpp t_100continuetest_2.cpp t_100continuetest_3.cpp t_100continuetest_4.cpp
+SOURCE	        cinc120672_1.cpp  cinc120672_2.cpp
+
+LIBRARY		euser.lib http.lib httptestutils.lib inetprotutil.lib esock.lib insock.lib bafl.lib
+LIBRARY		securesocket.lib cookiemanager.lib ecom.lib crypto.lib x509.lib x500.lib testcpimanager.lib
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are 0x102729D2 to 0x10272A35.  The UID name is KUidIWSTestSuit.
+UID 0x1000007A 0x102729D3
+
+SMPSAFE

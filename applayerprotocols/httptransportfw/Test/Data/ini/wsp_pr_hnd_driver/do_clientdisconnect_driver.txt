@@ -1,0 +1,22 @@
+## Include script - do client disconnect, wait for response from g/w
+#
+SCRIPT do_clientdisconnect_driver
+#
+# Client disconnect
+#
+	ECHO "Driver sending disconnect"
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for ind - this is given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT
+

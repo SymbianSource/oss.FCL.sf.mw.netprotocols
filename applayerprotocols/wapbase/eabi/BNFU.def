@@ -1,0 +1,85 @@
+EXPORTS
+	_ZN10CBNFParser10ReferenceLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 1 NONAME
+	_ZN10CBNFParser11SetBaseUriLEPK7TDesC16 @ 2 NONAME
+	_ZN10CBNFParser12MarkCallbackERS_ @ 3 NONAME
+	_ZN10CBNFParser12PerformRuleLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 4 NONAME
+	_ZN10CBNFParser12ProcessDataLER6HBufC8 @ 5 NONAME
+	_ZN10CBNFParser13NewComponentLE16TParserNodeTypesP7HBufC16PFvRS_ES5_ @ 6 NONAME
+	_ZN10CBNFParser13NewComponentLE16TParserNodeTypesRK7TDesC16 @ 7 NONAME
+	_ZN10CBNFParser13NewComponentLEP8CBNFNodeRK7TDesC16 @ 8 NONAME
+	_ZN10CBNFParser13NewComponentLEP8CBNFNodeRS0_RK7TDesC16 @ 9 NONAME
+	_ZN10CBNFParser13NewComponentLER8CBNFNode16TParserNodeTypesP7HBufC16PFvRS_ES7_ @ 10 NONAME
+	_ZN10CBNFParser13NewComponentLER8CBNFNode16TParserNodeTypesRK7TDesC16 @ 11 NONAME
+	_ZN10CBNFParser14EndConditionalE16TParserNodeTypesi @ 12 NONAME
+	_ZN10CBNFParser15SetDataExpectedEi @ 13 NONAME
+	_ZN10CBNFParser16AddRuleCallbackLER8CBNFNodePK7TDesC16PFvRS_E @ 14 NONAME
+	_ZN10CBNFParser16SetDocumentTypeLERK7TDesC16 @ 15 NONAME
+	_ZN10CBNFParser16SetDocumentTypeLERK7TDesC16S2_ @ 16 NONAME
+	_ZN10CBNFParser16StartConditionalE16TParserNodeTypes @ 17 NONAME
+	_ZN10CBNFParser22AddComponentAttributeLER8CBNFNodePK7TDesC16i @ 18 NONAME
+	_ZN10CBNFParser23ExecutePreRuleCallbackLER8CBNFNode @ 19 NONAME
+	_ZN10CBNFParser24ExecutePostRuleCallbackLER8CBNFNode @ 20 NONAME
+	_ZN10CBNFParser30MDataProviderObserverReserved1Ev @ 21 NONAME
+	_ZN10CBNFParser30MDataProviderObserverReserved2Ev @ 22 NONAME
+	_ZN10CBNFParser3OrLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 23 NONAME
+	_ZN10CBNFParser4AndLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 24 NONAME
+	_ZN10CBNFParser4NewLER21CAttributeLookupTable @ 25 NONAME
+	_ZN10CBNFParser5TreeLEv @ 26 NONAME
+	_ZN10CBNFParser6ExactLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 27 NONAME
+	_ZN10CBNFParser6NMoreLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 28 NONAME
+	_ZN10CBNFParser6ParseLEv @ 29 NONAME
+	_ZN10CBNFParser6RangeLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 30 NONAME
+	_ZN10CBNFParser6ResetLEv @ 31 NONAME
+	_ZN10CBNFParser7CommitLEv @ 32 NONAME
+	_ZN10CBNFParser7NewBNFLEv @ 33 NONAME
+	_ZN10CBNFParser7SelectLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 34 NONAME
+	_ZN10CBNFParser8NewRuleLEP8CBNFNodeRK7TDesC1616TParserNodeTypesP7HBufC16PFvRS_ESA_ @ 35 NONAME
+	_ZN10CBNFParser8NewRuleLEP8CBNFNodeRK7TDesC1616TParserNodeTypesS4_PFvRS_ES8_ @ 36 NONAME
+	_ZN10CBNFParser8WithoutLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 37 NONAME
+	_ZN10CBNFParser9OptionalLER8CBNFNodeRN17CFragmentedString12TStringMatchE @ 38 NONAME
+	_ZN10CBNFParser9SetStatusEi @ 39 NONAME
+	_ZN10CBNFParserC1ER21CAttributeLookupTable @ 40 NONAME
+	_ZN10CBNFParserC2ER21CAttributeLookupTable @ 41 NONAME
+	_ZN10CBNFParserD0Ev @ 42 NONAME
+	_ZN10CBNFParserD1Ev @ 43 NONAME
+	_ZN10CBNFParserD2Ev @ 44 NONAME
+	_ZN17CFragmentedString10AddStringLEP7HBufC16 @ 45 NONAME
+	_ZN17CFragmentedString10AddStringLERK7TDesC16 @ 46 NONAME
+	_ZN17CFragmentedString10DeleteMarkEv @ 47 NONAME
+	_ZN17CFragmentedString10MatchRangeEjj @ 48 NONAME
+	_ZN17CFragmentedString11MatchSelectERK7TDesC16 @ 49 NONAME
+	_ZN17CFragmentedString11ResetToMarkEv @ 50 NONAME
+	_ZN17CFragmentedString12DeleteToMarkERKNS_11TStringMarkE @ 51 NONAME
+	_ZN17CFragmentedString13InsertStringLEP7HBufC16 @ 52 NONAME
+	_ZN17CFragmentedString14ConsumeMatchedEv @ 53 NONAME
+	_ZN17CFragmentedString14MatchNotSelectERK7TDesC16 @ 54 NONAME
+	_ZN17CFragmentedString14ReplaceMarkedLEP7HBufC16 @ 55 NONAME
+	_ZN17CFragmentedString15InsertStringToLEP7HBufC16ii @ 56 NONAME
+	_ZN17CFragmentedString21ReplaceMarkedAndSkipLEP7HBufC16 @ 57 NONAME
+	_ZN17CFragmentedString22MarkedWithInitialTextLERK7TDesC16 @ 58 NONAME
+	_ZN17CFragmentedString4MarkEv @ 59 NONAME
+	_ZN17CFragmentedString5MatchERK7TDesC16 @ 60 NONAME
+	_ZN17CFragmentedString5ResetEv @ 61 NONAME
+	_ZN17CFragmentedString7MarkedLEv @ 62 NONAME
+	_ZN17CFragmentedStringC1Ev @ 63 NONAME
+	_ZN17CFragmentedStringC2Ev @ 64 NONAME
+	_ZN17CFragmentedStringD0Ev @ 65 NONAME
+	_ZN17CFragmentedStringD1Ev @ 66 NONAME
+	_ZN17CFragmentedStringD2Ev @ 67 NONAME
+	_ZNK10CBNFParser12AttributeLUTEv @ 68 NONAME
+	_ZNK17CFragmentedString6LengthEv @ 69 NONAME
+	_ZNK17CFragmentedString7StringLEv @ 70 NONAME
+	_ZNK17CFragmentedString8ContentLEv @ 71 NONAME
+	_ZTI10CBNFParser @ 72 NONAME ; #<TI>#
+	_ZTI17CFragmentedString @ 73 NONAME ; #<TI>#
+	_ZTV10CBNFParser @ 74 NONAME ; #<VT>#
+	_ZTV17CFragmentedString @ 75 NONAME ; #<VT>#
+	_ZThn4_N10CBNFParser11SetBaseUriLEPK7TDesC16 @ 76 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser12ProcessDataLER6HBufC8 @ 77 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser15SetDataExpectedEi @ 78 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser16SetDocumentTypeLERK7TDesC16 @ 79 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser16SetDocumentTypeLERK7TDesC16S2_ @ 80 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser30MDataProviderObserverReserved1Ev @ 81 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser30MDataProviderObserverReserved2Ev @ 82 NONAME ; #<thunk>#
+	_ZThn4_N10CBNFParser9SetStatusEi @ 83 NONAME ; #<thunk>#
+

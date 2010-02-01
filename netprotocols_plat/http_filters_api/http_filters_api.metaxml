@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="1212a33324a431ccdf6d039aa974b3e8" dataversion="1.0">
+  <name>HttpFilters API</name>
+  <description>HttpFilters API</description>
+  <type>c++</type>
+  <subsystem>HttpFilters</subsystem>
+  <libs>
+  </libs>
+  <release category="domain" sinceversion="5.1"/>
+  <attributes>
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes" ?> 
+<!--
+ Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+ All rights reserved.
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ Nokia Corporation - initial contribution.
+
+ Contributors:
+
+ Description:
+ Registers the InetUriList Database for passive backup
+
+-->
+
+
+
+<backup_registration>
+        <passive_backup base_backup_only="yes">
+               <include_file name="[20009D70]URIList.dat" /> 
+        </passive_backup>
+        <proxy_data_manager sid="0x10281e17" /> 
+        <restore requires_reboot = "no"/>
+</backup_registration>

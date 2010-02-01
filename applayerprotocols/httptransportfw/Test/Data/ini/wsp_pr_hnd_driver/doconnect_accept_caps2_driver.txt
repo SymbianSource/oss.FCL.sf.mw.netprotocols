@@ -1,0 +1,32 @@
+## Include script - do connect with certain capabilities and server accepts some and reduces some
+#
+# Client connect to proxy with the following client capabilities
+# Server SDU Size	= 50
+#
+# Server accepts the connection and the proposed Server SDU capabilitu, but denies LDT.
+#
+SCRIPT doconnect_accept_caps2_driver
+
+	ECHO "Setting client capabilities"
+	SEND
+		INVOKE SetServerMessageSizeL
+			PARAMETER aSize 50
+		ENDINVOKE
+	ENDSEND
+
+	ECHO "Driver Sending Connect"
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event
+#
+	ECHO "Waiting for cnf"
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedWithReducedCapabilities
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT

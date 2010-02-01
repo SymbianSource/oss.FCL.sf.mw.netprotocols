@@ -1,0 +1,104 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// The main script file for running security tests on the Bookmarks API
+PREFIX RUN_UTILS
+CopyFile c:\sys\bin\TestBookmarksServer.exe c:\TestData\Scripts\TestBookmarksServer.exe
+REMOVE_PREFIX
+
+////////////
+// None capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Cleanup.script as DevMan App to cleanup the items***
+RUN_SCRIPT  c:\TestData\Scripts\Cleanup.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00000000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has None capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000000_TestBookmarks.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00000010 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has ReadDeviceData capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000010_TestBookmarks.script
+////////////
+
+////////////
+// ReadUserData and WriteUserData capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 -SID 102081E7 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Preliminary steps as a DevMan App so as to set items as read-only***
+RUN_SCRIPT  c:\TestData\Scripts\Preliminary.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 -SID 102081E8 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has ReadUserData WriteUserData - A DevMan App***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000020_TestBookmarks.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Cleanup.script as DevMan App to cleanup the items***
+RUN_SCRIPT  c:\TestData\Scripts\Cleanup.script
+////////////
+
+////////////
+// ReadUserData capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 -SID 102081E7 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Preliminary steps as a DevMan App so as to set items as read-only***
+RUN_SCRIPT  c:\TestData\Scripts\Preliminary.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00008000 -SID 102081E8 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has ReadUserData***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00008000_TestBookmarks.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Cleanup.script as DevMan App to cleanup the items***
+RUN_SCRIPT  c:\TestData\Scripts\Cleanup.script
+////////////
+
+////////////
+// WriteUserData and ReadUserData ( mandatory to open the bookmark database ) capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Preliminary steps as a DevMan App so as to set items as read-only***
+RUN_SCRIPT  c:\TestData\Scripts\Preliminary.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has WriteUserData***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00010000_TestBookmarks.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Cleanup.script as DevMan App to cleanup the items***
+RUN_SCRIPT  c:\TestData\Scripts\Cleanup.script
+////////////
+
+////////////
+// ReadUserData and WriteUserData capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Preliminary steps as a DevMan App so as to set items as read-only***
+RUN_SCRIPT  c:\TestData\Scripts\Preliminary.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 -SID 102081E8 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***TestBookmarksServer_Cap.exe now has ReadUserData WriteUserData - A User App***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00018000_TestBookmarks.script
+
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestBookmarksServer.exe 00018000 C:\sys\bin\TestBookmarksServer_Cap.exe
+PRINT ***Running Cleanup.script as DevMan App to cleanup the items***
+RUN_SCRIPT  c:\TestData\Scripts\Cleanup.script
+////////////
+
+// Cleanup
+PREFIX RUN_UTILS
+MakeReadWrite c:\TestData\Scripts\TestBookmarksServer.exe
+DeleteFile c:\TestData\Scripts\TestBookmarksServer.exe
+MakeReadWrite c:\TestData\Scripts\TestBookmarksServer_Cap.exe
+DeleteFile c:\TestData\Scripts\TestBookmarksServer_Cap.exe
+REMOVE_PREFIX
+// --------------------
+

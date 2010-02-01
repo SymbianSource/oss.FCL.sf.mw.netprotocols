@@ -1,0 +1,392 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//Script file for running File URI Tests
+
+PRINT Running_Bookmarks_Test
+
+// Load the test
+LOAD_SUITE TestBookmarksServer -SharedData
+
+// Start afresh
+RUN_TEST_STEP 100 	 TestBookmarksServer	TestDeleteItemsInFolderStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Delete_Root_Children
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0001-HP-0001
+//	HomeMenuText
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0001-HP-0001
+//! @SYMTestCaseDesc 		Set and Get Home page text
+//! @SYMFssID			Application-Protocols/Bookmarks/DATABASE.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the home page text using RBookmarkDatabase::SetHomePageTextL
+//!				2. Get the home page text using RBookmarkDatabase::HomePageText
+//! @SYMTestExpectedResults 	The home menu text is stored correctly in the database and retrieved.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_SetHomePageText
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_GetHomePageText
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0001-HP-0001
+
+// General steps
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite.ini 	Delete_MainFolder_All_Mode
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	MainFolder
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder1
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder2
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark2
+// General steps
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0012-CP-0001
+//	FolderTitlesGloballyUnique
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0012-CP-0001
+//! @SYMTestCaseDesc 		Folder titles should be globally unique
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1. Try to create more than one folder with the same name.
+//!				2. Try to set the title of a folder to that of an existing folder.
+//! @SYMTestExpectedResults 	An error should be returned when there is a clash in the titles.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder1
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder2
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Create_Folder2_Under_Root
+
+// Try renaming Folder2 to Folder1
+RUN_TEST_STEP 	!Error=-7162	100 	 TestBookmarksServer	TestSetPropertyStep		c:\testdata\ini\TestBookmarksSuite.ini 	Rename_Folder2_To_Folder1
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0012-CP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0033-HP-0002
+//	Top_Folder_Uneditable
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0033-HP-0002
+//! @SYMTestCaseDesc 		The top of the bookmark folder tree is uneditable and has no properties
+//! @SYMFssID			Application-Protocols/Bookmarks/TREE.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to set the properties like Title, Parent, Description, Writeable etc. of the root folder
+//! @SYMTestExpectedResults 	An error should be returned when the properties of the root folder are requested to be modified.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Root_SetTitle
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Root_SetDescription
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Root_SetParent
+RUN_TEST_STEP 	!Error=-7163	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Root_SetWritable
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0033-HP-0002
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0035-HP-0002
+//	Home_Page_Bookmark
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0035-HP-0002
+//! @SYMTestCaseDesc 		Getting and Setting the home page bookmark
+//! @SYMFssID			Application-Protocols/Bookmarks/HOME.1, Application-Protocols/Bookmarks/HOME.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set and get the home page bookmark.
+//!				2. Verify that there can only be one homepage bookmark at a time.
+//! @SYMTestExpectedResults 	The setting and getting of homepage bookmark is consistent and when a new bookmark is set as the homepage, the old one's "IsHome" flag becomes false.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Folder_HomePageTest
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark9
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Home_Page_Bookmark_Bookmark8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_DefaultMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_PublicMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_PrivateMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Home_Page_Bookmark_AllMode
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8_IsHomePage_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Home_Page_Bookmark_Bookmark9
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark8_IsHomePage_False
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark9_IsHomePage_True
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0035-HP-0002
+
+// Cleanup Home Page Test Folder
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestDeleteFolderStep		c:\testdata\ini\TestBookmarksSuite.ini 	Folder_HomePageTest
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0037-HP-0001
+//	Search_Uri
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0037-HP-0001
+//! @SYMTestCaseDesc 		Getting and setting search uri
+//! @SYMFssID			Application-Protocols/Bookmarks/DATABASE.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set and get the search uri
+//! @SYMTestExpectedResults 	The setting and getting of search uri is consistent.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Search_Uri
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Search_Uri
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0037-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0038-HP-0001
+//	Version_Number
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0038-HP-0001
+//! @SYMTestCaseDesc 		Get the version no. from the DB
+//! @SYMFssID			Application-Protocols/Bookmarks/VERSION.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Get the version no. of the database.
+//! @SYMTestExpectedResults 	The major, minor and build versions are correctly stored and returned by the database.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestVersionStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Version_Number
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0038-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0039-HP-0001
+//	Proxy
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0039-HP-0001
+//! @SYMTestCaseDesc 		Set and get Bookmark and DB Proxy
+//! @SYMFssID			Application-Protocols/Bookmarks/DATABASE.7, Application-Protocols/Bookmarks/BOOKMARK.6
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set and get the default proxy in the database.
+//!				2. Set and get the proxy attribute of a bookmark.
+//! @SYMTestExpectedResults 	The proxy reference is stored and retreived consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark2_SetProxy
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark2_GetProxy
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_SetProxy
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_GetProxy
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0039-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0040-HP-0001
+//	Nap
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0040-HP-0001
+//! @SYMTestCaseDesc 		Set and get Bookmark and DB NAP
+//! @SYMFssID			Application-Protocols/Bookmarks/DATABASE.8, Application-Protocols/Bookmarks/BOOKMARK.8
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set and get the default NAP in the database.
+//!				2. Set and get the NAP attribute of a bookmark.
+//! @SYMTestExpectedResults 	The NAP reference is stored and retreived consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark2_SetNap
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark2_GetNap
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_SetNap
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	DB_GetNap
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0040-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0051-HP-0001
+//	Storage_Of_Uri
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0051-HP-0001
+//! @SYMTestCaseDesc 		Storage of Uri
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.1
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set and get the URI of a bookmark.
+//! @SYMTestExpectedResults 	The URI is stored and retreived consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_SetUri
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_GetUri
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0051-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0052-HP-0001
+//	Storage_Of_Uri_And_Auth_Data
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0052-HP-0001
+//! @SYMTestCaseDesc 		Storage of URI and authentication data
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.2, Application-Protocols/Bookmarks/BOOKMARK.3
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the URI of a bookmark to a URI with authentication details.
+//!				2. Get the URI of the bookmark.
+//!				3. Get the authentication details of the bookmark.	
+//! @SYMTestExpectedResults 	1. The URI is normalised when stored, that is, the authentication information is stripped off the URI while storing.
+//!				2. The authentication details are correctly associated with the bookmark object.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_SetUri_With_Auth
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_GetUri_With_Auth
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_GetAuth
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_SetUri_With_Auth2
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_GetUri_With_Auth2
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_GetAuth2
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0052-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0053-HP-0001
+//	Set_And_Get_Auth_Data
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0053-HP-0001
+//! @SYMTestCaseDesc 		Set and get authentication data
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.3
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the and get the authentication details of the bookmark.	
+//! @SYMTestExpectedResults 	The authentication details are correctly associated with the bookmark object.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestSetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_Auth2
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestGetPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Bookmark1_Auth2
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0053-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0004
+//	Update_Visited
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0056-HP-0004
+//! @SYMTestCaseDesc 		Update last visited time of a bookmark.
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Update the last visited time of a bookmark and verify whether the update is done correctly.
+//! @SYMTestExpectedResults 	The last visited time is updated correctly.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestUpdateVisitedStep
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0004
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0026-HP-0001
+//	Custom_Db_Property
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0026-HP-0001
+//! @SYMTestCaseDesc 		Register, access and deregister custom database properties
+//! @SYMFssID			Application-Protocols/Bookmarks/CUSTOM.1, Application-Protocols/Bookmarks/CUSTOM.4
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Register a custom database property of type TInt
+//!				2. Register a custom database property of type TReal
+//!				3. Register a custom database property of type TDes8
+//!				4. Register a custom database property of type TDes16
+//!				5. Set and get each of these properties.
+//!				6. De-register all the above properties.
+//! @SYMTestExpectedResults 	The custom properties are registered, set, retreived and de-registered consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Db_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Db_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Db_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Db_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Db_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Db_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Db_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Db_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Db_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Db_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Db_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Db_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Db_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Db_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Db_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Db_Des16
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0026-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0027-HP-0001
+//	Custom_Folder_Property
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0027-HP-0001
+//! @SYMTestCaseDesc 		Register, access and deregister custom folder properties
+//! @SYMFssID			Application-Protocols/Bookmarks/CUSTOM.2, Application-Protocols/Bookmarks/CUSTOM.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Register a custom folder property of type TInt
+//!				2. Register a custom folder property of type TReal
+//!				3. Register a custom folder property of type TDes8
+//!				4. Register a custom folder property of type TDes16
+//!				5. Set and get each of these properties.
+//!				6. De-register all the above properties.
+//! @SYMTestExpectedResults 	The custom properties are registered, set, retreived and de-registered consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Folder_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Folder_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Folder_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Folder_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Folder_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Folder_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Folder_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Folder_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Folder_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Folder_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Folder_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Folder_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Folder_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Folder_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Folder_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Folder_Des16
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0027-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0028-HP-0001
+//	Custom_Bookmark_Property
+
+//! @file			TestBookmarksSuite.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0028-HP-0001
+//! @SYMTestCaseDesc 		Register, access and deregister custom bookmark properties
+//! @SYMFssID			Application-Protocols/Bookmarks/CUSTOM.2, Application-Protocols/Bookmarks/CUSTOM.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Register a custom bookmark property of type TInt
+//!				2. Register a custom bookmark property of type TReal
+//!				3. Register a custom bookmark property of type TDes8
+//!				4. Register a custom bookmark property of type TDes16
+//!				5. Set and get each of these properties.
+//!				6. De-register all the above properties.
+//! @SYMTestExpectedResults 	The custom properties are registered, set, retreived and de-registered consistently.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Bookmark_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Bookmark_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Bookmark_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Register_Custom_Bookmark_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Bookmark_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Bookmark_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Bookmark_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Set_Custom_Bookmark_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Bookmark_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Bookmark_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Bookmark_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Get_Custom_Bookmark_Des16
+
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Bookmark_Int
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Bookmark_Real
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Bookmark_Des8
+RUN_TEST_STEP 	100 	 TestBookmarksServer	TestCustomPropertyStep 		c:\testdata\ini\TestBookmarksSuite.ini 	Deregister_Custom_Bookmark_Des16
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0028-HP-0001
+
+// Cleanup all items created
+RUN_TEST_STEP 100 	 TestBookmarksServer	TestDeleteItemsInFolderStep 	c:\testdata\ini\TestBookmarksSuite.ini 	Delete_Root_Children
+
+PRINT Completed_Bookmarks_Test

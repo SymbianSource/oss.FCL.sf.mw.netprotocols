@@ -1,0 +1,7 @@
+HTTP/1.0 400 Bad Request
+Server: Fakeserver.pl
+Date: Tue, 06 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+
+Too Bad.

@@ -1,0 +1,12 @@
+EXPORTS
+	_ZN18CExampleCpiManager11GetProfilesEv @ 1 NONAME
+	_ZN18CExampleCpiManager15GetProfileDiffsEv @ 2 NONAME
+	_ZN18CExampleCpiManager4NewLE11RStringPool @ 3 NONAME
+	_ZN18CExampleCpiManagerD0Ev @ 4 NONAME
+	_ZN18CExampleCpiManagerD1Ev @ 5 NONAME
+	_ZN18CExampleCpiManagerD2Ev @ 6 NONAME
+	_ZTI18CExampleCpiManager @ 7 NONAME ; #<TI>#
+	_ZTV18CExampleCpiManager @ 8 NONAME ; #<VT>#
+	_ZThn4_N18CExampleCpiManager11GetProfilesEv @ 9 NONAME ; #<thunk>#
+	_ZThn4_N18CExampleCpiManager15GetProfileDiffsEv @ 10 NONAME ; #<thunk>#
+

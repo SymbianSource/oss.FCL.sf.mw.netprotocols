@@ -1,0 +1,14 @@
+EXPORTS
+	??0RCookieManager@@QAE@VRStringPool@@@Z @ 1 NONAME ; public: __thiscall RCookieManager::RCookieManager(class RStringPool)
+	??1CCookie@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CCookie::~CCookie(void)
+	?AddToRequestL@CCookie@@QBEXVRHTTPHeaders@@H@Z @ 3 NONAME ; public: void __thiscall CCookie::AddToRequestL(class RHTTPHeaders,int)const 
+	?Attribute@CCookie@@QBEHW4TCookieAttributeName@1@AAVTHTTPHdrVal@@@Z @ 4 NONAME ; public: int __thiscall CCookie::Attribute(enum CCookie::TCookieAttributeName,class THTTPHdrVal &)const 
+	?ClearCookies@RCookieManager@@QAEHAAH@Z @ 5 NONAME ; public: int __thiscall RCookieManager::ClearCookies(int &)
+	?Connect@RCookieManager@@QAEHXZ @ 6 NONAME ; public: int __thiscall RCookieManager::Connect(void)
+	?GetCookiesL@RCookieManager@@QAEXABVTDesC8@@AAV?$RPointerArray@VCCookie@@@@AAH@Z @ 7 NONAME ; public: void __thiscall RCookieManager::GetCookiesL(class TDesC8 const &,class RPointerArray<class CCookie> &,int &)
+	?NewL@CCookie@@SAPAV1@VRHTTPHeaders@@HVRStringF@@VRStringPool@@ABVTUriC8@@@Z @ 8 NONAME ; public: static class CCookie * __cdecl CCookie::NewL(class RHTTPHeaders,int,class RStringF,class RStringPool,class TUriC8 const &)
+	?NewL@CCookie@@SAPAV1@VRStringPool@@@Z @ 9 NONAME ; public: static class CCookie * __cdecl CCookie::NewL(class RStringPool)
+	?SetAttribute@CCookie@@QAEHW4TCookieAttributeName@1@ABVTHTTPHdrVal@@@Z @ 10 NONAME ; public: int __thiscall CCookie::SetAttribute(enum CCookie::TCookieAttributeName,class THTTPHdrVal const &)
+	?StartCookieServer@@YAHPAX@Z @ 11 NONAME ; int __cdecl StartCookieServer(void *)
+	?StoreCookie@RCookieManager@@QAEHABVCCookie@@ABVTUriC8@@@Z @ 12 NONAME ; public: int __thiscall RCookieManager::StoreCookie(class CCookie const &,class TUriC8 const &)
+

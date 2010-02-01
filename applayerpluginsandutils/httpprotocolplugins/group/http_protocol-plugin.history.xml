@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="HTTP Protocol Plugins">
+  <purpose>
+    Implementation of HTTP Client specific operations as compliance with RFC2616
+  </purpose>
+  
+  <defect number="PDEF126952  " title="Timeout for a abnormal TCP disconnect in HTTP " revision="019">
+    A timer is incorporated which generates timeout event if the data is not sent or received within the specified time.
+  </defect>
+  
+  <defect number="PDEF124717" title="MediaNet Timeout seen several times when using Cellular Video" revision="018">
+   Implemented retrying the request over existing connections, if it fails again retry on the new connection.
+  </defect>
+
+  <defect number="DEF122664" title="Unable to retrieve max age value" revision="017">
+   CHttpGeneralHeaderReader::DecodeCacheControlL() is modified to check for '=' character and retrieve the max age value properly.
+  </defect>
+
+  <defect number="DEF122777" title="Fuzzed HTTP header coming from a http server causes the client http.dll panic" revision="016">
+     CHttpResponseParser::StartLineL() API is modified to handle the malformed start line in http response properly.
+  </defect>
+
+  <defect number="DEF122222" title="F/W crashes with malformed start line in the response" revision="015">
+     CHttpResponseParser::StartLineL() API is modified to handle the malformed start line in http response properly.
+  </defect>
+
+  <defect number="PDEF122357" title="LIBpp00742 - VF_IT_IOT: crash detected trying to download wrong DD file" revision="014">
+     Checking the transaction is still valid or not  when returning from the callback.
+  </defect>
+
+  <defect number="PDEF122250" title="T-Mobile D - GSM/WCDMA - OTC - Browser crash on www.wetteronline.de" revision="013">
+      Browser crashes on www.wetteronline.de for a particular operator.
+  </defect>
+   
+  <defect number="PDEF119736" title="Invalid parsing of HTTP headers when value contains a ';' character" revision="012">
+      CHttpGeneralHeaderReader::DecodeContentDispositionL() API is modified to check for ';' while retrieving the param value.
+  </defect>
+  
+   <defect number="DEF117127" title="Several warnings are flagged while building HTTP and WAP Push Components " revision="011">
+    Resolved build warnings. 
+  </defect>
+
+    <defect number="PDEF116857" title="CHttpClientHeaderReader::DecodeWWWAuthenticateL does not handle NTLM " revision="010">
+	  Aany value that follows the NTLM scheme should be considered as the next part. RHTTPHeaders::GetField() can be used to retrieve the base64 encoded string.
+   </defect>
+
+   <defect number="PDEF116666" title="532 - Download agent: File have status downloading after wrong username and pass" revision="009">
+      Closing the connection since pipelining has been disabled and both the request and response have been completed.      
+   </defect>
+
+   <defect number="PDEF113694" title="Can't install jad file (BfireRes.jad Restricted file)" revision="008">
+      The connection manager does not intimate the socket reader of the message data for which the socket reader waits in the state EPendingAck.   
+   </defect>
+
+   <defect number="PDEF113113" title="RHTTPHeaders::GetParam fails when parameter name is not in the string dictionary" revision="007">
+      The header "Content-Disposition" was never decoded.New method has been included to decode this header. This method parses the parameter/value pair of the header.   
+   </defect>
+
+   <defect number="PDEF112527" title="OA_W950i_3_IT : Issue : # 92923 : Problem in JTWI connection" revision="006">
+      To aviod the transaction fail, the response header is removed from the HTTP request and no error event being reported. 
+      Also, EFalse is returned to the method ValidateRequestMethodL instead of ETrue which causes the transaction to proceed further.  
+   </defect>
+
+  <preq number="1805" title="HTTP Whole Message Filter" revision="005">
+       The existing Symbian OS HTTP Transport Framework has been extended by the introduction of new APIs to allow a filter to be inserted into the HTTP session or individual transaction after the complete message has been formed but before it is dispatched. The filter will also operate on incoming HTTP messages before any other parsing of the message takes place.
+  </preq>
+	
+  <defect number="PDEF110402" title="Http stack shows IAP selection dialog for localhost URL" revision="004">
+    The http stack shouldn't force a network connection without checking whether one is really required.
+  </defect>
+
+  <cr number="1130" title="Make HTTP receive data buffer size a session variable" revision="003">
+    The HTTP stack receive data buffer size shall be changed from a constant to a variable which can be set at the start of the HTTP session.
+  </cr>
+
+  <defect number="DEF109550" title="Filename Case Check errors" revision="002">
+    Filenames are modified as specified in Filename policy.
+  </defect>
+
+  <defect number="PDEF102806" title="Renegotiation of TCP link in response to HTTP/1.1 302 when proxy is in use" revision="001">
+    Symbian HTTP stack must not teardown the TCP connection, When a proxy is in use, and the header "Proxy-Connection: keep-alive" has been returned.
+  </defect>
+
+</relnotes>

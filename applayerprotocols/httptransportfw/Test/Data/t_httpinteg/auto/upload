@@ -1,0 +1,183 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "HTTP-I-2305.log"
+
+LOG PATH $TestLogPath$ 
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL 
+
+
+DEFINE JigsawRoot "http://$Jigsaw$/"
+DEFINE JigsawURL  "http://$Jigsaw$/upload"
+// DEFINE PutURL     "http://$Jigsaw$/upload/large.txt"
+DEFINE PutFile    "c:\httptest\integration\large.txt"
+
+// Header 
+
+DEFINE ContentType "text/html" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2305 Other Methods using Transport framework (HTTP) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION  T_01 H_CON_01 OPTIONS $JigsawURL$
+TRANSACTION  T_02 H_CON_01 PUT $PutURL$ $PutFile$
+TRANSACTION  T_03 H_CON_01 OPTIONS $JigsawRoot$
+TRANSACTION  T_04 H_CON_01 TRACE $JigsawURL$
+    
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 60 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 60 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// ---------------------------------------------------------
+// display active transactions 
+
+showtrans
+
+// now do the delete, the Put should have completed 
+
+
+TRANSACTION  T_05 H_CON_01 DELETE $PutURL$ 
+
+hold 100 
+
+// wait for delete to complete 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2305 HEAD Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2305 HEAD Failed, HTTP Status $T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2305 HEAD Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2305 PUT Passed
+   ELSE 
+      PRINT Result: HTTP-I-2305 PUT Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2305 PUT Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2305 OPTIONS Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2305 OPTIONS Failed, HTTP Status $T_03HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2305 OPTIONS Failed, last event $T_03LastEvent$    
+ENDIF
+
+endtrans T_03
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2305 TRACE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2305 TRACE Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2305 TRACE Failed, last event $T_04LastEvent$    
+ENDIF
+
+endtrans T_04
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2305 DELETE Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2305 DELETE Failed, HTTP Status $T_05HttpStatus$   
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2305 DELETE Failed, last event $T_05LastEvent$   
+ENDIF
+
+endtrans T_05
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2305
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

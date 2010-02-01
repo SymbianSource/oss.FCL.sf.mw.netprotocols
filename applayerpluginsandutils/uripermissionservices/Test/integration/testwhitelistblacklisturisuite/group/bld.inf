@@ -1,0 +1,67 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Component description file
+// 
+//
+
+
+PRJ_TESTMMPFILES
+
+testwhitelistblacklisturisuite.mmp
+
+PRJ_TESTEXPORTS
+
+// Script file for testing the functionality.
+../scripts/testwlistblisturisuite.script			c:/testdata/scripts/testwlistblisturisuite.script
+../scripts/testwlistblisturisuite_addmoreuris.script            c:/testdata/scripts/testwlistblisturisuite_addmoreuris.script
+
+//Script file for testing the TLD functionality.
+../scripts/tld_preconfigtest.script				c:/testdata/scripts/tld_preconfigtest.script
+../scripts/tld_query_post-config_test.script	c:/testdata/scripts/tld_query_post-config_test.script
+../scripts/tld_query_preconfig_test.script		c:/testdata/scripts/tld_query_preconfig_test.script
+../scripts/tld_config_duplicate_test.script		c:/testdata/scripts/tld_config_duplicate_test.script
+
+// Script files for testing the capability.
+../scripts/cap_00000000_testwlistblisturi.script                c:/testdata/scripts/cap_00000000_testwlistblisturi.script  
+../scripts/cap_00000010_testwlistblisturi.script                c:/testdata/scripts/cap_00000010_testwlistblisturi.script 
+../scripts/cap_00000020_testwlistblisturi.script                c:/testdata/scripts/cap_00000020_testwlistblisturi.script
+../scripts/cap_00000030_testwlistblisturi.script                c:/testdata/scripts/cap_00000030_testwlistblisturi.script
+../scripts/testwlistblisturisuite_security.script               c:/testdata/scripts/testwlistblisturisuite_security.script
+../scripts/testwlistblisturisuite_add_security.script           c:/testdata/scripts/testwlistblisturisuite_add_security.script
+../scripts/testwlistblisturisuite_remove_security.script        c:/testdata/scripts/testwlistblisturisuite_remove_security.script
+
+// Ini files
+../testdata/testwlistblisturisuite.ini	                        c:/testdata/ini/testwlistblisturisuite.ini
+../testdata/testwlistblisturisuite_addmoreuris.ini              c:/testdata/ini/testwlistblisturisuite_addmoreuris.ini
+../testdata/testldpolicy.ini	                        		c:/testdata/ini/testldpolicy.ini
+
+//upgrade sis file
+../testdata/ineturilist_upgrade.sis			c:/testdata/sisupgrade/ineturilist_upgrade.sis
+../testdata/max_upgradesis/ineturilist_maxentries.sis		c:/testdata/sisupgrade/ineturilist_maxentries.sis
+../testdata/duplicate_entries/ineturilist_duplicate.sis		c:/testdata/sisupgrade/ineturilist_duplicate.sis
+
+// Preconfiguration file.
+../testdata/ineturilist.xml					z:/ineturilist/testdata/ineturilist.xml
+
+// Functionality tests bat file
+../scripts/testwlistblisturisuite.bat		/epoc32/tools/testwlistblisturisuite.bat
+
+// Security tests bat file
+../scripts/testwlistblisturisuite_security.bat	/epoc32/tools/testwlistblisturisuite_security.bat
+
+// IBY file for H/W
+testwlistblisturisuite.iby      		/epoc32/rom/include/testwlistblisturisuite.iby
+testwlistblisturisuite_preconfigxml.iby      	/epoc32/rom/include/testwlistblisturisuite_preconfigxml.iby
+
+

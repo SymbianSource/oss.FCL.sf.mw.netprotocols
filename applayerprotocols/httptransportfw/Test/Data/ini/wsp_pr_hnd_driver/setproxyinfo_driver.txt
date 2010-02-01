@@ -1,0 +1,18 @@
+## Include script - set proxy info for driver
+#
+# Client connect to proxy
+# Server accepts the connection
+#
+SCRIPT setproxyinfo_driver
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+	ENDSEND
+#
+# Done!
+#
+
+ENDSCRIPT

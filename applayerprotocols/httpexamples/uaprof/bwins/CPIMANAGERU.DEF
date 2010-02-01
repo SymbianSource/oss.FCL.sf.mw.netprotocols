@@ -1,0 +1,6 @@
+EXPORTS
+	??1CExampleCpiManager@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CExampleCpiManager::~CExampleCpiManager(void)
+	?GetProfileDiffs@CExampleCpiManager@@UAEAAV?$RPointerArray@VHBufC8@@@@XZ @ 2 NONAME ; public: virtual class RPointerArray<class HBufC8> & __thiscall CExampleCpiManager::GetProfileDiffs(void)
+	?GetProfiles@CExampleCpiManager@@UAEAAV?$RPointerArray@VHBufC8@@@@XZ @ 3 NONAME ; public: virtual class RPointerArray<class HBufC8> & __thiscall CExampleCpiManager::GetProfiles(void)
+	?NewL@CExampleCpiManager@@SAPAV1@VRStringPool@@@Z @ 4 NONAME ; public: static class CExampleCpiManager * __cdecl CExampleCpiManager::NewL(class RStringPool)
+

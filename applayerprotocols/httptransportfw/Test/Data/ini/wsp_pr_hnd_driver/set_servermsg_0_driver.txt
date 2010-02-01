@@ -1,0 +1,10 @@
+## Include script - set the server msg to 0
+#
+SCRIPT set_servermsg_0_driver
+	SEND
+		INVOKE SetServerMessageSizeL
+			PARAMETER aSize 0
+		ENDINVOKE
+	ENDSEND
+
+ENDSCRIPT

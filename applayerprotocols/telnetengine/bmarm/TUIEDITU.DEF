@@ -1,0 +1,6 @@
+EXPORTS
+; NEW:
+	ClientStubOrdinal1__Fv @ 1 NONAME R3UNUSED ; ClientStubOrdinal1(void)
+	Edit__9CLineEditRC7TDesC16P6TDes16 @ 2 NONAME ; CLineEdit::Edit(TDesC16 const &, TDes16 *)
+	NewL__9CLineEditP12CConsoleBasei @ 3 NONAME ; CLineEdit::NewL(CConsoleBase *, int)
+

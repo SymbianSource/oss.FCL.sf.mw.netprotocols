@@ -1,0 +1,32 @@
+## Include script - do open of a get transaction for driver
+#
+# Client opens a transaction
+# Client adds various headers
+#
+SCRIPT doopen_get_trans_driver
+
+	ECHO "Driver Opening Transaction"
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod GET
+			PARAMETER aUri http://wap.symbian.com/
+			PARAMETER aId "trans1"
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+	ENDSEND
+#
+# Add a few headers
+#
+	SEND
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName User-Agent
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue T_WspProtHnd
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT

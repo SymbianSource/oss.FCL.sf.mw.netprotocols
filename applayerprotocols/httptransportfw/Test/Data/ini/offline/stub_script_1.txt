@@ -1,0 +1,122 @@
+## Chat scripts, test case 1 - connect then disconnect from WAP gateway.
+SCRIPT TestDriver1
+#
+	ECHO "S-Connect.req"
+	EXPECT
+		INVOCATION MWspCOSessionInvoker::ConnectReq
+		ENDINVOCATION
+	ENDEXPECT
+	SLEEP 500
+#
+	ECHO "S-Connect.cnf"
+	SEND
+		INVOKE MWspCOSessionCallback::ConnectCnf
+		ENDINVOKE
+	ENDSEND
+#
+	ECHO "T-MethodInvoke.req"
+	EXPECT
+		INVOCATION MWspCOMethodInvoker::MethodInvokeReq
+			STOREITEM aMethodCallback trCB1
+			VALIDATE aMethod POST
+			VALIDATE aRequestUri http://wap.symbian.com/cgi-bin/
+			VALIDATE aRequestHeaders SomeHeaderData
+			VALIDATE aRequestBody SomeBodyData
+			VALIDATE aMoreData ETrue
+		ENDINVOCATION
+	ENDEXPECT
+	SLEEP 500
+#
+	ECHO "T-MethodInvoke.cnf"
+	SEND
+		INVOKE trCB1 MWspCOMethodCallback::MethodInvokeCnf
+		ENDINVOKE
+	ENDSEND
+#
+	ECHO "T-MethodInvokeData.req"
+	EXPECT
+		INVOCATION MWspCOMethodInvoker::MethodInvokeDataReq
+			VALIDATE aMethodCallback trCB1
+			VALIDATE aRequestBody SomeMoreBodyData
+			VALIDATE aTrailerHeaders SomeMoreHeaderData
+			VALIDATE aMoreData EFalse
+		ENDINVOCATION
+	ENDEXPECT
+	SLEEP 500
+#
+	ECHO "T-MethodInvokeData.cnf"
+	SEND
+		INVOKE trCB1 MWspCOMethodCallback::MethodInvokeDataCnf
+		ENDINVOKE
+	ENDSEND
+	SLEEP 1000
+#
+	ECHO "T-MethodResult.ind"
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trCB1 MWspCOMethodCallback::MethodResultInd
+			PARAMETER aStatus 200
+			PARAMETER aResponseHeaders SomeResponseHeaderData
+			CREATEITEM aResponseBody CStubDataSupplier respBody1
+			PARAMETER aMoreData ETrue
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION respBody1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 255
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION respBody1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart SomeResponseBodyData
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION respHdr1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+	SLEEP 500
+#
+	ECHO "T-MethodResultData.ind"
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trCB1 MWspCOMethodCallback::MethodResultDataInd
+			PARAMETER aTrailerHeaders SomeMoreResponseHeaderData
+			PARAMETER aMoreData EFalse
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION respBody1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: 255
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION respBody1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart SomeMoreResponseBodyData
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+	EXPECT
+		INVOCATION respBody1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+#
+	ECHO "S-Disconnect.req"
+	EXPECT
+		INVOCATION MWspCOSessionInvoker::DisconnectReq
+			VALIDATE aReason EUserReq
+		ENDINVOCATION
+	ENDEXPECT
+#
+	ECHO "S-Disconnect.ind"
+	SEND
+		INVOKE MWspCOSessionCallback::DisconnectInd
+			PARAMETER aReason EDisconnect
+			PARAMETER aRedirectSecurity EFalse
+			PARAMETER aRedirectAddresses ETrue;ETrue;193.113.200.195;9302;EIP
+			PARAMETER aErrorHeader xxx
+			PARAMETER aErrorBody yyy
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT

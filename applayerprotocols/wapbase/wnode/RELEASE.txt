@@ -1,0 +1,45 @@
+WNODE Release Notes
+=====================
+
+Version 0.0.001
+===============
+Made by Michael 22/06/99
+
+Changes:
+First Release
+
+MARM\DEB\WNODE.DLL                       5236
+MARM\REL\WNODE.DLL                       4360
+WINS\DEB\WNODE.DLL                      23040
+WINS\REL\WNODE.DLL                       7168
+
+Changes: 20/8/99
+
+WINS\UDEB\WNODE.DLL                     41014
+
+Implemented change requests due to integration. Fixed some memory leaks and added some error handling. Also added wrapper class for non-deletable and deletable data. see PVCS for diffs. 
+
+Changes: 21/10/99
+Changes are:
+	Added internal header file CNodeInt.h (house cleaning)
+	Data is no longer an HBufC8 and is now an HBufC16
+
+	added panic function
+	GLDEF_C void Panic(TNodePanic aPanic)
+
+
+	Removed const
+	void CAttribute::SetValue(CBase* aAttributeValue)
+
+	
+	Added function CNode::ResetDataPointer(HBufC16* aData)
+
+	internal function added to CBaseDataAndAttributes
+	HBufC16* CBaseDataAndAttrib::SetupDeletableOrNonDeleteableDataLC()
+
+	Removed const from CBase*
+	void CBaseDataAndAttrib::SetAttributeL(TAny* aAttributeType, CBase* aAttributeValue)
+	EXPORT_C void CNode::AddAttributeL(TAny* aAttributeType, CBase* aAttributeValue)
+	EXPORT_C void CNode::AddDataAndAttributeL(HBufC16 *aData, TAny* aAttributeType, CBase* aAttributeValue)
+
+	Reparent is now called ReparentL

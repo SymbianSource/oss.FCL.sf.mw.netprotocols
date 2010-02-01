@@ -1,0 +1,6 @@
+EXPORTS
+	GetProfileDiffs__18CExampleCpiManager @ 1 NONAME ; CExampleCpiManager::GetProfileDiffs(void)
+	GetProfiles__18CExampleCpiManager @ 2 NONAME ; CExampleCpiManager::GetProfiles(void)
+	NewL__18CExampleCpiManagerG11RStringPool @ 3 NONAME ; CExampleCpiManager::NewL(RStringPool)
+	"_._18CExampleCpiManager" @ 4 NONAME ; CExampleCpiManager::~CExampleCpiManager(void)
+

@@ -1,0 +1,10 @@
+## Include script - set the server msg to 50
+#
+SCRIPT set_servermsg_50_driver
+	SEND
+		INVOKE SetServerMessageSizeL
+			PARAMETER aSize 50
+		ENDINVOKE
+	ENDSEND
+
+ENDSCRIPT

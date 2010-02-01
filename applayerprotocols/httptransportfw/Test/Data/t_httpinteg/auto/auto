@@ -1,0 +1,101 @@
+//---------------------------------------------------------
+//  HTTP Integration Test Harness
+//  Test Cases for automated test 
+//
+//---------------------------------------------------------
+
+DEFINE TestLogPath    "c:\logs\http_integ\"
+DEFINE TestLogFile    "Auto.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration2\settings 
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL
+
+DEFINE wapTestURL    "http://$wapTest$"
+DEFINE dfURL         "http://$wapTest$/perl/dumpform.pl" 
+DEFINE dfFile        "c:\httptest\integration\dumpform.txt" 
+DEFINE LargePutURL   "http://$wapTest$/upload/large.txt"
+DEFINE LargePutFile  "c:\httptest\integration\large.txt"
+DEFINE wapTest2URL   "https://$wapTest2$"
+DEFINE df2URL        "https://$wapTest2$/perl/dumpform.pl" 
+DEFINE PutURL01      "http://$wapTest$/upload/pic01.jpg"
+DEFINE PutURL02      "http://$wapTest$/upload/pic02.jpg"
+DEFINE PutURL03      "http://$wapTest$/upload/pic03.jpg"
+DEFINE PutURL04      "http://$wapTest$/upload/pic04.jpg"
+DEFINE PutFile01     "c:\httptest\integration\small_pic01.jpg"
+DEFINE PutFile02     "c:\httptest\integration\small_pic02.jpg"
+DEFINE PutFile03     "c:\httptest\integration\small_pic03.jpg"
+DEFINE PutFile04     "c:\httptest\integration\small_pic04.jpg"
+DEFINE DeleteURL01   "http://$wapTest$/upload/pic01.jpg"
+DEFINE DeleteURL02   "http://$wapTest$/upload/pic02.jpg"
+
+// URL - external sites 
+
+call c:\httptest\integration2\externalSites 
+
+// Header 
+
+DEFINE Accept "*/*"
+DEFINE ContentType "*/*" 
+
+//---------------------------------------------------------
+//  HTTP Integration Test Harness
+//  Test Cases from section  4.2.1.1
+//
+//  Single Framework (HTTP) using the default bearer 
+//---------------------------------------------------------
+
+CALL c:\httptest\integration2\http-i-2300
+CALL c:\httptest\integration2\http-i-2300e
+CALL c:\httptest\integration2\http-i-2305
+CALL c:\httptest\integration2\http-i-2305e
+CALL c:\httptest\integration2\http-i-2306 
+
+//---------------------------------------------------------
+//  HTTP Integration Test Harness
+//  Test Cases from section  4.2.1.2
+//
+//  Single Framework (HTTP) using the default bearer 
+//---------------------------------------------------------
+
+CALL c:\httptest\integration2\http-i-2310
+CALL c:\httptest\integration2\http-i-2310e
+CALL c:\httptest\integration2\http-i-2315
+CALL c:\httptest\integration2\http-i-2315e 
+
+//---------------------------------------------------------
+//  HTTP Integration Test Harness
+//  Test Cases from section  4.2.1.3
+//
+//  Single Framework (HTTPS) using the default bearer 
+//---------------------------------------------------------
+
+CALL c:\httptest\integration2\http-i-2320
+CALL c:\httptest\integration2\http-i-2325
+
+//---------------------------------------------------------
+//  HTTP Integration Test Harness
+//  Test Cases from section  4.2.1.4
+//
+//  Single Framework (HTTPS) using the Specified bearer 
+//---------------------------------------------------------
+
+CALL c:\httptest\integration2\http-i-2330
+CALL c:\httptest\integration2\http-i-2335
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

@@ -1,0 +1,59 @@
+//
+//  Define the basic settings 
+//
+// ----------------------------------------------------------------------------
+//
+// Settings for machine names
+//
+// The machines wapTest and wapTest2 have both internal and external IP addresses 
+// and machine names. However if you use dial in to the test network you need to use 
+// the internal IP address 
+
+// DNS name  
+
+DEFINE	wapTest		"waptest.symbian.com" 
+DEFINE  wapTest2	"waptest2.symbian.com" 
+
+// External IP address 
+
+// DEFINE	wapTest		"212.133.29.130" 
+// DEFINE	wapTest2	"212.133.29.135"
+
+// Internal IP address 
+
+//DEFINE	wapTest		"10.35.2.4" 
+//DEFINE	wapTest2	"10.35.2.65" 
+
+DEFINE	Jigsaw		"10.35.2.2" 
+DEFINE	netscape	"10.35.2.3"
+DEFINE	NokiaWapGateway	"10.35.2.62" 
+DEFINE	IIS5.0		"10.35.2.5" 	
+
+// --------------------------------------------------------------------------
+//
+// Setting for timing info in scripts  		
+//
+
+DEFINE slow	"SLOW"
+DEFINE fast	"FAST" 
+
+
+// for NTRas use FAST 
+// for IR and Modem (via test network or pipex) use SLOW 
+
+// -------------------------------------------------------------------------
+//  Define the expected return result if required
+
+DEFINE Succeeded 8
+DEFINE Failed    9 
+
+// These values need to change for JetStream, i.e. Succeeded 9  
+
+// -------------------------------------------------------------------------
+// Define common HTTP return codes 
+
+DEFINE HTTP_OK         200 
+DEFINE HTTP_NOT_FOUND  404
+DEFINE HTTP_NOT_ACCEPT 406
+
+RETURN 

@@ -1,0 +1,7 @@
+EXPORTS
+	?GetLanguageTable@HttpFilterCommonStringsExt@@SAABUTStringTable@@XZ @ 1 NONAME ; public: static struct TStringTable const & __cdecl HttpFilterCommonStringsExt::GetLanguageTable(void)
+	?GetLocaleLanguage@HttpFilterCommonStringsExt@@SA?AVRStringF@@VRStringPool@@@Z @ 2 NONAME ; public: static class RStringF  __cdecl HttpFilterCommonStringsExt::GetLocaleLanguage(class RStringPool)
+	?GetTable@HttpFilterCommonStringsAddition@@SAABUTStringTable@@XZ @ 3 NONAME ; public: static struct TStringTable const & __cdecl HttpFilterCommonStringsAddition::GetTable(void)
+	?GetTable@HttpFilterCommonStringsExt@@SAABUTStringTable@@XZ @ 4 NONAME ; public: static struct TStringTable const & __cdecl HttpFilterCommonStringsExt::GetTable(void)
+	?GetLanguageString@HttpFilterCommonStringsExt@@SA?AVRStringF@@VRStringPool@@H@Z @ 5 NONAME ; public: static class RStringF  __cdecl HttpFilterCommonStringsExt::GetLanguageString(class RStringPool,int)
+

@@ -1,0 +1,67 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The main script file for running security tests on the WhiteListBlackListUriService API
+// @internalAll
+// 
+//
+
+
+RUN_SCRIPT  c:\TestData\Scripts\TestWListBListUriSuite_Add_Security.script
+
+
+PREFIX RUN_UTILS
+CopyFile c:\sys\bin\TestWListBListUriServer.exe c:\TestData\Scripts\TestWListBListUriServer.exe
+REMOVE_PREFIX
+
+////////////
+// None capapility tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestWListBListUriServer.exe 00000000 C:\sys\bin\TestWListBListUriServer_Cap.exe
+PRINT ***TestWListBListUriServer_Cap.exe now has None capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000000_TestWListBListUri.script
+////////////
+
+
+////////////
+// ReadDeviceData capability tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestWListBListUriServer.exe 00000010 C:\sys\bin\TestWListBListUriServer_Cap.exe
+PRINT ***TestWListBListUriServer_Cap.exe now has ReadDeviceData capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000010_TestWListBListUri.script
+////////////
+
+////////////
+// WriteDeviceData capability tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestWListBListUriServer.exe 00000020  C:\sys\bin\TestWListBListUriServer_Cap.exe
+PRINT ***TestWListBListUriServer_Cap.exe now has WriteDeviceData capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000020_TestWListBListUri.script
+////////////
+
+
+////////////
+// ReadDeviceData & WriteDeviceData capability tests
+RUN_PROGRAM -1 setcap c:\TestData\Scripts\TestWListBListUriServer.exe 00000030  C:\sys\bin\TestWListBListUriServer_Cap.exe
+PRINT ***TestWListBListUriServer_Cap.exe now has WriteDeviceData capability***
+RUN_SCRIPT  c:\TestData\Scripts\Cap_00000030_TestWListBListUri.script
+////////////
+
+RUN_SCRIPT  c:\TestData\Scripts\TestWListBListUriSuite_Remove_Security.script
+
+// Cleanup
+PREFIX RUN_UTILS
+MakeReadWrite c:\TestData\Scripts\TestWListBListUriServer.exe
+DeleteFile c:\TestData\Scripts\TestWListBListUriServer.exe
+MakeReadWrite c:\sys\bin\TestWListBListUriServer_Cap.exe
+DeleteFile c:\sys\bin\TestWListBListUriServer_Cap.exe
+REMOVE_PREFIX
+// --------------------
+

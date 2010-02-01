@@ -1,0 +1,36 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.7.6
+## Driver chat script
+#
+# Test Synopsis
+# * Disconnect while in Suspending state, one or more transactions have been invoked 
+Allow the current suspend process to complete successfully, all invoked methods are aborted. Inform user that disconnect has completed
+
+# Expected Result
+# * Expected result: disconnection made 
+
+
+SCRIPT UnitTestDriver2.1.7.6 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Step 1
+#
+
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+ All rights reserved.
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ Nokia Corporation - initial contribution.
+
+ Contributors:
+
+ Description:
+ Ineturilist pre-configuration File
+
+-->
+
+
+
+<URIList>
+	<PushEMail>
+		<Whitelist>
+			<Record>
+				<Uri>http://www.espnsports.com/sports/schedule</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>pointsec</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.paperboy.nl/docs/study</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>paperboy</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.rediff.com/docs/study</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>rediff</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.espnstar.com/sports/schedule</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>espnstar</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://dmoz.org/Computers/Programming/Languages/</Uri>
+				<Permission>2</Permission>
+				<FavouriteName>dmoz</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.mhprofessional.com/getpage.php</Uri>
+				<Permission>2</Permission>
+				<FavouriteName>mhprofessional</FavouriteName>
+			</Record>
+		</Whitelist>
+		<Blacklist>
+			<Record>
+				<Uri>http://www.marathi.com/cgi-bin/links.cgi</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>marathi</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.aptourism.com/apservlets/jsp/index.jsp</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>aptourism</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.yahoo.com/docs/study</Uri>
+				<Permission>1</Permission>
+				<FavouriteName>yahoo</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.transcendusa.com/TsClub/index.asp</Uri>
+				<Permission>2</Permission>
+				<FavouriteName>transcendusa</FavouriteName>
+			</Record>
+			<Record>
+				<Uri>http://www.bloomberg.com/tv/index.html</Uri>
+				<Permission>2</Permission>
+				<FavouriteName>bloomberg</FavouriteName>
+			</Record>
+		</Blacklist>
+	</PushEMail>
+</URIList>
+
+<!--	
+		EBlackList:  1
+		EWhiteList: 2 
+		PermissionType:-
+		EReadOnly = 1 
+		EReadWrite = 2 		
+-->
+
+

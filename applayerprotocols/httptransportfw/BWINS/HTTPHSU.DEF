@@ -1,0 +1,227 @@
+EXPORTS
+	??0CHeaderCodec@@IAE@XZ @ 1 NONAME ; protected: __thiscall CHeaderCodec::CHeaderCodec(void)
+	??0CHeaderReader@@IAE@XZ @ 2 NONAME ; protected: __thiscall CHeaderReader::CHeaderReader(void)
+	??0CHeaderWriter@@IAE@XZ @ 3 NONAME ; protected: __thiscall CHeaderWriter::CHeaderWriter(void)
+	??0CProtTransaction@@IAE@VRHTTPTransaction@@@Z @ 4 NONAME ; protected: __thiscall CProtTransaction::CProtTransaction(class RHTTPTransaction)
+	??0CProtocolHandler@@IAE@VRHTTPSession@@@Z @ 5 NONAME ; protected: __thiscall CProtocolHandler::CProtocolHandler(class RHTTPSession)
+	??0CRxData@@IAE@AAVCProtTransaction@@AAVMRxDataObserver@@@Z @ 6 NONAME ; protected: __thiscall CRxData::CRxData(class CProtTransaction &,class MRxDataObserver &)
+	??0CRxData@@IAE@XZ @ 7 NONAME ; protected: __thiscall CRxData::CRxData(void)
+	??0CTxData@@IAE@AAVCProtTransaction@@@Z @ 8 NONAME ; protected: __thiscall CTxData::CTxData(class CProtTransaction &)
+	??0CTxData@@IAE@XZ @ 9 NONAME ; protected: __thiscall CTxData::CTxData(void)
+	??0RHTTPPropertySet@@QAE@XZ @ 10 NONAME ; public: __thiscall RHTTPPropertySet::RHTTPPropertySet(void)
+	??0THTTPHdrVal@@QAE@H@Z @ 11 NONAME ; public: __thiscall THTTPHdrVal::THTTPHdrVal(int)
+	??0THTTPHdrVal@@QAE@VRString@@@Z @ 12 NONAME ; public: __thiscall THTTPHdrVal::THTTPHdrVal(class RString)
+	??0THTTPHdrVal@@QAE@VRStringF@@@Z @ 13 NONAME ; public: __thiscall THTTPHdrVal::THTTPHdrVal(class RStringF)
+	??0THTTPHdrVal@@QAE@VTDateTime@@@Z @ 14 NONAME ; public: __thiscall THTTPHdrVal::THTTPHdrVal(class TDateTime)
+	??0THTTPHdrVal@@QAE@XZ @ 15 NONAME ; public: __thiscall THTTPHdrVal::THTTPHdrVal(void)
+	??1CHTTPFormEncoder@@UAE@XZ @ 16 NONAME ; public: virtual __thiscall CHTTPFormEncoder::~CHTTPFormEncoder(void)
+	??1CHeaderCodec@@UAE@XZ @ 17 NONAME ; public: virtual __thiscall CHeaderCodec::~CHeaderCodec(void)
+	??1CHeaderReader@@UAE@XZ @ 18 NONAME ; public: virtual __thiscall CHeaderReader::~CHeaderReader(void)
+	??1CHeaderWriter@@UAE@XZ @ 19 NONAME ; public: virtual __thiscall CHeaderWriter::~CHeaderWriter(void)
+	??1CProtTransaction@@UAE@XZ @ 20 NONAME ; public: virtual __thiscall CProtTransaction::~CProtTransaction(void)
+	??1CProtocolHandler@@UAE@XZ @ 21 NONAME ; public: virtual __thiscall CProtocolHandler::~CProtocolHandler(void)
+	??1CRxData@@UAE@XZ @ 22 NONAME ; public: virtual __thiscall CRxData::~CRxData(void)
+	??1CTxData@@UAE@XZ @ 23 NONAME ; public: virtual __thiscall CTxData::~CTxData(void)
+	??1THTTPHdrFieldIter@@QAE@XZ @ 24 NONAME ; public: __thiscall THTTPHdrFieldIter::~THTTPHdrFieldIter(void)
+	??1THeaderFieldParamIter@@QAE@XZ @ 25 NONAME ABSENT ; public: __thiscall THeaderFieldParamIter::~THeaderFieldParamIter(void)
+	??1THttpLogger@@UAE@XZ @ 26 NONAME ; public: __thiscall THttpLogger::~THttpLogger(void)
+	??8THTTPHdrVal@@QBEHV0@@Z @ 27 NONAME ; public: int __thiscall THTTPHdrVal::operator==(class THTTPHdrVal)const 
+	??9THTTPHdrVal@@QBEHV0@@Z @ 28 NONAME ; public: int __thiscall THTTPHdrVal::operator!=(class THTTPHdrVal)const 
+	??ETHTTPFilterIterator@@QAEAAV0@XZ @ 29 NONAME ; public: class THTTPFilterIterator & __thiscall THTTPFilterIterator::operator++(void)
+	??ETHTTPHdrFieldIter@@QAEXXZ @ 30 NONAME ; public: void __thiscall THTTPHdrFieldIter::operator++(void)
+	??ETHeaderFieldParamIter@@QAEXXZ @ 31 NONAME ABSENT ; public: void __thiscall THeaderFieldParamIter::operator++(void)
+	??ETHeaderFieldPartIter@@QAEXXZ @ 32 NONAME ABSENT ; public: void __thiscall THeaderFieldPartIter::operator++(void)
+	??RTHTTPFilterIterator@@QBEABVTHTTPFilterRegistration@@XZ @ 33 NONAME ; public: class THTTPFilterRegistration const & __thiscall THTTPFilterIterator::operator()(void)const 
+	??RTHTTPHdrFieldIter@@QAE?AVRStringTokenF@@XZ @ 34 NONAME ; public: class RStringTokenF  __thiscall THTTPHdrFieldIter::operator()(void)
+	??RTHeaderFieldParamIter@@QAEPBVCHeaderFieldParam@@XZ @ 35 NONAME ABSENT ; public: class CHeaderFieldParam const * __thiscall THeaderFieldParamIter::operator()(void)
+	??RTHeaderFieldPartIter@@QAEPBVCHeaderFieldPart@@XZ @ 36 NONAME ABSENT ; public: class CHeaderFieldPart const * __thiscall THeaderFieldPartIter::operator()(void)
+	?AddFieldL@CHTTPFormEncoder@@QAEXABVTDesC8@@0@Z @ 37 NONAME ; public: void __thiscall CHTTPFormEncoder::AddFieldL(class TDesC8 const &,class TDesC8 const &)
+	?AddFilterL@RHTTPFilterCollection@@QAEXAAVMHTTPFilter@@VTHTTPEvent@@HVRStringF@@@Z @ 38 NONAME ; public: void __thiscall RHTTPFilterCollection::AddFilterL(class MHTTPFilter &,class THTTPEvent,int,class RStringF)
+	?AddFilterL@RHTTPFilterCollection@@QAEXAAVMHTTPFilter@@VTHTTPEvent@@VRStringF@@HH2@Z @ 39 NONAME ; public: void __thiscall RHTTPFilterCollection::AddFilterL(class MHTTPFilter &,class THTTPEvent,class RStringF,int,int,class RStringF)
+	?AddParamL@CHeaderFieldPart@@QAEXPAVCHeaderFieldParam@@@Z @ 40 NONAME ABSENT ; public: void __thiscall CHeaderFieldPart::AddParamL(class CHeaderFieldParam *)
+	?AtEnd@TFilterConfigurationIterator@@QAEHXZ @ 41 NONAME ; public: int __thiscall TFilterConfigurationIterator::AtEnd(void)
+	?AtEnd@THTTPFilterIterator@@QBEHXZ @ 42 NONAME ; public: int __thiscall THTTPFilterIterator::AtEnd(void)const 
+	?AtEnd@THTTPHdrFieldIter@@QBEHXZ @ 43 NONAME ; public: int __thiscall THTTPHdrFieldIter::AtEnd(void)const 
+	?AtEnd@THeaderFieldParamIter@@QAEHXZ @ 44 NONAME ABSENT ; public: int __thiscall THeaderFieldParamIter::AtEnd(void)
+	?AtEnd@THeaderFieldPartIter@@QAEHXZ @ 45 NONAME ABSENT ; public: int __thiscall THeaderFieldPartIter::AtEnd(void)
+	?AtStart@TFilterConfigurationIterator@@QAEHXZ @ 46 NONAME ; public: int __thiscall TFilterConfigurationIterator::AtStart(void)
+	?BeginRawDataL@RHeaderField@@QAEXH@Z @ 47 NONAME ; public: void __thiscall RHeaderField::BeginRawDataL(int)
+	?Body@RHTTPMessage@@QBEPAVMHTTPDataSupplier@@XZ @ 48 NONAME ; public: class MHTTPDataSupplier * __thiscall RHTTPMessage::Body(void)const 
+	?CanChangeFilters@RHTTPFilterCollection@@QBEHXZ @ 49 NONAME ; public: int __thiscall RHTTPFilterCollection::CanChangeFilters(void)const 
+	?Cancel@RHTTPTransaction@@QAEXVTHTTPFilterHandle@@@Z @ 50 NONAME ; public: void __thiscall RHTTPTransaction::Cancel(class THTTPFilterHandle)
+	?Close@RHTTPSession@@QAEXXZ @ 51 NONAME ; public: void __thiscall RHTTPSession::Close(void)
+	?Close@RHTTPTransaction@@QAEXXZ @ 52 NONAME ; public: void __thiscall RHTTPTransaction::Close(void)
+	?Codec@CProtocolHandler@@QBEPAVCHeaderCodec@@XZ @ 53 NONAME ; public: class CHeaderCodec * __thiscall CProtocolHandler::Codec(void)const 
+	?Collection@RHeaderField@@QAE?AVRHTTPHeaders@@XZ @ 54 NONAME ; public: class RHTTPHeaders  __thiscall RHeaderField::Collection(void)
+	?CommitRawData@RHeaderField@@QAEXXZ @ 55 NONAME ; public: void __thiscall RHeaderField::CommitRawData(void)
+	?CompleteSelf@CProtocolHandler@@IAEXXZ @ 56 NONAME ; protected: void __thiscall CProtocolHandler::CompleteSelf(void)
+	?ConnectL@RHTTPSession@@QAEXXZ @ 57 NONAME ; public: void __thiscall RHTTPSession::ConnectL(void)
+	?ConnectionInfo@RHTTPSession@@QBE?AVRHTTPConnectionInfo@@XZ @ 58 NONAME ; public: class RHTTPConnectionInfo  __thiscall RHTTPSession::ConnectionInfo(void)const 
+	?ConstructL@CHeaderCodec@@IAEXXZ @ 59 NONAME ; protected: void __thiscall CHeaderCodec::ConstructL(void)
+	?ConstructL@CHeaderReader@@IAEXXZ @ 60 NONAME ; protected: void __thiscall CHeaderReader::ConstructL(void)
+	?ConstructL@CHeaderWriter@@IAEXXZ @ 61 NONAME ; protected: void __thiscall CHeaderWriter::ConstructL(void)
+	?ConstructL@CProtocolHandler@@IAEXVRHTTPSession@@@Z @ 62 NONAME ; protected: void __thiscall CProtocolHandler::ConstructL(class RHTTPSession)
+	?ConstructL@CRxData@@IAEXXZ @ 63 NONAME ; protected: void __thiscall CRxData::ConstructL(void)
+	?ConstructL@CTxData@@IAEXXZ @ 64 NONAME ; protected: void __thiscall CTxData::ConstructL(void)
+	?Copy@THTTPHdrVal@@QBE?AV1@XZ @ 65 NONAME ; public: class THTTPHdrVal  __thiscall THTTPHdrVal::Copy(void)const 
+	?CreateFlogger@THttpLogger@@QAEXABVTDesC16@@HH@Z @ 66 NONAME ; public: void __thiscall THttpLogger::CreateFlogger(class TDesC16 const &,int,int)
+	?CurrentFilterInformation@TFilterConfigurationIterator@@QBE?BUTFilterInformation@@XZ @ 67 NONAME ; public: struct TFilterInformation const  __thiscall TFilterConfigurationIterator::CurrentFilterInformation(void)const 
+	?DateTime@THTTPHdrVal@@QBE?AVTDateTime@@XZ @ 68 NONAME ; public: class TDateTime  __thiscall THTTPHdrVal::DateTime(void)const 
+	?DecodeHeaderL@CHeaderCodec@@QBEXAAVRHeaderField@@@Z @ 69 NONAME ; public: void __thiscall CHeaderCodec::DecodeHeaderL(class RHeaderField &)const 
+	?DisconnectL@RHTTPSession@@QAEXXZ @ 70 NONAME ; public: void __thiscall RHTTPSession::DisconnectL(void)
+	?DoCancel@CProtocolHandler@@MAEXXZ @ 71 NONAME ; protected: virtual void __thiscall CProtocolHandler::DoCancel(void)
+	?DumpIt@THttpLogger@@QAEXABVTDesC8@@@Z @ 72 NONAME ; public: void __thiscall THttpLogger::DumpIt(class TDesC8 const &)
+	?EncodeHeaderL@CHeaderCodec@@QBEXAAVRHeaderField@@@Z @ 73 NONAME ; public: void __thiscall CHeaderCodec::EncodeHeaderL(class RHeaderField &)const 
+	?ExtractIntegerValueL@TTextHeaderUtils@@SAHAAVTPtrC8@@AAHH@Z @ 74 NONAME ABSENT
+	?ExtractNextTokenFromList@TTextHeaderUtils@@SAHAAVTPtrC8@@0ABVTDesC8@@@Z @ 75 NONAME ABSENT
+	?ExtractNextTokenFromList@TTextHeaderUtils@@SAHAAVTPtrC8@@0VTChar@@@Z @ 76 NONAME ABSENT
+	?ExtractQuotedStringL@TTextHeaderUtils@@SAHAAVTPtrC8@@0@Z @ 77 NONAME ABSENT
+	?Fail@RHTTPTransaction@@QAEXVTHTTPFilterHandle@@@Z @ 78 NONAME ; public: void __thiscall RHTTPTransaction::Fail(class THTTPFilterHandle)
+	?FailSessionEvent@RHTTPSession@@QAEXVTHTTPFilterHandle@@@Z @ 79 NONAME ; public: void __thiscall RHTTPSession::FailSessionEvent(class THTTPFilterHandle)
+	?FieldPartsL@RHTTPHeaders@@QBEHVRStringF@@@Z @ 80 NONAME ; public: int __thiscall RHTTPHeaders::FieldPartsL(class RStringF)const 
+	?Fields@RHTTPHeaders@@QBE?AVTHTTPHdrFieldIter@@XZ @ 81 NONAME ; public: class THTTPHdrFieldIter  __thiscall RHTTPHeaders::Fields(void)const 
+	?FindByDataType@TFilterConfigurationIterator@@QAEHABVTDesC8@@@Z @ 82 NONAME ; public: int __thiscall TFilterConfigurationIterator::FindByDataType(class TDesC8 const &)
+	?FindTransaction@CProtocolHandler@@IBEHVRHTTPTransaction@@AAPBVCProtTransaction@@@Z @ 83 NONAME ; protected: int __thiscall CProtocolHandler::FindTransaction(class RHTTPTransaction,class CProtTransaction const * &)const 
+	?First@TFilterConfigurationIterator@@QAEHXZ @ 84 NONAME ; public: int __thiscall TFilterConfigurationIterator::First(void)
+	?First@THTTPHdrFieldIter@@QAEXXZ @ 85 NONAME ; public: void __thiscall THTTPHdrFieldIter::First(void)
+	?First@THeaderFieldParamIter@@QAEXXZ @ 86 NONAME ABSENT ; public: void __thiscall THeaderFieldParamIter::First(void)
+	?First@THeaderFieldPartIter@@QAEXXZ @ 87 NONAME ABSENT ; public: void __thiscall THeaderFieldPartIter::First(void)
+	?GetField@RHTTPHeaders@@QBEHVRStringF@@HAAVTHTTPHdrVal@@@Z @ 88 NONAME ; public: int __thiscall RHTTPHeaders::GetField(class RStringF,int,class THTTPHdrVal &)const 
+	?GetHeaderCollection@RHTTPMessage@@QAE?AVRHTTPHeaders@@XZ @ 89 NONAME ; public: class RHTTPHeaders  __thiscall RHTTPMessage::GetHeaderCollection(void)
+	?GetParam@RHTTPHeaders@@QBEHVRStringF@@0AAVTHTTPHdrVal@@H@Z @ 90 NONAME ; public: int __thiscall RHTTPHeaders::GetParam(class RStringF,class RStringF,class THTTPHdrVal &,int)const 
+	?GetRawField@RHTTPHeaders@@QBEHVRStringF@@AAVTPtrC8@@@Z @ 91 NONAME ; public: int __thiscall RHTTPHeaders::GetRawField(class RStringF,class TPtrC8 &)const 
+	?GetTable@RHTTPSession@@SAABUTStringTable@@XZ @ 92 NONAME ; public: static struct TStringTable const & __cdecl RHTTPSession::GetTable(void)
+	?HasBody@RHTTPMessage@@QBEHXZ @ 93 NONAME ; public: int __thiscall RHTTPMessage::HasBody(void)const 
+	?Id@RHTTPTransaction@@QBEHXZ @ 94 NONAME ; public: int __thiscall RHTTPTransaction::Id(void)const 
+	?InstallCurrentFilter@TFilterConfigurationIterator@@QBEHXZ @ 95 NONAME ; public: int __thiscall TFilterConfigurationIterator::InstallCurrentFilter(void)const 
+	?Int@THTTPHdrVal@@QBEHXZ @ 96 NONAME ; public: int __thiscall THTTPHdrVal::Int(void)const 
+	?ListAvailableProtocolsL@RHTTPSession@@SAXAAV?$RPointerArray@VHBufC8@@@@@Z @ 97 NONAME ; public: static void __cdecl RHTTPSession::ListAvailableProtocolsL(class RPointerArray<class HBufC8> &)
+	?LogIt@THttpLogger@@QAAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 98 NONAME ; public: void __cdecl THttpLogger::LogIt(class TRefByValue<class TDesC16 const >,...)
+	?MHFLoad@CProtocolHandler@@UAEXVRHTTPSession@@VTHTTPFilterHandle@@@Z @ 99 NONAME ; public: virtual void __thiscall CProtocolHandler::MHFLoad(class RHTTPSession,class THTTPFilterHandle)
+	?MHFLoad@MHTTPFilter@@UAEXVRHTTPSession@@VTHTTPFilterHandle@@@Z @ 100 NONAME ; public: virtual void __thiscall MHTTPFilter::MHFLoad(class RHTTPSession,class THTTPFilterHandle)
+	?MHFRunError@CProtocolHandler@@UAEHHVRHTTPTransaction@@ABVTHTTPEvent@@@Z @ 101 NONAME ; public: virtual int __thiscall CProtocolHandler::MHFRunError(int,class RHTTPTransaction,class THTTPEvent const &)
+	?MHFRunError@MHTTPFilterBase@@UAEHHVRHTTPTransaction@@ABVTHTTPEvent@@@Z @ 102 NONAME ; public: virtual int __thiscall MHTTPFilterBase::MHFRunError(int,class RHTTPTransaction,class THTTPEvent const &)
+	?MHFRunL@CProtocolHandler@@UAEXVRHTTPTransaction@@ABVTHTTPEvent@@@Z @ 103 NONAME ; public: virtual void __thiscall CProtocolHandler::MHFRunL(class RHTTPTransaction,class THTTPEvent const &)
+	?MHFRunL@MHTTPFilterBase@@UAEXVRHTTPTransaction@@ABVTHTTPEvent@@@Z @ 104 NONAME ; public: virtual void __thiscall MHTTPFilterBase::MHFRunL(class RHTTPTransaction,class THTTPEvent const &)
+	?MHFSessionRunError@CProtocolHandler@@UAEHHABVTHTTPSessionEvent@@@Z @ 105 NONAME ; public: virtual int __thiscall CProtocolHandler::MHFSessionRunError(int,class THTTPSessionEvent const &)
+	?MHFSessionRunError@MHTTPFilterBase@@UAEHHABVTHTTPSessionEvent@@@Z @ 106 NONAME ; public: virtual int __thiscall MHTTPFilterBase::MHFSessionRunError(int,class THTTPSessionEvent const &)
+	?MHFSessionRunL@CProtocolHandler@@UAEXABVTHTTPSessionEvent@@@Z @ 107 NONAME ; public: virtual void __thiscall CProtocolHandler::MHFSessionRunL(class THTTPSessionEvent const &)
+	?MHFSessionRunL@MHTTPFilterBase@@UAEXABVTHTTPSessionEvent@@@Z @ 108 NONAME ; public: virtual void __thiscall MHTTPFilterBase::MHFSessionRunL(class THTTPSessionEvent const &)
+	?MHFUnload@CProtocolHandler@@UAEXVRHTTPSession@@VTHTTPFilterHandle@@@Z @ 109 NONAME ; public: virtual void __thiscall CProtocolHandler::MHFUnload(class RHTTPSession,class THTTPFilterHandle)
+	?MHFUnload@MHTTPFilter@@UAEXVRHTTPSession@@VTHTTPFilterHandle@@@Z @ 110 NONAME ; public: virtual void __thiscall MHTTPFilter::MHFUnload(class RHTTPSession,class THTTPFilterHandle)
+	?Method@RHTTPRequest@@QBE?AVRStringF@@XZ @ 111 NONAME ; public: class RStringF  __thiscall RHTTPRequest::Method(void)const 
+	?Name@CHeaderFieldParam@@QBE?AVRStringF@@XZ @ 112 NONAME ABSENT ; public: class RStringF  __thiscall CHeaderFieldParam::Name(void)const 
+	?Name@RHeaderField@@QBE?AVRStringF@@XZ @ 113 NONAME ; public: class RStringF  __thiscall RHeaderField::Name(void)const 
+	?NewL@CHTTPFormEncoder@@SAPAV1@XZ @ 114 NONAME ; public: static class CHTTPFormEncoder * __cdecl CHTTPFormEncoder::NewL(void)
+	?NewL@CHeaderFieldParam@@SAPAV1@VRStringF@@VTHTTPHdrVal@@@Z @ 115 NONAME ABSENT ; public: static class CHeaderFieldParam * __cdecl CHeaderFieldParam::NewL(class RStringF,class THTTPHdrVal)
+	?NewL@CHeaderFieldPart@@SAPAV1@VTHTTPHdrVal@@@Z @ 116 NONAME ABSENT ; public: static class CHeaderFieldPart * __cdecl CHeaderFieldPart::NewL(class THTTPHdrVal)
+	?Next@TFilterConfigurationIterator@@QAEHXZ @ 117 NONAME ; public: int __thiscall TFilterConfigurationIterator::Next(void)
+	?NotifyNewRequestBodyPartL@RHTTPTransaction@@QAEXVTHTTPFilterHandle@@@Z @ 118 NONAME ; public: void __thiscall RHTTPTransaction::NotifyNewRequestBodyPartL(class THTTPFilterHandle)
+	?NumActiveTransactions@CProtocolHandler@@IBEHXZ @ 119 NONAME ; protected: int __thiscall CProtocolHandler::NumActiveTransactions(void)const 
+	?NumParameters@CHeaderFieldPart@@QBEHXZ @ 120 NONAME ABSENT ; public: int __thiscall CHeaderFieldPart::NumParameters(void)const 
+	?OpenL@RHTTPSession@@QAEXABVTDesC8@@@Z @ 121 NONAME ; public: void __thiscall RHTTPSession::OpenL(class TDesC8 const &)
+	?OpenL@RHTTPSession@@QAEXABVTDesC8@@PAVMHTTPFilterCreationCallback@@@Z @ 122 NONAME ; public: void __thiscall RHTTPSession::OpenL(class TDesC8 const &,class MHTTPFilterCreationCallback *)
+	?OpenL@RHTTPSession@@QAEXXZ @ 123 NONAME ; public: void __thiscall RHTTPSession::OpenL(void)
+	?OpenTransactionL@RHTTPSession@@QAE?AVRHTTPTransaction@@ABVTUriC8@@AAVMHTTPTransactionCallback@@VRStringF@@@Z @ 124 NONAME ; public: class RHTTPTransaction  __thiscall RHTTPSession::OpenTransactionL(class TUriC8 const &,class MHTTPTransactionCallback &,class RStringF)
+	?Parameters@CHeaderFieldPart@@QBE?AVTHeaderFieldParamIter@@XZ @ 125 NONAME ABSENT ; public: class THeaderFieldParamIter  __thiscall CHeaderFieldPart::Parameters(void)const 
+	?PartsL@RHeaderField@@QAE?AVTHeaderFieldPartIter@@XZ @ 126 NONAME ; public: class THeaderFieldPartIter  __thiscall RHeaderField::PartsL(void)
+	?Property@RHTTPPropertySet@@QBEHVRStringF@@AAVTHTTPHdrVal@@@Z @ 127 NONAME ; public: int __thiscall RHTTPPropertySet::Property(class RStringF,class THTTPHdrVal &)const 
+	?PropertySet@RHTTPTransaction@@QBE?AVRHTTPTransactionPropertySet@@XZ @ 128 NONAME ; public: class RHTTPTransactionPropertySet  __thiscall RHTTPTransaction::PropertySet(void)const 
+	?ProtTrans@CRxData@@QAEAAVCProtTransaction@@XZ @ 129 NONAME ; public: class CProtTransaction & __thiscall CRxData::ProtTrans(void)
+	?ProtTrans@CTxData@@QAEAAVCProtTransaction@@XZ @ 130 NONAME ; public: class CProtTransaction & __thiscall CTxData::ProtTrans(void)
+	?Query@RHTTPFilterCollection@@QAE?AVTHTTPFilterIterator@@VRStringF@@@Z @ 131 NONAME ; public: class THTTPFilterIterator  __thiscall RHTTPFilterCollection::Query(class RStringF)
+	?RawDataL@CHeaderField@@QAEXAAVTPtrC8@@@Z @ 132 NONAME ; public: void __thiscall CHeaderField::RawDataL(class TPtrC8 &)
+	?RawDataL@RHeaderField@@QAEXAAVTPtrC8@@@Z @ 133 NONAME ; public: void __thiscall RHeaderField::RawDataL(class TPtrC8 &)
+	?RemoveAllFields@RHTTPHeaders@@QAEXXZ @ 134 NONAME ; public: void __thiscall RHTTPHeaders::RemoveAllFields(void)
+	?RemoveAllProperties@RHTTPPropertySet@@QAEXXZ @ 135 NONAME ; public: void __thiscall RHTTPPropertySet::RemoveAllProperties(void)
+	?RemoveBody@RHTTPMessage@@QAEXXZ @ 136 NONAME ; public: void __thiscall RHTTPMessage::RemoveBody(void)
+	?RemoveField@RHTTPHeaders@@QAEHVRStringF@@@Z @ 137 NONAME ; public: int __thiscall RHTTPHeaders::RemoveField(class RStringF)
+	?RemoveFieldPart@RHTTPHeaders@@QAEHVRStringF@@H@Z @ 138 NONAME ; public: int __thiscall RHTTPHeaders::RemoveFieldPart(class RStringF,int)
+	?RemoveFilter@RHTTPFilterCollection@@QAEXVRStringF@@@Z @ 139 NONAME ; public: void __thiscall RHTTPFilterCollection::RemoveFilter(class RStringF)
+	?RemoveProperty@RHTTPPropertySet@@QAEXVRStringF@@@Z @ 140 NONAME ; public: void __thiscall RHTTPPropertySet::RemoveProperty(class RStringF)
+	?Request@RHTTPTransaction@@QBE?AVRHTTPRequest@@XZ @ 141 NONAME ; public: class RHTTPRequest  __thiscall RHTTPTransaction::Request(void)const 
+	?RequestSessionHeadersL@RHTTPSession@@QAE?AVRHTTPHeaders@@XZ @ 142 NONAME ; public: class RHTTPHeaders  __thiscall RHTTPSession::RequestSessionHeadersL(void)
+	?ResetRxData@CProtTransaction@@QAEXXZ @ 143 NONAME ; public: void __thiscall CProtTransaction::ResetRxData(void)
+	?ResetTxData@CProtTransaction@@QAEXXZ @ 144 NONAME ; public: void __thiscall CProtTransaction::ResetTxData(void)
+	?Response@RHTTPTransaction@@QBE?AVRHTTPResponse@@XZ @ 145 NONAME ; public: class RHTTPResponse  __thiscall RHTTPTransaction::Response(void)const 
+	?ResponseSessionHeadersL@RHTTPSession@@QAE?AVRHTTPHeaders@@XZ @ 146 NONAME ; public: class RHTTPHeaders  __thiscall RHTTPSession::ResponseSessionHeadersL(void)
+	?RunError@CProtocolHandler@@MAEHH@Z @ 147 NONAME ; protected: virtual int __thiscall CProtocolHandler::RunError(int)
+	?RunL@CProtocolHandler@@MAEXXZ @ 148 NONAME ; protected: virtual void __thiscall CProtocolHandler::RunL(void)
+	?RxData@CProtTransaction@@QBEAAVCRxData@@XZ @ 149 NONAME ; public: class CRxData & __thiscall CProtTransaction::RxData(void)const 
+	?SendEventL@RHTTPTransaction@@QAEXVTHTTPEvent@@W4TDirection@2@VTHTTPFilterHandle@@@Z @ 150 NONAME ; public: void __thiscall RHTTPTransaction::SendEventL(class THTTPEvent,enum THTTPEvent::TDirection,class THTTPFilterHandle)
+	?SendSessionEventL@RHTTPSession@@QAEXVTHTTPSessionEvent@@W4TDirection@THTTPEvent@@VTHTTPFilterHandle@@@Z @ 151 NONAME ; public: void __thiscall RHTTPSession::SendSessionEventL(class THTTPSessionEvent,enum THTTPEvent::TDirection,class THTTPFilterHandle)
+	?ServerCert@RHTTPSession@@QAEHAAVTCertInfo@@@Z @ 152 NONAME ; public: int __thiscall RHTTPSession::ServerCert(class TCertInfo &)
+	?ServerCert@RHTTPTransaction@@QAEHAAVTCertInfo@@@Z @ 153 NONAME ; public: int __thiscall RHTTPTransaction::ServerCert(class TCertInfo &)
+	?Session@RHTTPTransaction@@QBE?AVRHTTPSession@@XZ @ 154 NONAME ; public: class RHTTPSession  __thiscall RHTTPTransaction::Session(void)const 
+	?SetBody@RHTTPMessage@@QAEXAAVMHTTPDataSupplier@@@Z @ 155 NONAME ; public: void __thiscall RHTTPMessage::SetBody(class MHTTPDataSupplier &)
+	?SetDateTime@THTTPHdrVal@@QAEXVTDateTime@@@Z @ 156 NONAME ; public: void __thiscall THTTPHdrVal::SetDateTime(class TDateTime)
+	?SetFieldL@RHTTPHeaders@@QAEXVRStringF@@VTHTTPHdrVal@@01@Z @ 157 NONAME ; public: void __thiscall RHTTPHeaders::SetFieldL(class RStringF,class THTTPHdrVal,class RStringF,class THTTPHdrVal)
+	?SetFieldL@RHTTPHeaders@@QAEXVRStringF@@VTHTTPHdrVal@@@Z @ 158 NONAME ; public: void __thiscall RHTTPHeaders::SetFieldL(class RStringF,class THTTPHdrVal)
+	?SetInt@THTTPHdrVal@@QAEXH@Z @ 159 NONAME ; public: void __thiscall THTTPHdrVal::SetInt(int)
+	?SetMethod@RHTTPRequest@@QAEXVRStringF@@@Z @ 160 NONAME ; public: void __thiscall RHTTPRequest::SetMethod(class RStringF)
+	?SetParamL@RHTTPHeaders@@QAEXVRStringF@@0VTHTTPHdrVal@@H@Z @ 161 NONAME ; public: void __thiscall RHTTPHeaders::SetParamL(class RStringF,class RStringF,class THTTPHdrVal,int)
+	?SetPartL@RHeaderField@@QAEXPAVCHeaderFieldPart@@H@Z @ 162 NONAME ; public: void __thiscall RHeaderField::SetPartL(class CHeaderFieldPart *,int)
+	?SetPropertyL@RHTTPPropertySet@@QAEXVRStringF@@VTHTTPHdrVal@@@Z @ 163 NONAME ; public: void __thiscall RHTTPPropertySet::SetPropertyL(class RStringF,class THTTPHdrVal)
+	?SetRawFieldL@RHTTPHeaders@@QAEXVRStringF@@ABVTDesC8@@1@Z @ 164 NONAME ; public: void __thiscall RHTTPHeaders::SetRawFieldL(class RStringF,class TDesC8 const &,class TDesC8 const &)
+	?SetSessionEventCallback@RHTTPSession@@QAEXPAVMHTTPSessionEventCallback@@@Z @ 165 NONAME ; public: void __thiscall RHTTPSession::SetSessionEventCallback(class MHTTPSessionEventCallback *)
+	?SetStatusCode@RHTTPResponse@@QAEXH@Z @ 166 NONAME ; public: void __thiscall RHTTPResponse::SetStatusCode(int)
+	?SetStatusText@RHTTPResponse@@QAEXVRStringF@@@Z @ 167 NONAME ; public: void __thiscall RHTTPResponse::SetStatusText(class RStringF)
+	?SetStr@THTTPHdrVal@@QAEXVRString@@@Z @ 168 NONAME ; public: void __thiscall THTTPHdrVal::SetStr(class RString)
+	?SetStrF@THTTPHdrVal@@QAEXVRStringF@@@Z @ 169 NONAME ; public: void __thiscall THTTPHdrVal::SetStrF(class RStringF)
+	?SetURIL@RHTTPRequest@@QAEXABVTUriC8@@@Z @ 170 NONAME ; public: void __thiscall RHTTPRequest::SetURIL(class TUriC8 const &)
+	?SetVersion@RHTTPResponse@@QAEXVTVersion@@@Z @ 171 NONAME ; public: void __thiscall RHTTPResponse::SetVersion(class TVersion)
+	?StatusCode@RHTTPResponse@@QBEHXZ @ 172 NONAME ; public: int __thiscall RHTTPResponse::StatusCode(void)const 
+	?StatusText@RHTTPResponse@@QBE?AVRStringF@@XZ @ 173 NONAME ; public: class RStringF  __thiscall RHTTPResponse::StatusText(void)const 
+	?Str@THTTPHdrVal@@QBE?AVRString@@XZ @ 174 NONAME ; public: class RString  __thiscall THTTPHdrVal::Str(void)const 
+	?StrF@THTTPHdrVal@@QBE?AVRStringF@@XZ @ 175 NONAME ; public: class RStringF  __thiscall THTTPHdrVal::StrF(void)const 
+	?StringPool@RHTTPSession@@QBE?AVRStringPool@@XZ @ 176 NONAME ; public: class RStringPool  __thiscall RHTTPSession::StringPool(void)const 
+	?SubmitL@RHTTPTransaction@@QAEXVTHTTPFilterHandle@@@Z @ 177 NONAME ; public: void __thiscall RHTTPTransaction::SubmitL(class THTTPFilterHandle)
+	?Transaction@CProtTransaction@@QBE?AVRHTTPTransaction@@XZ @ 178 NONAME ; public: class RHTTPTransaction  __thiscall CProtTransaction::Transaction(void)const 
+	?TransactionCompletedL@CProtocolHandler@@IAEXVRHTTPTransaction@@VTHTTPEvent@@@Z @ 179 NONAME ; protected: void __thiscall CProtocolHandler::TransactionCompletedL(class RHTTPTransaction,class THTTPEvent)
+	?TransactionFailed@CProtocolHandler@@IAEXVRHTTPTransaction@@@Z @ 180 NONAME ; protected: void __thiscall CProtocolHandler::TransactionFailed(class RHTTPTransaction)
+	?TrimWsBothEnds@TTextHeaderUtils@@SAXAAVTPtrC8@@@Z @ 181 NONAME ABSENT
+	?TrimWsLeft@TTextHeaderUtils@@SAXAAVTPtrC8@@@Z @ 182 NONAME ABSENT
+	?TrimWsRight@TTextHeaderUtils@@SAXAAVTPtrC8@@@Z @ 183 NONAME ABSENT
+	?TxData@CProtTransaction@@QBEAAVCTxData@@XZ @ 184 NONAME ; public: class CTxData & __thiscall CProtTransaction::TxData(void)const 
+	?Type@THTTPHdrVal@@QBE?AW4THTTPValType@1@XZ @ 185 NONAME ; public: enum THTTPHdrVal::THTTPValType  __thiscall THTTPHdrVal::Type(void)const 
+	?URI@RHTTPRequest@@QBEABVTUriC8@@XZ @ 186 NONAME ; public: class TUriC8 const & __thiscall RHTTPRequest::URI(void)const 
+	?UninstallCurrentFilter@TFilterConfigurationIterator@@QBEHXZ @ 187 NONAME ; public: int __thiscall TFilterConfigurationIterator::UninstallCurrentFilter(void)const 
+	?Value@CHeaderFieldParam@@QBE?AVTHTTPHdrVal@@XZ @ 188 NONAME ABSENT ; public: class THTTPHdrVal  __thiscall CHeaderFieldParam::Value(void)const 
+	?Value@CHeaderFieldPart@@QBE?AVTHTTPHdrVal@@XZ @ 189 NONAME ABSENT ; public: class THTTPHdrVal  __thiscall CHeaderFieldPart::Value(void)const 
+	?Version@RHTTPResponse@@QBE?AVTVersion@@XZ @ 190 NONAME ; public: class TVersion  __thiscall RHTTPResponse::Version(void)const 
+	?WriteComment@THttpLogger@@QAEXABVTDesC16@@@Z @ 191 NONAME ; public: void __thiscall THttpLogger::WriteComment(class TDesC16 const &)
+	?WriteComment@THttpLogger@@QAEXABVTDesC8@@@Z @ 192 NONAME ; public: void __thiscall THttpLogger::WriteComment(class TDesC8 const &)
+	?WriteRawDataL@RHeaderField@@QAEXABVTDesC8@@@Z @ 193 NONAME ; public: void __thiscall RHeaderField::WriteRawDataL(class TDesC8 const &)
+	?WriteRawDataL@RHeaderField@@QAEXVTChar@@@Z @ 194 NONAME ; public: void __thiscall RHeaderField::WriteRawDataL(class TChar)
+	?Overflow@THttpLogger@@EAEXAAVTDes16@@@Z @ 195 NONAME ; private: virtual void __thiscall THttpLogger::Overflow(class TDes16 &)
+	?CipherSuite@RHTTPTransaction@@QAE?AVRString@@XZ @ 196 NONAME ; class RString RHTTPTransaction::CipherSuite(void)
+	??1CHeaderCodecPlugin@@UAE@XZ @ 197 NONAME ; CHeaderCodecPlugin::~CHeaderCodecPlugin(void)
+	?CreateDelegateCodecL@CHeaderCodecPlugin@@MBEPAVCHeaderCodec@@VRStringPool@@@Z @ 198 NONAME ; class CHeaderCodec * CHeaderCodecPlugin::CreateDelegateCodecL(class RStringPool) const
+	?NewL@CHeaderCodecPlugin@@SAPAV1@ABVTDesC8@@VRStringPool@@@Z @ 199 NONAME ; class CHeaderCodecPlugin * CHeaderCodecPlugin::NewL(class TDesC8 const &, class RStringPool)
+	?ServerCert@RHTTPSession@@QAEPBVCCertificate@@XZ @ 200 NONAME ; class CCertificate const * RHTTPSession::ServerCert(void)
+	?ServerCert@RHTTPTransaction@@QAEPBVCCertificate@@XZ @ 201 NONAME ; class CCertificate const * RHTTPTransaction::ServerCert(void)
+	?SessionServerCert@CProtocolHandler@@QAEPBVCCertificate@@XZ @ 202 NONAME ; class CCertificate const * CProtocolHandler::SessionServerCert(void)
+	?TransactionServerCert@CProtocolHandler@@QAEPBVCCertificate@@VRHTTPTransaction@@@Z @ 203 NONAME ; class CCertificate const * CProtocolHandler::TransactionServerCert(class RHTTPTransaction)
+	?SetupDefaultProxyFromCommsDatL@RHTTPSession@@QAEXXZ @ 204 NONAME ABSENT ; void RHTTPSession::SetupDefaultProxyFromCommsDatL(void)	
+	??1TTimerLogger@@QAE@XZ @ 205 NONAME ; TTimerLogger::~TTimerLogger(void)
+	?EndTimer@TTimerLogger@@QAEXABVTDesC16@@@Z @ 206 NONAME ; void TTimerLogger::EndTimer(class TDesC16 const &)
+	?Overflow@TTimerLogger@@EAEXAAVTDes16@@@Z @ 207 NONAME ; void TTimerLogger::Overflow(class TDes16 &)
+	?StartTimer@TTimerLogger@@QAEXXZ @ 208 NONAME ; void TTimerLogger::StartTimer(void)
+	?TestName@TTimerLogger@@QAEXABVTDesC16@@@Z @ 209 NONAME ; void TTimerLogger::TestName(class TDesC16 const &)
+	?HttpDataOptimiser@RHTTPSession@@QAEPAVMHttpDataOptimiser@@XZ @ 210 NONAME ; class MHttpDataOptimiser * RHTTPSession::HttpDataOptimiser(void)
+	?HttpDataOptimiser@RHTTPTransaction@@QAEPAVMHttpDataOptimiser@@XZ @ 211 NONAME ; class MHttpDataOptimiser * RHTTPTransaction::HttpDataOptimiser(void)
+	?SetupHttpDataOptimiser@RHTTPSession@@QAEXAAVMHttpDataOptimiser@@@Z @ 212 NONAME ; void RHTTPSession::SetupHttpDataOptimiser(class MHttpDataOptimiser &)
+	?SetupHttpDataOptimiser@RHTTPTransaction@@QAEXAAVMHttpDataOptimiser@@@Z @ 213 NONAME ; void RHTTPTransaction::SetupHttpDataOptimiser(class MHttpDataOptimiser &)
+	?Table@THTTPTable@@SAABUTStringTable@@XZ @ 214 NONAME ; struct TStringTable const & THTTPTable::Table(void)
+	?GetRawFieldL@RHTTPHeaders@@QBEXVRStringF@@AAVTPtrC8@@@Z @ 215 NONAME ; void RHTTPHeaders::GetRawFieldL(class RStringF, class TPtrC8 &) const
+	?SendEvent@RHTTPTransaction@@QAEHVTHTTPEvent@@W4TDirection@2@VTHTTPFilterHandle@@@Z @ 216 NONAME ; int RHTTPTransaction::SendEvent(class THTTPEvent, enum THTTPEvent::TDirection, class THTTPFilterHandle)
+	?TransactionCompleted@CProtocolHandler@@IAEHVRHTTPTransaction@@VTHTTPEvent@@@Z @ 217 NONAME ; int CProtocolHandler::TransactionCompleted(class RHTTPTransaction, class THTTPEvent)
+	?FindProtocolTransaction@CProtocolHandler@@IBEPAVCProtTransaction@@VRHTTPTransaction@@@Z @ 218 NONAME ; class CProtTransaction * CProtocolHandler::FindProtocolTransaction(class RHTTPTransaction) const
+	?SetProperty@RHTTPPropertySet@@QAEHVRStringF@@VTHTTPHdrVal@@@Z @ 219 NONAME ; int RHTTPPropertySet::SetProperty(class RStringF, class THTTPHdrVal)
+	?SetField@RHTTPHeaders@@QAEHVRStringF@@VTHTTPHdrVal@@@Z @ 220 NONAME ; int RHTTPHeaders::SetField(class RStringF, class THTTPHdrVal)
+	?SetRawField@RHTTPHeaders@@QAEHVRStringF@@ABVTDesC8@@1@Z @ 221 NONAME ; int RHTTPHeaders::SetRawField(class RStringF, class TDesC8 const &, class TDesC8 const &)
+	?SetField@RHTTPHeaders@@QAEHVRStringF@@VTHTTPHdrVal@@01@Z @ 222 NONAME ; int RHTTPHeaders::SetField(class RStringF, class THTTPHdrVal, class RStringF, class THTTPHdrVal)
+	?Submit@RHTTPTransaction@@QAEHVTHTTPFilterHandle@@@Z @ 223 NONAME ; int RHTTPTransaction::Submit(class THTTPFilterHandle)
+	?LookupField@CHeaders@@QAEPAVCHeaderField@@VRStringF@@@Z @ 224 NONAME ; class CHeaderField * CHeaders::LookupField(class RStringF)
+	?ConvertAllHeadersToParsedFormat@CHeaders@@QAEHXZ @ 225 NONAME ; int CHeaders::ConvertAllHeadersToParsedFormat(void)
+

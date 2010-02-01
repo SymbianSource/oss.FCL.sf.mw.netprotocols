@@ -1,0 +1,49 @@
+Release 001
+===========
+Made by BobC, June 1999
+
+First Beta Release.
+
+Tested against :-
+
+Linux - Red Hat 5.1 (Manhattan)
+
+SunOS 4.1.4
+
+Release 002
+===========
+Made by BobC, July 1999
+
+First Release.
+
+Tested against :-
+
+Linux - Red Hat 5.1 (Manhattan)
+Cisco - Router
+
+Release 003
+===========
+Made by BobC August 10/1999
+
+Added data member to TTelnetConfig class for Echo control
+Modified code in Telfsm.cpp to deal with new data member
+API document also modified accordingly
+Put in support for latest flogger and removed log.cpp and log.h
+
+Tested against :-
+
+Linux - Red Hat 5.1 (Manhattan)
+
+Release 004
+===========
+Made by AnneW August 1999
+Logging Mods
+
+Release 005
+===========
+Made by Bob Cripps  September 15 1999
+Added Dynamic Memory allocation for writes at request of Nokia.
+
+Some initial tesing by Nokia.
+Tesing by us against Cisco Router and Linux.
+

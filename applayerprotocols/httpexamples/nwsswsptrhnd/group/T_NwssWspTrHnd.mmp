@@ -1,0 +1,52 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET T_NwssWspTrHnd.exe
+TARGETTYPE EXE
+CAPABILITY ALL -TCB
+// UIDs for loading
+// TestBed Dll recognition UID followed by the unique UID for this dll
+// @todo generate the unique UID for this dll
+UID 0x101FB5A8 0x10000000
+VENDORID 0x70000001
+
+SOURCEPATH	..\T_NwssWspTrHnd
+SOURCE		NwssWspTrHnd_ComponentTest.cpp
+SOURCE		NwssTransLookUpTableUnitTest.cpp
+SOURCE		NwssWspCOSessionUnitTest.cpp
+
+// Ensure the production code is built in test mode
+MACRO __UNIT_TESTING__
+
+SOURCEPATH	..\..\nwsswsptrhnd
+#include "..\..\nwsswsptrhnd\nwsswsptrhndsource.mmpi"
+
+SOURCEPATH 		+\build\generated\http
+SOURCE			SecurityPolicyPluginStrings.cpp
+
+SOURCEPATH 		+\build\generated\http
+SOURCE			HttpStringConstants.cpp
+
+USERINCLUDE 	. ..\..\nwsswsptrhnd
+USERINCLUDE 	..\..\inc\framework
+SYSTEMINCLUDE 	\epoc32\include \epoc32\include\ecom\test_bed \epoc32\include\ecom
+
+LIBRARY euser.lib efsrv.lib bafl.lib estor.lib
+LIBRARY ecom.lib wapstkcli.lib capcodec.lib inetprotutil.lib
+LIBRARY RTestBed.lib
+DEBUGLIBRARY flogger.lib
+
+
+SMPSAFE

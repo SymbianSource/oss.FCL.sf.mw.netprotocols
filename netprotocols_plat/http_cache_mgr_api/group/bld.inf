@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   
+*
+*/
+
+#ifndef __BROWSER_SDK
+#include <platform_paths.hrh>
+#endif
+
+PRJ_PLATFORMS
+DEFAULT GCCE
+
+PRJ_EXPORTS
+
+#ifndef __BROWSER_SDK
+../inc/httpcachemanager.h                MW_LAYER_PLATFORM_EXPORT_PATH(httpcachemanager.h)
+../inc/httpcachemanagerinternalcrkeys.h  MW_LAYER_PLATFORM_EXPORT_PATH(httpcachemanagerinternalcrkeys.h)
+#else
+../inc/httpcachemanager.h                /epoc32/include/httpcachemanager.h
+../inc/httpcachemanagerinternalcrkeys.h  /epoc32/include/httpcachemanagerinternalcrkeys.h
+#endif //#ifndef __BROWSER_SDK
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES

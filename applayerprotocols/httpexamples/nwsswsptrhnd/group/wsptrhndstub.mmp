@@ -1,0 +1,46 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+OPTION CW   -w off
+target wsptrhndstub.dll
+targettype plugin
+CAPABILITY ALL -TCB
+
+UID	0x10009D8D 	0x101f4481
+VENDORID 0x70000001
+	
+
+SYSTEMINCLUDE	/epoc32/include /epoc32/include/ecom
+USERINCLUDE		 ../. ../../../httptransportfw/Test/t_utils ../chat
+USERINCLUDE ../../../httptransportfw/inc/framework
+
+SOURCEPATH ../wsptrhndstub
+
+SOURCE			wsptrhndstub.cpp 
+#include "../wsptrhndstub/wsptrhndstubsource.mmpi"
+
+
+start resource 101f4481.rss
+#ifdef SYMBIAN_SECURE_ECOM
+target wsptrhndstub.rsc
+#endif
+end
+
+// Get GDB symbols included?
+SRCDBG
+
+LIBRARY	EUSER.LIB EFSRV.LIB FLOGGER.LIB HTTPTESTUTILS.LIB CHAT.LIB BAFL.LIB INETPROTUTIL.LIB
+LIBRARY ECOM.LIB
+SMPSAFE

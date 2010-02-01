@@ -1,0 +1,8 @@
+EXPORTS
+	GetProfileDiffs__15CTestCpiManager @ 1 NONAME ; CTestCpiManager::GetProfileDiffs(void)
+	GetProfiles__15CTestCpiManager @ 2 NONAME ; CTestCpiManager::GetProfiles(void)
+	NewL__15CTestCpiManagerG11RStringPool @ 3 NONAME ; CTestCpiManager::NewL(RStringPool)
+	SetProfileDataL__15CTestCpiManagerP6HBufC8 @ 4 NONAME ; CTestCpiManager::SetProfileDataL(HBufC8 *)
+	SetProfileDiffDataL__15CTestCpiManagerP6HBufC8 @ 5 NONAME ; CTestCpiManager::SetProfileDiffDataL(HBufC8 *)
+	"_._15CTestCpiManager" @ 6 NONAME ; CTestCpiManager::~CTestCpiManager(void)
+

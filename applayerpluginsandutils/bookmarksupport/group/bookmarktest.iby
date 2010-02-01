@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __BOOKMARKTEST_IBY__
+#define __BOOKMARKTEST_IBY__
+
+REM Bookmark Database Tests
+
+file=ABI_DIR\BUILD_DIR\tbookmark.exe		system\programs\tbookmark.exe	
+file=ABI_DIR\BUILD_DIR\tbkmrkunit.exe		system\programs\tbkmrkunit.exe	
+file=ABI_DIR\BUILD_DIR\tbookmark_sec.exe	system\programs\tbookmark_sec.exe
+file=ABI_DIR\BUILD_DIR\tbookmarkoom.exe		system\programs\tbookmarkoom.exe
+file=ABI_DIR\BUILD_DIR\tbookmarkbackup.exe	system\programs\tbookmarkbackup.exe
+
+REM version 1.0.0 database files used for testing missing last-modified time
+
+data=\epoc32\data\z\bookmarks\testdata\10205af8.cre	bookmarks\testdata\10205af8.cre
+data=\epoc32\data\z\bookmarks\testdata\10205af9.cre	bookmarks\testdata\10205af9.cre
+data=\epoc32\data\z\bookmarks\testdata\10205afa.cre	bookmarks\testdata\10205afa.cre
+data=\epoc32\data\z\bookmarks\testdata\10205afb.cre 	bookmarks\testdata\10205afb.cre
+data=ZPRIVATE\10281FE5\backup_registration.xml 		PRIVATE\10281FE5\backup_registration.xml
+
+#endif

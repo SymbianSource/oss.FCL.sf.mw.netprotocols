@@ -1,0 +1,25 @@
+EXPORTS
+	_ZN12CCommandLine4NewLERK7TDesC16 @ 1 NONAME
+	_ZN12CCommandLine4NewLEv @ 2 NONAME
+	_ZN12CCommandLine6DeleteEi @ 3 NONAME
+	_ZN12CCommandLine7AppendLEP7HBufC16 @ 4 NONAME
+	_ZN12CCommandLine7AppendLERK7TDesC16 @ 5 NONAME
+	_ZN12CCommandLineD0Ev @ 6 NONAME
+	_ZN12CCommandLineD1Ev @ 7 NONAME
+	_ZN12CCommandLineD2Ev @ 8 NONAME
+	_ZN21CCommandLineProcessor12StartScriptLERK7TDesC16 @ 9 NONAME
+	_ZN21CCommandLineProcessor14GetNextCommandEv @ 10 NONAME
+	_ZN21CCommandLineProcessor16CancelGetCommandEv @ 11 NONAME
+	_ZN21CCommandLineProcessor4NewLER12CConsoleBaseR15MCommandHandler @ 12 NONAME
+	_ZN21CCommandLineProcessorD0Ev @ 13 NONAME
+	_ZN21CCommandLineProcessorD1Ev @ 14 NONAME
+	_ZN21CCommandLineProcessorD2Ev @ 15 NONAME
+	_ZTI10CTestShell @ 16 NONAME ; #<TI>#
+	_ZTI12CCommandLine @ 17 NONAME ; #<TI>#
+	_ZTI14CActiveConsole @ 18 NONAME ; #<TI>#
+	_ZTI21CCommandLineProcessor @ 19 NONAME ; #<TI>#
+	_ZTV10CTestShell @ 20 NONAME ; #<VT>#
+	_ZTV12CCommandLine @ 21 NONAME ; #<VT>#
+	_ZTV14CActiveConsole @ 22 NONAME ; #<VT>#
+	_ZTV21CCommandLineProcessor @ 23 NONAME ; #<VT>#
+

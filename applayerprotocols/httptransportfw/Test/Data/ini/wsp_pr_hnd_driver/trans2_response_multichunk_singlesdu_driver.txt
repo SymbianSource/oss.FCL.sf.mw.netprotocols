@@ -1,0 +1,137 @@
+## Include script - trans2 response data in several chunks, single SDU
+#
+# Body data -
+# response_data_1_driver.txt, in three parts, response_data_1a_driver.txt, response_data_1b_driver.txt, response_data_1c_driver.txt
+#
+# Header data- 
+# Content-Type : application/vnd.wap.wmlc
+#
+# The method will be in the Null state
+#
+SCRIPT trans2_response_multichunk_singlesdu_driver
+#
+# Expect the S-MethodResult.ind primitive - first the headers event...
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EGotResponseHeaders
+		ENDINVOCATION
+	ENDEXPECT
+#
+# ...then the body data event - first part
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EGotResponseBodyData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Check the status code and the content-type header and server header
+#
+	SLEEP 500
+	SEND
+		INVOKE trans2 GetStatusCode
+			VALIDATE :RETURN: 200
+		ENDINVOKE
+		INVOKE trans2 GetHeaderL
+			PARAMETER aFieldName Content-Type
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue application/vnd.wap.wmlc
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+		INVOKE trans2 GetHeaderL
+			PARAMETER aFieldName Server
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue bunny
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+#
+# Get the response body data supplier and the data - first part
+#
+	SEND
+		INVOKE trans2 GetBody
+			STOREITEM :RETURN: respBody2
+		ENDINVOKE
+		INVOKE respBody2 MHTTPDataSupplier::OverallDataSize
+			VALIDATE :RETURN: 150
+		ENDINVOKE
+		INVOKE respBody2 MHTTPDataSupplier::GetNextDataPart
+			VALIDATE aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\response_data_1a_driver.txt$file$>
+			VALIDATE :RETURN: EFalse
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE respBody2 MHTTPDataSupplier::ReleaseData
+		ENDINVOKE
+	ENDSEND
+#
+# Expect more body data... - second part
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EGotResponseBodyData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Get the data - second part
+#
+	SLEEP 500
+	SEND
+		INVOKE respBody2 MHTTPDataSupplier::GetNextDataPart
+			VALIDATE aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\response_data_1b_driver.txt$file$>
+			VALIDATE :RETURN: EFalse
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE respBody2 MHTTPDataSupplier::ReleaseData
+		ENDINVOKE
+	ENDSEND
+#
+# Expect more body data... - third part
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EGotResponseBodyData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Get the data - third part
+#
+	SLEEP 500
+	SEND
+		INVOKE respBody2 MHTTPDataSupplier::GetNextDataPart
+			VALIDATE aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\response_data_1c_driver.txt$file$>
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+	SEND
+		ALLOWREENTRANCY
+		INVOKE respBody2 MHTTPDataSupplier::ReleaseData
+		ENDINVOKE
+	ENDSEND
+#
+# Expect the response complete event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EResponseComplete
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the succeeded event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent ESucceeded
+		ENDINVOCATION
+	ENDEXPECT
+ENDSCRIPT

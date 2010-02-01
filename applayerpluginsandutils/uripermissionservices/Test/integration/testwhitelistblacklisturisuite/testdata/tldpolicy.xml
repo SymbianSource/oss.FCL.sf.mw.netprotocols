@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+ All rights reserved.
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ Nokia Corporation - initial contribution.
+
+ Contributors:
+
+ Description:
+ Open file with notepad for clear or correct visibility
+
+-->
+
+
+
+
+ <PolicyData version="1">
+	<TLD name="AC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="BZ">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="COM">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="DE">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="EC">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="FI">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="GA">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="HK">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="IN">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+	<TLD name="XN--0ZWM56D">
+		<Whitelist>
+			a b c d e f g h i j k l m n o p r s t u v w y 0 1 2 3 4 5 6 7 8 9 0 _ - A B C D E F G H I J K L M N O P R S T U V W Y
+		</Whitelist>
+		<Blacklist>
+			q z Q Z
+		</Blacklist>
+	</TLD>
+ </PolicyData>

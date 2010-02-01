@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __INETURILISTTEST_IBY__
+#define __INETURILISTTEST_IBY__
+
+#include "Configuration.cfg"
+
+#include <Instrumentationhandler.iby>
+#include <systemmonitor.iby>
+#include <TEFEventLogPluginServer.iby>
+
+#if (defined __VERSION_70S__)
+#include <notificationprocessor.iby>
+#endif
+
+#if (!defined __TEST_CONFIG_FILE_PARSER_IBY__)
+#include <testconfigfileparser.iby>
+#endif
+
+REM Inet URI List Tests
+
+file=ABI_DIR\BUILD_DIR\tineturilist.exe		system\programs\tineturilist.exe	
+file=ABI_DIR\BUILD_DIR\tineturilistserverunit.exe system\programs\tineturilistserverunit.exe
+file=ABI_DIR\BUILD_DIR\systemtest_utils.dll  	System\bin\systemtest_utils.dll
+file=ABI_DIR\BUILD_DIR\TestPlayAudio.dll	System\bin\TestPlayAudio.dll
+file=ABI_DIR\BUILD_DIR\systemtest_security.exe	System\bin\systemtest_security.exe
+file=ABI_DIR\BUILD_DIR\burtestserver.exe	System\bin\burtestserver.exe
+
+#endif

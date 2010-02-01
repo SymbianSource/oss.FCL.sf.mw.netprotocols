@@ -1,0 +1,69 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// CHttpClient.mmp
+// httpclient.dll HTTP Text mode protocol module
+// 
+//
+
+/**
+ @file
+*/
+
+
+//OPTION CW   -w off
+TARGET httpclient.dll
+TARGETTYPE plugin
+CAPABILITY ALL -TCB
+
+
+
+
+
+// UIDs - 2nd UID => ECOM implementation, 3rd UID => HttpClientProtocolHandler.dll
+UID	0x10009D8D 	0x101F55F6
+VENDORID 0x70000001
+	
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+USERINCLUDE	../httpclient
+USERINCLUDE	../../../applayerprotocols/httptransportfw/httpmessage
+USERINCLUDE	../../httptransportplugins/httptransporthandler
+USERINCLUDE	../../../applayerprotocols/httptransportfw/core
+USERINCLUDE     ../../../applayerprotocols/httptransportfw/utils
+USERINCLUDE	../inc/httpheadercodec
+USERINCLUDE	../../../applayerprotocols/httptransportfw/inc/framework
+
+SOURCEPATH ../httpclient
+
+SOURCE			httpclient.cpp 
+#include "../httpclient/httpclientsource.mmpi"
+
+
+start resource 101F55F6.RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET httpclient.rsc
+#endif
+//HEADER - not needed
+END
+
+// Get GDB symbols included?
+//removed SRCDBG as it was causing thumb compiler problems in CHttpConnectFilter::CreateConnectTransactionL
+//SRCDBG
+
+EPOCHEAPSIZE	0x4000 0x1200000
+
+LIBRARY		euser.lib http.lib inetprotutil.lib bafl.lib httpmessage.lib ecom.lib
+LIBRARY		x509.lib x500.lib crypto.lib 
+DEBUGLIBRARY	efsrv.lib flogger.lib
+
+SMPSAFE

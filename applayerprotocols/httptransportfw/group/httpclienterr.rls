@@ -1,0 +1,69 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+rls_string STRING_r_http_error_encode_default "Error making a default encoding of unrecognised headers" 
+rls_string STRING_No_Label1 "Error encoding the Accept field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_accept_charset "Error encoding the Accept-Charset field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_qvalue "Error encoding a q-value parameter for an HTTP request header" 
+rls_string STRING_r_http_error_encode_authorization "Error encoding the Authorization field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_basic_auth "Error encoding basic credentials for the Authorization field of a request header" 
+rls_string STRING_r_http_error_encode_digest_auth "Error encoding digest credentials for the Authorization field of a request header" 
+rls_string STRING_r_http_error_encode_connection "Error encoding the Connection field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_content_length "Error encoding the Content-Length field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_content_type "Error encoding the Content-Type field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_host "Error encoding the Host field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_host_port "Error encoding the Host field's port parameter for an HTTP request header" 
+rls_string STRING_r_http_error_encode_transfer_encoding "Error encoding the Transfer-Encoding field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_user_agent "Error encoding the User-Agent field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_date "Error encoding the Date field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_cookie "Error encoding a Cookie field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_cache_control "Error encoding the Cache-Control field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_pragma "Error encoding the Pragma field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_if_match "Error encoding the If-Match field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_if_none_match "Error encoding the If-None-Match field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_if_modified_since "Error encoding the If-Modified-Since field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_if_unmodified_since "Error encoding the If-Unmodified-Since field for an HTTP request header" 
+rls_string STRING_r_http_error_encode_cookie2 "Error encoding the Cookie2 field for an HTTP request header" 
+rls_string STRING_r_http_error_decode_malformed_date "General error when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_year "Malformed year when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_month "Malformed short month name when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_day "Malformed number of day in month when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_wkday "Malformed short day name when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_weekday "Malformed long day name when parsing a date value" 
+rls_string STRING_r_http_error_decode_malformed_integer "Malformed integer value" 
+rls_string STRING_r_http_error_decode_malformed_quotedstr "Malformed quoted string" 
+rls_string STRING_No_Label2 "Error decoding the Accept field from an HTTP response header" 
+rls_string STRING_No_Label3 "Error decoding the Connection field from an HTTP response header" 
+rls_string STRING_r_http_error_decode_content_length "Error decoding the Content-Length field from an HTTP response header" 
+rls_string STRING_r_http_error_decode_content_type "Error decoding the Content-Type field from an HTTP response header" 
+rls_string STRING_r_http_error_decode_transfer_encoding "Error decoding the Transfer-Encoding field from an HTTP response header" 
+rls_string STRING_r_http_error_decode_www_authenticate "Error decoding the WWW-Authenticate field from an HTTP response header" 
+rls_string STRING_r_http_error_decode_unknown_auth_scheme "The WWW-Authenticate field contained an unrecognised authentication scheme" 
+rls_string STRING_r_http_error_decode_basic_auth "Error decoding a basic challenge from a WWW-Authenticate response header" 
+rls_string STRING_r_http_error_decode_digest_auth "Error decoding a digest challenge from a WWW-Authenticate response header" 
+rls_string STRING_r_http_error_decode_cookie "Error decoding a cookie response header" 
+rls_string STRING_r_http_error_redirect_exceeded_limit "A URI redirected too many times, possibly indicating a circular redirection" 
+rls_string STRING_r_http_error_redirect_use_proxy "The origin server responded that the URI must be fetched via a proxy" 
+rls_string STRING_r_http_error_redirect_no_location_field "The origin server sent a redirection response that did not include a Location header" 
+rls_string STRING_r_http_error_unknown_parse_state "An error occured in parsing which left the parser in a unknown state" 
+rls_string STRING_r_http_error_request_has_body "A request body was provided for an HTTP method that doesn't allow one to be transmitted" 
+rls_string STRING_r_http_error_request_body_missing "A request body was missing for an HTTP method that requires one" 
+rls_string STRING_r_http_error_trace_req_without_max_forward_header "An HTTP TRACE request was attempted without the Max-Forward header" 
+rls_string STRING_r_http_error_post_req_body_without_size_on_http10 "An HTTP POST request on HTTP/1.0 was attempted without knowing the body size" 
+rls_string STRING_r_http_error_invalid_header_in_request "The HTTP request contained a response header or a entity header but no body" 
+rls_string STRING_r_http_error_entity_header_missing_content_type "A body was provided in the HTTP request but no Content-Type header was set" 
+rls_string STRING_r_http_error_general_header_missing_host "The HTTP request URI was relative, but no Host header was provided to indicate the destination server" 
+rls_string STRING_r_http_error_cant_reset_request_body "The data in the request body could not be reset when the request was resubmitted" 
+rls_string STRING_r_http_error_transaction_not_initalised "going to be removed" 

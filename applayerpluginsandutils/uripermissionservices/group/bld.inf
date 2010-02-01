@@ -1,0 +1,48 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_EXPORTS
+
+../inc/ineturilist.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(ineturilist.h)
+../inc/ineturilistdef.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(ineturilistdef.h)
+../inc/tldlistdef.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(tldlistdef.h)
+../inc/ineturi.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(ineturi.h)
+
+ineturilist.iby		/epoc32/rom/include/ineturilist.iby
+backup_registration.xml  z:/private/20009d70/backup_registration.xml
+//Dummy ineturilist.xml file is Exported to Z: path and it can be upgarded by using Upgrade.sis
+../stubSis/ineturilist.xml		z:/private/20009d70/ineturilist.xml
+../stubSis/tldpolicy.xml		z:/private/20009d70/tldpolicy.xml
+
+PRJ_TESTEXPORTS
+
+ineturilisttest.iby	/epoc32/rom/include/ineturilisttest.iby
+
+PRJ_MMPFILES
+InetUriList.mmp
+ineturilistserver.mmp
+
+#include "../Test/integration/testwhitelistblacklisturisuite/group/bld.inf"
+
+PRJ_TESTMMPFILES
+tineturilist.mmp
+tineturilistserverunit.mmp
+
+PRJ_EXTENSIONS
+start extension	application-protocols/buildstubsis
+       option SISNAME	ineturilist_stub
+       option SRCDIR	../stubSis                               
+	                                   
+end 

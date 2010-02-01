@@ -1,0 +1,7 @@
+EXPORTS
+	GetLanguageTable__26HttpFilterCommonStringsExt @ 1 NONAME R3UNUSED ; HttpFilterCommonStringsExt::GetLanguageTable(void)
+	GetLocaleLanguage__26HttpFilterCommonStringsExtG11RStringPool @ 2 NONAME R3UNUSED ; HttpFilterCommonStringsExt::GetLocaleLanguage(RStringPool)
+	GetTable__26HttpFilterCommonStringsExt @ 3 NONAME R3UNUSED ; HttpFilterCommonStringsExt::GetTable(void)
+	GetTable__31HttpFilterCommonStringsAddition @ 4 NONAME R3UNUSED ; HttpFilterCommonStringsAddition::GetTable(void)
+	GetLanguageString__26HttpFilterCommonStringsExtG11RStringPooli @ 5 NONAME R3UNUSED ; HttpFilterCommonStringsExt::GetLanguageString(RStringPool, int)
+

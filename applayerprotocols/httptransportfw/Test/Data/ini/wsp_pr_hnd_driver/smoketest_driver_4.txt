@@ -1,0 +1,54 @@
+## Chat scripts, smoke test 4 - driver script.
+#
+# Smoke test 4
+# Client connect to proxy
+# Client creates and sends a method transaction
+# Proxy aborts the method transaction
+# Proxy disconnects the client
+# Client closes the transaction
+#
+SCRIPT SmokeTestDriver4
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# simple GET, server aborts 
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_get_serverabort_driver.txt
+#
+# Wait proxy to disconnect the client - this is given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Client closes the transaction
+#
+	SLEEP 500
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+ENDSCRIPT

@@ -1,0 +1,134 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.3.1.3
+## Driver chat script
+#
+# Test Synopsis
+# * Invoke GET method while session is still connecting
+
+# Expected Result
+# * Expected result: If session connects then GET returns successfully
+
+
+SCRIPT UnitTestDriver2.3.1.3 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+
+#
+# Step 1 - set up the desired WSP proxy for this test
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+
+#
+# Step 1a - make a clean connection to a WSP proxy
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doconnect_accept_driver.txt"
+#
+# Without awaiting the S-Connect.cnf, open a transaction (will be given ID trans1)
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doopen_get_trans_driver.txt"
+#
+# Submit the transaction
+#
+	SEND
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the S-Connect.cnf - this is given by EConnectedOK event
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Await the arrival of the response headers event
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EGotResponseHeaders
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Validate the response status code and headers
+#
+	SEND
+		INVOKE trans1 GetStatusCode
+			VALIDATE :RETURN: 200
+		ENDINVOKE
+		INVOKE trans1 GetHeaderL
+			PARAMETER aFieldName Content-Type
+			PARAMETER aFieldType RStringF
+			VALIDATE aFieldValue application/vnd.wap.wmlc
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+#
+# Await the arrival of the response body event
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EGotResponseBodyData
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Validate the response body
+#
+	SEND
+		INVOKE trans1 GetBody
+			STOREITEM :RETURN: respBody
+		ENDINVOKE
+		INVOKE respBody MHTTPDataSupplier::OverallDataSize
+			VALIDATE :RETURN: 12
+		ENDINVOKE
+		INVOKE respBody MHTTPDataSupplier::GetNextDataPart
+			VALIDATE aDataPart "SomeBodyData"
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+#
+# Release the response body and expect to be reentered with the response complete event
+#
+	SEND
+		ALLOWREENTRANCY
+		INVOKE respBody MHTTPDataSupplier::ReleaseData
+		ENDINVOKE
+	ENDSEND
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EResponseComplete
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Close the transaction
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

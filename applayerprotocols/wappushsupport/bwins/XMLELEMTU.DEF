@@ -1,0 +1,11 @@
+EXPORTS
+	?Attribute@CXmlElement@@QBEPBVTDesC16@@ABV2@@Z @ 1 NONAME ; public: class TDesC16 const * __thiscall CXmlElement::Attribute(class TDesC16 const &)const 
+	?DataItem@CXmlElement@@QBEPAVCBase@@XZ @ 2 NONAME ; public: class CBase * __thiscall CXmlElement::DataItem(void)const 
+	?DeleteDataItem@CXmlElement@@QAEXAAVCAttributeLookupTable@@@Z @ 3 NONAME ; public: void __thiscall CXmlElement::DeleteDataItem(class CAttributeLookupTable &)
+	?InsertChildL@CXmlElement@@QAEXHPAV1@@Z @ 4 NONAME ; public: void __thiscall CXmlElement::InsertChildL(int,class CXmlElement *)
+	?SetAttributeL@CXmlElement@@QAEXABVTDesC16@@0AAVCAttributeLookupTable@@@Z @ 5 NONAME ; public: void __thiscall CXmlElement::SetAttributeL(class TDesC16 const &,class TDesC16 const &,class CAttributeLookupTable &)
+	?SetDataItemL@CXmlElement@@QAEXPAVCBase@@AAVCAttributeLookupTable@@@Z @ 6 NONAME ; public: void __thiscall CXmlElement::SetDataItemL(class CBase *,class CAttributeLookupTable &)
+	?SetTextL@CXmlElement@@QAEXABVTDesC16@@@Z @ 7 NONAME ; public: void __thiscall CXmlElement::SetTextL(class TDesC16 const &)
+	?WriteIntoFileL@CXmlElement@@QAEXXZ @ 8 NONAME ; public: void __thiscall CXmlElement::WriteIntoFileL(void)
+	?ChildIndex@CXmlElement@@QBEHPAV1@@Z @ 9 NONAME ; public: int __thiscall CXmlElement::ChildIndex(class CXmlElement *)const 
+

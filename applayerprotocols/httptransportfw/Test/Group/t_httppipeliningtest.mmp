@@ -1,0 +1,91 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET			t_httppipeliningtest.exe
+TARGETTYPE		exe
+CAPABILITY TrustedUI ProtServ NetworkServices
+ 
+SYSTEMINCLUDE ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE		/epoc32/include /epoc32/include/ecom
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE /epoc32/include/ecom
+SYSTEMINCLUDE /epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+#endif
+
+
+USERINCLUDE		../T_HttpPipeliningTest ../t_utils ../../inc/framework
+
+SOURCEPATH 		../T_HttpPipeliningTest
+SOURCE			t_httppipeliningtest.cpp
+SOURCE			cpipeliningtestengine.cpp
+SOURCE			cpipeliningtestserver.cpp
+SOURCE			cpipeliningtestclient.cpp
+SOURCE			CTestServerStreamManager.cpp
+SOURCE			CPipeliningTestCase.cpp
+SOURCE			CBatchingTestCase.cpp
+SOURCE			CTestCase1.cpp
+SOURCE			CTestCase2.cpp
+SOURCE			CTestCase3.cpp
+SOURCE			CTestCase4.cpp
+SOURCE			CTestCase5.cpp
+SOURCE			CTestCase6.cpp
+SOURCE			CTestCase7.cpp
+SOURCE			CTestCase8.cpp
+SOURCE			CTestCase9.cpp
+SOURCE			CTestCase10.cpp
+SOURCE			CTestCase11.cpp
+SOURCE			CTestCase12.cpp
+SOURCE			CTestCase13.cpp
+SOURCE			CTestCase14.cpp
+SOURCE			CTestCase15.cpp
+SOURCE			CTestCase16.cpp
+SOURCE			CTestCase17.cpp
+SOURCE			CTestCase18.cpp
+SOURCE			CTestCase19.cpp
+SOURCE			CTestCase20.cpp
+SOURCE			CTestCase21.cpp
+SOURCE			CINC025140.cpp
+SOURCE			CINC036954.cpp
+SOURCE			CINC036384.cpp
+SOURCE			CINC037440.cpp
+SOURCE			CINC052596.cpp
+SOURCE			CINC078630.cpp
+SOURCE			CINC077703.cpp
+SOURCE			CINC077703More.cpp
+SOURCE			CPREQ1805.cpp
+SOURCE			CPREQ1805_Batching.cpp
+SOURCE			CHeaderDecode.cpp
+SOURCE			cpipeliningconfigtest.cpp
+SOURCE          CINC073400.cpp
+SOURCE			CINC077703New.cpp
+SOURCE          CRecvTimeOut.cpp CTestCase22.cpp
+SOURCE			ctestcase23.cpp
+SOURCE			ctestcase24.cpp
+SOURCE			ctestcase25.cpp
+SOURCE			ctestcase26.cpp
+SOURCE			CTestCasePipelineFallback.cpp
+
+LIBRARY		euser.lib httptestutils.lib http.lib ecom.lib inetprotutil.lib bafl.lib
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are 0x102729D2 to 0x10272A35.  The UID name is KUidIWSTestSuit.
+UID 0x1000007A 0x102729D7
+SMPSAFE

@@ -1,0 +1,132 @@
+## Chat scripts, smoke test 7 - driver script.
+#
+# Smoke test 7
+# Client connects to proxy
+# Client capabilities negotiated include suspend/resume
+# Client disconnects -> PH suspends session
+# Client reconnects -> PH resumes session
+# Client disconnects -> PH suspends session
+# Client reconnects to a different proxy -> PH disconnects old session and connects new one
+# Client disconnects -> PH suspends session
+#
+SCRIPT SmokeTestDriver7
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Client connect request - set the initial proxy, and request the suspend/resume capability
+#
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress 10.29.23.5
+			PARAMETER aIsSecure EFalse
+			PARAMETER aRemotePort 9203
+		ENDINVOKE
+		INVOKE SetUseSuspendResumeL
+		ENDINVOKE
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event, acknowledging the requested
+# capabilities
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Disconnect
+#
+	SLEEP 500
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Await confirmation of the disconnection - given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Connect
+#
+	SLEEP 500
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event, acknowledging the requested
+# capabilities
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Disconnect
+#
+	SLEEP 500
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Await confirmation of the disconnection - given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Connect to a different proxy
+#
+	SLEEP 500
+	SEND
+		INVOKE SetConnectionPropertiesL
+			PARAMETER aProxyAddress proxyaddress
+		ENDINVOKE
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the cnf - this is given by EConnectedOK event, acknowledging the requested
+# capabilities
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EConnectedOK
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Finally, disconnect from the second proxy
+#
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Await confirmation of the disconnection - given by EDisconnected
+#
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

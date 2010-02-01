@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+TARGET			TDTD.exe
+TARGETTYPE		exe
+CAPABILITY ALL -TCB
+SOURCEPATH	..\TDTD
+
+SOURCE			TDTD.cpp main.cpp PTConsole.cpp TestUtils.cpp
+
+USERINCLUDE		..\inc ..\TDTD ..\BNF ..\DTDMDL
+SYSTEMINCLUDE		..\inc \epoc32\include  ..\TDTD
+
+LIBRARY			euser.lib efsrv.lib BNF.LIB DTDMDL.LIB WUTIL.LIB WNODE.LIB
+
+
+VENDORID 0x70000001
+
+SMPSAFE

@@ -1,0 +1,83 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+target          tineturilistserverunit.exe
+targettype      exe
+CAPABILITY 		ReadDeviceData WriteDeviceData AllFiles
+
+START STRINGTABLE ../StringDictionary/URIList.st
+
+END
+
+START STRINGTABLE ../StringDictionary/urischema.st
+
+END
+
+START STRINGTABLE ../StringDictionary/tldschema.st
+
+END
+
+START STRINGTABLE ../StringDictionary/tldlist.st
+
+END
+
+macro TESTDBNAME
+
+SYSTEMINCLUDE   ../inc
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE   /epoc32/include
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE   /epoc32/include/platform/mw
+#endif
+USERINCLUDE   	../Test
+
+SOURCEPATH	../Test
+SOURCE  tineturilistserverunit.cpp
+SOURCE	testutils.cpp
+
+SOURCEPATH	../server/src
+SOURCE 		sqldbaccessor.cpp
+SOURCE 		urilistinterface.cpp
+SOURCE 		sqldbtransaction.cpp
+SOURCE 		urilistwritestream.cpp
+SOURCE		urilistinitializer.cpp
+SOURCE 		uriqueryfilter.cpp
+SOURCE		tldlistinitializer.cpp
+SOURCE 		tldproperties.cpp
+
+SOURCEPATH	../client/src
+SOURCE 		ineturiimpl.cpp
+SOURCE 		ineturiproperties.cpp
+
+USERINCLUDE	../server/inc
+USERINCLUDE	../client/inc
+
+
+LIBRARY	euser.lib 
+LIBRARY	bafl.lib
+LIBRARY efsrv.lib
+LIBRARY estor.lib
+LIBRARY sqldb.lib 
+LIBRARY xmlframework.lib
+LIBRARY	inetprotutil.lib
+LIBRARY sishelper.lib 
+LIBRARY	sisregistryclient.lib
+
+VENDORID 0x70000001
+
+// Allocated UID range for IWS tests are ...
+UID 0x1000007A 0xA00026FF
+SMPSAFE

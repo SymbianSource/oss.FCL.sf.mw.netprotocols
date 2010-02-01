@@ -1,0 +1,105 @@
+//
+//  Define the common external sites  
+//
+// ----------------------------------------------------------------------------
+//
+
+DEFINE bbc 	    "http://www.bbc.co.uk/"
+DEFINE amazon       "http://www.amazon.co.uk/"			
+// does not support OPTIONS & HEAD methods 
+
+DEFINE nokia        "http://www.nokia.com/"
+DEFINE tomshardware "http://www.tomshardware.com/"
+DEFINE bbc2         "http://www.bbc.com/"
+DEFINE thereg       "http://www.theregister.co.uk/"
+DEFINE symbian      "http://www.symbian.com/"
+DEFINE netscape     "http://www.netscape.com/"			
+// now the same site as aol.com! 
+// does not support OPTIONS method
+
+DEFINE google       "http://www.google.com/"			
+// does not support OPTIONS method 
+
+DEFINE meto         "http://www.meto.govt.uk/"
+DEFINE pcpro        "http://www.pcpro.co.uk/"
+DEFINE cdnow        "http://www.cdnow.com/"			
+// does not support OPTIONS & HEAD methods, returns 302 
+DEFINE yahoo        "http://www.yahoo.co.uk/"			
+// does not support OPTIONS method, returns 302 
+DEFINE lycos        "http://www.lycos.co.uk/"
+DEFINE aol          "http://www.aol.com/"			
+// does not support OPTIONS method
+DEFINE infoseek     "http://www.infoseek.com/"			
+// does not support OPTIONS method 
+DEFINE ft           "http://www.ft.com/"
+DEFINE guardian     "http://www.guardian.co.uk/"
+DEFINE london       "http://www.thisislondon.co.uk/"
+DEFINE oxfordshire  "http://www.thisisoxfordshire.co.uk/"
+DEFINE newsci       "http://www.newscientist.com/"
+DEFINE excite       "http://www.excite.co.uk/"
+DEFINE multimap     "http://www.multimap.co.uk/"
+DEFINE times        "http://www.timesonline.co.uk/"
+DEFINE itn          "http://www.itn.co.uk/"
+DEFINE trainline    "http://www.thetrainline.com/"		
+// does not support OPTIONS & HEAD methods 
+DEFINE itv          "http://www.itv.co.uk/"			
+// does not support OPTIONS method 
+DEFINE cnn          "http://www.cnn.com/"			
+// does not support OPTIONS method 
+DEFINE lemonde      "http://www.lemonde.fr/"			
+// does not support OPTIONS method 
+DEFINE dotmusic     "http://www.dotmusic.com/"
+DEFINE watford      "http://www.watford.co.uk/"
+DEFINE iconbar      "http://www.iconbar.co.uk/" 
+DEFINE independent  "http://www.independent.co.uk/"		
+// does not support OPTIONS method 
+
+// extra sites 
+
+DEFINE zdnet        "http://news.zdnet.co.uk/"
+DEFINE darkroom     "http://www.computer-darkroom.com/home.htm"
+DEFINE eta	    "http://www.eta.co.uk/main.htm"
+DEFINE talk21	    "http://www.talk21.com/" 
+DEFINE britannica   "http://www.britannica.com/"
+DEFINE sciam	    "http://www.sciam.com/"
+DEFINE bmj	    "http://bmj.com/"
+DEFINE bandList	    "http://ubl.artistdirect.com/"
+DEFINE natGeo	    "http://www.nationalgeographic.com/"
+DEFINE scotland     "http://www.btinternet.com/~peteajones/scotland/scotland.htm"
+DEFINE businessweek "http://www.businessweek.com/"
+DEFINE pcworld	    "http://www.pcworld.com/"
+DEFINE castle 	    "http://www.castle.org.uk/castle/front.htm"
+DEFINE w3           "http://www.w3.org/"
+DEFINE ukgov        "http://www.open.gov.uk/Home/HOHome/1,1031,~801b22~fs~en,00.html"
+DEFINE dilbert      "http://www.unitedmedia.com/comics/dilbert/"
+DEFINE teletext     "http://www.teletext.co.uk/start/default.asp"
+DEFINE streetmap    "http://www.streetmap.co.uk/"
+DEFINE channel4     "http://www.channel4.com/"
+DEFINE parliament   "http://www.parliament.uk/"
+DEFINE dabs	    "http://www.dabs.com/home.asp"
+DEFINE ebay         "http://www.ebay.co.uk/"
+DEFINE imaging      "http://www.imaging-resource.com/"
+DEFINE fotosense    "http://www.fotosense.co.uk/frames.html"
+DEFINE messaging    "http://www.ericsson.com/mobilityworld/sub/open/technologies/messaging/index.html"
+DEFINE oma          "http://www.openmobilealliance.org/"
+DEFINE cisco        "http://www.cisco.com/"
+DEFINE three        "http://www.three.co.uk/index.omp"
+DEFINE vodaphone    "http://www.vodafone.co.uk/cgi-bin/COUK/arrival.jsp"
+DEFINE sonyEricsson "http://www.sonyericsson.com/uk/spg.jsp?page=start"
+DEFINE p800         "http://www.sonyericsson.com/uk/spg.jsp?page=P800_UPD_Explore&B=ie&PID=9940&LM=PSM_V&gal=105" 
+DEFINE vnunet       "http://www.vnunet.com/"
+
+// secure sites 
+
+DEFINE lloyds    "https://online.lloydstsb.co.uk/customer.ibc"
+DEFINE if        "https://my.if.com"
+DEFINE nwolb     "https://www.nwolb.com/secure/"
+DEFINE griobank  "https://www.billpayment.co.uk/home.asp"
+DEFINE cahoot    "https://ibank.cahoot.com/Aquarius/web/en/core_banking/log_in/frameset_top_log_in.html"
+DEFINE egg       "https://new.egg.com/security/customer/logon?URI=https://new.egg.com/customer/youraccounts"
+DEFINE veriSign  "https://digitalid.verisign.com/cgi-bin/Xquery.exe?Template=authCertByIssuer&form_file=../fdf/authCertByIssuer.fdf&issuerSerial=7ca29e21c3616750b6c070ff4221b0e1"
+DEFINE smile     "https://www.selftrade.com/smile/navs/index.phtml?section=login"
+DEFINE barclays  "https://ibank.barclays.co.uk/fp/1_2q/online/1,,logon,00.html"
+DEFINE paypal    "https://www.paypal.com/cgi-bin/webscr?cmd=_login-run"
+
+RETURN 

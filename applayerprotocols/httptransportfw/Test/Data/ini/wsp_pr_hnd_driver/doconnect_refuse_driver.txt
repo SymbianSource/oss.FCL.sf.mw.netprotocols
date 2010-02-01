@@ -1,0 +1,23 @@
+## Include script - do connect and server accepts for driver
+#
+# Client connect to proxy
+# Server refuses the connection
+#
+SCRIPT doconnect_refuse_driver
+
+	ECHO "Driver Sending Connect"
+	SEND
+		INVOKE SessionConnectL
+		ENDINVOKE
+	ENDSEND
+#
+# Wait for the EDisconnected event
+#
+	ECHO "Waiting for disconnect"
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT

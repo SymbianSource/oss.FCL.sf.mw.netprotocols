@@ -1,0 +1,38 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The IBY file for the Http Integration Test Suite
+// 
+//
+
+#ifndef __Test_Http_Suite_IBY__
+
+#define __Test_Http_Suite_IBY__
+
+// Test server
+file=ABI_DIR\DEBUG_DIR\testhttpsuite.exe 	sys\bin\testhttpsuite.exe 
+
+// Script file for testing the functionality.
+data=\epoc32\data\c\testdata\scripts\testhttpsuite.script		    testdata\scripts\testhttpsuite.script
+
+// Ini files
+data=\epoc32\data\c\testdata\ini\testhttpsuite.ini			    testdata\ini\testhttpsuite.ini
+
+// The batch file to run the functionality tests
+data=EPOCROOT##Epoc32\tools\testhttpsuite.bat	testhttpsuite.bat
+
+// Other dependencies
+#include <testexecute.iby>
+
+#endif
+

@@ -1,0 +1,89 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Wap engine parsers and utilities
+// This file basically provides the information required for building the whole of a component
+// C & C++ style comments are allowed in this file because it's passed through the C++ preprocessor
+// Examples are provided below of the kind of things we're expecting
+// 
+//
+
+/**
+ @file
+*/
+
+
+PRJ_PLATFORMS
+// specify the platforms your component needs to be built for here
+// defaults to WINS MARM so you can ignore this if you just build these
+
+PRJ_EXPORTS
+// specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in \epoc32\include
+
+../inc/attrlut.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(attrlut.h)
+../inc/CBNFParser.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cbnfparser.h)
+../inc/CBNFNode.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cbnfnode.h)
+../inc/CDTDModel.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cdtdmodel.h)
+../inc/cnode.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cnode.h)
+../inc/cnode.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(cnode.inl)
+../inc/dtdnode.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(dtdnode.h)
+../inc/dtdnode.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(dtdnode.inl)
+../inc/estatus.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(estatus.h)
+../inc/mdptx.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mdptx.h)
+../inc/wapattrdf.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wapattrdf.h)
+../bnf/CStack.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cstack.h)
+../bnf/CStack.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(cstack.inl)
+../bnf/CMarkedStack.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmarkedstack.h)
+../bnf/CFragmentedString.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cfragmentedstring.h)
+../bnf/CRuleMarkedStack.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(crulemarkedstack.h)
+../bnf/CRuleMarkedStack.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(crulemarkedstack.inl)
+../bnf/CMarkedStack.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(cmarkedstack.inl)
+../bnf/CNoDeleteAttribute.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cnodeleteattribute.h)
+../inc/Wapengstd.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wapengstd.h) 
+../inc/WapTestUtils.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(waptestutils.h)
+../inc/WapTestUtils.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(waptestutils.inl)
+../inc/PragmaMessage.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(pragmamessage.h)
+
+
+PRJ_MMPFILES
+// specify the .mmp files required for building the important component releasables
+// note that you should specify any .mmp files for test programs further down the file.
+//
+// It's best if the .MMP files are specified in the order in which the components are
+// built, but that eventually shouldn't matter
+//
+// Use C++ style #defines to denote that a component is only built for a particular platform
+//
+// specify "tidy" if the component you need to build doesn't need to be released to
+// the rest of the company
+// specify "ignore" if the MMP file exists but should be ignored - William wants this!
+
+../mmpfiles/bnf.mmp
+../mmpfiles/dtdmdl.mmp
+../mmpfiles/wnode.mmp
+../mmpfiles/wutil.mmp
+
+PRJ_TESTMMPFILES
+// specify the .mmp files required for building any test programs here
+//
+// you can specify "manual" to denote that a test should be listed in a generated
+// batch file for running a group of tests which require user input during testing.
+// you can specify "support" to denote that a file is a test support file and shouldn't
+// be listed in a batch file for running a group of tests
+// By default, each test will be listed in a batch file for running a group of tests
+// which can be left to run without requiring watching over by the person running the tests,
+// i.e. tests where no user input is required.  The default will apply if neither "manual"
+// or "support" is specified.

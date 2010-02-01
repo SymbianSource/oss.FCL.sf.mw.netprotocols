@@ -1,0 +1,18 @@
+EXPORTS
+	?Close@RHttpMessageComposer@@QAEXXZ @ 1 NONAME ; public: void __thiscall RHttpMessageComposer::Close(void)
+	?Close@RHttpMessageParser@@QAEXXZ @ 2 NONAME ; public: void __thiscall RHttpMessageParser::Close(void)
+	?GetMessageData@RHttpMessageComposer@@QAEXAAVTPtrC8@@@Z @ 3 NONAME ; public: void __thiscall RHttpMessageComposer::GetMessageData(class TPtrC8 &)
+	?MessageInfoAvailable@RHttpMessageComposer@@QAEXXZ @ 4 NONAME ; public: void __thiscall RHttpMessageComposer::MessageInfoAvailable(void)
+	?OpenL@RHttpMessageComposer@@QAEXAAVMHttpMessageComposerObserver@@@Z @ 5 NONAME ; public: void __thiscall RHttpMessageComposer::OpenL(class MHttpMessageComposerObserver &)
+	?OpenL@RHttpMessageParser@@QAEXAAVMHttpMessageParserObserver@@@Z @ 6 NONAME ; public: void __thiscall RHttpMessageParser::OpenL(class MHttpMessageParserObserver &)
+	?ReceivedMessageData@RHttpMessageParser@@QAEXXZ @ 7 NONAME ; public: void __thiscall RHttpMessageParser::ReceivedMessageData(void)
+	?ReleaseMessageData@RHttpMessageComposer@@QAEXXZ @ 8 NONAME ; public: void __thiscall RHttpMessageComposer::ReleaseMessageData(void)
+	?Reserved_RHttpMessageComposer@RHttpMessageComposer@@AAEXXZ @ 9 NONAME ; private: void __thiscall RHttpMessageComposer::Reserved_RHttpMessageComposer(void)
+	?Reserved_RHttpMessageParser@RHttpMessageParser@@AAEXXZ @ 10 NONAME ; private: void __thiscall RHttpMessageParser::Reserved_RHttpMessageParser(void)
+	?Reset@RHttpMessageComposer@@QAEXXZ @ 11 NONAME ; public: void __thiscall RHttpMessageComposer::Reset(void)
+	?Reset@RHttpMessageParser@@QAEXXZ @ 12 NONAME ; public: void __thiscall RHttpMessageParser::Reset(void)
+	?CompletedBodyDataL@RHttpMessageParser@@QAEXXZ @ 13 NONAME ; public: void __thiscall RHttpMessageParser::CompletedBodyDataL(void)
+	?CheckMessagePendingComplete@RHttpMessageComposer@@QAEHXZ @ 14 NONAME ; public: int __thiscall RHttpMessageComposer::CheckMessagePendingComplete(void)
+	?Flush@RHttpMessageParser@@QAEXXZ @ 15 NONAME ; void RHttpMessageParser::Flush(void)
+	?CompleteMessage@RHttpMessageParser@@QAEHABVTDesC8@@@Z @ 16 NONAME ; int RHttpMessageParser::CompleteMessage(class TDesC8 const &)
+

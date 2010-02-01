@@ -1,0 +1,533 @@
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2300e Basic methods Transport framework (HTTP) Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP 2300e_H_CON_01
+
+TRANSACTION 2300e_T_01 2300e_H_CON_01 GET $bbc$
+TRANSACTION 2300e_T_02 2300e_H_CON_01 GET $amazon$
+TRANSACTION 2300e_T_03 2300e_H_CON_01 GET $nokia$
+TRANSACTION 2300e_T_04 2300e_H_CON_01 GET $tomshardware$
+TRANSACTION 2300e_T_05 2300e_H_CON_01 GET $bbc2$
+TRANSACTION 2300e_T_06 2300e_H_CON_01 GET $thereg$
+TRANSACTION 2300e_T_07 2300e_H_CON_01 GET $symbian$
+TRANSACTION 2300e_T_08 2300e_H_CON_01 GET $netscape$
+TRANSACTION 2300e_T_09 2300e_H_CON_01 GET $google$
+TRANSACTION 2300e_T_10 2300e_H_CON_01 GET $pcpro$
+TRANSACTION 2300e_T_11 2300e_H_CON_01 GET $cdnow$
+TRANSACTION 2300e_T_12 2300e_H_CON_01 GET $yahoo$
+TRANSACTION 2300e_T_13 2300e_H_CON_01 GET $lycos$
+TRANSACTION 2300e_T_14 2300e_H_CON_01 GET $aol$
+TRANSACTION 2300e_T_15 2300e_H_CON_01 GET $infoseek$
+TRANSACTION 2300e_T_16 2300e_H_CON_01 GET $ft$
+TRANSACTION 2300e_T_17 2300e_H_CON_01 GET $guardian$
+TRANSACTION 2300e_T_18 2300e_H_CON_01 GET $london$
+TRANSACTION 2300e_T_19 2300e_H_CON_01 GET $oxfordshire$
+TRANSACTION 2300e_T_20 2300e_H_CON_01 GET $newsci$
+TRANSACTION 2300e_T_21 2300e_H_CON_01 GET $excite$
+TRANSACTION 2300e_T_22 2300e_H_CON_01 GET $multimap$
+TRANSACTION 2300e_T_23 2300e_H_CON_01 GET $times$
+TRANSACTION 2300e_T_24 2300e_H_CON_01 GET $itn$
+TRANSACTION 2300e_T_25 2300e_H_CON_01 GET $trainline$
+TRANSACTION 2300e_T_26 2300e_H_CON_01 GET $itv$
+//TRANSACTION 2300e_T_27 2300e_H_CON_01 GET $cnn$
+TRANSACTION 2300e_T_28 2300e_H_CON_01 GET $lemonde$
+TRANSACTION 2300e_T_29 2300e_H_CON_01 GET $dotmusic$
+TRANSACTION 2300e_T_30 2300e_H_CON_01 GET $watford$
+TRANSACTION 2300e_T_31 2300e_H_CON_01 GET $iconbar$
+TRANSACTION 2300e_T_32 2300e_H_CON_01 GET $independent$
+
+    
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+hold 300
+
+//IF $TransSpeed$ == SLOW 
+//   hold 300 
+//ENDIF 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display transactions 
+
+showtrans
+
+// --------------------------------------------------------
+// report results 
+
+IF $2300e_T_01LastEvent$ == $Succeeded$
+
+   IF $2300e_T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: GET $bbc$ Passed 
+   ELSE
+      PRINT Result: GET $bbc$ Failed, HTTP Status $2300e_T_01HttpStatus$
+   ENDIF
+ELSE 
+   PRINT Result: GET $bbc$ Failed, last event $2300e_T_01LastEvent$ 
+ENDIF
+
+endtrans 2300e_T_01 
+
+IF $2300e_T_02LastEvent$ == $Succeeded$
+
+   IF $2300e_T_02HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: GET $amazon$ Passed 
+   ELSE
+      PRINT Result: GET $amazon$ Failed, HTTP Status $2300e_T_02HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $amazon$ Failed, last event $2300e_T_02LastEvent$  
+ENDIF
+
+endtrans 2300e_T_02 
+
+IF $2300e_T_03LastEvent$ == $Succeeded$
+
+   IF $2300e_T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: GET $nokia$ Passed 
+   ELSE
+      PRINT Result: GET $nokia$ Failed, HTTP Status $2300e_T_03HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $nokia$ Failed, last event $2300e_T_03LastEvent$  
+ENDIF
+
+endtrans 2300e_T_03 
+
+IF $2300e_T_04LastEvent$ == $Succeeded$
+
+   IF $2300e_T_04HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $tomshardware$ Passed 
+   ELSE
+      PRINT Result: GET $tomshardware$ Failed, HTTP Status $2300e_T_04HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $tomshardware$ Failed, last event $2300e_T_04LastEvent$  
+ENDIF
+
+endtrans 2300e_T_04 
+
+IF $2300e_T_05LastEvent$ == $Succeeded$
+
+   IF $2300e_T_05HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $bbc2$ Passed 
+   ELSE
+      PRINT Result: GET $bbc2$ Failed, HTTP Status $2300e_T_05HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $bbc2$ Failed, last event $2300e_T_05LastEvent$ 
+ENDIF
+
+endtrans 2300e_T_05 
+
+IF $2300e_T_06LastEvent$ == $Succeeded$
+
+   IF $2300e_T_06HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $thereg$ Passed 
+   ELSE
+      PRINT Result: GET $thereg$ Failed, HTTP Status $2300e_T_06HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $thereg$ Failed, last event $2300e_T_06LastEvent$  
+ENDIF
+
+endtrans 2300e_T_06
+
+IF $2300e_T_07LastEvent$ == $Succeeded$
+
+   IF $2300e_T_07HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $symbian$ Passed 
+   ELSE
+      PRINT Result: GET $symbian$ Failed, HTTP Status $2300e_T_07HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $symbian$ Failed, last event $2300e_T_07LastEvent$  
+ENDIF
+
+endtrans 2300e_T_07
+
+IF $2300e_T_08LastEvent$ == $Succeeded$
+
+   IF $2300e_T_08HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $netscape$ Passed 
+   ELSE
+      PRINT Result: GET $netscape$ Failed, HTTP Status $2300e_T_08HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $netscape$ Failed, last event $2300e_T_08LastEvent$  
+ENDIF
+
+endtrans 2300e_T_08
+
+IF $2300e_T_09LastEvent$ == $Succeeded$
+
+   IF $2300e_T_09HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $meto$ Passed 
+   ELSE
+      PRINT Result: GET $meto$ Failed, HTTP Status $2300e_T_09HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $meto$ Failed, last event $2300e_T_09LastEvent$  
+ENDIF
+
+endtrans 2300e_T_09
+
+IF $2300e_T_10LastEvent$ == $Succeeded$
+
+   IF $2300e_T_10HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $pcpro$ Passed 
+   ELSE
+      PRINT Result: GET $pcpro$ Failed, HTTP Status $2300e_T_10HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $pcpro$ Failed, last event $2300e_T_10LastEvent$  
+ENDIF
+
+endtrans 2300e_T_10
+
+IF $2300e_T_11LastEvent$ == $Succeeded$
+
+   IF $2300e_T_11HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $cdnow$ Passed 
+   ELSE
+      PRINT Result: GET $cdnow$ Failed, HTTP Status $2300e_T_11HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $cdnow$ Failed, last event $2300e_T_11LastEvent$  
+ENDIF
+
+endtrans 2300e_T_11
+
+IF $2300e_T_12LastEvent$ == $Succeeded$
+
+   IF $2300e_T_12HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $yahoo$ Passed 
+   ELSE
+      PRINT Result: GET $yahoo$ Failed, HTTP Status $2300e_T_12HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $yahoo$ Failed, last event $2300e_T_12LastEvent$  
+ENDIF
+
+endtrans 2300e_T_12
+
+IF $2300e_T_13LastEvent$ == $Succeeded$
+
+   IF $2300e_T_13HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $lycos$ Passed 
+   ELSE
+      PRINT Result: GET $lycos$ Failed, HTTP Status $2300e_T_13HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $lycos$ Failed, last event $2300e_T_13LastEvent$  
+ENDIF
+
+endtrans 2300e_T_13
+
+IF $2300e_T_14LastEvent$ == $Succeeded$
+
+   IF $2300e_T_14HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $aol$ Passed 
+   ELSE
+      PRINT Result: GET $aol$ Failed, HTTP Status $2300e_T_14HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $aol$ Failed, last event $2300e_T_14LastEvent$  
+ENDIF
+
+endtrans 2300e_T_14
+
+IF $2300e_T_15LastEvent$ == $Succeeded$
+
+   IF $2300e_T_15HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $infoseek$ Passed 
+   ELSE
+      PRINT Result: GET $infoseek$ Failed, HTTP Status $2300e_T_15HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $infoseek$ Failed, last event $2300e_T_15LastEvent$  
+ENDIF
+
+endtrans 2300e_T_15
+
+IF $2300e_T_16LastEvent$ == $Succeeded$
+
+   IF $2300e_T_16HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $ft$ Passed 
+   ELSE
+      PRINT Result: GET $ft$ Failed, HTTP Status $2300e_T_16HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $ft$ Failed, last event $2300e_T_16LastEvent$  
+ENDIF
+
+endtrans 2300e_T_16
+
+IF $2300e_T_17LastEvent$ == $Succeeded$
+
+   IF $2300e_T_17HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $guardian$ Passed 
+   ELSE
+      PRINT Result: GET $guardian$ Failed, HTTP Status $2300e_T_17HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $guardian$ Failed, last event $2300e_T_17LastEvent$  
+ENDIF
+
+endtrans 2300e_T_17
+
+IF $2300e_T_18LastEvent$ == $Succeeded$
+
+   IF $2300e_T_18HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $london$ Passed 
+   ELSE
+      PRINT Result: GET $london$ Failed, HTTP Status $2300e_T_18HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $london$ Failed, last event $2300e_T_18LastEvent$  
+ENDIF
+
+endtrans 2300e_T_18
+
+IF $2300e_T_19LastEvent$ == $Succeeded$
+
+   IF $2300e_T_19HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $oxfordshire$ Passed 
+   ELSE
+      PRINT Result: GET $oxfordshire$ Failed, HTTP Status $2300e_T_19HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $oxfordshire$ Failed, last event $2300e_T_19LastEvent$  
+ENDIF
+
+endtrans 2300e_T_19
+
+IF $2300e_T_20LastEvent$ == $Succeeded$
+
+   IF $2300e_T_20HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $newsci$ Passed 
+   ELSE
+      PRINT Result: GET $newsci$ Failed, HTTP Status $2300e_T_20HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $newsci$ Failed, last event $2300e_T_20LastEvent$  
+ENDIF
+
+endtrans 2300e_T_20
+
+IF $2300e_T_21LastEvent$ == $Succeeded$
+
+   IF $2300e_T_21HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $excite$ Passed 
+   ELSE
+      PRINT Result: GET $excite$ Failed, HTTP Status $2300e_T_21HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $excite$ Failed, last event $2300e_T_21LastEvent$  
+ENDIF
+
+endtrans 2300e_T_21
+
+IF $2300e_T_22LastEvent$ == $Succeeded$
+
+   IF $2300e_T_22HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $multimap$ Passed 
+   ELSE
+      PRINT Result: GET $multimap$ Failed, HTTP Status $2300e_T_22HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $multimap$ Failed, last event $2300e_T_22LastEvent$ 
+ENDIF
+
+endtrans 2300e_T_22
+
+IF $2300e_T_23LastEvent$ == $Succeeded$
+
+   IF $2300e_T_23HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $times$ Passed 
+   ELSE
+      PRINT Result: GET $times$ Failed, HTTP Status $2300e_T_23HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $times$ Failed, last event $2300e_T_23LastEvent$  
+ENDIF
+
+endtrans 2300e_T_23
+
+IF $2300e_T_24LastEvent$ == $Succeeded$
+
+   IF $2300e_T_24HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $itn$ Passed 
+   ELSE
+      PRINT Result: GET $itn$ Failed, HTTP Status $2300e_T_24HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $itn$ Failed, last event $2300e_T_24LastEvent$  
+ENDIF
+
+endtrans 2300e_T_24
+
+IF $2300e_T_25LastEvent$ == $Succeeded$
+
+   IF $2300e_T_25HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $trainline$ Passed 
+   ELSE
+      PRINT Result: GET $trainline$ Failed, HTTP Status $2300e_T_25HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $trainline$ Failed, last event $2300e_T_25LastEvent$  
+ENDIF
+
+endtrans 2300e_T_25
+
+IF $2300e_T_26LastEvent$ == $Succeeded$
+
+   IF $2300e_T_26HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $itv$ Passed 
+   ELSE
+      PRINT Result: GET $itv$ Failed, HTTP Status $2300e_T_26HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $itv$ Failed, last event $2300e_T_26LastEvent$  
+ENDIF
+
+endtrans 2300e_T_26
+
+IF $2300e_T_27LastEvent$ == $Succeeded$
+
+   IF $2300e_T_27HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $cnn$ Passed 
+   ELSE
+      PRINT Result: GET $cnn$ Failed, HTTP Status $2300e_T_27HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $cnn$ Failed, last event $2300e_T_27LastEvent$  
+ENDIF
+
+endtrans 2300e_T_27
+
+IF $2300e_T_28LastEvent$ == $Succeeded$
+
+   IF $2300e_T_28HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $lemonde$ Passed 
+   ELSE
+      PRINT Result: GET $lemonde$ Failed, HTTP Status $2300e_T_28HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $lemonde$ Failed, last event $2300e_T_28LastEvent$  
+ENDIF
+
+endtrans 2300e_T_28
+
+IF $2300e_T_29LastEvent$ == $Succeeded$
+
+   IF $2300e_T_29HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $dotmusic$ Passed 
+   ELSE
+      PRINT Result: GET $dotmusic$ Failed, HTTP Status $2300e_T_29HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: GET $dotmusic$ Failed, last event $2300e_T_29LastEvent$  
+ENDIF
+
+endtrans 2300e_T_29
+
+IF $2300e_T_30LastEvent$ == $Succeeded$
+
+   IF $2300e_T_30HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $watford$ Passed 
+   ELSE
+      PRINT Result: GET $watford$ Failed, HTTP Status $2300e_T_30HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $watford$ Failed, last event $2300e_T_30LastEvent$  
+ENDIF
+
+endtrans 2300e_T_30
+
+IF $2300e_T_31LastEvent$ == $Succeeded$
+
+   IF $2300e_T_31HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $iconbar$ Passed 
+   ELSE
+      PRINT Result: GET $iconbar$ Failed, HTTP Status $2300e_T_31HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $iconbar$ Failed, last event $2300e_T_31LastEvent$  
+ENDIF
+
+endtrans 2300e_T_31
+
+IF $2300e_T_32LastEvent$ == $Succeeded$
+
+   IF $2300e_T_32HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: GET $independent$ Passed 
+   ELSE
+      PRINT Result: GET $independent$ Failed, HTTP Status $2300e_T_32HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: GET $independent$ Failed, last event $2300e_T_32LastEvent$ 
+ENDIF
+
+endtrans 2300e_T_32
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT 2300e_H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2300e

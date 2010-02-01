@@ -1,0 +1,7 @@
+EXPORTS
+	_Z18ClientStubOrdinal1v @ 1 NONAME
+	_ZN9CLineEdit4EditERK7TDesC16P6TDes16 @ 2 NONAME
+	_ZN9CLineEdit4NewLEP12CConsoleBasei @ 3 NONAME
+	_ZTI9CLineEdit @ 4 NONAME ; #<TI>#
+	_ZTV9CLineEdit @ 5 NONAME ; #<VT>#
+

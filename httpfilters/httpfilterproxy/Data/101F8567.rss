@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file containing the HTTP FILTERS UIDs
+*
+*/
+
+
+
+
+//  INCLUDES
+#include <ecom/RegistryInfo.rh>
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// Registry info
+// The UIDs for the filters implemented in this DLL
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	dll_uid = 0x101F8567;
+	interfaces=
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = 0x101F853C;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F853B;
+					version_no = 2;
+					display_name = "HTTP Filter Proxy";
+					default_data = "HTTP/-PROXY";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+
+// End of File

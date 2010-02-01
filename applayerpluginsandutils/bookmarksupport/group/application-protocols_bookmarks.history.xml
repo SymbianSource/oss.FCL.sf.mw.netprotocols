@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Bookmark Support">
+  <purpose>
+    A database for shared storage of web browser bookmarks.
+  </purpose>
+
+  <defect number="DEF125749" title="Application Protocol Bookmark Test Re-classification" revision="011">
+    Resolved distribution.policy files.
+  </defect>
+
+  <defect number="DEF105591" title="PREQ1182 submission has caused build failure" revision="010">
+    Resolved build failures.
+  </defect>
+
+  <preq number="1182" title="GNU Make-based build system" revision="009">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations
+  </preq>
+
+  <defect number="DEF093413" title="Bad distribution.policy file Schedule 12 category" revision="008">
+    Modified bad distribution.policy files
+  </defect>
+
+  <defect number="DEF093128" title="bookmarks APIs should not be @prototype" revision="007">
+    bookmarks APIs should not be @prototype
+  </defect>
+
+  <defect number="DEF093044" title="Tag Scan Report for the bookmarks Subsystem" revision="006">
+    Unidentified tags removed
+  </defect>
+
+  <defect number="PDEF086182" title="Leavescan errors in Bookmarks production code" revision="005">
+    Fixed leavescan errors in Bookmarks production code
+  </defect>
+
+  <defect number="PDEF083340" title="Ineffective capability checking in bookmarkdb dll" revision="004">
+    Improved capability checking
+  </defect>
+
+  <defect number="PDEF083341" title="Bookmarks are not restored after a backup from a Lily device" revision="003">
+    Added backup and restore functionality for the bookmark repository files
+  </defect>
+
+  <defect number="PDEF081803" title="Adding more OOM test for bookmark component" revision="002">
+    Added a new bookmark oom test code and fixed few memory leaks in component code
+  </defect>
+
+  <defect number="PDEF079468" title="Bookmarks test ( tbookmark_sec) is failing in armv5" revision="001">
+    Fix for a test code(tsecuritytest.cpp) for fixing the failing tbookmark_sec tests on armv5
+  </defect>
+</relnotes>

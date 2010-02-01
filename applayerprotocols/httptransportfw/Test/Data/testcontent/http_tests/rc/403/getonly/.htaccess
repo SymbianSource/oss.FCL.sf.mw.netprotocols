@@ -1,0 +1,9 @@
+AuthType Basic
+AuthName HTTP_Tests_For_T4
+AuthUserFile "/home/httpd/etc/htpasswd"
+
+<Limitcd ../
+dir
+>
+require user scooby
+</Limit>

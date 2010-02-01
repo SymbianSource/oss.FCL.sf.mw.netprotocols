@@ -1,0 +1,32 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Framework build information
+// 
+//
+
+PRJ_MMPFILES
+testwebbrowser.mmp
+
+PRJ_TESTMMPFILES
+htmlparserplugin.mmp support
+t_htmlparser.mmp
+
+PRJ_TESTEXPORTS
+../htmlparserplugin/test/tdata/Html/htmldoc.html /epoc32/winscw/c/system/data/html/htmldoc.html
+../htmlparserplugin/test/tdata/Html/htmldoc.ref /epoc32/winscw/c/system/data/html/htmldoc.ref
+../htmlparserplugin/test/tdata/Html/Invalid.html /epoc32/winscw/c/system/data/html/invalid.html
+../htmlparserplugin/test/tdata/Html/Junk.html /epoc32/winscw/c/system/data/html/junk.html
+../htmlparserplugin/test/tdata/Html/Simple.html /epoc32/winscw/c/system/data/html/simple.html
+../htmlparserplugin/test/tdata/Html/XHMTLdoc.xhtml /epoc32/winscw/c/system/data/html/xhmtldoc.xhtml
+../htmlparserplugin/test/tdata/Html/XHMTLdoc.ref /epoc32/winscw/c/system/data/html/xhmtldoc.ref

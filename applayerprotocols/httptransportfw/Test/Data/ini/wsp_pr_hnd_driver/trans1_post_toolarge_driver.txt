@@ -1,0 +1,148 @@
+## Include script - create a post transaction trans1 that's too big.
+#
+# Client creates a POST trans action - trans1. 
+# This has body data C:\HttpTest\wsp_pr_hnd_driver\largebody1.txt (three times) of length -1. 
+# Has header - 
+# Accept : application/vnd.wap.wmlc
+# Content-Type : application/x-www-form-urlencoded.
+#
+# Stub validates the headers and body data and Server sends the cnf
+#
+# NOTE - the server message size (500) will be exceeded and the message will be aborted.
+# The method will be in the Waiting state
+#
+SCRIPT trans1_post_toolarge_driver
+
+#
+# Create a POST method transaction - first part
+#
+	ECHO "Creating and submiting POST method transaction"
+	SEND
+		INVOKE OpenTransactionL
+			PARAMETER aMethod POST
+			PARAMETER aUri http://wap.symbian.com/
+			STOREITEM :RETURN: trans1
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Accept
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/vnd.wap.wmlc
+		ENDINVOKE
+		INVOKE trans1 AddHeaderL
+			PARAMETER aFieldName Content-Type
+			PARAMETER aFieldType RStringF
+			PARAMETER aFieldValue application/x-www-form-urlencoded
+		ENDINVOKE
+		INVOKE trans1 AddBody
+			CREATEITEM aBody CDriverDataSupplier body1
+		ENDINVOKE
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+
+#
+# Expect call to OverallDataSize
+#
+	ECHO "Expecting call to MHTTPDataSupplier::OverallDataSize"
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: -1
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect another call to OverallDataSize invoked from the validation filter
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::OverallDataSize
+			PARAMETER :RETURN: -1
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect the post data to be extracted - first part
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\largebody1.txt$file$>
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect the release of the data
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Inform the protocol handler that there is more data - second part
+#
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trans1 MoreRequestBodyDataL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+
+#
+# Expect the post data to be extracted - second part
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\largebody1.txt$file$>
+			PARAMETER :RETURN: EFalse
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect the release of the data
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::ReleaseData
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Inform the protocol handler that there is more data - third part
+#
+	SEND
+		ALLOWREENTRANCY
+		INVOKE trans1 MoreRequestBodyDataL
+			VALIDATE :LEAVECODE: 0
+		ENDINVOKE
+	ENDSEND
+
+#
+# Expect the post data to be extracted - third part, this should blow the message size
+#
+	EXPECT
+		INVOCATION body1 MHTTPDataSupplier::GetNextDataPart
+			PARAMETER aDataPart <$file$C:\HttpTest\wsp_pr_hnd_driver\largebody1.txt$file$>
+			PARAMETER :RETURN: ETrue
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect the ETooMuchRequestData event
+#
+ 	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent ETooMuchRequestData
+		ENDINVOCATION
+	ENDEXPECT
+
+#
+# Expect that the protocol handler abort the method
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EFailed
+		ENDINVOCATION
+	ENDEXPECT
+
+ENDSCRIPT

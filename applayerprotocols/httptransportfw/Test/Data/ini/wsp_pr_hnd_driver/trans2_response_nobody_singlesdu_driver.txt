@@ -1,0 +1,60 @@
+## Include script - trans2 no response data, single SDU
+#
+#
+# Header data- 
+# Content-Type : application/vnd.wap.wmlc
+#
+# The method will be in the Null state
+#
+SCRIPT trans2_response_nobody_singlesdu_driver
+#
+# Expect the S-MethodResult.ind primitive - first the headers event...
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EGotResponseHeaders
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the response complete event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent EResponseComplete
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Expect the succeeded event
+#
+	EXPECT
+		INVOCATION	TransactionRunL
+			VALIDATE aTransaction trans2
+			VALIDATE aEvent ESucceeded
+		ENDINVOCATION
+	ENDEXPECT
+#
+# Check the status code and the content-type header and server header
+#
+	SLEEP 500
+	SEND
+		INVOKE trans2 GetStatusCode
+			VALIDATE :RETURN: 200
+		ENDINVOKE
+		INVOKE trans2 GetHeaderL
+			PARAMETER aFieldName Content-Type
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue application/vnd.wap.wmlc
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+		INVOKE trans2 GetHeaderL
+			PARAMETER aFieldName Server
+			VALIDATE aFieldType RStringF
+			VALIDATE aFieldValue bunny
+			PARAMETER aPart 0
+			VALIDATE :RETURN: ETrue
+		ENDINVOKE
+	ENDSEND
+ENDSCRIPT

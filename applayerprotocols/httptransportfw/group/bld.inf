@@ -1,0 +1,268 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Transport Framework and HTTP/WSP client support
+// 
+//
+
+/**
+ @file
+*/
+
+
+PRJ_EXPORTS
+// specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in \epoc32\include
+
+// top-level includes
+../inc/http.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http.h)
+../inc/httperr.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(httperr.h)
+../inc/chttpformencoder.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(chttpformencoder.h)
+../inc/HTTPSocketConstants.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(httpsocketconstants.h)
+
+
+
+// framework includes - required by those implementing new protocols
+../inc/framework/csecuritypolicy.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/csecuritypolicy.h)
+../inc/framework/csecurityPolicy.inl	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/csecuritypolicy.inl)
+../inc/framework/cprotocolhandler.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/cprotocolhandler.h)
+../inc/framework/ctxdata.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/ctxdata.h)
+../inc/framework/crxdata.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/crxdata.h)
+../inc/framework/cheadercodec.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/cheadercodec.h)
+../inc/framework/CProtTransaction.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/cprottransaction.h)
+../inc/framework/httplogger.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/framework/httplogger.h)
+../inc/framework/MRxDataObserver.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/mrxdataobserver.h)
+../inc/framework/RHeaderField.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/rheaderfield.h)
+../inc/framework/logging.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/framework/logging.h)
+../inc/framework/cheadercodecplugin.h	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/framework/cheadercodecplugin.h)
+
+// public api includes
+../inc/http/CAuthenticationFilterInterface.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/cauthenticationfilterinterface.h)
+../inc/http/mhttpauthenticationcallback.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpauthenticationcallback.h)
+../inc/http/TFilterInformation.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/tfilterinformation.h)
+../inc/http/TFilterConfigurationIter.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/tfilterconfigurationiter.h)
+../inc/http/CEComFilter.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/cecomfilter.h)
+../inc/http/MHTTPFilterCreationCallback.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpfiltercreationcallback.h)
+../inc/http/mhttpdatasupplier.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpdatasupplier.h)
+../inc/http/mhttpfilter.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpfilter.h)
+../inc/http/mhttpfilterbase.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpfilterbase.h)
+../inc/http/mhttptransactioncallback.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttptransactioncallback.h)
+../inc/http/mhttpsessioneventcallback.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpsessioneventcallback.h)
+../inc/http/rhttpconnectioninfo.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpconnectioninfo.h)
+../inc/http/rhttpfiltercollection.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpfiltercollection.h)
+../inc/http/rhttpheaders.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpheaders.h)
+../inc/http/rhttpmessage.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpmessage.h)
+../inc/http/rhttppropertyset.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttppropertyset.h)
+../inc/http/rhttprequest.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttprequest.h)
+../inc/http/rhttpresponse.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpresponse.h)
+../inc/http/rhttpsession.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttpsession.h)
+../inc/http/RHTTPTransaction.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttptransaction.h)
+../inc/http/rhttptransactionpropertyset.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/rhttptransactionpropertyset.h)
+../inc/http/thttpevent.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpevent.h)
+../inc/http/thttpevent.inl					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpevent.inl)
+../inc/http/thttpfilteriterator.h			SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpfilteriterator.h)
+../inc/http/thttpfilterregistration.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpfilterregistration.h)
+../inc/http/thttphdrfielditer.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttphdrfielditer.h)
+../inc/http/thttpfilterhandle.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpfilterhandle.h)
+../inc/http/thttphdrval.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttphdrval.h)
+../inc/http/mhttpdataoptimiser.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/mhttpdataoptimiser.h)
+../inc/http/thttptable.h					SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/thttptable.h)
+../httputils/inc/rexplicithttpsession.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/rexplicithttpsession.h)
+
+
+
+// WSP api include - needed by CSecurityPolicy
+../inc/WSP/WspTypes.h						SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsp/wsptypes.h)
+
+// rom definition file
+httpcore.iby	/epoc32/rom/include/httpcore.iby
+
+// Export the help files
+"../documentation/HTTP Client Public API.chm"			"/epoc32/engdoc/application-protocols/httpclientpublicapi.chm"
+"../documentation/HTTP Client Internal Documentation.chm"	"/epoc32/engdoc/application-protocols/httpclientinternaldocumentation.chm"
+
+PRJ_TESTEXPORTS
+// top-level WSP includes
+
+../inc/wsp.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(wsp.h)
+../inc/WspError.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wsperror.h)
+
+//	test scripts
+../Test/TestScriptTest/HTTPIOPTest.script		c:/testdata/scripts/httpioptest.script
+../Test/TestScriptTest/HTTPPipeliningTest.script	c:/testdata/scripts/httppipeliningtest.script
+
+
+
+// Copy this here to make sure the directory is created
+../strings/WspStringConstants.st			/epoc32/build/generated/http/wspstringconstants.st
+../strings/WspParamConstants.st				/epoc32/build/generated/http/wspparamconstants.st
+../strings/WspContentTypes.st				/epoc32/build/generated/http/wspcontenttypes.st
+../strings/WspRegContentTypes.st			/epoc32/build/generated/http/wspregcontenttypes.st
+../strings/WspCharacterSets.st				/epoc32/build/generated/http/wspcharactersets.st
+../strings/WspStdConstants.st				/epoc32/build/generated/http/wspstdconstants.st
+../strings/WspLanguages.st				/epoc32/build/generated/http/wsplanguages.st
+../strings/WSPTypeConstants.st				/epoc32/build/generated/http/wsptypeconstants.st
+
+// .ini files for the test harnesses
+../Test/Data/ini/online/req1.txt z:/req1.txt
+../Test/Data/ini/online/resp1.txt z:/resp1.txt
+
+../Test/Data/ini/acceptance/TestCases.ini /epoc32/wins/c/httptest/acceptance/testcases.ini
+../Test/Data/ini/acceptance/ManualTestCases.ini /epoc32/wins/c/httptest/acceptance/manualtestcases.ini
+../Test/Data/ini/acceptance/ValidTestCases.ini /epoc32/wins/c/httptest/acceptance/validtestcases.ini
+../Test/Data/ini/acceptance/InvalidTestCases.ini /epoc32/wins/c/httptest/acceptance/invalidtestcases.ini
+../Test/Data/ini/acceptance/ServerTestCases.ini /epoc32/wins/c/httptest/acceptance/servertestcases.ini
+../Test/Data/ini/acceptance/SecureTestCases.ini /epoc32/wins/c/httptest/acceptance/securetestcases.ini
+../Test/Data/ini/acceptance/sites.ini /epoc32/wins/c/httptest/acceptance/sites.ini
+../Test/Data/ini/acceptance/iot.ini /epoc32/wins/c/httptest/acceptance/iot.ini
+../Test/Data/ini/acceptance/ipv6.ini /epoc32/wins/c/httptest/acceptance/ipv6.ini
+../Test/Data/ini/acceptance/GeneralTestCases.ini /epoc32/wins/c/httptest/acceptance/generaltestcases.ini
+../Test/Data/ini/acceptance/SSLTestCases.ini /epoc32/wins/c/httptest/acceptance/ssltestcases.ini
+../Test/Data/ini/acceptance/ProxyTestCases.ini /epoc32/wins/c/httptest/acceptance/proxytestcases.ini
+../Test/Data/ini/acceptance/DigestTestCases.ini /epoc32/wins/c/httptest/acceptance/digesttestcases.ini
+../Test/Data/ini/acceptance/RedirectTestCases.ini /epoc32/wins/c/httptest/acceptance/redirecttestcases.ini
+../Test/Data/ini/acceptance/WSPTestCases.ini /epoc32/wins/c/httptest/acceptance/wsptestcases.ini
+../Test/Data/ini/acceptance/BodyFile/TC_ITER_2_POST_21.txt /epoc32/wins/c/httptest/acceptance/bodyfile/tc_iter_2_post_21.txt
+../Test/Data/ini/online/UnitTests.ini /epoc32/wins/c/httptest/online/unittests.ini
+../Test/Data/ini/online/UAProf.ini /epoc32/wins/c/httptest/online/uaprof.ini
+../Test/Data/ini/offline/UnitTests.ini /epoc32/wins/c/httptest/offline/unittests.ini
+../Test/Data/ini/offline/stub_script_1.txt /epoc32/wins/c/httptest/offline/stub_script_1.txt
+../Test/Data/ini/regression/RegressionTests.ini /epoc32/wins/c/httptest/regression/regressiontests.ini
+../Test/Data/ini/settings/settings.ini /epoc32/wins/c/httptest/settings/settings.ini
+../Test/Data/certs/wapca2006.cer /epoc32/wins/c/wapca2006.cer
+../Test/Data/certs/cacerts.dat /epoc32/wins/c/private/101f72a6/cacerts.dat
+../Test/Data/certs/certclients.dat /epoc32/wins/c/private/101f72a6/certclients.dat
+
+// .ini files for winscw build
+../Test/Data/ini/acceptance/TestCases.ini /epoc32/winscw/c/httptest/acceptance/testcases.ini
+../Test/Data/ini/acceptance/ManualTestCases.ini /epoc32/winscw/c/httptest/acceptance/manualtestcases.ini
+../Test/Data/ini/acceptance/ValidTestCases.ini /epoc32/winscw/c/httptest/acceptance/validtestcases.ini
+../Test/Data/ini/acceptance/InvalidTestCases.ini /epoc32/winscw/c/httptest/acceptance/invalidtestcases.ini
+../Test/Data/ini/acceptance/ServerTestCases.ini /epoc32/winscw/c/httptest/acceptance/servertestcases.ini
+../Test/Data/ini/acceptance/SecureTestCases.ini /epoc32/winscw/c/httptest/acceptance/securetestcases.ini
+../Test/Data/ini/acceptance/sites.ini /epoc32/winscw/c/httptest/acceptance/sites.ini
+../Test/Data/ini/acceptance/iot.ini /epoc32/winscw/c/httptest/acceptance/iot.ini
+../Test/Data/ini/acceptance/ipv6.ini /epoc32/winscw/c/httptest/acceptance/ipv6.ini
+../Test/Data/ini/acceptance/GeneralTestCases.ini /epoc32/winscw/c/httptest/acceptance/generaltestcases.ini
+../Test/Data/ini/acceptance/SSLTestCases.ini /epoc32/winscw/c/httptest/acceptance/ssltestcases.ini
+../Test/Data/ini/acceptance/ProxyTestCases.ini /epoc32/winscw/c/httptest/acceptance/proxytestcases.ini
+../Test/Data/ini/acceptance/DigestTestCases.ini /epoc32/winscw/c/httptest/acceptance/digesttestcases.ini
+../Test/Data/ini/acceptance/RedirectTestCases.ini /epoc32/winscw/c/httptest/acceptance/redirecttestcases.ini
+../Test/Data/ini/acceptance/WSPTestCases.ini /epoc32/winscw/c/httptest/acceptance/wsptestcases.ini
+../Test/Data/ini/acceptance/BodyFile/TC_ITER_2_POST_21.txt /epoc32/winscw/c/httptest/acceptance/bodyfile/tc_iter_2_post_21.txt
+../Test/Data/ini/online/UnitTests.ini /epoc32/winscw/c/httptest/online/unittests.ini
+../Test/Data/ini/online/UAProf.ini /epoc32/winscw/c/httptest/online/uaprof.ini
+../Test/Data/ini/offline/UnitTests.ini /epoc32/winscw/c/httptest/offline/unittests.ini
+../Test/Data/ini/offline/stub_script_1.txt /epoc32/winscw/c/httptest/offline/stub_script_1.txt
+../Test/Data/ini/regression/RegressionTests.ini /epoc32/winscw/c/httptest/regression/regressiontests.ini
+../Test/Data/ini/settings/settings.ini /epoc32/winscw/c/httptest/settings/settings.ini
+../Test/Data/certs/wapca2006.cer /epoc32/winscw/c/wapca2006.cer
+../Test/Data/certs/certclients.dat /epoc32/data/z/private/101f72a6/certclients.dat
+../Test/Data/certs/cacerts.dat /epoc32/data/z/private/101f72a6/cacerts.dat
+../Test/Data/certs/certclients.dat /epoc32/winscw/c/private/101f72a6/certclients.dat
+../Test/Data/certs/cacerts.dat /epoc32/winscw/c/private/101f72a6/cacerts.dat
+../Test/Data/ini/Pipelining/pipelining.ini c:/httptest/pipelining/pipelining.ini
+
+// rom definition files for HTTP tests
+../Test/Group/httptestutils.iby	/epoc32/rom/include/httptestutils.iby
+../Test/Group/t_http.iby	/epoc32/rom/include/t_http.iby
+../Test/Group/t_httponline.iby	/epoc32/rom/include/t_httponline.iby
+../Test/Group/t_httpoffline.iby	/epoc32/rom/include/t_httpoffline.iby
+../Test/Group/HTTPIOPTest.iby		/epoc32/rom/include/httpioptest.iby
+../Test/Group/HTTPPipeliningTest.iby	/epoc32/rom/include/httppipeliningtest.iby
+
+
+../Test/Group/httptest.iby	/epoc32/rom/include/httptest.iby
+// automated_httptest.iby is a strictly limited set of tests that can be run automatically on hardware
+//../Test/group/automated_httptest.iby	/epoc32/rom/include/httptest.iby
+
+
+// .esk file for test hook (alphabetical order is unfortunately important)
+../Test/Data/ip.etesthook.esk /epoc32/release/winscw/udeb/z/httptest/ip.etesthook.esk
+../Test/Data/ip.etesthook.esk /epoc32/release/winscw/urel/z/httptest/ip.etesthook.esk
+../Test/Data/ip.etesthook.esk /epoc32/release/wins/udeb/z/httptest/ip.etesthook.esk
+../Test/Data/ip.etesthook.esk /epoc32/release/wins/urel/z/httptest/ip.etesthook.esk
+
+//	the batch file to run the tests
+../Test/TestScriptTest/HTTPIOPTest.bat			/epoc32/tools/httpioptest.bat
+../Test/TestScriptTest/HTTPPipeliningTest.bat	/epoc32/tools/httppipeliningtest.bat
+
+
+PRJ_MMPFILES
+// And the mmp files
+../group/http.mmp
+../group/httpmessage.mmp
+../group/httputils.mmp
+
+PRJ_TESTMMPFILES
+// An extension makefile to generate WSP-specific stringtable code.
+gnumakefile ../group/wspstringtable.mak
+gnumakefile ../group/wspparamtable.mak
+gnumakefile ../group/wspcontenttypestable.mak
+gnumakefile ../group/wspregcontenttypestable.mak
+gnumakefile ../group/wspcharactersetstable.mak
+gnumakefile ../group/wspstdconstantstable.mak
+gnumakefile ../group/wsplanguagestable.mak
+gnumakefile ../group/wsptypestable.mak
+
+
+// test utilities library
+../Test/Group/httptestutils.mmp
+
+// Acceptance test harness
+../Test/Group/T_http.mmp
+
+// On-line unit tests
+../Test/Group/T_HttpOnline.mmp
+
+// Off-line unit tests
+../Test/Group/T_HttpOffline.mmp
+
+// Defect fix regression tests
+../Test/Group/T_HttpRegression.mmp
+
+
+// Test for HTTP message parser and composer
+../Test/Group/t_httpmessage.mmp
+../Test/Group/testhttpmessage.mmp
+
+// Unit test harness for Http Transport Handler
+../Test/Group/t_httptransporthandler.mmp
+
+// HTTP Integration Test Harness
+../Test/Group/t_httpinteg.mmp
+
+// HTTP Pipelining Test harness
+../Test/Group/t_httppipeliningtest.mmp
+
+// Test hook for checking session ID
+../Test/Group/testhook.mmp     support
+
+
+// URL shortcut parser test
+../Test/Group/t_URIShortcutParser.mmp
+
+
+// Codec plugin chaining test
+../Test/Group/t_codecplugin.mmp
+
+// HTTP Script Test harness
+../Test/Group/HTTPPipeliningTest.mmp
+../Test/Group/HTTPIOPTest.mmp
+
+// Test HTTP Suite
+#include "../Test/Integration/group/bld.inf"
+
+

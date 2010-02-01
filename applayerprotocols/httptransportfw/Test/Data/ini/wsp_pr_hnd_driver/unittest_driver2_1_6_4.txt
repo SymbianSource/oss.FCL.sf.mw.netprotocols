@@ -1,0 +1,89 @@
+## GT0128 Hurricane WAP
+## WSP Protocol Handler
+#######################
+## Ref. SGL.GT0128.aaa.bbb WSP Protocol Handler Unit Tests
+## Unit test 2.1.6.4
+## Driver chat script
+#
+# Test Synopsis
+# * Disconnect while in Connected state, one or more transactions have been invoked 
+# The function DisconnectReq will be called, and the result will be returned by the callback DisconnectInd 
+
+# Expected Result
+# * Expected result: all transactions aborted and disconnection made 
+
+
+SCRIPT UnitTestDriver2.1.6.4 
+
+#
+# Sleep before start, allows stub time to start up and initialise.
+#
+	SLEEP 500
+#
+# Step 1 - set up the desired WSP proxy for this test
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+
+#
+# Step 1a - make a clean connection to a WSP proxy
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doconnect_accept_driver.txt"
+
+#
+# Step 2 - open a transaction (will be given ID trans1)
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\doopen_get_trans_driver.txt"
+
+#
+# Step 3 - submit the transaction
+#
+	SEND
+		INVOKE trans1 SubmitL
+		ENDINVOKE
+	ENDSEND
+
+SLEEP 2000
+
+
+#
+# Client disconnect
+#
+	ECHO "Driver sending disconnect"
+	SEND
+		INVOKE SessionDisconnectL
+		ENDINVOKE
+	ENDSEND
+
+#
+# Proxy aborts the transaction - sends an EFailed event
+#
+	EXPECT
+		INVOCATION TransactionRunL
+			VALIDATE aTransaction trans1
+			VALIDATE aEvent EFailed
+		ENDINVOCATION
+	ENDEXPECT
+
+
+#
+# Wait for ind - this is given by EDisconnected
+#
+	ECHO "Waiting for ind"
+	EXPECT
+		INVOCATION SessionRunL
+			VALIDATE aEvent EDisconnected
+		ENDINVOCATION
+	ENDEXPECT
+
+
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT
+
+

@@ -1,0 +1,8 @@
+HTTP/1.0 406 Not Acceptable
+Server: Fakeserver.pl
+Date: Tue, 06 Mar 2001 12:00:00 GMT
+Content-Type: text/*
+
+
+You are Not Acceptable.
+Ya get me?

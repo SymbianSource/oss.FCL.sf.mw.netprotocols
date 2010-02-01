@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+
+<wml>
+
+	<card id="card1" title="Symbian">
+		<p>
+			<strong>HTTP Test Suite</strong><br/>
+			Select desired class of tests<br/>
+		</p>
+		<do type="accept" label="Content Type">
+			<go href="#card2"></go>
+		</do>
+		<do type="unknown" label="Status Codes">
+			<go href="#card3"></go>
+		</do>
+	</card>
+
+	<card id="card2" title="Content Type Tests">
+		<p>
+			These tests exercise the HTTP Plug-in's ability to recognise the mandatory set of WAP MIME types, and some other common types in addition.<br/>
+		</p>
+		<do type="accept" label="Start">
+			<go href="ct/index.wml"></go>
+		</do>
+	</card>
+
+	<card id="card3" title="HTTP Status Tests">
+		<p>
+			These tests exercise the HTTP Plug-in's ability to deal with each of the HTTP/1.1 status/error codes.<br/>
+		</p>
+		<do type="accept" label="Start">
+			<go href="rc/index.wml"></go>
+		</do>
+	</card>
+
+</wml>

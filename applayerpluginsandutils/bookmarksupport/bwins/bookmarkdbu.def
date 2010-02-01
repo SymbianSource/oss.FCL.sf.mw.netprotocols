@@ -1,0 +1,93 @@
+EXPORTS
+	??0RBkBookmark@@QAE@XZ @ 1 NONAME ; RBkBookmark::RBkBookmark(void)
+	??0RBkDatabase@@QAE@XZ @ 2 NONAME ; RBkDatabase::RBkDatabase(void)
+	??0RBkFolder@@QAE@XZ @ 3 NONAME ; RBkFolder::RBkFolder(void)
+	??0RBkNode@@QAE@XZ @ 4 NONAME ; RBkNode::RBkNode(void)
+	?AppendL@RBkFolder@@QAEXAAVRBkNode@@@Z @ 5 NONAME ; void RBkFolder::AppendL(class RBkNode &)
+	?AuthenticationL@RBkBookmark@@QAEABVCAuthentication@@XZ @ 6 NONAME ; class CAuthentication const & RBkBookmark::AuthenticationL(void)
+	?Close@RBkDatabase@@QAEXXZ @ 7 NONAME ; void RBkDatabase::Close(void)
+	?Close@RBkNode@@QAEXXZ @ 8 NONAME ; void RBkNode::Close(void)
+	?CommitL@RBkDatabase@@QAEXXZ @ 9 NONAME ; void RBkDatabase::CommitL(void)
+	?Count@RBkFolder@@QBEHXZ @ 10 NONAME ; int RBkFolder::Count(void) const
+	?CreateBookmarkL@RBkDatabase@@QAE?AVRBkBookmark@@PAVRBkFolder@@@Z @ 11 NONAME ; class RBkBookmark RBkDatabase::CreateBookmarkL(class RBkFolder *)
+	?CreateFolderL@RBkDatabase@@QAE?AVRBkFolder@@ABVTDesC16@@PAV2@@Z @ 12 NONAME ; class RBkFolder RBkDatabase::CreateFolderL(class TDesC16 const &, class RBkFolder *)
+	?CreateIconL@RBkDatabase@@QAEKABVTDesC8@@@Z @ 13 NONAME ; unsigned long RBkDatabase::CreateIconL(class TDesC8 const &)
+	?DefaultNap@RBkDatabase@@QBEKXZ @ 14 NONAME ; unsigned long RBkDatabase::DefaultNap(void) const
+	?DefaultProxy@RBkDatabase@@QBEKXZ @ 15 NONAME ; unsigned long RBkDatabase::DefaultProxy(void) const
+	?DeleteIconL@RBkDatabase@@QAEHK@Z @ 16 NONAME ; int RBkDatabase::DeleteIconL(unsigned long)
+	?DeleteItemL@RBkDatabase@@QAEXKH@Z @ 17 NONAME ; void RBkDatabase::DeleteItemL(unsigned long, int)
+	?DeregisterBookmarkPropertyL@RBkDatabase@@QAEHVTUid@@@Z @ 18 NONAME ; int RBkDatabase::DeregisterBookmarkPropertyL(class TUid)
+	?DeregisterDatabasePropertyL@RBkDatabase@@QAEHVTUid@@@Z @ 19 NONAME ; int RBkDatabase::DeregisterDatabasePropertyL(class TUid)
+	?DeregisterFolderPropertyL@RBkDatabase@@QAEHVTUid@@@Z @ 20 NONAME ; int RBkDatabase::DeregisterFolderPropertyL(class TUid)
+	?DescriptionL@RBkNode@@QBEABVTDesC16@@XZ @ 21 NONAME ; class TDesC16 const & RBkNode::DescriptionL(void) const
+	?GetCustomPropertyL@RBkDatabase@@QBEXVTUid@@AAH@Z @ 22 NONAME ; void RBkDatabase::GetCustomPropertyL(class TUid, int &) const
+	?GetCustomPropertyL@RBkDatabase@@QBEXVTUid@@AAN@Z @ 23 NONAME ; void RBkDatabase::GetCustomPropertyL(class TUid, double &) const
+	?GetCustomPropertyL@RBkDatabase@@QBEXVTUid@@AAVTDes16@@@Z @ 24 NONAME ; void RBkDatabase::GetCustomPropertyL(class TUid, class TDes16 &) const
+	?GetCustomPropertyL@RBkDatabase@@QBEXVTUid@@AAVTDes8@@@Z @ 25 NONAME ; void RBkDatabase::GetCustomPropertyL(class TUid, class TDes8 &) const
+	?GetCustomPropertyL@RBkNode@@QBEXVTUid@@AAH@Z @ 26 NONAME ; void RBkNode::GetCustomPropertyL(class TUid, int &) const
+	?GetCustomPropertyL@RBkNode@@QBEXVTUid@@AAN@Z @ 27 NONAME ; void RBkNode::GetCustomPropertyL(class TUid, double &) const
+	?GetCustomPropertyL@RBkNode@@QBEXVTUid@@AAVTDes16@@@Z @ 28 NONAME ; void RBkNode::GetCustomPropertyL(class TUid, class TDes16 &) const
+	?GetCustomPropertyL@RBkNode@@QBEXVTUid@@AAVTDes8@@@Z @ 29 NONAME ; void RBkNode::GetCustomPropertyL(class TUid, class TDes8 &) const
+	?GetIconL@RBkDatabase@@QBEABVTDesC8@@K@Z @ 30 NONAME ; class TDesC8 const & RBkDatabase::GetIconL(unsigned long) const
+	?GetNapL@RBkBookmark@@QBEKXZ @ 31 NONAME ; unsigned long RBkBookmark::GetNapL(void) const
+	?HomePageText@RBkDatabase@@QBEABVTDesC16@@XZ @ 32 NONAME ; class TDesC16 const & RBkDatabase::HomePageText(void) const
+	?IconIdL@RBkNode@@QBEKXZ @ 33 NONAME ; unsigned long RBkNode::IconIdL(void) const
+	?Id@RBkNode@@QBEKXZ @ 34 NONAME ; unsigned long RBkNode::Id(void) const
+	?Index@RBkFolder@@QBEHABVRBkNode@@@Z @ 35 NONAME ; int RBkFolder::Index(class RBkNode const &) const
+	?InsertL@RBkFolder@@QAEXAAVRBkNode@@H@Z @ 36 NONAME ; void RBkFolder::InsertL(class RBkNode &, int)
+	?IsHomePage@RBkBookmark@@QAEHXZ @ 37 NONAME ; int RBkBookmark::IsHomePage(void)
+	?IsPublic@RBkNode@@QBEHXZ @ 38 NONAME ; int RBkNode::IsPublic(void) const
+	?IsWritable@RBkNode@@QBEHXZ @ 39 NONAME ; int RBkNode::IsWritable(void) const
+	?LastVisited@RBkBookmark@@QBE?AVTTime@@XZ @ 40 NONAME ; class TTime RBkBookmark::LastVisited(void) const
+	?Move@RBkFolder@@QAEHHH@Z @ 41 NONAME ; int RBkFolder::Move(int, int)
+	?OpenBookmarkL@RBkDatabase@@QBE?AVRBkBookmark@@K@Z @ 42 NONAME ; class RBkBookmark RBkDatabase::OpenBookmarkL(unsigned long) const
+	?OpenBookmarkL@RBkNode@@QBE?AVRBkBookmark@@XZ @ 43 NONAME ; class RBkBookmark RBkNode::OpenBookmarkL(void) const
+	?OpenFolderL@RBkDatabase@@QBE?AVRBkFolder@@ABVTDesC16@@@Z @ 44 NONAME ; class RBkFolder RBkDatabase::OpenFolderL(class TDesC16 const &) const
+	?OpenFolderL@RBkDatabase@@QBE?AVRBkFolder@@K@Z @ 45 NONAME ; class RBkFolder RBkDatabase::OpenFolderL(unsigned long) const
+	?OpenFolderL@RBkNode@@QBE?AVRBkFolder@@XZ @ 46 NONAME ; class RBkFolder RBkNode::OpenFolderL(void) const
+	?OpenHomeL@RBkDatabase@@QBE?AVRBkBookmark@@XZ @ 47 NONAME ; class RBkBookmark RBkDatabase::OpenHomeL(void) const
+	?OpenItemL@RBkFolder@@QAE?AVRBkNode@@H@Z @ 48 NONAME ; class RBkNode RBkFolder::OpenItemL(int)
+	?OpenL@RBkDatabase@@QAEXW4TVisibility@Bookmark@@PAVMBookmarkObserver@@@Z @ 49 NONAME ; void RBkDatabase::OpenL(enum Bookmark::TVisibility, class MBookmarkObserver *)
+	?OpenParentL@RBkNode@@QBE?AVRBkFolder@@XZ @ 50 NONAME ; class RBkFolder RBkNode::OpenParentL(void) const
+	?OpenRootL@RBkDatabase@@QBE?AVRBkFolder@@XZ @ 51 NONAME ; class RBkFolder RBkDatabase::OpenRootL(void) const
+	?OwnerL@RBkNode@@QBE?AVTSecureId@@XZ @ 52 NONAME ; class TSecureId RBkNode::OwnerL(void) const
+	?ProxyL@RBkBookmark@@QBEKXZ @ 53 NONAME ; unsigned long RBkBookmark::ProxyL(void) const
+	?RefreshL@RBkDatabase@@QAEXXZ @ 54 NONAME ; void RBkDatabase::RefreshL(void)
+	?RegisterBookmarkPropertyL@RBkDatabase@@QAEXVTUid@@W4TPropertyType@Bookmark@@@Z @ 55 NONAME ; void RBkDatabase::RegisterBookmarkPropertyL(class TUid, enum Bookmark::TPropertyType)
+	?RegisterDatabasePropertyL@RBkDatabase@@QAEXVTUid@@W4TPropertyType@Bookmark@@@Z @ 56 NONAME ; void RBkDatabase::RegisterDatabasePropertyL(class TUid, enum Bookmark::TPropertyType)
+	?RegisterFolderPropertyL@RBkDatabase@@QAEXVTUid@@W4TPropertyType@Bookmark@@@Z @ 57 NONAME ; void RBkDatabase::RegisterFolderPropertyL(class TUid, enum Bookmark::TPropertyType)
+	?SearchUri@RBkDatabase@@QBEABVTDesC8@@XZ @ 58 NONAME ; class TDesC8 const & RBkDatabase::SearchUri(void) const
+	?SetAuthenticationL@RBkBookmark@@QAEXABVCAuthentication@@@Z @ 59 NONAME ; void RBkBookmark::SetAuthenticationL(class CAuthentication const &)
+	?SetCustomPropertyL@RBkDatabase@@QAEXVTUid@@ABVTDesC16@@@Z @ 60 NONAME ; void RBkDatabase::SetCustomPropertyL(class TUid, class TDesC16 const &)
+	?SetCustomPropertyL@RBkDatabase@@QAEXVTUid@@ABVTDesC8@@@Z @ 61 NONAME ; void RBkDatabase::SetCustomPropertyL(class TUid, class TDesC8 const &)
+	?SetCustomPropertyL@RBkDatabase@@QAEXVTUid@@H@Z @ 62 NONAME ; void RBkDatabase::SetCustomPropertyL(class TUid, int)
+	?SetCustomPropertyL@RBkDatabase@@QAEXVTUid@@N@Z @ 63 NONAME ; void RBkDatabase::SetCustomPropertyL(class TUid, double)
+	?SetCustomPropertyL@RBkNode@@QAEXVTUid@@ABVTDesC16@@@Z @ 64 NONAME ; void RBkNode::SetCustomPropertyL(class TUid, class TDesC16 const &)
+	?SetCustomPropertyL@RBkNode@@QAEXVTUid@@ABVTDesC8@@@Z @ 65 NONAME ; void RBkNode::SetCustomPropertyL(class TUid, class TDesC8 const &)
+	?SetCustomPropertyL@RBkNode@@QAEXVTUid@@H@Z @ 66 NONAME ; void RBkNode::SetCustomPropertyL(class TUid, int)
+	?SetCustomPropertyL@RBkNode@@QAEXVTUid@@N@Z @ 67 NONAME ; void RBkNode::SetCustomPropertyL(class TUid, double)
+	?SetDefaultNap@RBkDatabase@@QAEXK@Z @ 68 NONAME ; void RBkDatabase::SetDefaultNap(unsigned long)
+	?SetDefaultProxy@RBkDatabase@@QAEXK@Z @ 69 NONAME ; void RBkDatabase::SetDefaultProxy(unsigned long)
+	?SetDescriptionL@RBkNode@@QAEXABVTDesC16@@@Z @ 70 NONAME ; void RBkNode::SetDescriptionL(class TDesC16 const &)
+	?SetHomeL@RBkDatabase@@QAEXABVRBkBookmark@@@Z @ 71 NONAME ; void RBkDatabase::SetHomeL(class RBkBookmark const &)
+	?SetHomePageTextL@RBkDatabase@@QAEXABVTDesC16@@@Z @ 72 NONAME ; void RBkDatabase::SetHomePageTextL(class TDesC16 const &)
+	?SetIconIdL@RBkNode@@QAEXK@Z @ 73 NONAME ; void RBkNode::SetIconIdL(unsigned long)
+	?SetLastVisitedL@RBkBookmark@@QAEXVTTime@@@Z @ 74 NONAME ; void RBkBookmark::SetLastVisitedL(class TTime)
+	?SetNapL@RBkBookmark@@QAEXK@Z @ 75 NONAME ; void RBkBookmark::SetNapL(unsigned long)
+	?SetOwnerL@RBkNode@@QAEXVTSecureId@@@Z @ 76 NONAME ; void RBkNode::SetOwnerL(class TSecureId)
+	?SetParentL@RBkNode@@QAEXAAVRBkFolder@@@Z @ 77 NONAME ; void RBkNode::SetParentL(class RBkFolder &)
+	?SetProxyL@RBkBookmark@@QAEXK@Z @ 78 NONAME ; void RBkBookmark::SetProxyL(unsigned long)
+	?SetPublicL@RBkNode@@QAEXH@Z @ 79 NONAME ; void RBkNode::SetPublicL(int)
+	?SetSearchUriL@RBkDatabase@@QAEXABVTDesC8@@@Z @ 80 NONAME ; void RBkDatabase::SetSearchUriL(class TDesC8 const &)
+	?SetTitleL@RBkNode@@QAEXABVTDesC16@@@Z @ 81 NONAME ; void RBkNode::SetTitleL(class TDesC16 const &)
+	?SetUriL@RBkBookmark@@QAEXABVTDesC8@@@Z @ 82 NONAME ; void RBkBookmark::SetUriL(class TDesC8 const &)
+	?SetWritableL@RBkNode@@QAEXH@Z @ 83 NONAME ; void RBkNode::SetWritableL(int)
+	?Title@RBkNode@@QBEABVTDesC16@@XZ @ 84 NONAME ; class TDesC16 const & RBkNode::Title(void) const
+	?Type@RBkNode@@QBE?AW4TType@Bookmark@@XZ @ 85 NONAME ; enum Bookmark::TType RBkNode::Type(void) const
+	?UpdateVisited@RBkBookmark@@QAEXXZ @ 86 NONAME ; void RBkBookmark::UpdateVisited(void)
+	?Uri@RBkBookmark@@QBEABVTDesC8@@XZ @ 87 NONAME ; class TDesC8 const & RBkBookmark::Uri(void) const
+	?Version@RBkDatabase@@QBE?AVTVersion@@XZ @ 88 NONAME ; class TVersion RBkDatabase::Version(void) const
+	?LastModifiedL@RBkNode@@QBE?AVTTime@@XZ @ 89 NONAME ; class TTime RBkNode::LastModifiedL(void) const
+	?SetLastModifiedL@RBkNode@@QAEXABVTTime@@@Z @ 90 NONAME ; void RBkNode::SetLastModifiedL(class TTime const &)
+	
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Telnet Engine">
+  <purpose>
+    Engine for Telnet over IPv4/v6
+  </purpose>
+</relnotes>

@@ -1,0 +1,45 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Interfaces : CHttpTransportLayer
+// 
+//
+
+#include "101f55ee.rls"
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// Http Transport Handler dll
+	dll_uid = 0x101F55EE;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidHttpTransportLayer - CHttpTransportLayer UID
+			interface_uid = 0x101F55EC;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUidTcpTransportHandler - CTcpTransportHandler UID
+					implementation_uid = 0x101F55ED;
+					version_no = 1;
+					display_name = STRING_theInfo1;
+					default_data = "TCP";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}

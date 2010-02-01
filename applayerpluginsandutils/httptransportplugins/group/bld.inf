@@ -1,0 +1,31 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Transport Framework and HTTP/WSP client support
+// 
+//
+
+/**
+ @file
+*/
+
+PRJ_EXPORTS
+// rom definition file
+../group/transporthandler.iby	/epoc32/rom/include/transporthandler.iby
+
+
+PRJ_MMPFILES
+// And the mmp files
+../group/httptransporthandler.mmp
+../group/httpsecuresocket.mmp
+

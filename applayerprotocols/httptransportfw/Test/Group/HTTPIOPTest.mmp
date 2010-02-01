@@ -1,0 +1,58 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+TARGET		httpioptest.exe
+TARGETTYPE	exe
+CAPABILITY 	TrustedUI ProtServ NetworkServices
+UID		0 0x10204E10
+
+VENDORID 	0x70000001
+
+macro HTTPIOP
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+SYSTEMINCLUDE 	/epoc32/include /epoc32/include/ecom ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler /epoc32/include/test
+#else
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE /epoc32/include/ecom
+SYSTEMINCLUDE /epoc32/include/platform/ecom
+SYSTEMINCLUDE /epoc32/include/platform
+SYSTEMINCLUDE /epoc32/include/platform/test
+SYSTEMINCLUDE	/epoc32/include/platform/mw
+SYSTEMINCLUDE	/epoc32/include/mw
+SYSTEMINCLUDE ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
+#endif
+USERINCLUDE		../TestScriptTest ../t_utils ../../inc/framework
+USERINCLUDE             ../../utils
+
+//For test
+LIBRARY			euser.lib httptestutils.lib http.lib ecom.lib inetprotutil.lib bafl.lib esock.lib
+
+//For TEF
+LIBRARY		testexecuteutils.lib testexecutelogclient.lib
+
+SOURCEPATH 		../TestScriptTest
+SOURCE			TestScriptTestStep.cpp
+SOURCE			TestScriptTestServer.cpp
+SOURCE			CPipeliningTestEngine.cpp
+SOURCE			CPipeliningTestServer.cpp
+SOURCE			CPipeliningTestClient.cpp
+SOURCE			CTestServerStreamManager.cpp
+SOURCE			CPipeliningTestCase.cpp
+SOURCE			CPipeliningConfigTest.cpp
+SOURCE			CPipeliningTestParams.cpp ctestcaselocalandremotehost.cpp
+
+
+SMPSAFE

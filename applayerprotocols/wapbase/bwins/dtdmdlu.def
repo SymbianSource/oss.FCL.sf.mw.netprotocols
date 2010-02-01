@@ -1,0 +1,11 @@
+EXPORTS
+	??0CDTDModel@@IAE@AAVCAttributeLookupTable@@@Z @ 1 NONAME ; protected: __thiscall CDTDModel::CDTDModel(class CAttributeLookupTable &)
+	??1CDTDModel@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CDTDModel::~CDTDModel(void)
+	?BuildWml11DTDL@CDTDModel@@QAEXAAVCBNFNode@@@Z @ 3 NONAME ; public: void __thiscall CDTDModel::BuildWml11DTDL(class CBNFNode &)
+	?EndConditional@CDTDModel@@MAEXW4TParserNodeTypes@@H@Z @ 4 NONAME ; protected: virtual void __thiscall CDTDModel::EndConditional(enum TParserNodeTypes,int)
+	?GeneratedTree@CDTDModel@@QAEPAVCBNFNode@@XZ @ 5 NONAME ; public: class CBNFNode * __thiscall CDTDModel::GeneratedTree(void)
+	?NewL@CDTDModel@@SAPAV1@AAVCAttributeLookupTable@@@Z @ 6 NONAME ; public: static class CDTDModel * __cdecl CDTDModel::NewL(class CAttributeLookupTable &)
+	?ResetL@CDTDModel@@UAEXXZ @ 7 NONAME ; public: virtual void __thiscall CDTDModel::ResetL(void)
+	?StartConditional@CDTDModel@@MAEXW4TParserNodeTypes@@@Z @ 8 NONAME ; protected: virtual void __thiscall CDTDModel::StartConditional(enum TParserNodeTypes)
+	?TreeL@CDTDModel@@MAEPAVCBNFNode@@XZ @ 9 NONAME ; protected: virtual class CBNFNode * __thiscall CDTDModel::TreeL(void)
+

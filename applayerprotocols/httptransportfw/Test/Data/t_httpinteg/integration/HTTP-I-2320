@@ -1,0 +1,117 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "HTTP-I-2320.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//---------------------------------------------------------
+//  URL 
+
+DEFINE wapTest2URL "https://$wapTest2$"
+DEFINE df2URL      "https://$wapTest2$/perl/dumpform.pl" 
+DEFINE dfFile      "c:\httptest\integration\dumpform.txt" 
+
+// Header 
+
+DEFINE Accept "text/plain, image/gif"
+DEFINE AcceptEncoding "gzip, compress"
+DEFINE ContentType "application/x-www-form-urlencoded" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2320 Basic Methods using Transport framework (HTTPS) over Default bearer  
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION T_01 H_CON_01 GET $wapTest2URL$
+TRANSACTION T_02 H_CON_01 POST $df2URL$ $dfFile$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for 80 seconds to allow for data transfer to 
+// completed 
+//---------------------------------------------------------
+
+hold 80
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2320 Get Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2320 Get Failed, HTTP Status $T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2320 Get Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: HTTP-I-2320 Post Passed 
+   ELSE 
+      PRINT Result: HTTP-I-2320 Post Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: HTTP-I-2320 Post Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2320
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

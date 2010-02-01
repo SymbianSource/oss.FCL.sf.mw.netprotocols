@@ -1,0 +1,7 @@
+EXPORTS
+	_ZN26HttpFilterCommonStringsExt16GetLanguageTableEv @ 1 NONAME
+	_ZN26HttpFilterCommonStringsExt17GetLanguageStringE11RStringPooli @ 2 NONAME
+	_ZN26HttpFilterCommonStringsExt17GetLocaleLanguageE11RStringPool @ 3 NONAME
+	_ZN26HttpFilterCommonStringsExt8GetTableEv @ 4 NONAME
+	_ZN31HttpFilterCommonStringsAddition8GetTableEv @ 5 NONAME
+

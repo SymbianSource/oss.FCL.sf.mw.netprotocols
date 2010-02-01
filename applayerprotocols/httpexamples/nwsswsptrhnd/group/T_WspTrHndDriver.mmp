@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+// T_WspTrHndDriver.mmp
+//
+
+TARGET			T_WspTrHndDriver.dll
+TARGETTYPE		dll
+CAPABILITY ALL -TCB
+
+UID				0x1000008d	0x1000A447
+VENDORID 0x70000001
+
+SYSTEMINCLUDE	\epoc32\include \epoc32\include\ecom
+
+USERINCLUDE		..\..\inc ..\testinc ..\..\core ..\..\WspProtocolHandler
+
+SOURCEPATH		..\T_WspTrHndDriver
+SOURCE			T_WspTrHndDriver.cpp
+SOURCE			CWspCOSession.cpp
+SOURCE			CWspTransaction.cpp
+SOURCE			CProxyInfoProvider.cpp
+SOURCE			CWspCapabilityInfo.cpp
+
+SOURCEPATH		..\..\WspProtocolHandler
+SOURCE			CWspAliasAddresses.cpp 
+SOURCE			CAliasAddress.cpp
+SOURCE			CWspUnknownCapabilities.cpp 
+SOURCE			CUnknownCapability.cpp
+SOURCE			CWspExtendedMethods.cpp 
+SOURCE			CExtendedMethod.cpp
+SOURCE			CWspHeaderCodePages.cpp 
+SOURCE			CHeaderCodePage.cpp
+
+SOURCEPATH		+\build\generated\http
+SOURCE			SecurityPolicyPluginStrings.cpp 
+
+LIBRARY			euser.lib bafl.lib inetprotutil.lib ecom.lib
+
+SMPSAFE

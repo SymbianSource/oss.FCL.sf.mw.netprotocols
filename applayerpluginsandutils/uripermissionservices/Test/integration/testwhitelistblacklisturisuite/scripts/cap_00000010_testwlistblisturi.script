@@ -1,0 +1,173 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Script file for ReadDeviceData capability tests
+// @internalAll
+// 
+//
+
+LOAD_SUITE TestWListBListUriServer_Cap 
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0030-0005
+//ReadCap_Add_Uri_WhiteList
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0030-0005
+//! @SYMTestCaseDesc 		Shouldn't be able to add an uri to database when the application does not have WriteDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to add an uri to database when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	It should fail with KErrPermissionDenied error as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Add_Uri_WhiteList_1
+
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0030-0005
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0030-0006
+//ReadCap_Remove_ReadWrite_Uri_WhiteList
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0030-0006
+//! @SYMTestCaseDesc 		Shouldn't be able to remove an uri from database when the application does not have WriteDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to remove an uri from database when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	It should fail with KErrPermissionDenied error as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Remove_ReadWrite_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0030-0006
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0030-0007
+//ReadCap_Update_Uri_ListType
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0030-0007
+//! @SYMTestCaseDesc 		Shouldn't be able to update the listtype of an uri when the application does not have WriteDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to update the listtype of an uri when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	It should fail with KErrPermissionDenied error as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUpdateUriListTypeStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Update_Uri_ListType_1
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0030-0007
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0030-0008
+//ReadCap_Update_Uri_FavouriteName
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0030-0008
+//! @SYMTestCaseDesc 		Shouldn't be able to update the favourite name of an uri when the application does not have WriteDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to update the favourite name of an uri when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	It should fail with KErrPermissionDenied error as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUpdateUriFavNameStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Update_Uri_FavouriteName_1
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0030-0008
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0037-0001
+//ReadCap_Domain_Match_Uri_WhiteList
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0001
+//! @SYMTestCaseDesc 		To search/match a specific uri, the application must have ReadDeviceData capability.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to match a specific uri when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Domain_Match_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0001
+
+
+START_TESTCASE	IWS-WLBL-TLD-CIT-NEG-0004-0002
+//ReadCap_Query_Tld_WhiteList
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-TLD-CIT-NEG-0004-0002
+//! @SYMTestCaseDesc 		To search/match a specific uri, the application must have ReadDeviceData capability.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMREQ				REQ11666
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to match a specific uri when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestTldPolicyStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Tld_query_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-TLD-CIT-NEG-0004-0002
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0037-0002
+//ReadCap_Get_All_WhiteList_Uris
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0002
+//! @SYMTestCaseDesc 		To find/match  uris using service-type/list-type, the application must have ReadDeviceData capability
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to find/match uris  using service-type/list-type when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestMatchUriTypeStep    c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Get_All_WhiteList_Uris_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0002
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0037-0003
+//ReadCap_Get_ListType_WhiteListed_Uri
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0003
+//! @SYMTestCaseDesc 		It doesn't require any capability to find the list-type of a specific uri.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to find the list-type of a specific uri when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriListTypeStep    c:\testdata\ini\TestWListBListUriSuite.ini   ReadCap_Get_ListType_WhiteListed_Uri_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0003
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0037-0004
+//ReadCap_Find_Uris_Count
+
+//! @file			Cap_00000000_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0004
+//! @SYMTestCaseDesc 		It doesn't require any capability to find the count of matching uris using service-type/list-type.
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to find the count of matching uris  using service-type/list-type when application has ReadDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriCountStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Find_Uris_Count_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0004
+
+
+
+
+
+
+
+
+

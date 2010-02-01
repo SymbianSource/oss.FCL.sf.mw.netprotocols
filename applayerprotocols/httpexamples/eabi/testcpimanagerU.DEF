@@ -1,0 +1,14 @@
+EXPORTS
+	_ZN15CTestCpiManager11GetProfilesEv @ 1 NONAME
+	_ZN15CTestCpiManager15GetProfileDiffsEv @ 2 NONAME
+	_ZN15CTestCpiManager15SetProfileDataLEP6HBufC8 @ 3 NONAME
+	_ZN15CTestCpiManager19SetProfileDiffDataLEP6HBufC8 @ 4 NONAME
+	_ZN15CTestCpiManager4NewLE11RStringPool @ 5 NONAME
+	_ZN15CTestCpiManagerD0Ev @ 6 NONAME
+	_ZN15CTestCpiManagerD1Ev @ 7 NONAME
+	_ZN15CTestCpiManagerD2Ev @ 8 NONAME
+	_ZTI15CTestCpiManager @ 9 NONAME ; #<TI>#
+	_ZTV15CTestCpiManager @ 10 NONAME ; #<VT>#
+	_ZThn4_N15CTestCpiManager11GetProfilesEv @ 11 NONAME ; #<thunk>#
+	_ZThn4_N15CTestCpiManager15GetProfileDiffsEv @ 12 NONAME ; #<thunk>#
+

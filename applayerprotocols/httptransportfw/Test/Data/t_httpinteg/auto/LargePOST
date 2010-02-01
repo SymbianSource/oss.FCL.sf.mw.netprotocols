@@ -1,0 +1,189 @@
+DEFINE TestLogPath    "c:\logs\http_integ\"
+DEFINE TestLogFile    "LargePOST.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+// URL
+
+DEFINE wapTest    "http://wapTest.symbian.com/"
+DEFINE PutURL01   "http://wapTest.symbian.com/upload/med_pic01.jpg"
+DEFINE PutURL02   "http://wapTest.symbian.com/upload/med_pic02.jpg"
+DEFINE PutURL03   "http://wapTest.symbian.com/upload/med_pic03.jpg"
+DEFINE PutURL04   "http://wapTest.symbian.com/upload/med_pic04.jpg"
+DEFINE PutURL05   "http://wapTest.symbian.com/upload/large_pic01.jpg"
+DEFINE PutURL06   "http://wapTest.symbian.com/upload/large_pic02.jpg"
+DEFINE PutFile01  "c:\httptest\integration\small_pic01.jpg"
+DEFINE PutFile02  "c:\httptest\integration\small_pic02.jpg"
+DEFINE PutFile03  "c:\httptest\integration\small_pic03.jpg"
+DEFINE PutFile04  "c:\httptest\integration\small_pic04.jpg"
+DEFINE PutFile05  "c:\httptest\integration\small_pic05.jpg"
+DEFINE PutFile06  "c:\httptest\integration\small_pic06.jpg"
+
+
+//  Header 
+
+DEFINE ContentType "*/*"
+DEFINE Accept 	   "*/*" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE LargePOST  
+
+//---------------------------------------------------------
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION  T_01 H_CON_01 POST $PutURL01$ $PutFile01$
+TRANSACTION  T_02 H_CON_01 POST $PutURL02$ $PutFile02$
+TRANSACTION  T_03 H_CON_01 POST $PutURL03$ $PutFile03$
+TRANSACTION  T_04 H_CON_01 POST $PutURL04$ $PutFile04$
+TRANSACTION  T_05 H_CON_01 POST $PutURL05$ $PutFile05$
+TRANSACTION  T_06 H_CON_01 POST $PutURL06$ $PutFile06$
+            
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+//
+// the test has been started, the test harness will now wait 
+// for 300 seconds to allow for data transfer to completed 
+//
+//---------------------------------------------------------
+
+hold 200 
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_01HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_02LastEvent$ 
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_03HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_03LastEvent$ 
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_04HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_04LastEvent$ 
+ENDIF
+
+endtrans T_04 
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_05HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_05LastEvent$ 
+ENDIF
+
+endtrans T_05
+
+IF $T_06LastEvent$ == $Succeeded$
+
+   IF $T_06HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: HTTP-I-2357 Put Passed      
+   ELSE 
+      PRINT Result: HTTP-I-2357 Put Failed, HTTP Status $T_06HttpStatus$    
+   ENDIF    
+ELSE 
+   PRINT Result: HTTP-I-2357 Put Failed, last event $T_06LastEvent$ 
+ENDIF
+
+endtrans T_06
+
+// --------------------------------------------------------
+// display connections 
+
+connect
+
+DISCONNECT H_CON_01
+
+// --------------------------------------------------------
+// display connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE LargePOST
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

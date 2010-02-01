@@ -1,0 +1,73 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Cap_00000020_TESTWLISTBLISTURI.SCRIPT
+// Script file for ReadDeviceData & WriteDeviceData capability tests.
+// @internalAll
+// 
+//
+
+LOAD_SUITE TestWListBListUriServer_Cap 
+
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0038-0005
+//ReadWriteCap_Add_Uri_WhiteList
+
+//! @file			Cap_00000030_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0038-0005
+//! @SYMTestCaseDesc 		To add an uri to database, the application must have WriteDeviceData capability.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to add an uri to database when application has ReadDeviceData & WriteDeviceData capability.
+//! @SYMTestExpectedResults 	The operation must pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadWriteCap_Add_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0038-0005
+
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0037-0005
+//ReadWriteCap_Domain_Match_Uri_WhiteList
+
+//! @file			Cap_00000030_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0005
+//! @SYMTestCaseDesc 		Shouldn't be able to search/match a specific uri when the application does not have ReadDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		Try to match a specific uri when application has ReadDeviceData & WriteDeviceData capability.
+//! @SYMTestExpectedResults 	It should pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadWriteCap_Domain_Match_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0005
+
+
+START_TESTCASE	IWS-WLBL-TLD-CIT-POS-0004-0004
+//ReadWriteCap_tld_Uri_WhiteList
+
+//! @file			Cap_00000030_TestWListBListUri.script
+//! @SYMTestCaseID		IWS-WLBL-TLD-CIT-POS-0004-0004
+//! @SYMTestCaseDesc 		Shouldn't be able to search/match a specific uri when the application does not have ReadDeviceData
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMREQ						REQ11666
+//! @SYMTestActions 		Try to match a specific uri when application has ReadDeviceData & WriteDeviceData capability.
+//! @SYMTestExpectedResults 	It should pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestTldPolicyStep 	c:\testdata\ini\TestWListBListUriSuite.ini  ReadWriteCap_Tld_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-TLD-CIT-POS-0004-0004
+
+

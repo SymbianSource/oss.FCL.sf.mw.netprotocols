@@ -1,0 +1,239 @@
+DEFINE TestLogPath "c:\logs\http_integ\"
+DEFINE TestLogFile "HTTP-I-2335e.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\settings 
+
+//  set up ULR required definitions
+
+// URL - external sites 
+
+call c:\httptest\integration\externalSites 
+
+// Header 
+
+DEFINE Accept "*/*"
+DEFINE AcceptEncoding "gzip, compress"
+DEFINE ContentType "text/html" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE HTTP-I-2335e Other Methods using Transport framework (HTTPS) over Default bearer  
+
+//---------------------------------------------------------
+// Select the specified bearer 1 from the current commdb 
+
+DEFINE IAP 1 
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION T_01 H_CON_01 HEAD    $barclays$
+TRANSACTION T_02 H_CON_01 TRACE   $paypal$
+TRANSACTION T_03 H_CON_01 OPTIONS $lloyds$
+TRANSACTION T_04 H_CON_01 HEAD    $if$
+TRANSACTION T_05 H_CON_01 TRACE   $nwolb$
+TRANSACTION T_06 H_CON_01 OPTIONS $griobank$
+TRANSACTION T_07 H_CON_01 HEAD    $cahoot$
+TRANSACTION T_08 H_CON_01 TRACE   $egg$
+TRANSACTION T_09 H_CON_01 OPTIONS $veriSign$
+TRANSACTION T_10 H_CON_01 HEAD    $smile$
+
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for 160 seconds to allow for data transfer to 
+// completed 
+//---------------------------------------------------------
+
+hold 160
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: HEAD index.html from barclays Passed 
+   ELSE
+      PRINT Result: HEAD index.html from barclays Failed, HTTP Status $T_01HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD index.html from barclays Failed, last event $T_01LastEvent$  
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: TRACE index.html from paypal Passed 
+   ELSE
+      PRINT Result: TRACE index.html from paypal Failed, HTTP Status $T_02HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE index.html from paypal Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02 
+
+IF $T_03LastEvent$ == $Succeeded$
+
+   IF $T_03HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: OPTIONS index.html from lloyds Passed 
+   ELSE
+      PRINT Result: OPTIONS index.html from lloyds Failed, HTTP Status $T_03HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS index.html from lloyds Failed, last event $T_03LastEvent$  
+ENDIF
+
+endtrans T_03 
+
+IF $T_04LastEvent$ == $Succeeded$
+
+   IF $T_04HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: HEAD index.html from if Passed 
+   ELSE
+      PRINT Result: HEAD index.html from if Failed, HTTP Status $T_04HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: HEAD index.html from if Failed, last event $T_04LastEvent$  
+ENDIF
+
+endtrans T_04 
+
+IF $T_05LastEvent$ == $Succeeded$
+
+   IF $T_05HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: TRACE index.html from nwolb Passed 
+   ELSE
+      PRINT Result: TRACE index.html from nwolb Failed, HTTP Status $T_05HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: TRACE index.html from nwolb Failed, last event $T_05LastEvent$ 
+ENDIF
+
+endtrans T_05 
+
+IF $T_06LastEvent$ == $Succeeded$
+
+   IF $T_06HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: OPTIONS index.html from griobank Passed 
+   ELSE
+      PRINT Result: OPTIONS index.html from griobank Failed, HTTP Status $T_06HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS index.html from griobank Failed, last event $T_06LastEvent$  
+ENDIF
+
+endtrans T_06 
+
+IF $T_07LastEvent$ == $Succeeded$
+
+   IF $T_07HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: HEAD index.html from cahoot Passed 
+   ELSE
+      PRINT Result: HEAD index.html from cahoot Failed, HTTP Status $T_07HttpStatus$ 
+   ENDIF
+ELSE 
+   PRINT Result: HEAD index.html from cahoot Failed, last event $T_07LastEvent$  
+ENDIF
+
+endtrans T_07
+
+IF $T_08LastEvent$ == $Succeeded$
+
+   IF $T_08HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: TRACE index.html from egg Passed 
+   ELSE
+      PRINT Result: TRACE index.html from egg Failed, HTTP Status $T_08HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: TRACE index.html from egg Failed, last event $T_08LastEvent$  
+ENDIF
+
+endtrans T_08 
+
+IF $T_09LastEvent$ == $Succeeded$
+
+   IF $T_09HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: OPTIONS index.html from veriSign Passed 
+   ELSE
+      PRINT Result: OPTIONS index.html from veriSign Failed, HTTP Status $T_09HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: OPTIONS index.html from veriSign Failed, last event $T_09LastEvent$  
+ENDIF
+
+endtrans T_09 
+
+IF $T_10LastEvent$ == $Succeeded$
+
+   IF $T_10HttpStatus$ == $HTTP_OK$ 
+
+      PRINT Result: HEAD index.html from smile Passed 
+   ELSE
+      PRINT Result: HEAD index.html from smile Failed, HTTP Status $T_10HttpStatus$  
+   ENDIF
+ELSE 
+   PRINT Result: HEAD index.html from smile Failed, last event $T_10LastEvent$  
+ENDIF
+
+endtrans T_10 
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE HTTP-I-2335e
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

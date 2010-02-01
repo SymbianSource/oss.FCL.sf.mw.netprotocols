@@ -1,0 +1,88 @@
+## Chat scripts, smoke test 12 - driver script.
+#
+# Testing Tx data object. Failing method invocations
+# LDT support -> all methods sent in multiple SDUs.
+# trans1 -> simple POST, data received from client in 3 chunks, overall data size is unknown.
+#			Data fits in 1st SDU, 2nd SDU attempt blows message size.
+# trans2 -> simple GET, response has empty response body in 2nd SDU, aMoreData is TRUE.
+# trans3 -> simple GET, response has trailers in 2nd SDU, aMoreData is TRUE.
+#
+# Smoke test 12
+#
+SCRIPT SmokeTestDriver12
+#
+# Sleep then start
+#
+	SLEEP 500
+#
+# Set proxy info
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\setproxyinfo_driver.txt"
+#
+# Set Server msg capability - 50 bytes
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\set_servermsg_50_driver.txt"
+#
+# Do connect - connected OK
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_connectok_driver.txt"
+#
+# TRANS 1
+#
+#
+# simple POST, data received from client in 3 chunks, overall data size is unknown
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans1_post_failed_unknownsize_multibody_driver.txt"
+#
+# TRANS 2
+#
+# simple GET
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_get_driver.txt"
+#
+# Response fails - empty response body in 2nd SDU, aMoreData is TRUE.
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans2_response_failed_emptybody_driver.txt"
+#
+# TRANS 3
+#
+# simple GET
+#
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_get_driver.txt"
+#
+# Response fails - response has trailers in 2nd SDU, aMoreData is TRUE.
+#
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\trans3_response_failed_trailers_driver.txt"
+#
+# Close all the transactions...
+#
+	SEND
+		INVOKE trans1 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans2 Close
+		ENDINVOKE
+	ENDSEND
+	SEND
+		INVOKE trans3 Close
+		ENDINVOKE
+	ENDSEND
+#
+#
+# Ask for disconnect
+# 
+	SLEEP 500
+	INCLUDE "C:\HttpTest\wsp_pr_hnd_driver\do_clientdisconnect_driver.txt"
+#
+# Give the stub a chance to finish before exiting
+#
+	SLEEP 500
+#
+# Done!
+#
+
+ENDSCRIPT

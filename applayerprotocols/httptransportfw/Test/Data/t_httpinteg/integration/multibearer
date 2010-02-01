@@ -1,0 +1,157 @@
+DEFINE TestLogPath    "c:\logs\http_integ\"
+DEFINE TestLogFile    "multibearer.log"
+
+LOG PATH $TestLogPath$
+LOG FILE $TestLogFile$
+
+// Read in basic settings
+
+call c:\httptest\integration\multi-bearerSettings
+
+// You need to set the IAP in the argumment, othersize wapTest picks up defaut 
+// The currently defined arguments are
+
+// Default, this is defined in the multi-homing settings 
+
+// Pipex, external IAP  
+
+IF %1% == $IAP_PIPEX$  
+   DEFINE wapTest "waptest.symbian.com"   
+   DEFINE IAP $IAP_PIPEX$ 
+   PRINT Pipex account use $wapTest$
+ENDIF
+
+// TestNetwork, this is the default 
+
+IF %1% == $IAP_TESTNET$ 
+   DEFINE IAP $IAP_TESTNET$
+   PRINT Test Network account use $wapTest$
+ENDIF
+
+// NTRas 
+
+IF %1% == $IAP_NTRAS_COM1$ 
+   DEFINE wapTest "waptest.symbian.com"  
+   DEFINE IAP $IAP_NTRAS_COM1$ 
+   PRINT IAP is $IAP$ 
+   PRINT NTRas account use $wapTest$
+ENDIF
+
+IF %1% == $IAP_NTRAS_COM2$ 
+   DEFINE wapTest "waptest.symbian.com"  
+   DEFINE IAP $IAP_NTRAS_COM2$ 
+   PRINT IAP is $IAP$ 
+   PRINT NTRas account use $wapTest$
+ENDIF
+
+//---------------------------------------------------------
+//  set up required definitions
+
+// URL
+
+DEFINE wapTestURL "http://$wapTest$"
+DEFINE dfURL      "http://$wapTest$/perl/dumpform.pl" 
+DEFINE dfFile     "c:\httptest\integration\dumpform.txt" 
+
+// Header 
+
+DEFINE Accept "text/plain, image/gif"
+DEFINE AcceptEncoding "gzip, compress"
+DEFINE ContentType "text/html" 
+
+//---------------------------------------------------------
+//  start of test case
+
+CASE multibearer
+
+//---------------------------------------------------------
+
+
+CONNECT HTTP H_CON_01
+
+TRANSACTION T_01 H_CON_01 GET $wapTestURL$
+TRANSACTION T_02 H_CON_01 POST $dfURL$ $dfFile$ 
+
+// ---------------------------------------------------------
+// display all connectons     
+
+connect
+
+// ---------------------------------------------------------
+// display all transactions 
+
+transaction
+
+//---------------------------------------------------------
+// the transactions have been started, the test harness will 
+// now wait for a set number of seconds to allow for data 
+// transfer to completed i.e. the default is 40 for NTRas 
+// otherwise the first arguemnt is used, 200 is recommended  
+//---------------------------------------------------------
+
+hold 100 
+
+
+// --------------------------------------------------------
+// display status 
+
+define
+
+// --------------------------------------------------------
+// display active transactions 
+
+showtrans 
+
+// --------------------------------------------------------
+// report results 
+
+IF $T_01LastEvent$ == $Succeeded$
+
+   IF $T_01HttpStatus$ == $HTTP_OK$
+
+      PRINT Result: multibearer GET $wapTestURL$ Passed      
+   ELSE 
+      PRINT Result: multibearer GET $wapTestURL$ Failed, HTTP Status $T_01HttpStatus$   
+   ENDIF    
+ELSE 
+   PRINT Result: multibearer GET $wapTestURL$ Failed, last event $T_01LastEvent$ 
+ENDIF
+
+endtrans T_01 
+
+IF $T_02LastEvent$ == $Succeeded$
+
+   IF $T_02HttpStatus$ == $HTTP_OK$
+            
+      PRINT Result: multibearer POST $dfURL$ Passed 
+   ELSE 
+      PRINT Result: multibearer POST $dfURL$ Failed, HTTP Status $T_02HttpStatus$    
+   ENDIF
+ELSE 
+   PRINT Result: multihoming POST $dfURL$ Failed, last event $T_02LastEvent$  
+ENDIF
+
+endtrans T_02 
+
+// --------------------------------------------------------
+// close connections 
+
+DISCONNECT H_CON_01
+
+// display state of connections, after close 
+
+connect
+
+//---------------------------------------------------------
+//  end the test case
+
+END CASE multibearer
+
+//---------------------------------------------------------
+//  close the log file
+
+END LOG
+
+//---------------------------------------------------------
+//	end of test
+//---------------------------------------------------------

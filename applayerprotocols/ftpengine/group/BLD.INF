@@ -1,0 +1,46 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// FTP engine
+// 
+//
+
+/**
+ @file
+*/
+
+
+
+PRJ_PLATFORMS
+
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/FTPPROT.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(ftpprot.h)
+../inc/FTPSESS.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(ftpsess.h)
+../group/ftp_e.iby    /epoc32/rom/include/ftp_e.iby
+
+PRJ_TESTEXPORTS
+../group/tftp_e.iby    /epoc32/rom/include/tftp_e.iby
+
+
+PRJ_MMPFILES
+FTPPROT.MMP
+FTPSESS.MMP
+CONSUI.MMP
+
+PRJ_TESTMMPFILES
+FTPTST01.MMP
+FTPTST02.MMP
+

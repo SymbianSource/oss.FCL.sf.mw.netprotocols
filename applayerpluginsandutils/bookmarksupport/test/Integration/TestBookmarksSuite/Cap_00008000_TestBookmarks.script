@@ -1,0 +1,100 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// ReadUserData capability tests
+LOAD_SUITE TestBookmarksServer_Cap -SharedData
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0004
+//ReadUserData_Manager_Mode_Not_Allowed
+
+//! @file			Cap_00000000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0017-HP-0004
+//! @SYMTestCaseDesc 		Should not be able to open the database in manager mode when the application does not have WriteUserData
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1, Application-Protocols/Bookmarks/VISIBILITY.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to open DB in manager mode when application has ReadUserData capability.
+//! @SYMTestExpectedResults 	The OpenL function must leave with KErrPermissionDenied.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestBookmarksBaseStep	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Db_Open_Manager_Mode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0004
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0005
+//ReadUserData_Create_Item_Not_Allowed
+
+//! @file			Cap_00000000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0017-HP-0005
+//! @SYMTestCaseDesc 		Should not be able to create a new item when application does not have WriteUserData capability.
+//! @SYMFssID			Application-Protocols/Bookmarks/VISIBILITY.1, Application-Protocols/Bookmarks/VISIBILITY.2
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Try to create an item ( Folder or Bookmark ) when application has ReadUserData capability.
+//! @SYMTestExpectedResults 	The CreateFolderL & CreateBookmarkL functions must leave with KErrPermissionDenied.
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	MyTestFolder
+RUN_TEST_STEP 	!Error=-46 	100 	 TestBookmarksServer_Cap	TestCreateBookmarkItemsStep 	c:\testdata\ini\TestBookmarksSuite.ini 	MyTestBookmark
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0017-HP-0005
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0041-HP-0001
+//All_Items_Readable_By_ReadUserData_App
+
+//! @file			Cap_00008000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0041-HP-0001
+//! @SYMTestCaseDesc 		All items must be readable by an application that has ReadUserData
+//! @SYMFssID			Application-Protocols/Bookmarks/ITEMDATA.7
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Get the description of a writeable folder when the application has ReadUserData
+//!				2. Get the title of a read-only bookmark when the application has ReadUserData
+//!				3. Get the visibility of a read-only folder when the application has ReadUserData
+//!				4. Get the writeability of a read-only folder when the application has ReadUserData
+//! @SYMTestExpectedResults 	All items must be readable by an application that has ReadUserData
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder2_GetDescription
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_GetTitle
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder4_GetPublic_True
+RUN_TEST_STEP 	100 	 TestBookmarksServer_Cap	TestGetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Folder4_GetWriteable_False
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0041-HP-0001
+
+
+START_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0001
+//Set_Last_Visited_ReadUserData
+
+//! @file			Cap_00008000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-PREQ171-I-0056-HP-0001
+//! @SYMTestCaseDesc 		Set last visited time when application does not have required capabilities
+//! @SYMFssID			Application-Protocols/Bookmarks/BOOKMARK.5
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last visited time of a bookmark when the application has only ReadUserData
+//! @SYMTestExpectedResults 	The operation must fail with KErrPermissionDenied
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastVisitedNotManagerMode
+END_TESTCASE	IWS-APPPROT-BM-PREQ171-I-0056-HP-0001
+
+START_TESTCASE	IWS-APPPROT-BM-CAP_00008000_TESTBOOKMARKS-0001
+//Set_Last_Modified_ReadUserData
+
+//! @file			Cap_00008000_TestBookmarks.script
+//! @SYMTestCaseID		IWS-APPPROT-BM-CAP_00008000_TESTBOOKMARKS-0001
+//! @SYMTestCaseDesc 		Set last visited time when application does not have required capabilities
+//! @SYMFssID			
+//! @SYMTestStatus 		Released
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1. Set the last modified time of a bookmark when the application has only ReadUserData
+//! @SYMTestExpectedResults 	The operation must fail with KErrPermissionDenied
+//! @SYMTestType 		Integration
+RUN_TEST_STEP 	!Error=-46	100 	 TestBookmarksServer_Cap	TestSetPropertyStep 	c:\testdata\ini\TestBookmarksSuite_Security.ini 	Bookmark1_SetLastModifiedNotManagerMode
+END_TESTCASE	IWS-APPPROT-BM-CAP_00008000_TESTBOOKMARKS-0001

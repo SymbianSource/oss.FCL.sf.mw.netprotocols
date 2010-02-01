@@ -1,0 +1,10 @@
+## Include script - set the method mor to 2
+#
+SCRIPT set_methodmor_2_driver
+	SEND
+		INVOKE SetMethodMORL
+			PARAMETER aMOR 2
+		ENDINVOKE
+	ENDSEND
+
+ENDSCRIPT

@@ -1,0 +1,3 @@
+EXPORTS
+	?InstallCookieFilterL@MHttpCookieFilter@@QAEXVRHTTPSession@@@Z @ 1 NONAME ; public: void __thiscall MHttpCookieFilter::InstallCookieFilterL(class RHTTPSession)
+

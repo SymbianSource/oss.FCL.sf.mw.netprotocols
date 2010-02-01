@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="URI Permission Services">
+  <purpose>
+    A convenient component used for the storage/retrieval of the URI and its associated attributes. A URI can be uniquely identified for a service it provides with its associated permission.
+  </purpose>
+  
+  <defect number="DEF117475" title="Ineturilist bld.inf has case-insensitive reference and fails to build on Linux" revision="010">
+    Modified the option SRCDIR in bld.inf.
+  </defect>
+
+  <defect number="DEF113168" title="calls to GetDesLength() not checked for error return" revision="009">
+    GetDesLength() api is replaced by GetDesLengthL() api and GetDesMaxLength() api is replaced by GetDesMaxLengthL() api to handle the error return.
+  </defect>
+
+  <defect number="DEF110570" title="Component application-protocols_ineturilist uses deprecated makefile directive" revision="008">
+    The deprecated makefile is replaced by template extension makefiles using PRJ_EXTENSIONS.
+  </defect>
+
+  <defect number="DEF109842" title="TQueryArgs class has wrong API level tagging for constructors" revision="007">
+    Removed the incorrect tags from the constructors.
+  </defect>
+
+  <defect number="DEF107135" title="Devkit ROM doesn't build without errors using standard invocation" revision="006">
+    Modified the folder name to 20009d70 and also moved stub related files into stubSis folder.
+  </defect>
+
+  <defect number="DEF108000" title="Warnings generated with checksource build" revision="005">
+    There is a warnings on ineturilist generated with checksource build. So change the D to d in bld.inf file.
+  </defect>
+
+  <defect number="DEF107299" title="[System Build] :Warnings due to missing file ineturilist.xml in M04237 v9.4,v9.5" revision="004">
+    Added a dummy xml file in Group folder of production code, which has to go with ineturilist_stub.sis file. It can be updated later by ineturilist_upgrade.sis
+  </defect>
+
+  <defect number="DEF105664" title="The xml file is not being installed in private path of InetUriList server" revision="003">
+    the xml file being installed in private path of InetUriList server using ineturilist_stub.sis and ineturilist_upgrade.sis files.
+  </defect>
+
+  <defect number="DEF105663" title="Provide backup/restore support for Uri List database" revision="002">
+    Implemented passive backup and restore functionality by adding backup_registration.xml.
+  </defect>
+
+  <preq number="1182" title="GNU Make-based build system" revision="001">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations
+  </preq>
+</relnotes>

@@ -1,0 +1,1 @@
+"This bld.inf is provided for convenience to build the entire http framework suite of components. The following components are also required to build : http_examples,http_transport-framework,http_protocol-plugin,and http_transport-plugin."

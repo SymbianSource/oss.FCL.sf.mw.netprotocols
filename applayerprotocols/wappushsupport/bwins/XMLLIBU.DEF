@@ -1,0 +1,15 @@
+EXPORTS
+	??0CXmlLibrary@@IAE@AAVMWapPluginSP@@PAVCXmlElement@@@Z @ 1 NONAME ; protected: __thiscall CXmlLibrary::CXmlLibrary(class MWapPluginSP &,class CXmlElement *)
+	??1CXmlLibrary@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CXmlLibrary::~CXmlLibrary(void)
+	?CXmlLibrary_Reserved1@CXmlLibrary@@EAEXXZ @ 3 NONAME ; private: virtual void __thiscall CXmlLibrary::CXmlLibrary_Reserved1(void)
+	?CommitL@CXmlLibrary@@UAEHXZ @ 4 NONAME ; public: virtual int __thiscall CXmlLibrary::CommitL(void)
+	?ConstructL@CXmlLibrary@@IAEXXZ @ 5 NONAME ; protected: void __thiscall CXmlLibrary::ConstructL(void)
+	?ExecuteValidateL@CXmlLibrary@@MAEHPAVCBNFNode@@@Z @ 6 NONAME ; protected: virtual int __thiscall CXmlLibrary::ExecuteValidateL(class CBNFNode *)
+	?NewL@CXmlLibrary@@SAPAV1@AAVMWapPluginSP@@PAVCXmlElement@@@Z @ 7 NONAME ; public: static class CXmlLibrary * __cdecl CXmlLibrary::NewL(class MWapPluginSP &,class CXmlElement *)
+	?NewLC@CXmlLibrary@@SAPAV1@AAVMWapPluginSP@@PAVCXmlElement@@@Z @ 8 NONAME ; public: static class CXmlLibrary * __cdecl CXmlLibrary::NewLC(class MWapPluginSP &,class CXmlElement *)
+	?PrepareParserL@CXmlLibrary@@IAEXXZ @ 9 NONAME ; protected: void __thiscall CXmlLibrary::PrepareParserL(void)
+	?ProcessDataL@CXmlLibrary@@UAEHAAVHBufC8@@@Z @ 10 NONAME ; public: virtual int __thiscall CXmlLibrary::ProcessDataL(class HBufC8 &)
+	?ProcessDataL@CXmlLibrary@@UAEHAAVTDesC8@@@Z @ 11 NONAME ; public: virtual int __thiscall CXmlLibrary::ProcessDataL(class TDesC8 &)
+	?ResetL@CXmlLibrary@@UAEXPAVCXmlElement@@@Z @ 12 NONAME ; public: virtual void __thiscall CXmlLibrary::ResetL(class CXmlElement *)
+	?ValidateL@CXmlLibrary@@UAEHAAVCBNFNode@@@Z @ 13 NONAME ; public: virtual int __thiscall CXmlLibrary::ValidateL(class CBNFNode &)
+
