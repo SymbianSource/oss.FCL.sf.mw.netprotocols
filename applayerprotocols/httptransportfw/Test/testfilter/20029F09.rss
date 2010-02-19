@@ -1,0 +1,56 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include "ecom/registryinfov2.rh"
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// resource format version for ROM-only filter
+	resource_format_version = RESOURCE_FORMAT_VERSION_2;
+
+	dll_uid = 0x2002CE94;
+	interfaces=
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = 0x101F446D;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x2002CE96;
+					version_no = 1;
+                    display_name = "testfilter";
+					
+					// For HTTP-TF the default_data must be defined as follows
+					// 1.Protocol identifier
+					//    HTTP-TF uses first part (separated with /-character) to identify
+					//    what protocol this filter will support. It could also be WSP but 
+					//    then HTTP-TF does not load it with any sessions that based on HTTP.
+					// 2.Separator
+					//    /-separator must be always there
+					// 3.Filter category
+					//    + = mandatory (HTTP-TF will panic if installation of this filter fails)
+					//    - = Explicit (Does not install filter)
+					//      = Implicit (Installs filter but traps possible errors and continues)
+
+					default_data = "HTTP/-AUTHENTICATION||WSP/-AUTHENTICATION";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+//EOF

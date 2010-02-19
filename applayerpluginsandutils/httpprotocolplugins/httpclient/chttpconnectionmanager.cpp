@@ -1348,10 +1348,10 @@ void CHttpConnectionManager::StartRecvTimer()
 		}
 	}
 
-void CHttpConnectionManager::InsertPipelineFailedHost(const TDesC8& aHost)
- 	{
- 	iPipelineFallback.InsertPipelineFailedHost(aHost);
- 	}
+void CHttpConnectionManager::AppendPipelineFailedHost(const TDesC8& aHost)
+	{
+ 	iPipelineFallback.AppendPipelineFailedHost(aHost);
+	}
 
 
 CHttpHostElement* CHttpHostElement::New(const TDesC8& aHost)
@@ -1441,6 +1441,26 @@ void  CHttpPipelineFallback::InsertPipelineFailedHost(const TDesC8& aHost)
         }
     
     }
+	
+	void CHttpPipelineFallback::AppendPipelineFailedHost(const TDesC8& aHost)
+	{
+ 		// Already failed. no need to check further.
+     if(NeedPipelineFallback(aHost))
+         {
+         return;
+         }
+ 		
+ 		// Failure doesn't matter here.
+ 		HBufC8* host = aHost.Alloc();
+ 		if(host == NULL)
+ 			{
+ 			return;
+ 			}
+ 		
+ 		iPipelineFailedHosts.Append(host); // no error checking as failure does not matter
+ 																			 // we will keep going.
+ }
+
 
 
 

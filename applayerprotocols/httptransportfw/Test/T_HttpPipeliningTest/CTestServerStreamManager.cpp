@@ -183,6 +183,41 @@ TBool CTestServerStreamManager::ProcessRequestL()
 	{
 	TBool processingRequest = ETrue;
 	TInt currentBatch = 0;
+	_LIT(KDefectTitle, "Defect Fix CDEF143497");
+   while((iTestCase->TestCaseName().Match(KDefectTitle) == 0) && (processingRequest && (iCurrentTrans <= iTransCount)) && (currentBatch<KResponseBatchSize))
+    	{
+    	// Do we have enough data to respond to the current transaction?
+		TPtrC8 rawRequest = iTestCase->GetRawRequest(iConnectionIndex, iCurrentTrans);
+		TInt requestLength = rawRequest.Length();
+		TPtrC8 dataWindow = iDataStore->Mid(iDataPos);        
+        // Prepare the response data to send
+        iDataPos += requestLength;
+        processingRequest = ETrue;
+        TPtrC8 rawResponse = iTestCase->GetRawResponse(iConnectionIndex, iCurrentTrans);
+        if(iDataToSend==NULL)
+        iDataToSend = rawResponse.AllocL();
+        else
+        {
+        TInt responseLength = rawResponse.Length();
+        iDataToSend = iDataToSend->ReAllocL( (iDataToSend->Length()) + responseLength );
+        TPtr8 buffer = iDataToSend->Des();
+        buffer.Append(rawResponse);
+        }
+        // Check for a Connection: Close in the request
+        iCloseConnection = IsConnectionCloseInData(rawRequest, rawResponse);
+        if(iCloseConnection)
+        processingRequest = EFalse;
+        ++iCurrentTrans;
+        ++currentBatch;
+        if( processingRequest && currentBatch==KResponseBatchSize)
+            iMoreResponseBatches = ETrue;
+        else
+            iMoreResponseBatches = EFalse;
+		if(iDataToSend!=NULL)
+		return ETrue;
+
+		return EFalse;            
+		} 
 	while( (processingRequest && (iCurrentTrans < iTransCount)) && (currentBatch<KResponseBatchSize) )
 		{
 		// Do we have enough data to respond to the current transaction?

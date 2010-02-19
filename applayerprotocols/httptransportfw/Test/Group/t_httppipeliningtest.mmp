@@ -17,7 +17,7 @@ TARGET			t_httppipeliningtest.exe
 TARGETTYPE		exe
 CAPABILITY TrustedUI ProtServ NetworkServices
  
-SYSTEMINCLUDE ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
+SYSTEMINCLUDE ../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler 
 #ifdef SYMBIAN_OLD_EXPORT_LOCATION
 SYSTEMINCLUDE		/epoc32/include /epoc32/include/ecom
 #else
@@ -30,7 +30,7 @@ SYSTEMINCLUDE	/epoc32/include/mw
 #endif
 
 
-USERINCLUDE		../T_HttpPipeliningTest ../t_utils ../../inc/framework
+USERINCLUDE		../T_HttpPipeliningTest ../t_utils ../../inc/framework ../testfilter
 
 SOURCEPATH 		../T_HttpPipeliningTest
 SOURCE			t_httppipeliningtest.cpp
@@ -81,6 +81,7 @@ SOURCE			ctestcase24.cpp
 SOURCE			ctestcase25.cpp
 SOURCE			ctestcase26.cpp
 SOURCE			CTestCasePipelineFallback.cpp
+SOURCE 			CDEF143497.cpp
 
 LIBRARY		euser.lib httptestutils.lib http.lib ecom.lib inetprotutil.lib bafl.lib
 
