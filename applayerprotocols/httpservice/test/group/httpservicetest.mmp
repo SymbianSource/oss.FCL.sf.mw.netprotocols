@@ -31,7 +31,7 @@ SOURCE	ctestserverstreammanager.cpp
 SOURCE	ctestclienthttpget.cpp 
 SOURCE	ctestclienthttppost.cpp
 SOURCE	ctesthttpclientstep.cpp 
-SOURCE	chttpclienttestparams.cpp
+SOURCE	chttpclienttestparams.cpp ctesthttpserviceauthentication.cpp
 
 USERINCLUDE 		../../inc
 USERINCLUDE 		../../../httptransportfw/test/t_utils

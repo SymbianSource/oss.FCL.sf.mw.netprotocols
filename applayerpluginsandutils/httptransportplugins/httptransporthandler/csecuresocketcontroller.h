@@ -37,7 +37,7 @@ public:	// methods
 
 	virtual ~CSecureSocketController();
 
-	void StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName);
+	void StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName,const  TDesC& aProtocolVersion);
 
 	void RecvOneOrMore(TDes8& aBuffer, TRequestStatus& aStatus, TSockXfrLength& aLength);
 

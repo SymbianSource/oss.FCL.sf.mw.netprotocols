@@ -31,7 +31,8 @@
  * @publishedAll
  * @prototype 
  */
-
+class CHttpClientAuthentication;
+class MHTTPServiceAuthentication; 
 class CHttpService : public CBase
 	{
 	friend class CHttpClientTransactionImpl;	
@@ -54,16 +55,19 @@ class CHttpService : public CBase
 	IMPORT_C TInt AddRequestHeader(TInt aHeaderId, const THttpHeaderValueVariant& aHeaderValue);		
 	IMPORT_C TInt AddCustomRequestHeader(const TDesC8& aHeaderName, const TDesC8& aHeaderValue);
 	
+	IMPORT_C TInt SetAuthentication(MHTTPServiceAuthentication* aCallback);
 	
 	private:
 	CHttpService();
 	void ConstructL();	
 	
-	class CHttpServiceStruct : public CBase
+	NONSHARABLE_CLASS(CHttpServiceStruct) : public CBase
 		{
 		public:
-		RHTTPSession	 iHttpSession;
-		RHTTPHeaders     iSessionHeaders; 
+		    ~CHttpServiceStruct();
+		RHTTPSession                  iHttpSession;
+		RHTTPHeaders                  iSessionHeaders; 
+		CHttpClientAuthentication*    iHttpClientAuthentication;
 		};
 	private:
 	   RHTTPSession Session()
@@ -73,7 +77,7 @@ class CHttpService : public CBase
 	private:
 	
 	
-	   CHttpServiceStruct* iHttpServiceStruct; // Implementation struct
+	   CHttpServiceStruct*         iHttpServiceStruct; // Implementation struct
 	};
 
 #endif // __CHTTPSERVICE_H__

@@ -122,6 +122,8 @@ class CHttpClientTestParams : public CBase
 	const TDesC8& Uri() const;
 	const TDesC8& RawRequest() const;
 	const TDesC8& RawResponse() const;
+	const TDesC8& EncodedAuthenticationRequest() const;
+	void SetAuthReqRes();
 	const TDesC8& ResponseBody() const;
 	const RPointerArray<CHeaderInfo>& HeaderInfos() const
 	{
@@ -151,6 +153,7 @@ class CHttpClientTestParams : public CBase
     TBool ResponseTimeoutEnable() const; 
     TBool IsRedirecting() const;
     TBool TransferProgress() const;
+    TBool IsAuthenticationReqd() const;
     
     const TDesC8& RequestBody() const
     {
@@ -194,6 +197,8 @@ private:
 	HBufC8*	iUri;
 	HBufC8* iRawRequest;
 	HBufC8* iRawResponse;
+	HBufC8* iEncodedAuthenticationRequest;
+	HBufC8* iFinalResponse;
 	HBufC8*	iResponseBody;
 	HBufC8* iRequestBody;
 	TInt    iExpectedError;
@@ -205,6 +210,7 @@ private:
 	TBool          iResponseTimeout; 
 	TBool          iRedirection;
 	TBool          iNotifyTransferProgress;
+	TBool          iSetAuthentication;
 	HBufC8*        iProxyAddress;
 	};
 

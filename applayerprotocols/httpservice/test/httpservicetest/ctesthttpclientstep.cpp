@@ -22,6 +22,7 @@
 #include "httptestutils.h"
 #include "clocaltestserver.h"
 #include "chttpclienttestparams.h"
+#include "ctesthttpserviceauthentication.h"
 
 _LIT(KTestCaseName, "TestCaseName");
 _LIT8(KUserAgent, "HTTP Client API Test");
@@ -43,6 +44,7 @@ CTestHttpClientStep::~CTestHttpClientStep()
     delete iTestUtils;    
     delete iTestParamArray;
     delete iActiveScheduler;
+    delete iTestHttpServiceAuthentication;
     }
 
 // TEF virtuals
@@ -99,6 +101,12 @@ TVerdict CTestHttpClientStep::doTestStepL()
             }
         }
     
+    if(param->IsAuthenticationReqd())
+        {
+        iTestHttpServiceAuthentication = new CTestHttpServiceAuthentication();
+        User::LeaveIfError(iHttpClient->SetAuthentication(iTestHttpServiceAuthentication));
+        }
+  
     if(param->Method().CompareF(KGetMethod) == 0)
         {
         if(param->OnlineTest())

@@ -265,6 +265,11 @@ void CHttpRequestBatcher::OutputStreamCloseInd(TInt aError)
 	Cancel();
 	iObserver->OutputStreamCloseInd(aError);
 	}
+	
+TBool CHttpRequestBatcher::SecureRetry()
+     {
+         return iObserver->SecureRetry();
+     }
 
 void CHttpRequestBatcher::MOutputStreamObserver_Reserved()
 	{

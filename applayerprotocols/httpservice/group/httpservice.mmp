@@ -44,7 +44,7 @@ SOURCE			chttpservice.cpp
 SOURCE			chttpclienttransaction.cpp 
 SOURCE 			httpheaderiter.cpp
 SOURCE			httpclientutils.cpp chttpclienttransactionimpl.cpp
-SOURCE			chttpdatasender.cpp chttpdatareceiver.cpp chttpcontentreader.cpp chttpcontentwriter.cpp
+SOURCE			chttpdatasender.cpp chttpdatareceiver.cpp chttpcontentreader.cpp chttpcontentwriter.cpp chttpclientauthentication.cpp
 
 LIBRARY			euser.lib
 LIBRARY			http.lib
@@ -53,6 +53,7 @@ LIBRARY			commdb.lib
 LIBRARY			inetprotutil.lib
 LIBRARY			bafl.lib
 LIBRARY 		efsrv.lib
+LIBRARY 		ecom.lib
 
 
 DEFFILE httpservice.def

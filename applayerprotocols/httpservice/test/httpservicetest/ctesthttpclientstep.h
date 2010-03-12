@@ -26,6 +26,7 @@ class CHttpClientTransaction;
 class CLocalTestServer;
 class CHTTPTestUtils;
 class CHttpClientTestParamArray;
+class CTestHttpServiceAuthentication;
 
 class CTestHttpClientStep : public CTestStep, public MLocalTestServerObserver
     {
@@ -48,6 +49,7 @@ private:
     CHTTPTestUtils*     iTestUtils;
     CLocalTestServer*   iTestServer;
     CHttpClientTestParamArray* iTestParamArray;
+    CTestHttpServiceAuthentication* iTestHttpServiceAuthentication;
     };
 
 #endif // __CTESTHTTPCLIENTSTEP_H__

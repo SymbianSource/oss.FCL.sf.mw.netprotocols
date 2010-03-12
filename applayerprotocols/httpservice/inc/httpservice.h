@@ -23,5 +23,6 @@
 #include <chttpservice.h>
 #include <thttpheadervaluevariant.h>
 #include <chttpclienttransaction.h>
+#include <mhttpserviceauthentication.h>
 
 #endif // __MHTTPDATARECIVER_H__

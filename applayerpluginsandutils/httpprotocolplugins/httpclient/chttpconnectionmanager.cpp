@@ -18,6 +18,7 @@
 #include <authority8.h>
 #include <httperr.h>
 #include <x509cert.h>
+#include <sslerr.h>
 
 #include "msocketfactory.h"
 #include "msocketconnector.h"
@@ -585,7 +586,14 @@ void CHttpConnectionManager::HandleSocketError(TInt aError)
 					);
 			}
 #endif
-		if ( ( aError == KErrEof || aError == KErrCancel  ) )
+		if ((aError == KErrSSLAlertUnexpectedMessage || aError == KErrSSLAlertHandshakeFailure) && !iSecureRetry)
+ 		    {
+ 		    //TSW error id - TKOO-7YUCA3
+ 		    //some websites dont support tls1.0 & retry secure negotiation with ssl3.0 & error value modified to KErrEof for retrying
+		    iSecureRetry = ETrue; 
+            aError = KErrEof;
+ 		    }
+ 		if (  aError == KErrEof || aError == KErrCancel  ) 
  			{
 			if ( IsPendingWriteInConnectedState() && !iCurrentRequest->NeedDisconnectNotification() )
  				{
@@ -1210,6 +1218,9 @@ void CHttpConnectionManager::SendDataCnfL()
 void CHttpConnectionManager::SecureClientCnf()
 	{
 	__ASSERT_DEBUG( iState == EUpgrading, User::Invariant() );
+	
+	iSecureRetry = EFalse; //reset the flag
+
 
 #if defined (_DEBUG) && defined (_LOGGING)
 	__FLOG_0(_T8("!! Secure connection establised"));

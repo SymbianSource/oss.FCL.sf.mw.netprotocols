@@ -87,6 +87,8 @@ private:	// methods from MOutputStreamObserver
 
 	virtual void SecureClientCnf();
 
+	virtual TBool SecureRetry(){ return EFalse;}
+
 	virtual void MOutputStreamObserver_Reserved();
     
 	virtual void OnSendTimeOut();

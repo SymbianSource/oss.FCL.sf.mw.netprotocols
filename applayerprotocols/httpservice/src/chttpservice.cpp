@@ -15,7 +15,8 @@
 
 #include "chttpservice.h"
 #include "httpclientutils.h"
-
+#include "chttpclientauthentication.h" 
+#include "mhttpserviceauthentication.h" 
 const TInt KMaxNoOfConnections = 6;
 const TInt KMaxTransToPipeline = 5;
 
@@ -43,6 +44,14 @@ EXPORT_C CHttpService::~CHttpService()
 	    }
 	delete iHttpServiceStruct;
 	}
+
+/**
+ * Destructor of the inner class CHttpServiceStruct
+ */ 
+CHttpService::CHttpServiceStruct::~CHttpServiceStruct()
+    {
+    delete iHttpClientAuthentication;
+    }
 
 /**
  * Retrieves the equivalent string for a give string ID from the 
@@ -211,6 +220,15 @@ EXPORT_C TInt CHttpService::AddCustomRequestHeader(const TDesC8& aHeaderName, co
 	str.Close();
 	return err;
 	}
+
+EXPORT_C TInt CHttpService::SetAuthentication(MHTTPServiceAuthentication* aCallback)
+    {
+    TInt error = KErrGeneral;
+    iHttpServiceStruct->iHttpClientAuthentication = CHttpClientAuthentication::New(iHttpServiceStruct->iHttpSession, aCallback);
+    if(iHttpServiceStruct->iHttpClientAuthentication)
+        error = KErrNone;
+    return error;
+    }
 
 /**
  * Constructor

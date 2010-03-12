@@ -128,6 +128,8 @@ public:
 	void CheckRequestComplete(MHttpRequest& aRequest);
 	void DisablePipelining();
 	void AppendPipelineFailedHost(const TDesC8& aHost);
+	inline TBool SecureRetry(){ return iSecureRetry;}
+
 
 	
 private:	// methods from MHttpRequestObserver
@@ -232,6 +234,7 @@ private:
 		EDiscardSndDataCnf = 3
 		};
 private:
+	TBool                   iSecureRetry;
 	TBool                   iEnableOptimalPipeline;
 	TBool					iTunnel;
 	TInt					iMaxTransactionsToPipeline;

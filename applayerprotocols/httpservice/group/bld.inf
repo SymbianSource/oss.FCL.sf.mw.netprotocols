@@ -35,6 +35,7 @@ PRJ_EXPORTS
 ../inc/thttpheadervaluevariant.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(thttpheadervaluevariant.h)
 ../inc/chttpclienttransaction.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(chttpclienttransaction.h)
 ../inc/httpservice.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(httpservice.h)
+../inc/mhttpserviceauthentication.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mhttpserviceauthentication.h)
 
 
 // rom definition file

@@ -23,6 +23,8 @@ _LIT(KMethod, "Method");
 _LIT(KUri, "Uri");
 _LIT(KRawRequest, "RawRequest");
 _LIT(KRawResponse, "RawResponse");
+_LIT(KRawEncodedAuthenticationRequest, "RawEncodedAuthenticationRequest");
+_LIT(KRawFinalResponse, "RawFinalResponse");
 _LIT(KResponseBody, "ResponseBody");
 _LIT(KStatusCode, "StatusCode");
 _LIT(KResponseFieldCount, "ResponseFieldCount");
@@ -58,7 +60,8 @@ _LIT(KOnlineTest, "OnlineTest");
 _LIT(KProxyAddress, "ProxyAddress");
 _LIT(KResponseTimeout, "ResponseTimeout");  
 _LIT(KRedirection, "Redirection"); 
-_LIT(KNotifyTransferProgress, "NotifyTransferProgress"); 
+_LIT(KNotifyTransferProgress, "NotifyTransferProgress");
+_LIT(KSetAuthentication, "SetAuthentication");
 
 _LIT8(KScriptLF8,   "\\n");
 _LIT8(KReplaceLF8,  "\n");
@@ -107,6 +110,8 @@ void CHttpClientTestParams::ConstructL(CTestStep& aTestCase)
     TPtrC uri;
     TPtrC rawRequest;
     TPtrC rawResponse;
+    TPtrC rawEncodedAuthenticationRequest;
+    TPtrC rawFinalResponse;
     if(!aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KMethod(), method) || 
             !aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KUri(), uri) ||
              !aTestCase.GetIntFromConfig(aTestCase.ConfigSection(), KStatusCode(), iStatusCode))
@@ -115,13 +120,21 @@ void CHttpClientTestParams::ConstructL(CTestStep& aTestCase)
         }
     aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KRawRequest(), rawRequest);
     aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KRawResponse(), rawResponse);
+    aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KRawEncodedAuthenticationRequest(), rawEncodedAuthenticationRequest);
+    aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KRawFinalResponse(), rawFinalResponse);
     
     iMethod = EscapeUtils::ConvertFromUnicodeToUtf8L(method);
     iUri = EscapeUtils::ConvertFromUnicodeToUtf8L(uri);
     iRawRequest = EscapeUtils::ConvertFromUnicodeToUtf8L(rawRequest);
     iRawResponse = EscapeUtils::ConvertFromUnicodeToUtf8L(rawResponse);
+    iEncodedAuthenticationRequest = EscapeUtils::ConvertFromUnicodeToUtf8L(rawEncodedAuthenticationRequest);
+    iFinalResponse = EscapeUtils::ConvertFromUnicodeToUtf8L(rawFinalResponse);
+       
     ParseAndReplaceCRLF(iRawRequest);
     ParseAndReplaceCRLF(iRawResponse);
+    ParseAndReplaceCRLF(iEncodedAuthenticationRequest);
+    ParseAndReplaceCRLF(iFinalResponse);
+
     
     
     TPtrC responseBody;
@@ -321,6 +334,9 @@ void CHttpClientTestParams::ConstructL(CTestStep& aTestCase)
     iNotifyTransferProgress = EFalse;
     aTestCase.GetBoolFromConfig(aTestCase.ConfigSection(), KNotifyTransferProgress(), iNotifyTransferProgress);
     
+    iSetAuthentication = EFalse;
+    aTestCase.GetBoolFromConfig(aTestCase.ConfigSection(), KSetAuthentication(), iSetAuthentication);
+    
     TPtrC proxyAddress;
     if(aTestCase.GetStringFromConfig(aTestCase.ConfigSection(), KProxyAddress, proxyAddress))
         {
@@ -335,6 +351,8 @@ CHttpClientTestParams::~CHttpClientTestParams()
     delete iMethod;
     delete iUri;
     delete iRawRequest;
+    delete iEncodedAuthenticationRequest;
+    delete iFinalResponse;
     delete iRawResponse;
     delete iResponseBody;
     iResponseHeaderInfos.ResetAndDestroy();
@@ -363,6 +381,30 @@ const TDesC8& CHttpClientTestParams::RawRequest() const
 const TDesC8& CHttpClientTestParams::RawResponse() const
     {
     return *iRawResponse;
+    }
+
+const TDesC8& CHttpClientTestParams::EncodedAuthenticationRequest() const
+    {
+    return *iEncodedAuthenticationRequest;
+    }
+
+void CHttpClientTestParams::SetAuthReqRes() 
+    {
+    if (iRawRequest)
+        {
+        delete iRawRequest;
+        iRawRequest = NULL;
+        }        
+    if (iRawResponse)
+        {
+        delete iRawResponse;
+        iRawResponse = NULL;
+        }
+    iRawRequest = iEncodedAuthenticationRequest;
+    iRawResponse = iFinalResponse;
+    
+    iEncodedAuthenticationRequest = NULL;
+    iFinalResponse = NULL;
     }
 
 const TDesC8& CHttpClientTestParams::ResponseBody() const
@@ -430,6 +472,11 @@ TBool CHttpClientTestParams::IsRedirecting() const
 TBool CHttpClientTestParams::TransferProgress() const
     {
     return iNotifyTransferProgress;
+    }
+
+TBool CHttpClientTestParams::IsAuthenticationReqd() const   
+    {
+    return iSetAuthentication;
     }
 
 TBool CHttpClientTestParams::CheckVariantValue(const THttpHeaderValueVariant& aVariant, const TDesC8& aValueToMatch)

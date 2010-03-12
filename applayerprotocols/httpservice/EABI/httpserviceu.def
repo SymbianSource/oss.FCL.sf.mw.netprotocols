@@ -90,5 +90,5 @@ EXPORTS
 	_ZTV17CHttpDataReceiver @ 89 NONAME
 	_ZTV22CHttpClientTransaction @ 90 NONAME
 	_ZTV26CHttpClientTransactionImpl @ 91 NONAME
-	
+	_ZN12CHttpService17SetAuthenticationEP26MHTTPServiceAuthentication @ 92 NONAME
 

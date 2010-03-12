@@ -134,6 +134,11 @@ START_TESTCASE	APPPROT-HTTP-SERVICE-API-00019
 RUN_TEST_STEP 	600 	httpserviceapitest 	httpserviceapiteststep 	C:\HttpTest\httpservicetest\httpclient.ini 	TEST19
 END_TESTCASE 	APPPROT-HTTP-SERVICE-API-00019
 
+START_TESTCASE	APPPROT-HTTP-SERVICE-API-00020
+RUN_TEST_STEP 	600 	httpserviceapitest 	httpserviceapiteststep 	C:\HttpTest\httpservicetest\httpclient.ini 	TEST20
+END_TESTCASE 	APPPROT-HTTP-SERVICE-API-00020
+
+
 PRINT Finishing_HTTP_Service_API_Test
 
 
