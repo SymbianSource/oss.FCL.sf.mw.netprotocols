@@ -22,18 +22,18 @@
 
 #include <bldvariant.hrh>
 
-#include "FeatMgr.h"
+#include "featmgr.h"
 
 // User Includes
 #include "HttpFilterAcceptHeader.h"
 #include "httpfiltercommonstringsext.h"
 
 #include "HttpFilterAcceptHeaderVariant.hrh"
-#include <SysLangUtil.h>
+#include <syslangutil.h>
 
 #include <centralrepository.h>
 #include <HttpFilterAcceptHeaderPrivateCRKeys.h>
-#include <BrowserUiSDKCRKeys.h>
+#include <browseruisdkcrkeys.h>
 
 // EXTERNAL FUNCTION PROTOTYPES
 

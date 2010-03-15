@@ -17,7 +17,7 @@
 *
 */
 
-#include <EZStream.h>
+#include <ezstream.h>
 #include "StreamBufMgr.h"
 //-----------------------------------------------------------------------------
 

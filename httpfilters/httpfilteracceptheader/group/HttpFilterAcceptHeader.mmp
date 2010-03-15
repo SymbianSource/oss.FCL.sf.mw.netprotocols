@@ -26,8 +26,8 @@ VENDORID        VID_DEFAULT
 
 CAPABILITY CAP_ECOM_PLUGIN
 
-USERINCLUDE     ../inc
-USERINCLUDE     ../../HttpFilterCommon/inc
+USERINCLUDE     ../Inc
+USERINCLUDE     ../../httpfiltercommon/inc
 
 MW_LAYER_SYSTEMINCLUDE
 

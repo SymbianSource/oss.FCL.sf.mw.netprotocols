@@ -22,7 +22,7 @@
 #include <es_sock.h>
 
 #include <ApEngineConsts.h>  // defines bearer types
-#include "httpfilterConnHandler.h"
+#include "HttpFilterConnHandler.h"
 
 #include "HttpFilterConnHandlerObserverPS.h"
 #include <PSVariables.h>  // Publish & Subscribe

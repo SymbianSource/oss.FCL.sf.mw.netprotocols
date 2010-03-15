@@ -595,7 +595,7 @@ void CHttpConnectionManager::HandleSocketError(TInt aError)
  		    }
  		if (  aError == KErrEof || aError == KErrCancel  ) 
  			{
-			if ( IsPendingWriteInConnectedState() && !iCurrentRequest->NeedDisconnectNotification() )
+			if ( IsPendingWriteInConnectedState() && iCurrentRequest && !iCurrentRequest->NeedDisconnectNotification() )
  				{
 				// Server shut down the connect before the current transaction had 
  				// a chance to send any of its data - attempt re-connect to server.	

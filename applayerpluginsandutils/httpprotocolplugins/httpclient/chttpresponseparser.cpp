@@ -226,8 +226,6 @@ void CHttpResponseParser::CancelResponse()
 	iCancellingResponse = ETrue;
 	RHTTPTransaction trans = iProtTrans->Transaction();
 	RHTTPResponse response = trans.Response();
-  if(iBodyParts.Count() > 0)
-  	iBodyParts.Remove(0);	
 	iMessageParser.Flush ();		
 	iMessageParser.Reset();
 	iCancellingResponse = EFalse;	
@@ -660,9 +658,7 @@ void CHttpResponseParser::MessageCompleteL(const TPtrC8& aExcessData)
 
 	if( !ConsumingResponse() )
 		{
-		if( iBodyParts.Count() == 0 )
-			iResponseObserver.ResponseComplete(aExcessData);
-
+		iResponseObserver.ResponseComplete(aExcessData);
 		if ( iCancellingResponse )
 			{
 			return;

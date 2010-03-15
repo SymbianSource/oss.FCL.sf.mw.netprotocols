@@ -25,11 +25,11 @@
 #include "CookieArray.h"
 #include "CookieCommonConstants.h"
 #include "cookieipc.h"
-#include "cookielogger.h"
-#include "cookiemanagerserver.h"
-#include "cookiemanagersession.h"
+#include "CookieLogger.h"
+#include "CookieManagerServer.h"
+#include "CookieManagerSession.h"
 
-#include "cookieserverdef.h"
+#include "CookieServerDef.h"
 
 
 // ---------------------------------------------------------

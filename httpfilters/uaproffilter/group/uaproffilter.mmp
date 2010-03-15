@@ -28,12 +28,12 @@ UID             0x10009D8D 0x101F8539
 
 SOURCEPATH      ../src
 SOURCE          uaproffilter.cpp
-SOURCE          dllentrypoint.cpp 
+SOURCE          DllEntryPoint.cpp 
 
 MW_LAYER_SYSTEMINCLUDE 
 
 USERINCLUDE    ../inc
-USERINCLUDE     ../../HttpFilterCommon/inc
+USERINCLUDE     ../../httpfiltercommon/inc
 
 START RESOURCE 101f8539.rss
 TARGET uaproffilter.rsc

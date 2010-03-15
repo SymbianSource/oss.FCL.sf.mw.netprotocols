@@ -18,7 +18,7 @@
 */
 
 #include <s32mem.h>
-#include <EZDecompressor.h>
+#include <ezdecompressor.h>
 #include "StreamBufMgr.h"
 #include "DecmpStream.h"
 //-----------------------------------------------------------------------------

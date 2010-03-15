@@ -34,6 +34,6 @@ PRJ_MMPFILES
 // released. Specify "ignore" if the MMP file exists but should be
 // ignored.
 // Example:
-./httpFilterConnHandler.mmp
+./httpfilterConnHandler.mmp
 
 //  End of File  

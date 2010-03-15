@@ -30,7 +30,7 @@
 #include <http/rhttpheaders.h>
 #include <httperr.h>
 
-#include <BrowserUiSDKCRKeys.h>
+#include <browseruisdkcrkeys.h>
 #include <webutilsinternalcrkeys.h>//for the profile strings
 
 #include <cuseragent.h>

@@ -18,7 +18,7 @@
 #include <http/rhttpresponse.h>
 #include <httperr.h>
 #include <httpstringconstants.h>
-#include <imcvcodc.h>      //for base64 en/decoding
+//#include <imcvcodc.h>      //for base64 en/decoding
 #include <bautils.h>
 #include <e32math.h>
 #include <hash.h>

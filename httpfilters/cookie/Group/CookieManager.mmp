@@ -35,13 +35,13 @@ SOURCEPATH		../ManagerSrc
 
 SOURCE			Cookie.cpp
 SOURCE			CookieArray.cpp
-SOURCE			cookieIPC.cpp
-SOURCE			cookielogger.cpp
-SOURCE			cookiemanagermain.cpp
-SOURCE			cookiemanagerserver.cpp
-SOURCE			cookiemanagersession.cpp
+SOURCE			CookieIPC.cpp
+SOURCE			CookieLogger.cpp
+SOURCE			CookieManagerMain.cpp
+SOURCE			CookieManagerServer.cpp
+SOURCE			CookieManagerSession.cpp
 SOURCE			CookieManagerClient.cpp
-SOURCE			cookiemanagerstart.cpp
+SOURCE			CookieManagerStart.cpp
 SOURCE			CookieServerPanic.cpp
 
 

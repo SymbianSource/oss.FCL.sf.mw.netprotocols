@@ -20,7 +20,7 @@
 // INCLUDE FILES
 #include <e32std.h>
 #include <e32math.h>
-#include <Uri8.h>
+#include <uri8.h>
 #include <http/rhttpsession.h>
 #include <http/rhttptransaction.h>
 #include <http/rhttpheaders.h>

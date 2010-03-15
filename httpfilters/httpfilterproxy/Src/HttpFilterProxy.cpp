@@ -24,7 +24,7 @@
 #include <commdbconnpref.h>
 
 // User Includes
-#include "httpfilterproxy.h"
+#include "HttpFilterProxy.h"
 #include "httpfiltercommonstringsext.h"
 
 // EXTERNAL DATA STRUCTURES

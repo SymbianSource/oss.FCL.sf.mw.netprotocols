@@ -23,9 +23,9 @@
 
 	// User includes
 #include "cookie.h"
-#include "cookieIPC.h"
+#include "cookieipc.h"
 #include "CookieCommonConstants.h"
-#include "cookielogger.h"
+#include "CookieLogger.h"
 #include "cookiemanagerclient.h"
 #include "CookieManagerServer.h"
 #include "CookieManagerStart.h"

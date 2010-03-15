@@ -28,13 +28,13 @@ VENDORID        VID_DEFAULT
 CAPABILITY CAP_ECOM_PLUGIN
 
 USERINCLUDE     ../Inc
-USERINCLUDE     ../../HttpFilterCommon/inc
+USERINCLUDE     ../../httpfiltercommon/inc
 
 MW_LAYER_SYSTEMINCLUDE 
 
 SOURCEPATH      ../Src
 
-SOURCE	httpFilterProxy.cpp
+SOURCE	HttpFilterProxy.cpp
 SOURCE	HttpFilterProxyMain.cpp
 
 SOURCEPATH      ../Data
