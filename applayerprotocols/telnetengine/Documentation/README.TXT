@@ -1,6 +1,5 @@
 File        :     README.TXT
-Author      :     Robert Cripps for Symbian Ltd May 1999
-                  (c) Copyright Symbian Ltd 1998
+                  Copyright (c) 1998-2010 Nokia Corporation and/or its subsidiary(-ies).
 Abstract    :     Overview of the design of the Symbian Telnet implementation
                   and miscellaneous handover notes for BETA Release 1.0
 

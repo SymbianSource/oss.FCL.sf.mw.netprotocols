@@ -226,7 +226,8 @@ void CHttpResponseParser::CancelResponse()
 	iCancellingResponse = ETrue;
 	RHTTPTransaction trans = iProtTrans->Transaction();
 	RHTTPResponse response = trans.Response();
-
+  if(iBodyParts.Count() > 0)
+  	iBodyParts.Remove(0);	
 	iMessageParser.Flush ();		
 	iMessageParser.Reset();
 	iCancellingResponse = EFalse;	
@@ -484,7 +485,7 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                  
                  if( headReq.GetField(hostStr, 0, hostVal) == KErrNotFound )
                      {
-                     // No Host header - do not know which host to connect to.
+                     // No Host header
                      User::Leave(KErrHttpGeneralHeaderMissingHost);
                      }
  
@@ -495,7 +496,7 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                  #if defined (_DEBUG) && defined (_LOGGING)
                      __FLOG_0(_T8("Pipelining is disabled for WebLogic Server- \n"));
                  #endif
-                 manager->InsertPipelineFailedHost(hostVal.StrF().DesC());
+                 manager->AppendPipelineFailedHost(hostVal.StrF().DesC());
                  }
 		}
 		
@@ -659,7 +660,8 @@ void CHttpResponseParser::MessageCompleteL(const TPtrC8& aExcessData)
 
 	if( !ConsumingResponse() )
 		{
-		iResponseObserver.ResponseComplete(aExcessData);
+		if( iBodyParts.Count() == 0 )
+			iResponseObserver.ResponseComplete(aExcessData);
 
 		if ( iCancellingResponse )
 			{

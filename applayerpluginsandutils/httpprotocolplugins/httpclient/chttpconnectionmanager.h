@@ -70,7 +70,19 @@ class CHttpPipelineFallback : public CBase
     ~CHttpPipelineFallback();
     
     TBool NeedPipelineFallback(const TDesC8& aHost);
-    void  InsertPipelineFailedHost(const TDesC8& aHost);
+
+/**
+   If the pipeline has failed atleast 2 times due to network problems
+   the host is inserted into the failed host array. The function checks 
+   for the no. of failures for the given host. Only on time failed hosts
+    are pushed into the probable pipeline failed host array
+ */
+     void InsertPipelineFailedHost(const TDesC8& aHost);
+      
+/**
+     Add to the pipeline failed host array if not already added.
+ */
+    void AppendPipelineFailedHost(const TDesC8& aHost);
     
      private:
     CHttpPipelineFallback();
@@ -115,7 +127,8 @@ public:
 	void MakeConnectionNonPersistent();
 	void CheckRequestComplete(MHttpRequest& aRequest);
 	void DisablePipelining();
-	void InsertPipelineFailedHost(const TDesC8& aHost);
+	void AppendPipelineFailedHost(const TDesC8& aHost);
+
 	
 private:	// methods from MHttpRequestObserver
 

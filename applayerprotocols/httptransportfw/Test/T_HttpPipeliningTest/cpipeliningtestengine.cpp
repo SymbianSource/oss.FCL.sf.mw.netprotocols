@@ -59,6 +59,7 @@
 #include "ctestcase25.h"
 #include "ctestcase26.h"
 #include "ctestcasepipelinefallback.h"
+#include "CDEF143497.h"
 
 _LIT(KTestHttpPipeliningTestTitle, "HTTP Pipelining Unit Test Harness");
 
@@ -340,11 +341,16 @@ void CPipeliningTestEngine::DoTestsL()
 	CleanupStack::PushL(testCase26);
 	RunTestL(*testCase26);
 	CleanupStack::PopAndDestroy(testCase26);
-
+		
 	CTestCasePipelineFallback* pipelineFallback = CTestCasePipelineFallback::NewL(*iTestUtils);
 	CleanupStack::PushL(pipelineFallback);
 	RunTestL(*pipelineFallback);
 	CleanupStack::PopAndDestroy(pipelineFallback);
+		
+    CDEF143497* def143497 = CDEF143497::NewL(*iTestUtils);
+	CleanupStack::PushL(def143497);
+	RunTestL(*def143497);
+	CleanupStack::PopAndDestroy(def143497);			
 	
 	DoPipeliningConfigTestsL();
 	}
