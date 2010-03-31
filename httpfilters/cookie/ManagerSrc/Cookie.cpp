@@ -26,6 +26,7 @@
 
 	// User includes
 #include "cookie.h"
+#include "cookielogger.h"
 #include "CookieCommonConstants.h"
 
 
@@ -55,7 +56,97 @@ _LIT8( KLocalTimeSeparator, ":");
 
 _LIT8( KLocalMonthNames, "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" );
 
+#ifdef __TEST_COOKIE_LOG__
+static void LogCookieAttribute( const CCookie& aCookie, const RStringPool& aPool, TInt aId, const TDesC8& aTextName, CCookie::TCookieAttributeName aAttributeName )
+    {
+    _LIT(KDateFormat,"%D%M%Y%/0%1%/1%2%/2%3%/3 %:0%H%:1%T%:2%S.%C%:3");
+    THTTPHdrVal fieldVal;
 
+    const TInt attribErr = aCookie.Attribute( aAttributeName, fieldVal );
+    if ( attribErr == KErrNone )
+        {
+        switch ( fieldVal.Type() )
+            {
+        case THTTPHdrVal::KTIntVal:
+            CLOG( ( ECookie, 0, _L8( "{%3d}  [Int]  %S = (%d)"), aId, &aTextName, fieldVal.Int() ) );
+            break;
+
+        case THTTPHdrVal::KStrFVal:
+            {
+            RStringF fieldValStr = aPool.StringF( fieldVal.StrF() );
+            const TDesC8& fieldValDesC = fieldValStr.DesC();
+            CLOG( ( ECookie, 0, _L8( "{%3d}  [StrF] %S = (%S)"), aId, &aTextName, &fieldValDesC ) );
+            }
+            break;
+
+        case THTTPHdrVal::KStrVal:
+            {
+            RString fieldValStr = aPool.String( fieldVal.Str() );
+            const TDesC8& fieldValDesC = fieldValStr.DesC();
+            CLOG( ( ECookie, 0, _L8( "{%3d}  [Str]  %S = (%S)"), aId, &aTextName, &fieldValDesC ) );
+            }
+            break;
+
+        case THTTPHdrVal::KDateVal:
+            {
+            TDateTime date = fieldVal.DateTime();
+            TBuf<40> dateTimeString;
+            TTime t( date );
+            TRAP_IGNORE( t.FormatL( dateTimeString, KDateFormat ) );
+            TBuf8<40> dateTimeString8;
+            dateTimeString8.Copy( dateTimeString );
+            CLOG( ( ECookie, 0, _L8( "{%3d}  [Date] %S = (%S)"), aId, &aTextName, &dateTimeString8 ) );
+            } 
+            break;
+
+        default:
+            CLOG(( ECookie, 0, _L8("{%3d}  [????] %S = (%d)"), aId, &aTextName, fieldVal.Type() ));
+            break;
+            }
+        }
+    else
+        {
+        //CLOG( ( ECookie, 0, _L8( "{%3d}  LogCookie - absent: %S"), aId, &aTextName ) );
+        }
+    }
+#endif
+
+// ---------------------------------------------------------
+// CCookie::Log
+// ---------------------------------------------------------
+//
+void CCookie::Log( TInt aAssociatedId ) const
+    {
+	TInt associateId = aAssociatedId;
+	CLOG( ( ECookie, 0, _L( "-> CCookie::Log() - Associate Id:%d"), associateId ) );
+#ifdef __TEST_COOKIE_LOG__
+    const TInt count = iAttributes.Count();
+    CLOG( ( ECookie, 0, _L( "-> CCookie::Log() - %d attributes..."), count ) );
+    for( TInt i=0; i<count; i++ )
+        {
+        // Calculating/fetching size is enough to generate usable logs
+        const TCookieAttribute& attrib = iAttributes[ i ];
+        const TInt size = attrib.Size();
+        }
+
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Name"), CCookie::EName );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Value"), CCookie::EValue );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Domain"), CCookie::EDomain );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Path"), CCookie::EPath );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Date"), CCookie::EDate );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Version"), CCookie::EVersion );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Expires"), CCookie::EExpires );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("MaxAge"), CCookie::EMaxAge );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Discard"), CCookie::EDiscard );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Port"), CCookie::EPort );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Secure"), CCookie::ESecure );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Comment"), CCookie::EComment );
+    LogCookieAttribute( *this, iStringPool, aAssociatedId, _L8("Comment URI"), CCookie::ECommentURI );
+    CLOG( ( ECookie, 0, _L( "{%3d}         fromCookie2: %d, fromNetscapeVersion: %d"), aAssociatedId, FromCookie2(), FromNetscapeVersion() ) );
+    CLOG( ( ECookie, 0, _L( "{%3d}         expired: %d, persists: %d, unknownVer: %d"), aAssociatedId, Expired(), Persistent(), IsUnknownVersion() ) );
+    CLOG( ( ECookie, 0, _L( "<- CCookie::Log() - %d attributes..."), count ) );
+#endif
+    }
 
 
 // ---------------------------------------------------------
@@ -86,6 +177,18 @@ EXPORT_C CCookie* CCookie::NewL( RStringPool aStringPool )
 	{
 	return new (ELeave) CCookie( aStringPool );
 	}
+// ---------------------------------------------------------
+// CCookie::NewL
+// ---------------------------------------------------------
+//
+CCookie* CCookie::CloneL( const CCookie& aCopy )
+    {
+    CCookie* self = new(ELeave) CCookie( aCopy.iStringPool );
+    CleanupStack::PushL( self );
+    self->CopyFromL( aCopy );
+    CleanupStack::Pop( self );
+    return self;
+    }
 	
 
 // ---------------------------------------------------------
@@ -96,12 +199,15 @@ EXPORT_C CCookie::~CCookie()
 	{
 	// go through each attribute closing any attribute strings	
 	TInt numAttributes = iAttributes.Count();
+	Log();
+	CLOG( ( ECookie, 0, _L( "-> CCookie::~CCookie - this: 0x%08x, numAttributes: %d"), this, numAttributes ) );
 	for ( TInt ii = 0; ii < numAttributes; ++ii )
 		{
 		iAttributes[ii].Close();
 		}
 
 	iAttributes.Close();
+	CLOG( ( ECookie, 0, _L( "<- CCookie::~CCookie - this: 0x%08x, count: %d"), this, numAttributes ) );
 	}
 
 
@@ -111,6 +217,7 @@ EXPORT_C CCookie::~CCookie()
 //
 void CCookie::AddDefaultPathL( const TUriC8& aUri )
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::AddDefaultPathL") ) );
 	// RFC2965 : Defaults to the path of the request URL that generated the
 	// Set-Cookie2 response, up to and including the right-most /.
 	// Note : there is a contradiction as we must not include the right-most /
@@ -139,6 +246,7 @@ void CCookie::AddDefaultPathL( const TUriC8& aUri )
     THTTPHdrVal defPathVal( defPath );
 	SetAttribute( EPath, defPathVal, ETrue );// ignore the result 
     defPath.Close();
+    CLOG( ( ECookie, 0, _L( "<- CCookie::AddDefaultPathL") ) );
 	}
 
 // ---------------------------------------------------------
@@ -148,6 +256,7 @@ void CCookie::AddDefaultPathL( const TUriC8& aUri )
 EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 									 TInt aPartIndex ) const
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::AddToRequestL") ) );
 	const TStringTable& commonStringTable = RHTTPSession::GetTable();
 
 	// We're writing out the "Cookie:" string
@@ -169,15 +278,17 @@ EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 		}
 	else
 		{
+		CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - version is missing! - iSetCookie2: %d"), iSetCookie2 ) );
 		if ( iSetCookie2 )
 			{
 			// if this is a new-style cookie (it is from a Set-Cookie2 header),
 			// then it must have a Version attribute.
 			// TBD : or should we insert a '$Version=1' string instead?
+			CLOG( ( ECookie, 0, _L( "<- CCookie::AddToRequestL - KErrCorrupt!") ) );
 			User::Leave( KErrCorrupt );
 			}
 		}
-
+	CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - adding name...") ) );
 	// We're writing out the NAME attribute - it is a serious error if this
 	// attribute is missing
 	User::LeaveIfError( Attribute( CCookie::EName, hVal ) );
@@ -187,6 +298,7 @@ EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 							hVal,
 							aPartIndex );
 
+	CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - adding value...") ) );
 	// We're writing out the VALUE attribute - it is a serious error if this
 	// attribute is missing
 	User::LeaveIfError( Attribute( CCookie::EValue, hVal ) );
@@ -201,6 +313,7 @@ EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 	// Writing out Domain attribute
 	if ( Attribute( CCookie::EDomain, hVal ) == KErrNone && hVal.StrF().DesC().Length() > 0 )
         {
+        CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - adding domain...") ) );
 		aRequestHeaders.SetParamL( cookieString,
 								iStringPool.StringF( HTTP::EDomain,
 													commonStringTable ),
@@ -211,6 +324,7 @@ EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 	// Writing out Path attribute
 	if ( Attribute( CCookie::EPath, hVal ) == KErrNone )
         {
+        CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - adding path...") ) );
 		aRequestHeaders.SetParamL( cookieString,
 								iStringPool.StringF( HTTP::EPath,
 													commonStringTable ),
@@ -221,12 +335,14 @@ EXPORT_C void CCookie::AddToRequestL( RHTTPHeaders aRequestHeaders,
 	// Writing out Port attribute
 	if ( Attribute( CCookie::EPort, hVal ) == KErrNone )
         {
+        CLOG( ( ECookie, 0, _L( "CCookie::AddToRequestL - adding port...") ) );
 		aRequestHeaders.SetParamL( cookieString,
 								iStringPool.StringF( HTTP::ECookiePort,
 													commonStringTable ),
 								hVal,
 								aPartIndex );
         }
+	CLOG( ( ECookie, 0, _L( "<- CCookie::AddToRequestL") ) );
 	}
 
 
@@ -238,13 +354,15 @@ EXPORT_C TInt CCookie::Attribute
 							( CCookie::TCookieAttributeName aAttributeName,
 								THTTPHdrVal& aAttributeVal) const
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::Attribute") ) );
 	TCookieAttribute attribute;
 	if ( FindAttribute( aAttributeName, attribute ) != KErrNotFound )
 		{
 		aAttributeVal = attribute.Value();
+		CLOG( ( ECookie, 0, _L( "<- CCookie::Attribute") ) );
 		return KErrNone;
 		}
-
+	CLOG( ( ECookie, 0, _L( "<- CCookie::Attribute") ) );
 	return KErrNotFound;
 	}
 
@@ -270,14 +388,16 @@ TInt CCookie::Attribute( TCookieAttributeName aAttributeName,
 						 THTTPHdrVal& aAttributeVal,
 						 TBool& aDefaulted ) const
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::Attribute ") ) );
 	TCookieAttribute attribute;
 	if ( FindAttribute( aAttributeName, attribute ) != KErrNotFound )
 		{
 		aAttributeVal = attribute.Value();
 		aDefaulted = attribute.Defaulted();
+		CLOG( ( ECookie, 0, _L( "<- CCookie::Attribute KErrNone") ) );
 		return KErrNone;
 		}
-
+	CLOG( ( ECookie, 0, _L( "<- CCookie::Attribute KErrNotFound") ) );
 	return KErrNotFound;
 	}
 
@@ -290,6 +410,7 @@ TInt CCookie::SetAttribute(  TCookieAttributeName aAttributeName,
 							const THTTPHdrVal& aAttributeVal,
 							TBool aDefaulted )
 {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::SetAttribute") ) );
 	TInt result( KErrNone );
 
 	TCookieAttribute attribute;
@@ -315,6 +436,7 @@ TInt CCookie::SetAttribute(  TCookieAttributeName aAttributeName,
 			newAttribute.Close();
 			}
 		}
+	CLOG( ( ECookie, 0, _L( "<- CCookie::SetAttribute result: %d"),result ) );
 	return result;
 }
 
@@ -324,71 +446,99 @@ TInt CCookie::SetAttribute(  TCookieAttributeName aAttributeName,
 //
 void CCookie::CopyFromL( const CCookie& aCopyFrom  )
     {
-	THTTPHdrVal attributevalue;
-    TBool aDefaulted( EFalse );
-
-    if ( aCopyFrom.Attribute( EName, attributevalue, aDefaulted ) != KErrNotFound )
+    CLOG( ( ECookie, 0, _L( "-> CCookie::CopyFromL ") ) );
+    THTTPHdrVal attributevalue;
+    TBool defaulted( EFalse );
+    if ( aCopyFrom.Attribute( EName, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EName, attributevalue, aDefaulted );
+        if ( attributevalue.Type() != THTTPHdrVal::KStrVal )
+             {
+             RString correctedStringType = iStringPool.OpenStringL( attributevalue.StrF().DesC() );
+             attributevalue.SetStr( correctedStringType );
+             SetAttribute( EName, attributevalue, defaulted );
+             correctedStringType.Close();
+             const TPtrC8 pVal( attributevalue.Str().DesC() );
+             CLOG( ( ECookie, 0, _L8( "CCookie::CopyFromL - attribute EName Value : %S" ), &pVal ) );
+             }
+        else 
+            {
+            SetAttribute( EName, attributevalue, defaulted );    
+            }
         }
 
-	if ( aCopyFrom.Attribute( EValue, attributevalue, aDefaulted ) != KErrNotFound )
+    if ( aCopyFrom.Attribute( EValue, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EValue, attributevalue, aDefaulted );
+         if ( attributevalue.Type() != THTTPHdrVal::KStrVal )
+            {
+            RString correctedStringType = iStringPool.OpenStringL( attributevalue.StrF().DesC() );
+            attributevalue.SetStr( correctedStringType );
+            SetAttribute( EValue, attributevalue, defaulted );
+            correctedStringType.Close();
+            const TPtrC8 pVal( attributevalue.Str().DesC() );
+            CLOG( ( ECookie, 0, _L8( "CCookie::CopyFromL - attribute EValue value: %S" ), &pVal ) );
+            }
+         else
+             {
+             SetAttribute( EValue, attributevalue, defaulted );             
+             }
+        }
+	if ( aCopyFrom.Attribute( EComment, attributevalue, defaulted ) != KErrNotFound )
+        {
+        SetAttribute( EComment, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EComment, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( ECommentURI, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EComment, attributevalue, aDefaulted );
+        SetAttribute( ECommentURI, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( ECommentURI, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EDiscard, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( ECommentURI, attributevalue, aDefaulted );
+        SetAttribute( EDiscard, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EDiscard, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EDomain, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EDiscard, attributevalue, aDefaulted );
+        SetAttribute( EDomain, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EDomain, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EMaxAge, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EDomain, attributevalue, aDefaulted );
+        SetAttribute( EMaxAge, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EMaxAge, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EPath, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EMaxAge, attributevalue, aDefaulted );
+        SetAttribute( EPath, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EPath, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EPort, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EPath, attributevalue, aDefaulted );
+        SetAttribute( EPort, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EPort, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( ESecure, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EPort, attributevalue, aDefaulted );
+        SetAttribute( ESecure, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( ESecure, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EVersion, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( ESecure, attributevalue, aDefaulted );
+        SetAttribute( EVersion, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EVersion, attributevalue, aDefaulted ) != KErrNotFound )
+	if ( aCopyFrom.Attribute( EExpires, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EVersion, attributevalue, aDefaulted );
+        SetAttribute( EExpires, attributevalue, defaulted );
         }
 
-	if ( aCopyFrom.Attribute( EExpires, attributevalue, aDefaulted ) != KErrNotFound )
-        {
-        SetAttribute( EExpires, attributevalue, aDefaulted );
-        }
-
-    SetCookie2( aCopyFrom.FromCookie2() );
-
+    //SetCookie2( aCopyFrom.FromCookie2() );
+    // Other properties
+    iSetCookie2 = aCopyFrom.iSetCookie2;
+    iNetscape = aCopyFrom.iNetscape;
+    iSize = aCopyFrom.iSize;
+    iReceivedTime = aCopyFrom.iReceivedTime;
+    CLOG( ( ECookie, 0, _L( "<- CCookie::CopyFromL ") ) );
     }
 
 
@@ -411,6 +561,7 @@ RStringPool CCookie::StringPool()
 //
 TBool CCookie::Expired() const
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::Expired ") ) );
     // the cookie has expired if:
     // 1. it's Age > Max-Age
     // 2. current_date > expires
@@ -479,6 +630,7 @@ TBool CCookie::Expired() const
                 }
 			}
 		}
+	CLOG( ( ECookie, 0, _L( "<- CCookie::Expired retval : %d"),retval ) );
 	return retval;
 	}
 // ---------------------------------------------------------
@@ -487,7 +639,7 @@ TBool CCookie::Expired() const
 //
  TPtrC8 CCookie::RemoveQuotes( const TDesC8& aDes ) 
 	{
-   
+	CLOG( ( ECookie, 0, _L( "-> CCookie::RemoveQuotes ") ) );
 	TInt firstChar = 0;					// position of the first character
 	TInt lastChar = aDes.Length() - 1;	// position of the last character
 	TPtrC8 result;
@@ -518,7 +670,7 @@ TBool CCookie::Expired() const
 			result.Set( aDes.Mid( firstChar, lastChar - firstChar + 1 ) );
 			}
 		}
-
+	CLOG( ( ECookie, 0, _L( "<- CCookie::RemoveQuotes result : %d "),result ) );
     return result;
 	}
 
@@ -530,6 +682,7 @@ TBool CCookie::Expired() const
 //
 TBool CCookie::ExpiredNetscapeL( THTTPHdrVal aAttrVal) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::ExpiredNetscapeL ") ) );
     TBool retval( EFalse );
     TPtrC8 datePtr8( aAttrVal.StrF().DesC() );
     TInt dateLen( datePtr8.Length() );
@@ -736,6 +889,7 @@ TBool CCookie::ExpiredNetscapeL( THTTPHdrVal aAttrVal) const
         retval = ETrue;
         }
     CleanupStack::PopAndDestroy( cleanupNum ); // temp1, temp2, desDate, desTime
+    CLOG( ( ECookie, 0, _L( "<- CCookie::ExpiredNetscapeL retval : %d "),retval ) );
     return retval;
     }
 
@@ -749,6 +903,7 @@ TInt CCookie::FindTokens( const TDesC8& aString,
                          const TInt aTokenCount, 
                          TInt* aTokens ) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::FindTokens ") ) );
     TLex8 lex = aString;
     TChar ch;
     TInt tokenCount( 0 ), ii;
@@ -762,6 +917,7 @@ TInt CCookie::FindTokens( const TDesC8& aString,
             aTokens[tokenCount++] = lex.Offset()-1;
             }
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::FindTokens tokenCount : %d"),tokenCount ) );
     return tokenCount;
     }
 
@@ -771,6 +927,7 @@ TInt CCookie::FindTokens( const TDesC8& aString,
 //
 TBool CCookie::Persistent() const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::Persistent ") ) );
     TBool result( EFalse );
 	THTTPHdrVal attrVal;
 
@@ -818,6 +975,7 @@ TBool CCookie::Persistent() const
                 }
             }
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::Persistent result : %d"),result ) );
     return result;
     }
 
@@ -827,6 +985,7 @@ TBool CCookie::Persistent() const
 //
 TBool CCookie::IsUnknownVersion() const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::IsUnknownVersion ") ) );
     TBool unknownVersion( EFalse );
     THTTPHdrVal attrVal;
     if( Attribute( CCookie::EVersion, attrVal ) != KErrNotFound )
@@ -836,6 +995,7 @@ TBool CCookie::IsUnknownVersion() const
             unknownVersion = ETrue;
             }
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::IsUnknownVersion unknownVersion : %d"),unknownVersion ) );
     return unknownVersion;
     }
 
@@ -846,7 +1006,9 @@ TBool CCookie::IsUnknownVersion() const
 CCookie::CCookie( RStringPool aStringPool )
 : iStringPool( aStringPool ), iSetCookie2( EFalse ), iNetscape( EFalse )
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::CCookie ") ) );
 	iReceivedTime.UniversalTime();
+	CLOG( ( ECookie, 0, _L( "<- CCookie::CCookie ") ) );
 	}
 
 
@@ -857,6 +1019,7 @@ CCookie::CCookie( RStringPool aStringPool )
 void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
 						RStringF aFieldName, const TUriC8& aUri )
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::ConstructL ") ) );
 	const TStringTable& commonStringTable = RHTTPSession::GetTable();
 
 	// Determining if this object is constructed from a Set-Cookie2 HTTP header
@@ -1160,6 +1323,7 @@ void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
                 }
             }
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::ConstructL ") ) );
 	}
 
 
@@ -1171,16 +1335,18 @@ void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
 TInt CCookie::FindAttribute( TCookieAttributeName aAttributeName,
 							TCookieAttribute& aAttribute ) const
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::FindAttribute ") ) );
 	const TInt numAttributes = iAttributes.Count();
 	for ( TInt index = 0; index < numAttributes; ++index )
 		{
 		if ( iAttributes[index].Name() == aAttributeName )
 			{
 			aAttribute = iAttributes[index];
+			CLOG( ( ECookie, 0, _L( "<- CCookie::FindAttribute index : %d"),index ) );
 			return index;
 			}
 		}
-
+	CLOG( ( ECookie, 0, _L( "<- CCookie::FindAttribute KErrNotFound") ) );
 	return KErrNotFound;
 	}
 
@@ -1190,11 +1356,13 @@ TInt CCookie::FindAttribute( TCookieAttributeName aAttributeName,
 //
 void CCookie::RemoveAttribute( TInt aIndex )
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::RemoveAttribute aIndex : %d"),aIndex ) );
 	iSize -= ( KCookieAttributePrefixLength + iAttributes[ aIndex ].Size() + 
                KCookieAttributeDefaultedLength + 
                KCookieAttributeFoundLength );
 	iAttributes[ aIndex ].Close();
 	iAttributes.Remove( aIndex );
+	CLOG( ( ECookie, 0, _L( "<- CCookie::RemoveAttribute aIndex : %d"),aIndex ) );
 	}
 
 // ---------------------------------------------------------
@@ -1203,12 +1371,14 @@ void CCookie::RemoveAttribute( TInt aIndex )
 //
 void CCookie::RemoveAttribute( TCookieAttributeName aAttributeName )
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::RemoveAttribute - name: %d"), aAttributeName ) );
     TCookieAttribute attribute;
     TInt index( FindAttribute( aAttributeName, attribute ) );
     if( index != KErrNotFound )
         {
         RemoveAttribute( index );
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::RemoveAttribute - name: %d, index: %d"), aAttributeName, index ) );
     }
 
 // ---------------------------------------------------------
@@ -1218,6 +1388,7 @@ void CCookie::RemoveAttribute( TCookieAttributeName aAttributeName )
 TInt CCookie::GetLocalOffset( HBufC8* aDate, TInt& aHour, 
                          TInt& aMinute, TInt& aLength ) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::GetLocalOffset ") ) );
     TInt retval( 0 );
     TInt pos(0);
 //    TInt fwspos(0);
@@ -1309,6 +1480,7 @@ TInt CCookie::GetLocalOffset( HBufC8* aDate, TInt& aHour,
         lex1.Val( aMinute );
         CleanupStack::PopAndDestroy( temp ); // temp
         }
+    CLOG( ( ECookie, 0, _L( "<- CCookie::GetLocalOffset retval : %d "),retval ) );
     return retval;
     }
 
@@ -1321,9 +1493,11 @@ TInt CCookie::GetLocalOffset( HBufC8* aDate, TInt& aHour,
 //
 TInt CCookie::GetMilitaryOffset( HBufC8* /*aDate*/, TInt& aHour ) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::GetMilitaryOffset  ") ) );
     // TODO: Add military timezone handling here...
     TInt retval( KErrNotFound );
     aHour = 0;
+    CLOG( ( ECookie, 0, _L( "<- CCookie::GetMilitaryOffset retval : %d "),retval ) );
     return retval;
     }
 
@@ -1336,6 +1510,7 @@ TInt CCookie::GetMilitaryOffset( HBufC8* /*aDate*/, TInt& aHour ) const
 TInt CCookie::GetTimeZone( HBufC8* aDate, TInt& aHour, 
                          TInt& aLength ) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::GetTimeZone  ") ) );
     TInt retval( 0 );
     TInt zonepos = aDate->Find( KUT() );
     if ( zonepos != KErrNotFound )
@@ -1424,7 +1599,7 @@ TInt CCookie::GetTimeZone( HBufC8* aDate, TInt& aHour,
         // get the length
         aLength = aDate->Length() - zonepos;
         }
-
+    CLOG( ( ECookie, 0, _L( "<- CCookie::GetTimeZone retval :%d "),retval ) );
     return retval;
     }
 
@@ -1436,6 +1611,7 @@ TInt CCookie::GetTimeZone( HBufC8* aDate, TInt& aHour,
 //
 HBufC8* CCookie::GetCleanedDateTimeLC( HBufC8* aDate ) const
     {
+    CLOG( ( ECookie, 0, _L( "-> CCookie::GetCleanedDateTimeLC ") ) );
     // as http time might contain a "DayOfWeek," optional part
     // which is not understood by the parser, we need to 
     // remove it 
@@ -1502,6 +1678,7 @@ HBufC8* CCookie::GetCleanedDateTimeLC( HBufC8* aDate ) const
     *result = temp->Left( temp->Length() - length);
     // return ( temp->Left( temp->Length() - length).AllocLC() );
     CleanupStack::PopAndDestroy( temp );
+    CLOG( ( ECookie, 0, _L( "-> CCookie::GetCleanedDateTimeLC result : %d"),result ) );
     return result;
     }
 
@@ -1520,6 +1697,7 @@ CCookie::TCookieAttribute::TCookieAttribute( TCookieAttributeName aName,
 : iName( aName ),
 iDefaulted( aDefaulted )
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute") ) );
 	iValue = aHdrVal.Copy();
 	
 
@@ -1528,28 +1706,34 @@ iDefaulted( aDefaulted )
 		case THTTPHdrVal::KTIntVal :
 			{
 			iSize = sizeof( TInt );
+			CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute iSize :%d "),iSize ) );
 			break;
 			}
 		case THTTPHdrVal::KStrVal :
 			{
 			iSize = iValue.Str().DesC().Length();
+			CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute iSize :%d "),iSize ) );
 			break;
 			}
 		case THTTPHdrVal::KDateVal :
 			{
 			iSize = sizeof( TDateTime );
+			CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute iSize :%d "),iSize ) );
 			break;
 			}
 		case THTTPHdrVal::KStrFVal :
 			{
 			iSize = iValue.StrF().DesC().Length();
+			CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute iSize :%d "),iSize ) );
 			break;
 			}
 		default :	// THTTPHdrVal::KNoType
 			{
 			iSize = 0;
+			CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute iSize :%d "),iSize ) );
 			}
 		}
+	CLOG( ( ECookie, 0, _L( "<- CCookie::TCookieAttribute  ") ) );
 	}
 
 
@@ -1559,6 +1743,8 @@ iDefaulted( aDefaulted )
 //
 CCookie::TCookieAttribute::TCookieAttribute()
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::TCookieAttribute  ") ) );
+	CLOG( ( ECookie, 0, _L( "<- CCookie::TCookieAttribute  ") ) );
 	}
 
 
@@ -1568,18 +1754,22 @@ CCookie::TCookieAttribute::TCookieAttribute()
 //
 void CCookie::TCookieAttribute::Close()
 	{
+	CLOG( ( ECookie, 0, _L( "-> CCookie::Close  ") ) );
 	THTTPHdrVal::THTTPValType type = iValue.Type();
 	if ( type == THTTPHdrVal::KStrVal )
 		{
+		CLOG( ( ECookie, 0, _L( "-> CCookie::Close  KStrVal") ) );
 		iValue.Str().Close();
 		}
 	else if ( type == THTTPHdrVal::KStrFVal )
 		{
+		CLOG( ( ECookie, 0, _L( "-> CCookie::Close  KStrFVal") ) );
 		iValue.StrF().Close();
 		}
 
 	// TBD : iValue = THTTPHdrVal();?
 	iSize = 0;
+	CLOG( ( ECookie, 0, _L( "<- CCookie::Close  ") ) );
 	}
 
 

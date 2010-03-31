@@ -39,6 +39,7 @@ enum TCookieLogMask             ///< Log mask bits.
     ECookieArray    = 0x00000010,   ///< Log CCookieArray activity.
     EServerStart    = 0x00000020,   ///< Log server start-up activity.
     EClientConnect  = 0x00000040,   ///< Log client connecting activity.
+    ECookie         = 0x00000080,   ///< Log CCookie activity.
     ELogAll         = 0xFFFFFFFF    ///< Log all.
     };
 

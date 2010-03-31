@@ -21,10 +21,11 @@
 TARGET		cookiemanager.dll
 TARGETTYPE	DLL
 
+UID	0x1000008D 	0x101F852F
+
 CAPABILITY	CAP_GENERAL_DLL
 
 
-UID	0x1000008D 	0x101F852F
 
 MW_LAYER_SYSTEMINCLUDE
 
@@ -42,7 +43,9 @@ SOURCE			CookieManagerServer.cpp
 SOURCE			CookieManagerSession.cpp
 SOURCE			CookieManagerClient.cpp
 SOURCE			CookieManagerStart.cpp
-SOURCE			CookieServerPanic.cpp
+SOURCE			CookieServerPanic.cpp  
+SOURCE          CookieGroupData.cpp CookieGroupDataArray.cpp GroupIdInfoArray.cpp
+SOURCE          CookieClientDataArray.cpp CookieClientData.cpp
 
 
 // IMPORTED LIBRARIES
@@ -50,6 +53,7 @@ SOURCE			CookieServerPanic.cpp
 LIBRARY		EUSER.LIB HTTP.LIB BAFL.LIB
 LIBRARY		INETPROTUTIL.LIB efsrv.lib 
 LIBRARY		SysUtil.lib
+LIBRARY         XmlEngineDOM.lib
 
 #if defined(ARMCC)
         DEFFILE ../EABI/COOKIEMANAGERU_EKA2.def

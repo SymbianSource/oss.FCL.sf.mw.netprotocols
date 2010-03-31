@@ -24,5 +24,6 @@
 #include <thttpheadervaluevariant.h>
 #include <chttpclienttransaction.h>
 #include <mhttpserviceauthentication.h>
+#include <chttpnetworkconnectioninfo.h>
 
 #endif // __MHTTPDATARECIVER_H__

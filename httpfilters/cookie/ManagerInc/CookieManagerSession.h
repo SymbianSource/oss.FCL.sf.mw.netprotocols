@@ -77,27 +77,37 @@ NONSHARABLE_CLASS( CCookieManagerSession ) : public CSession2
 
 	private :	// internal methods
 
-		/**
+		/**Clear all Cookies from file system belongs to a Client
 		*
 		*/
 		TInt ClearAllCookies( const RMessage2& aMessage );
+
+		/** Clear all Cookies from File System based on appuid 
+        *
+        */
+        TInt ClearAllAppUidCookies( const RMessage2& aMessage );
 
 		/**
 		*
 		*/
 		TInt DoClearAllCookies( const RMessage2& aMessage );
 
-		/**
+        /**
+        *
+        */
+        TInt DoClearAllAppUidCookies( const RMessage2& aMessage );
+
+		/**Gets Cookie Size for a Url
 		*
 		*/
 		TInt DoGetCookieSize( const RMessage2& aMessage );
 
-		/**
+		/** Gets Cookie info for a Url
 		*
 		*/
 		TInt DoGetCookies( const RMessage2& aMessage );
 
-		/**
+		/**Stores cookie info for a specific url.
 		*
 		*/
 		void DoStoreCookieL( const RMessage2& aMessage );
@@ -122,12 +132,31 @@ NONSHARABLE_CLASS( CCookieManagerSession ) : public CSession2
 		*
 		*/
 		TInt StoreCookie( const RMessage2& aMessage );
-		
-		
-		/**
+
+		/**Sets the appuid for a request
 		*
 		*/
 		TInt SetAppUidL(const RMessage2& aMessage );
+		
+		/*Delets cookie from Server memory and writes the cookie Info in to a file 
+		 * 
+		 */
+		TInt DestroyCookies( const RMessage2& aMessage );
+		
+		/*
+		 * 
+		 */
+		TInt DoDestroyCookies( const RMessage2& aMessage );
+		
+		/*
+		 * 
+		 */
+        TInt GetCookieSharableFlag( const RMessage2& aMessage );
+
+        /*
+         * 
+         */
+	    TInt DoGetCookieSharableFlag( const RMessage2& aMessage );
 
 	private:
 		CCookieManagerServer&   iCookieServer;
@@ -144,8 +173,6 @@ NONSHARABLE_CLASS( CCookieManagerSession ) : public CSession2
 
 		// The size of the temporary cookie list in bytes
 		TInt iGetCookieListSize;
-
-//		CCookieArray* iTransientCookies;
 	};
 
 #endif //__COOKIEMANAGER_SESSION_H__

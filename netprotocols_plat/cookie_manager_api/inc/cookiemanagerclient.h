@@ -87,6 +87,14 @@ class RCookieManager : public RSessionBase
 		* @return Error code indicating the result of the call.
 		*/		
 		IMPORT_C TInt SetAppUidL(const TUint32& aAppUid );
+        IMPORT_C void Close();
+        IMPORT_C TInt StoreCookie( const CCookie& aCookie,
+                                            const TUriC8& aUri,TUint32& aAppUid);
+        IMPORT_C void GetCookiesL( const TDesC8& aUri,
+                                   RPointerArray<CCookie>& aCookies, 
+                                   TBool& aCookie2Reqd,TUint32& aAppUid );
+        IMPORT_C TInt ClearAllAppUidCookies(const TUint32& aAppUid);
+
 
 	private :	// internal methods
 		/**
@@ -102,6 +110,9 @@ class RCookieManager : public RSessionBase
 		*/
 		TInt DoGetCookieSize( const TDesC8& aRequestUri,
 							TPckg<TInt>& aPkgSize ) const;
+							
+	    TInt DoGetCookieSize( const TDesC8& aRequestUri,
+							TPckg<TInt>& aPkgSize,TDesC& aAppUidPtr ) const;
 
 		/**
 		* Puts those cookies in the buffer that have been previously selected
@@ -115,12 +126,21 @@ class RCookieManager : public RSessionBase
 		*
 		*/
 		TInt DoStoreCookie( const TDesC8& aPackedCookie,
-							const TDesC8& aUri ) const;
+							const TDesC8& aUri,TDesC& aAppUidPtr ) const;
 
 		/**
 		*
 		*/
 		TVersion Version() const;
+		
+		TInt DestroyCookiesFromMemory( TInt& aDeleteStatus );
+		
+		void StoreCookieAtClientSide( const CCookie* aCookie, const TDesC8& aUri,TUint32 aWidgetUid );
+		
+		TInt GetClientSideCookies( const TDesC8& aRequestUri,RPointerArray<CCookie>& aCookies
+		        ,TBool& aFound, TUint32 aWidgetUid );
+		TInt GetCookieSharableFlagFromServer(TBool& aCookieSharableFlag ) const;
+
 
 	private :	// data members
 		RStringPool iStringPool;

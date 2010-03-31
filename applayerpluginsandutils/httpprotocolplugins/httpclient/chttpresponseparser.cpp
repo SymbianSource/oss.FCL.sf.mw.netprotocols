@@ -792,4 +792,18 @@ void CHttpResponseParser::Reserved_MHttpMessageParserObserver()
 	User::Invariant();
 	}
 
-
+void CHttpResponseParser::FlushBodyDataIfNotRead()
+{
+ // Message is completed but the client is not yet read the complete body data
+ // and we are cancelling. So we need to clear the parsed body data as another 
+ // request would have been sent via the connection. The flushing of the body
+ // data is needed to make the connection manager to read further response from the
+ // socket otherwise it hangs. See the error: 
+ 
+ // Note: This function should be called from CancelTransactionHook and only in the
+ // case of client cancelling the transaction. ie; using RHTTPTransaction::Cancel();
+ if(MessageComplete() && iBodyParts.Count() > 0)
+  {
+  iBodyParts.Reset(); // Reset the body array.  
+  }
+} 

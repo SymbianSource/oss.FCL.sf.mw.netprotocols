@@ -91,4 +91,10 @@ EXPORTS
 	_ZTV22CHttpClientTransaction @ 90 NONAME
 	_ZTV26CHttpClientTransactionImpl @ 91 NONAME
 	_ZN12CHttpService17SetAuthenticationEP26MHTTPServiceAuthentication @ 92 NONAME
+	_ZN12CHttpService21HttpNetworkConnectionEv @ 93 NONAME
+	_ZN22CHttpNetworkConnection4StopEv @ 94 NONAME
+	_ZN22CHttpNetworkConnection5StartE15TCommDbConnPrefi @ 95 NONAME
+	_ZN22CHttpNetworkConnection5StartEv @ 96 NONAME
+	_ZTI22CHttpNetworkConnection @ 97 NONAME
+	_ZTV22CHttpNetworkConnection @ 98 NONAME
 

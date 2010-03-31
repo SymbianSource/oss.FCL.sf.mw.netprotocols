@@ -65,4 +65,8 @@ EXPORTS
 	?Parameter@THttpHeaderElementIterator@@QBE?AVTHttpHeaderParamIterator@@XZ @ 64 NONAME ; class THttpHeaderParamIterator THttpHeaderElementIterator::Parameter(void) const
 	?Notify@THttpContentSourceOp@@QAEXABVTDesC8@@H@Z @ 65 NONAME ; void THttpContentSourceOp::Notify(class TDesC8 const &, int)
 	?SetAuthentication@CHttpService@@QAEHPAVMHTTPServiceAuthentication@@@Z @ 66 NONAME ; int CHttpService::SetAuthentication(class MHTTPServiceAuthentication *)
+	?Start@CHttpNetworkConnection@@QAEHVTCommDbConnPref@@H@Z @ 67 NONAME ; int CHttpNetworkConnection::Start(class TCommDbConnPref, int)
+	?HttpNetworkConnection@CHttpService@@QAEPAVCHttpNetworkConnection@@XZ @ 68 NONAME ; class CHttpNetworkConnection * CHttpService::HttpNetworkConnection(void)
+	?Stop@CHttpNetworkConnection@@QAEXXZ @ 69 NONAME ; void CHttpNetworkConnection::Stop(void)
+	?Start@CHttpNetworkConnection@@QAEHXZ @ 70 NONAME ; int CHttpNetworkConnection::Start(void)
 

@@ -17,6 +17,7 @@
 #include "httpclientutils.h"
 #include "chttpclientauthentication.h" 
 #include "mhttpserviceauthentication.h" 
+#include "chttpnetworkconnectioninfo.h"
 const TInt KMaxNoOfConnections = 6;
 const TInt KMaxTransToPipeline = 5;
 
@@ -247,3 +248,9 @@ void CHttpService::ConstructL()
     SetMaxTransactionsToPipeline(KMaxTransToPipeline);    
 	}
 	
+EXPORT_C CHttpNetworkConnection* CHttpService::HttpNetworkConnection()
+    {
+    CHttpNetworkConnection *httpNetworkConn = CHttpNetworkConnection::New();
+    httpNetworkConn->SetHttpService(this);
+    return httpNetworkConn;
+    }

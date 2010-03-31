@@ -26,6 +26,7 @@ class CHttpClientTransaction;
 class CLocalTestServer;
 class CHTTPTestUtils;
 class CHttpClientTestParamArray;
+class CHttpNetworkConnection;
 class CTestHttpServiceAuthentication;
 
 class CTestHttpClientStep : public CTestStep, public MLocalTestServerObserver
@@ -50,6 +51,7 @@ private:
     CLocalTestServer*   iTestServer;
     CHttpClientTestParamArray* iTestParamArray;
     CTestHttpServiceAuthentication* iTestHttpServiceAuthentication;
+    CHttpNetworkConnection* iHttpConnInfo;
     };
 
 #endif // __CTESTHTTPCLIENTSTEP_H__

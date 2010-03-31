@@ -20,7 +20,7 @@
 #include <http.h>
 #include <in_sock.h>
 #include "httpheaderiter.h"
-
+class CHttpNetworkConnection;
 /**
  * CHttpService represent a handle to the HTTP service instance for a set of client 
  * HTTP transactions[a request and its equivalent response]. The application can 
@@ -36,6 +36,7 @@ class MHTTPServiceAuthentication;
 class CHttpService : public CBase
 	{
 	friend class CHttpClientTransactionImpl;	
+	friend class CHttpNetworkConnection;
 	public:
 	
 	IMPORT_C static CHttpService* NewL();
@@ -56,6 +57,8 @@ class CHttpService : public CBase
 	IMPORT_C TInt AddCustomRequestHeader(const TDesC8& aHeaderName, const TDesC8& aHeaderValue);
 	
 	IMPORT_C TInt SetAuthentication(MHTTPServiceAuthentication* aCallback);
+	
+	IMPORT_C CHttpNetworkConnection* HttpNetworkConnection();
 	
 	private:
 	CHttpService();

@@ -1027,3 +1027,84 @@ void CCookieArray::MakeRoomIfNeeded( TUint32 aSize )
         Remove( 0 );
         };
     }
+// ---------------------------------------------------------
+// CCookieArray::ReserveL
+// ---------------------------------------------------------
+//
+void CCookieArray::ReserveL( TInt aNumberOfCookies )
+    {
+    iCookies.ReserveL( aNumberOfCookies );
+    }
+// ---------------------------------------------------------
+// CCookieArray::GetCookies
+// ---------------------------------------------------------
+//
+TInt CCookieArray::GetCookies( const TDesC8& aRequestUri,
+                               RPointerArray<CCookie>& aCookies, TBool& aFound )// harendra: aFound is redundant
+    {
+    CLOG( ( ECookieArray, 0,
+            _L( "-> CCookieArray::GetCookies for an URI" ) ) );
+    TUriParser8 uriParser;
+    TInt err = uriParser.Parse( aRequestUri );
+    if ( !err )
+        {
+        // first get the details of the current requestUri,
+        // that is, Domain, Path and port
+        TPtrC8 requestPath( uriParser.IsPresent( EUriPath ) ?
+                            uriParser.Extract( EUriPath ) : KNullDesC8() );
+        TPtrC8 requestDomain( uriParser.IsPresent( EUriHost ) ?
+                            uriParser.Extract( EUriHost ) : KNullDesC8() );
+        TPtrC8 requestPort( uriParser.IsPresent( EUriPort ) ?
+                uriParser.Extract( EUriPort ) : KCookieDefaultRequestPort() );
+        TPtrC8 requestScheme( uriParser.IsPresent( EUriScheme ) ?
+                            uriParser.Extract( EUriScheme ) : KNullDesC8() );
+
+        // now check the existing cookies
+        // remove expired ones first, if there are any
+        RemoveExpired();
+        // and finally, find the cookies...
+        TInt count = iCookies.Count();
+        for ( TInt i = 0; i < count && err == KErrNone; i++ )
+            {
+            // Does the cookie have Path attribute?
+            TPtrC8 cookiePath;
+            if ( !GetFoldedCookieAttr( *iCookies[i],
+                                        CCookie::EPath,
+                                        cookiePath ) )
+                {
+                continue;
+                }
+
+            // Does the cookie have Domain attribute?
+            TPtrC8 cookieDomain;
+            if ( !GetFoldedCookieAttr( *iCookies[i],
+                                        CCookie::EDomain,
+                                        cookieDomain ) )
+                {
+                continue;
+                }
+
+            TPtrC8 cookiePort;
+            GetFoldedCookiePortAttr( *iCookies[i], cookiePort );
+
+            if ( PathMatch( requestPath, cookiePath ) &&
+                DomainMatch( requestDomain, cookieDomain, ETrue ) &&
+                PortMatch( requestPort, cookiePort ) &&
+                SecureMatch( requestScheme, *iCookies[i] ) )
+                {
+                CCookie* clone = CCookie::CloneL( *iCookies[i] );
+                CleanupStack::PushL( clone );
+                err = aCookies.Append(clone);
+                CleanupStack::Pop(clone);
+                aFound = ETrue;
+                }
+            }
+        aCookies.Sort( TLinearOrder<CCookie> (CCookieArray::CompareCookiesPath) );
+        }
+    
+    
+
+    CLOG( ( ECookieArray, 0,
+            _L( "<- CCookieArray::GetCookies  for an URI" ) ) );
+    return err;
+    }
