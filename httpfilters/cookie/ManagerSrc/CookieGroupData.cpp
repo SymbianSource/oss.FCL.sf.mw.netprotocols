@@ -7,13 +7,13 @@
 
 //System Includes
 #include <e32base.h>
-#include <SysUtil.h>
+#include <sysutil.h>
 #include <e32cmn.h>
 
 //User Includes
 #include "CookieGroupData.h"
 #include "CookieArray.h"
-#include "CookieIPC.h"
+#include "cookieipc.h"
 #include "CookieLogger.h"
 //Constants
 

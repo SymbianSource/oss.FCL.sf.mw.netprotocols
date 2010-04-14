@@ -508,6 +508,7 @@ TInt CHttpFilterDigestAuthentication::DFindHeaderPartToUseL( RHTTPTransaction aT
         {
         THTTPHdrVal fieldVal; // The name of the current field.
         THTTPHdrVal hdrVal; //A scratch hdrVal
+		// coverity [CHECKED_RETURN]
         headers.GetField( wwwAuthenticate, ii, fieldVal );
 
         switch ( fieldVal.StrF().Index( RHTTPSession::GetTable() ) )

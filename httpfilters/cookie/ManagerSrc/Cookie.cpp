@@ -26,7 +26,7 @@
 
 	// User includes
 #include "cookie.h"
-#include "cookielogger.h"
+#include "CookieLogger.h"
 #include "CookieCommonConstants.h"
 
 

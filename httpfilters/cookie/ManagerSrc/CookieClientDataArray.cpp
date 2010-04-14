@@ -12,7 +12,7 @@
 
 //User Includes
 #include "CookieClientDataArray.h"
-#include "CookieManagerClient.h"
+#include "cookiemanagerclient.h"
 #include "CookieArray.h"
 #include "CookieLogger.h"
 #include "CookieClientData.h"

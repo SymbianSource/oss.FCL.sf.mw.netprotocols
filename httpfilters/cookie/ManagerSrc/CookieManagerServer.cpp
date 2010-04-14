@@ -22,8 +22,8 @@
 #include <e32std.h>
 
 #include <sysutil.h>
-#include <BAUTILS.H>
-#include <XmlEngDOMImplementation.h>
+#include <bautils.h>
+#include <xmlengdomimplementation.h>
 #include <xmlengdocument.h>
 #include <xmlengdomparser.h>
 #include <xmlengattr.h>
