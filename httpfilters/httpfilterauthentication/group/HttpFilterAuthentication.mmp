@@ -28,7 +28,7 @@ VENDORID        VID_DEFAULT
 UID	0x10009D8D 	0x101F8493
 
 USERINCLUDE     ../Inc
-USERINCLUDE     ../../HttpFilterCommon/inc
+USERINCLUDE     ../../httpfiltercommon/inc
 
 MW_LAYER_SYSTEMINCLUDE 
 
@@ -40,7 +40,7 @@ SOURCE  HttpFilterDigestAuthentication.cpp
 
 SOURCEPATH      ../Data
 
-START RESOURCE 101f8493.rss
+START RESOURCE 101F8493.rss
 TARGET HttpFilterAuthentication.rsc
 END
 

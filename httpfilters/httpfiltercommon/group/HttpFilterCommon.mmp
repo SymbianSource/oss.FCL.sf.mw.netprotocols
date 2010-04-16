@@ -28,15 +28,15 @@ VENDORID        VID_DEFAULT
 #if defined(ARMCC)
 deffile EABI/HttpFilterCommon.def
 #elif defined( WINSCW )
-deffile Bwinscw/HttpFilterCommon.def
+deffile Bwinscw/HTTPFILTERCOMMON.def
 #elif defined( WINS )
 deffile Bwins/HttpFilterCommon.def
 #else
-deffile Bmarm/HttpFilterCommon.def
+deffile Bmarm/HTTPFILTERCOMMON.def
 #endif
 
 
-SOURCEPATH      ../Src
+SOURCEPATH      ../src
 SOURCE          HttpFilterCommonStringsAddition.cpp
 SOURCE          HttpFilterCommonStringsExt.cpp
 SOURCE          HttpFilterCommonMain.cpp

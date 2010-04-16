@@ -114,7 +114,8 @@ public:	// methods
 	virtual void OnSendTimeOut() =0;
 	
 	virtual TInt SendTimeOutVal() =0;
-
+	
+	virtual TBool SecureRetry()=0;
 private:	// methods
 
 /**

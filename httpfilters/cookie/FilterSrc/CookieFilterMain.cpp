@@ -19,7 +19,7 @@
 #include <e32std.h>
 #include <ecom/implementationproxy.h>
 
-#include "cookiefilter.h"
+#include "CookieFilter.h"
 
 const TImplementationProxy KImplementationTable[] = 
 	{

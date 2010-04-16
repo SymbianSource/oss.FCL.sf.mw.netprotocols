@@ -17,7 +17,7 @@
 
 
 #include "../httpfiltercommon/group/bld.inf"
-#include "../cookie/group/bld.inf"
+#include "../cookie/Group/bld.inf"
 #include "../deflatefilter/group/bld.inf"
 #include "../httpfilteracceptheader/group/bld.inf"
 #include "../httpfilterauthentication/group/bld.inf"

@@ -31,9 +31,9 @@
 #include <httperr.h>
 
 #include <BrowserUiSDKCRKeys.h>
-#include <webutilsinternalcrkeys.h>//for the profile strings
+#include <WebUtilsInternalCRKeys.h>//for the profile strings
 
-#include <cuseragent.h>
+#include <CUserAgent.h>
 #include <featmgr.h>
 #include <bldvariant.hrh>
 

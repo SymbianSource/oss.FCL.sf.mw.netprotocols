@@ -21,7 +21,7 @@
 
 
 //  INCLUDES
-#include <ecom/RegistryInfo.rh>
+#include <ecom/registryinfo.rh>
 
 
 //  RESOURCE DEFINITIONS 

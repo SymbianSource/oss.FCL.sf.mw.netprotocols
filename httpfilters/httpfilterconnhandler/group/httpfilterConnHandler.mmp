@@ -26,7 +26,7 @@ VENDORID        VID_DEFAULT
 CAPABILITY CAP_ECOM_PLUGIN
 
 USERINCLUDE     ../Inc
-USERINCLUDE     ../../HttpFilterCommon/inc
+USERINCLUDE     ../../httpfiltercommon/inc
 
 MW_LAYER_SYSTEMINCLUDE 
 
@@ -35,12 +35,12 @@ SOURCEPATH      ../Src
 SOURCE	httpFilterConnHandler.cpp
 SOURCE	HttpFilterConnHandlerMain.cpp
 
-SOURCE          httpFilterConnHandlerObserverPS.cpp
+SOURCE          httpfilterconnhandlerObserverPS.cpp
 
 SOURCEPATH      ../Data
 
 START RESOURCE 101F8585.rss
-TARGET      httpfilterconnhandler.rsc
+TARGET      HttpFilterConnHandler.rsc
 END
 
 LIBRARY HttpFilterCommon.lib http.lib euser.lib bafl.lib ecom.lib inetprotutil.lib

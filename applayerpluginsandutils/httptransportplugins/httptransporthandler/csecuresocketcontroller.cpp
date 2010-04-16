@@ -62,7 +62,7 @@ CSecureSocketController::CSecureSocketController(RSocket& aSocket, MCommsInfoPro
 	{
 	}
 
-void CSecureSocketController::StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName)
+void CSecureSocketController::StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName, const  TDesC& aProtocolVersion)
 /**
 	Start a secure handshake to upgrade the socket to a secure connection.
 	@param		aStatus		The request status, this will complete with KErrNone
@@ -72,10 +72,10 @@ void CSecureSocketController::StartSecureHandshakeL(TRequestStatus& aStatus, con
 */
 	{
 	// Create the secure layer
-	_LIT(KTxtTls, "tls1.0");
 	if( iTlsSocket == NULL )
-		iTlsSocket = CSecureSocket::NewL(iSocket, KTxtTls());
-
+		{
+        iTlsSocket = CSecureSocket::NewL(iSocket, aProtocolVersion);
+        }
 	// Get the security preferences, dialog prompt and security policy
 	TBool dialogPref = ETrue;
 	MSecurityPolicy* securityPolicy = NULL;

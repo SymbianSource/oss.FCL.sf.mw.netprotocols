@@ -26,8 +26,8 @@ DEFAULT
 PRJ_EXPORTS
 
 // iby
-../rom/CookieFilter.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieFilter.iby)
-../rom/CookieManager.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieManager.iby)
+../Rom/CookieFilter.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieFilter.iby)
+../Rom/CookieManager.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieManager.iby)
 
 PRJ_MMPFILES
 CookieManager.mmp

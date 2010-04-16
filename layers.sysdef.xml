@@ -6,7 +6,7 @@
   <systemModel>
     <layer name="mw_layer">
       <module name="netprotocols">
-	    <unit unitID="browsing_domain.netprotocols" mrp="" bldFile="&layer_real_source_path;/group" name="netprotocols"/>
+	    <unit unitID="netdo.netprotocols" mrp="" bldFile="&layer_real_source_path;/group" name="netprotocols"/>
       </module>
     </layer>
   </systemModel>

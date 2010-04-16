@@ -344,7 +344,7 @@ TInt CSocket::CipherSuite(TDes8& aCipherSuite)
 	return KErrNotSupported;
 	}
 
-void CSocket::UpgradeToSecureL(TRequestStatus& aStatus, const TDesC8& aHostName)
+void CSocket::UpgradeToSecureL(TRequestStatus& aStatus, const TDesC8& aHostName,const TDesC& aProtocol)
 /**
 	Asynchronous request to upgrade the socket to a secure socket.
 	@param	aStatus The request status, this will complete with KErrNone on the successful
@@ -368,7 +368,7 @@ void CSocket::UpgradeToSecureL(TRequestStatus& aStatus, const TDesC8& aHostName)
 			User::Leave(KErrNotSupported);
 		else if (error != KErrNone)
 			User::Leave(error);
-		iSecureSocketController->StartSecureHandshakeL(aStatus, aHostName);
+		iSecureSocketController->StartSecureHandshakeL(aStatus, aHostName,aProtocol);
 		}
 	}
 

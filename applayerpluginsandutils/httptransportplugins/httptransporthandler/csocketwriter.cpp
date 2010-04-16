@@ -353,7 +353,16 @@ void CSocketWriter::RunL()
 		{
 		// Start the secure handshake
 		iState = ESecureHandshakeComplete;
-		iSocket.UpgradeToSecureL(iStatus, iHostName);
+		_LIT(KTxtTls, "tls1.0");
+ 		_LIT(KTxtSsl,"ssl3.0");
+ 		if (!iObserver->SecureRetry())
+ 		    {
+             iSocket.UpgradeToSecureL(iStatus, iHostName,KTxtTls()); //first negotiate with latest version of TLS
+ 		    }
+ 		else
+ 		    {
+             iSocket.UpgradeToSecureL(iStatus, iHostName,KTxtSsl()); //now try old ssl version
+ 		    }
 		SetActive();
 		} break;
 	case ESecureHandshakeComplete:

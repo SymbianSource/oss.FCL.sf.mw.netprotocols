@@ -20,10 +20,10 @@
 // INCLUDE FILES
 #include <es_sock.h>
 #include <PSVariables.h>  // Publish & Subscribe
-#include <MmTsy_names.h>
+#include <mmtsy_names.h>
 
 // User Includes
-#include "httpfilterConnHandlerObserverPS.h"
+#include "HttpFilterConnHandlerObserverPS.h"
 #include "mconnectioncallback.h"
 // #include <flogger.h>
 //_LIT(KDir, "connFilter");

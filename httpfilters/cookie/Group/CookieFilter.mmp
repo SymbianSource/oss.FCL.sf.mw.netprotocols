@@ -36,7 +36,7 @@ SOURCE		CookieFilterMain.cpp
 SOURCE		CookieLogger.cpp
 SOURCE		CookieFilter.cpp
 
-START RESOURCE  101f852e.rss
+START RESOURCE  101F852E.rss
 TARGET   CookieFilter.rsc
 
 END

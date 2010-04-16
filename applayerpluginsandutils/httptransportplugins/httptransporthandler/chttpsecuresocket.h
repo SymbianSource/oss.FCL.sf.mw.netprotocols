@@ -36,7 +36,7 @@ public:		// methods
 
 	inline virtual ~CHttpSecureSocket();
 
-	virtual void StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName) =0;
+	virtual void StartSecureHandshakeL(TRequestStatus& aStatus, const TDesC8& aHostName,const  TDesC& aProtocolVersion) =0;
 
 	virtual void RecvOneOrMore(TDes8& aBuffer, TRequestStatus& aStatus, TSockXfrLength& aLength) =0;
 

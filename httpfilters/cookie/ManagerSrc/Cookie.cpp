@@ -22,7 +22,7 @@
 #include <httpstringconstants.h>
 #include <http/rhttpheaders.h>
 #include <http/rhttpsession.h>
-#include <Uri8.h>
+#include <uri8.h>
 
 	// User includes
 #include "cookie.h"

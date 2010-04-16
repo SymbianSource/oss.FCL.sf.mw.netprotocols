@@ -21,7 +21,7 @@
 
 #include <e32std.h>
 
-#include <SysUtil.h>
+#include <sysutil.h>
 // #include <thttphdrval.h>
 
 // User includes

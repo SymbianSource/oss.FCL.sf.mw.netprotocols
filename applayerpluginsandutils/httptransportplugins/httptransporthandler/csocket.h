@@ -84,7 +84,7 @@ public:	// methods
 	
 	TInt CipherSuite(TDes8& aCipherSuite);
 
-	void UpgradeToSecureL(TRequestStatus& aStatus, const TDesC8& aHostName);
+	void UpgradeToSecureL(TRequestStatus& aStatus, const TDesC8& aHostName,const TDesC& aProtocol);
 
 	void CancelUpgradeToSecure();
 

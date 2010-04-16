@@ -54,6 +54,8 @@ private:	// methods from MOutputStream
 
 	virtual void Reset ();
 	
+	TBool SecureRetry();
+	
 	virtual void SetTCPCorking(TBool aValue);
 private:	// methods from MOutputStreamObserver
 	virtual void SendDataCnfL();

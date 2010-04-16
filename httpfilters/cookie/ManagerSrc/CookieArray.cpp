@@ -17,12 +17,12 @@
 // INCLUDE FILES
 	// System includes
 #include <http/thttphdrval.h>
-#include <Uri8.h>
+#include <uri8.h>
 
 	// User includes
 #include "CookieArray.h"
 #include "CookieCommonConstants.h"
-#include "cookielogger.h"
+#include "CookieLogger.h"
 #include "CookieServerPanic.h"
 
 // CONSTANTS

@@ -21,7 +21,7 @@
 #include <http/rhttptransaction.h>
 #include <http/rhttpheaders.h>
 #include <http/rhttpresponse.h>
-#include <HttpStringConstants.h>
+#include <httpstringconstants.h>
 #include "DeflateFilter.h"
 #include <bautils.h>
 #include <eikenv.h>

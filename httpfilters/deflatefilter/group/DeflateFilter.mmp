@@ -26,11 +26,11 @@ TARGETTYPE      PLUGIN
 UID 0x10009D8D 0x101F9712
 VENDORID        VID_DEFAULT
 
-SOURCEPATH ../Src
+SOURCEPATH ../src
 SOURCE DeflateFilterMain.cpp DeflateFilter.cpp DeflateDataSupplier.cpp StreamBufMgr.cpp DecmpStream.cpp
 
 USERINCLUDE ../inc
-USERINCLUDE ../../HttpFilterCommon/inc
+USERINCLUDE ../../httpfiltercommon/inc
 
 MW_LAYER_SYSTEMINCLUDE 
 

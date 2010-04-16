@@ -22,7 +22,7 @@
 #include <es_sock.h>
 
 // User Includes
-#include "httpfilterIop.h"
+#include "HttpFilterIop.h"
 #include "httpfiltercommonstringsext.h"
 
 #include "MIopRedirectCallback.h"

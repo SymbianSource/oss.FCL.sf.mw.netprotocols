@@ -68,6 +68,7 @@
 #include "T_SocketShutdownMode.h"
 #include "cinc112633.h"
 #include "cinc112633_2.h"
+#include "CPDEF143929.h"
 
 #include "csrvaddrval.h"
 #include "CINC082448.h"
@@ -155,6 +156,7 @@ _LIT(KSettingsIniCompName,					"settings");
 _LIT(KSettingsIniName,						"settings.ini");
 _LIT(KRecvBufSizeTest1,						"RecvBufSizeTest1");
 _LIT(KRecvBufSizeTest2,						"RecvBufSizeTest2");
+_LIT(KTestCPDEF143929,						"PDEF143929");
 
 
 const TInt KMaxHeapSize = 0x100000;
@@ -967,6 +969,24 @@ void DoTestsL()
 				for(index = 0; index < numSubTests; ++index)
 					{
 					CINC105767* incTest = CINC105767::NewL(index + 1, iniSettingsFile); 
+					CleanupStack::PushL(incTest);
+					onlineTests.Append(incTest);
+					}
+				CleanupStack::Pop(index);
+				}
+			}
+			
+		// CPDEF143929   test
+		if ( section->SectionName().CompareF(KTestCPDEF143929) == 0)
+			{
+			TBool runTest = iniFile->Section(i).ItemValue(KRunTestItemName(), runTestDefault);
+			if (runTest)
+				{
+				const TInt numSubTests = iniFile->ItemValue(KTestCPDEF143929(), KResNumSubTests(), 1); 
+				TInt index;
+				for(index = 0; index < numSubTests; ++index)
+					{
+					CPDEF143929* incTest = CPDEF143929::NewL(index + 1, iniSettingsFile); 
 					CleanupStack::PushL(incTest);
 					onlineTests.Append(incTest);
 					}
