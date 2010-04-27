@@ -49,7 +49,7 @@
 // ---------------------------------------------------------
 //
 EXPORT_C RCookieManager::RCookieManager( RStringPool aStringPool )
-: iStringPool( aStringPool ), iCookiePacker( iStringPool )
+: iStringPool( aStringPool ),iCookieMgrData(NULL)
     {
     CLOG(( EClient, 0, _L(" ") ));
     CLOG(( EClient, 0, _L("*****************") ));
@@ -81,7 +81,10 @@ EXPORT_C TInt RCookieManager::ClearCookies( TInt& aDeletedCookies )
 EXPORT_C TInt RCookieManager::Connect()
     {
     CLOG( ( EClientConnect, 0, _L( "-> RCookieManager::Connect" ) ) );
-    CCookieClientDataArray::GetInstance()->Ref();
+    iCookieMgrData = new TCookieMgrInternalStruct(iStringPool);
+    if (!(iCookieMgrData && iCookieMgrData->Init() == KErrNone))
+        return KErrNoMemory;
+            
     TInt error = KErrNone;
     RProcess server;
     error = server.Create( KCookieServerExe, TPtr( NULL, 0 ),
@@ -185,8 +188,9 @@ EXPORT_C void RCookieManager::GetCookiesL( const TDesC8& aUri,
     {
     CLOG( ( EClient, 0, _L( "-> RCookieManager::GetCookiesL" ) ) );
     TBool cookiefound(EFalse);
-    CCookieClientDataArray* cookieclientdataarray = CCookieClientDataArray::GetInstance();
-    if(cookieclientdataarray) // redundant check
+    CCookieClientDataArray* cookieclientdataarray = iCookieMgrData->GetCookieClientDataArray();
+    
+    if(cookieclientdataarray) 
         {
     TInt clientarraycount = cookieclientdataarray->Count();
     if ( clientarraycount!=0 )
@@ -217,8 +221,7 @@ EXPORT_C void RCookieManager::GetCookiesL( const TDesC8& aUri,
 
 		// it seems this is the only place where we cannot avoid leaving
 		// ==> we allocate memory for cookies when we fill up the cookie array.
-		iCookiePacker.UnpackCookiesFromBufferL( *buf, aCookies );
-
+		iCookieMgrData->GetCookiePacker().UnpackCookiesFromBufferL( *buf, aCookies );
 		TInt count = aCookies.Count();
 		TInt i = 0;
 		TBool anyCookie2( EFalse );
@@ -254,7 +257,7 @@ EXPORT_C TInt RCookieManager::StoreCookie( const CCookie& aCookie,
 								 const TUriC8& aUri )
     {
     CLOG( ( EClient, 0, _L( "-> RCookieManager::StoreCookie" ) ) );
-
+    StoreCookieAtClientSide(&aCookie,aUri.UriDes()); 
 	TInt err;
 
 	TInt cookieSize = aCookie.Size( EFalse );
@@ -266,11 +269,11 @@ EXPORT_C TInt RCookieManager::StoreCookie( const CCookie& aCookie,
                 cookieSize ) );
 
 		TPtr8 bufDes( buf->Des() );
-		err = iCookiePacker.CliPackCookie( bufDes, aCookie );
+		err = iCookieMgrData->GetCookiePacker().CliPackCookie( bufDes, aCookie );
 		if ( !err )
 			{
 			//Appuid value only takes 8 chars
-            HBufC* appbuf = HBufC::New(8); // harendra: 8 chars needed
+            HBufC* appbuf = HBufC::New(8);
             TPtr ptr(appbuf->Des());
             TUint32 appUid(0);
             ptr.AppendNum(appUid,EHex);    
@@ -315,7 +318,7 @@ EXPORT_C TInt RCookieManager::SetAppUidL( const TUint32& aAppUid )
     {
     CLOG(( EClient, 0, _L("->RCookieManager::SetAppUid") ));   
     TUint32 groupid = RProcess().SecureId().iId;
-    CCookieClientData* cookieclientdata = CCookieClientDataArray::GetInstance()->Find(groupid, const_cast<TUint32&> (aAppUid));
+    CCookieClientData* cookieclientdata = iCookieMgrData->GetCookieClientDataArray()->Find(groupid, const_cast<TUint32&> (aAppUid));
     if(cookieclientdata)
         {
         cookieclientdata->SetWidgetUid(aAppUid);
@@ -324,9 +327,9 @@ EXPORT_C TInt RCookieManager::SetAppUidL( const TUint32& aAppUid )
         {
         TBool cookieSharableFlag(EFalse);
         TInt err = GetCookieSharableFlagFromServer(cookieSharableFlag);
-        CCookieClientData* cookieclientdata = CCookieClientData::NewL(groupid, aAppUid, cookieSharableFlag,ETrue);
+        cookieclientdata = CCookieClientData::NewL(groupid, aAppUid, cookieSharableFlag,ETrue);
         cookieclientdata->SetInitFlag(ETrue);
-        CCookieClientDataArray::GetInstance()->AddClientGroupDataL(cookieclientdata);
+        iCookieMgrData->GetCookieClientDataArray()->AddClientGroupDataL(cookieclientdata);
         }
     //Appuid value only takes 8 chars
     HBufC* buf = HBufC::NewLC(8);
@@ -345,9 +348,10 @@ EXPORT_C TInt RCookieManager::SetAppUidL( const TUint32& aAppUid )
 EXPORT_C void RCookieManager::Close()
     {
     CLOG(( EClient, 0, _L("-> RCookieManager::Close") ));
-    CCookieClientDataArray::GetInstance()->DeRef();
     TInt deletestatus =0;
     DestroyCookiesFromMemory(deletestatus);
+    delete iCookieMgrData;
+    iCookieMgrData = NULL;
     CLOG(( EClient, 0, _L("-> RCookieManager::Close deletestatus = %d"), deletestatus ));
     RSessionBase::Close();
     CLOG(( EClient, 0, _L("<- RCookieManager::Close") ));
@@ -372,7 +376,7 @@ EXPORT_C TInt RCookieManager::StoreCookie( const CCookie& aCookie,
                 cookieSize ) );
 
         TPtr8 bufDes( buf->Des() );
-        err = iCookiePacker.CliPackCookie( bufDes, aCookie );
+        err = iCookieMgrData->GetCookiePacker().CliPackCookie( bufDes, aCookie );
         
         if ( !err )
             {
@@ -407,7 +411,7 @@ EXPORT_C void RCookieManager::GetCookiesL( const TDesC8& aUri,
     {
     CLOG( ( EClient, 0, _L( "-> RCookieManager::GetCookiesL" ) ) );
     TBool cookiefound(EFalse);
-    CCookieClientDataArray* cookieclientdataarray = CCookieClientDataArray::GetInstance();
+    CCookieClientDataArray* cookieclientdataarray = iCookieMgrData->GetCookieClientDataArray();
     if(cookieclientdataarray)
         {
          TInt clientarraycount = cookieclientdataarray->Count();
@@ -425,7 +429,6 @@ EXPORT_C void RCookieManager::GetCookiesL( const TDesC8& aUri,
         
             CLOG( ( EClient, 0, _L( "-> RCookieManager::GetClientSideCookies:" ) ) );
             //Gets the Cookie objects for aUri in case it is present
-            //TInt clerr = cookieclientdata->GetClientSideCookies(aUri,aCookies,cookiefound);
             TInt clerr = GetClientSideCookies(aUri,aCookies,cookiefound,aAppUid);
             CLOG( ( EClient, 0, _L( "RCookieManager::GetClientSideCookies:cookiefound = %d" ), cookiefound ) );
         
@@ -451,8 +454,7 @@ EXPORT_C void RCookieManager::GetCookiesL( const TDesC8& aUri,
     
             // it seems this is the only place where we cannot avoid leaving
             // ==> we allocate memory for cookies when we fill up the cookie array.
-            iCookiePacker.UnpackCookiesFromBufferL( *buf, aCookies );
-    
+            iCookieMgrData->GetCookiePacker().UnpackCookiesFromBufferL( *buf, aCookies );
             TInt count = aCookies.Count();
             for(TInt j=0; j<count; j++)
                 {
@@ -495,7 +497,7 @@ EXPORT_C TInt RCookieManager::ClearAllAppUidCookies(const TUint32& aAppUid)
     {
     CLOG(( EClient, 0, _L("-> RCookieManager::ClearCookies") ));
     //Client side cookie deletion specific to a appuid
-    CCookieClientDataArray::GetInstance()->DestroyClientData(aAppUid);
+    iCookieMgrData->GetCookieClientDataArray()->DestroyClientData(aAppUid);
     //Server side Cookie deletion specific to a appuid
     //Appuid value only takes 8 chars
     HBufC* buf = HBufC::NewLC(8);
@@ -514,8 +516,19 @@ void RCookieManager::StoreCookieAtClientSide( const CCookie* aCookie, const TDes
     {
     CLOG( ( EClient, 0, _L( "-> RCookieManager::StoreCookieAtClientSide" ) ) );
     TUint32 groupid = RProcess().SecureId().iId;
-    CCookieClientDataArray* cookieclientdataarray = CCookieClientDataArray::GetInstance();
+    CCookieClientDataArray* cookieclientdataarray = iCookieMgrData->GetCookieClientDataArray();
+    CCookieClientData* cookieclientdata(NULL);
     TInt count = cookieclientdataarray->Count();
+    if (count == 0)
+        {
+        TBool cookieSharableFlag(EFalse);
+        TInt err = GetCookieSharableFlagFromServer(cookieSharableFlag);
+        cookieclientdata = CCookieClientData::NewL(groupid, aWidgetUid, cookieSharableFlag,ETrue);
+        cookieclientdata->SetInitFlag(ETrue);
+        cookieclientdataarray->AddClientGroupDataL(cookieclientdata);
+        cookieclientdata->StoreCookieAtClientSideL(aCookie,aUri);
+        return;
+        }
     TInt itemIndex =0;
     for(TInt i=0; i<count; i++)
         {
@@ -533,7 +546,7 @@ void RCookieManager::StoreCookieAtClientSide( const CCookie* aCookie, const TDes
               break;
               }
         }
-    CCookieClientData* cookieclientdata = cookieclientdataarray->At(itemIndex);
+    cookieclientdata = cookieclientdataarray->At(itemIndex);
     cookieclientdata->StoreCookieAtClientSideL(aCookie,aUri);
     CLOG( ( EClient, 0, _L( "<- RCookieManager::StoreCookieAtClientSide" ) ) );
     }
@@ -547,9 +560,8 @@ TInt RCookieManager::GetClientSideCookies( const TDesC8& aRequestUri,RPointerArr
     {
     CLOG( ( EClient, 0, _L( "-> RCookieManager::GetClientSideCookies" ) ) );
     TUint32 groupid = RProcess().SecureId().iId;
-    //TInt itemIndex =0;
     CCookieClientData* cookieclientdata = NULL;
-    CCookieClientDataArray* cookieclientdataarray = CCookieClientDataArray::GetInstance();
+    CCookieClientDataArray* cookieclientdataarray = iCookieMgrData->GetCookieClientDataArray();
     TInt count = cookieclientdataarray->Count();
     if (count == 0)
         {
@@ -560,7 +572,6 @@ TInt RCookieManager::GetClientSideCookies( const TDesC8& aRequestUri,RPointerArr
         cookieclientdataarray->AddClientGroupDataL(cookieclientdata);
         } else 
            {
-           //harendra: move this for loop in CCookieClientDataArray::Find(), it should index or object
            cookieclientdata = cookieclientdataarray->Find(groupid, aWidgetUid);
            }
      if(cookieclientdata)
@@ -571,7 +582,6 @@ TInt RCookieManager::GetClientSideCookies( const TDesC8& aRequestUri,RPointerArr
             TInt err = GetCookieSharableFlagFromServer(cookieSharableFlag);
             cookieclientdata->SetCookieCookieSharableFlag(cookieSharableFlag);
            }
-           //cookieclientdata->SetInitFlag(ETrue);
            return cookieclientdata->GetClientSideCookies( aRequestUri,aCookies, aCookieFound );
          } else 
               {
@@ -586,6 +596,20 @@ TInt RCookieManager::GetClientSideCookies( const TDesC8& aRequestUri,RPointerArr
                }
     CLOG( ( EClient, 0, _L( "<- RCookieManager::GetClientSideCookies" ) ) );
     return KErrNone;
+    }
+
+RCookieManager::TCookieMgrInternalStruct::~TCookieMgrInternalStruct()
+    {
+    delete iCookieClientDataArray;
+    }
+
+TInt RCookieManager::TCookieMgrInternalStruct::Init()
+    {
+    iCookieClientDataArray = CCookieClientDataArray::New();
+    if (iCookieClientDataArray)
+        return KErrNone;
+    return KErrNoMemory;
+        
     }
 
 // End of file

@@ -26,21 +26,14 @@ public:
     /* Constructor 
      * 
      */
-    static CCookieClientDataArray* GetInstance();
-    
-    /* Reference Count method
-     * 
-     */
-    inline void Ref(){++iRefCount;}
-    
-    /*Dereference count method and will delete the CCookieClientDataArray object once the iRefCount is zero
-     * 
-     */
-    void DeRef();
-    
-    /* Destructor
-     * 
-     */
+
+     static CCookieClientDataArray* New();
+
+	/* Initialization
+     *
+	 */
+	void Init();
+         
     ~CCookieClientDataArray();
     
     /* Constructor
@@ -104,6 +97,7 @@ public:
 protected:
     
 private:
+
     /* Constructor
      * 
      */
@@ -118,7 +112,6 @@ public:
 protected:
     
 private:
-    TInt iRefCount;
     RPointerArray<CCookieClientData>* iCookieClientData;
     };
 

@@ -24,6 +24,7 @@
 #ifndef __INETURI_H__
 #define __INETURI_H__
 
+#include <ineturilistdef.h>
 
 class CInetUriImpl;
 class CInetUriProperties;

@@ -20,49 +20,30 @@
 //Constatnts
 const TInt KCookieArrayGranularity = 10;
 
+
 // ---------------------------------------------------------
-// CCookieClientDataArray::GetInstance
-// ---------------------------------------------------------
-//
-CCookieClientDataArray* CCookieClientDataArray::GetInstance()
-    {
-    CLOG( ( EClient, 0, _L( "-> CCookieClientDataArray::GetInstance" ) ) );
-    CCookieClientDataArray *clientInstance = static_cast<CCookieClientDataArray*> (Dll::Tls());
-    if (!clientInstance)
-        {
-        clientInstance = new (ELeave) CCookieClientDataArray();
-            Dll::SetTls(clientInstance);
-        }
-    CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::GetInstance instance = %x" ),clientInstance ) );
-    return clientInstance;
-    }
-// ---------------------------------------------------------
-// CCookieClientDataArray::DeRef
+// CCookieClientDataArray::New
 // ---------------------------------------------------------
 //
-void CCookieClientDataArray::DeRef()
+
+CCookieClientDataArray* CCookieClientDataArray::New()
     {
-    CLOG( ( EClient, 0, _L( "-> CCookieClientDataArray::Deref" ) ) );
-    --iRefCount;
-    if (iRefCount <= 0)
-        {
-        delete iCookieClientData;
-        iCookieClientData = NULL;
-        Dll::SetTls(0);
-        CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::Deref deletes iCookieClientData" ) ) );
-        }
-    CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::Deref" ) ) );
+    CCookieClientDataArray* arrayInstance = new CCookieClientDataArray();
+	if (arrayInstance)
+		{
+		arrayInstance->Init();
+		}
+    return arrayInstance ;
     }
-// ---------------------------------------------------------
-// CCookieClientDataArray::ConstructL
-// ---------------------------------------------------------
-//
-CCookieClientDataArray::CCookieClientDataArray():iRefCount(0)
+
+CCookieClientDataArray::CCookieClientDataArray()
     {
-    CLOG( ( EClient, 0, _L( "-> CCookieClientDataArray::ConstructL" ) ) );
-    iCookieClientData = new (ELeave) RPointerArray<CCookieClientData>(KCookieArrayGranularity);
-    CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::ConstructL" ) ) );
     }
+
+void CCookieClientDataArray::Init()
+    {
+    iCookieClientData = new RPointerArray<CCookieClientData>(KCookieArrayGranularity);
+    }    
 
 // ---------------------------------------------------------
 // CCookieClientDataArray::~CCookieClientDataArray

@@ -213,14 +213,6 @@ CCookieManagerServer::~CCookieManagerServer()
     {
     CLOG( ( EServer, 0, _L( "-> CCookieManagerServer::~CCookieManagerServer" ) ) );
     iServerClosing = ETrue;
-
-    //	delete iPersistentCookies;
-
-	//delete iCookieFileName;
-
-	//iFs.Close();
-    iStringPool.Close();
-//	delete iCookiePacker;
     if(iCookieGroupDataArray)
         {
         delete iCookieGroupDataArray;
@@ -229,7 +221,7 @@ CCookieManagerServer::~CCookieManagerServer()
     delete iGroupIdArray;
 
     delete iCloseTimer;
-
+    iStringPool.Close();
     CLOG( ( EServer, 0, _L( "<-CCookieManagerServer::~CCookieManagerServer") ) );
     CLOG( ( EServer, 0, _L( "*****************" ) ) );
     }
@@ -314,8 +306,7 @@ void CCookieManagerServer::CloseSession()
         // e.g. 1 minute before doing so as starting a server is expensive
         // in many ways.
         CLOG( ( EServer, 0, _L( "Closing Server" ) ) );
-         //iPersistentCookies->RemoveNonPersistent();
-		iCloseTimer->After( KCookieCloseTime );
+        iCloseTimer->After( KCookieCloseTime );
         //just write cookies back to the file when browser is closed,
         //no need wait till cookie server is shutdown.
         //WriteCookiesToFile();

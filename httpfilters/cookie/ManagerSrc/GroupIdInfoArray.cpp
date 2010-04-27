@@ -281,7 +281,7 @@ TInt CGroupIdArray::GetGroupId(TUint32 aClientId,TUint32& aGroupId)
 
 TInt CGroupIdArray::GetGroupId(TUint32 aClientId,TUint32& aGroupId,TBool& aCookieSharableFlag)
     {
-    CLOG( ( EClient, 0, _L( "-> CGroupIdArray::GetGroupId aClientId = %x,aAppUid =%x" ), aClientId, aAppUid ) );
+    CLOG( ( EClient, 0, _L( "-> CGroupIdArray::GetGroupId aClientId = %x,aGroupId =%x" ), aClientId, aGroupId ) );
     TInt count = Count();
     TBool found(EFalse);
     

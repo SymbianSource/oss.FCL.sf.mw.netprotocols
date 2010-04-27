@@ -30,6 +30,8 @@
 #include <cookie.h>
 #include <cookieipc.h>
 
+//FORWARD Class Declaration
+class CCookieClientDataArray;
 // CLASS DECLARATION
 	
 /** 
@@ -135,17 +137,54 @@ class RCookieManager : public RSessionBase
 		
 		TInt DestroyCookiesFromMemory( TInt& aDeleteStatus );
 		
-		void StoreCookieAtClientSide( const CCookie* aCookie, const TDesC8& aUri,TUint32 aWidgetUid );
+		void StoreCookieAtClientSide( const CCookie* aCookie, const TDesC8& aUri,TUint32 aWidgetUid =0);
 		
 		TInt GetClientSideCookies( const TDesC8& aRequestUri,RPointerArray<CCookie>& aCookies
 		        ,TBool& aFound, TUint32 aWidgetUid );
 		TInt GetCookieSharableFlagFromServer(TBool& aCookieSharableFlag ) const;
-
-
+		
 	private :	// data members
-		RStringPool iStringPool;
+	    //internal data structure for supporting Client side caching.
+        class TCookieMgrInternalStruct
+               {
+               public:
+               /* Constructor
+                * 
+                */    
+               TCookieMgrInternalStruct(RStringPool aStringPool)
+               : iCookiePacker(aStringPool),
+               iCookieClientDataArray(NULL)
+               {          
+               }
+               
+               /* Destructor
+                * 
+                */
+               ~TCookieMgrInternalStruct();
+               
+               /* Get Cookiepacker instance
+                * 
+                */
+               inline TCookiePacker& GetCookiePacker(){return iCookiePacker;}
+               
+               /* Get Client Data Array Instance
+                * 
+                */
+               inline CCookieClientDataArray* GetCookieClientDataArray(){return iCookieClientDataArray;}
+               
+               /* Initialization method for Cookie Client Data Array
+                * 
+                */
+               TInt Init();
+               
+               private:
+               TCookiePacker iCookiePacker;
+               CCookieClientDataArray* iCookieClientDataArray;
+               };
 
-		TCookiePacker iCookiePacker;
+     RStringPool iStringPool;
+     TCookieMgrInternalStruct* iCookieMgrData;  
+		
 	};
 
 #endif //__COOKIEMANAGER_CLIENT_H__
