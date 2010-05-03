@@ -63,6 +63,7 @@ private:	// methods from MHttpResponse
 	virtual void OnResponseReceiveTimeOut ();
 	virtual TInt ReceiveTimeOutValue ();
 	TBool ResponseInformational ();
+	virtual void FlushBodyDataIfNotRead();
 
 private:	// methods from MHttpMessageParserObserver
 

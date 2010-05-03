@@ -157,12 +157,12 @@ void CTestEngine::LogIt(const TDesC& aComment)
 		}
 	}
 
-	void CTestEngine::StartTimer()
+	EXPORT_C void CTestEngine::StartTimer()
 			{
 			iStartTime = User::FastCounter();
 			}
 	
-	void CTestEngine::EndTimer(const TDesC& aComment)
+	EXPORT_C void CTestEngine::EndTimer(const TDesC& aComment)
 			{
 			iEndTime = User::FastCounter();
 			iTimeDifference = iEndTime-iStartTime;	

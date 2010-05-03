@@ -273,6 +273,7 @@ void CHttpFilterConnHandler::MHFRunL(RHTTPTransaction aTransaction,
             if (state == EIdle)
             {
               iObserver->GetStateL(KPSUidWcdmaStatusValue, wcdmaState);
+			  iObserver->GetStateL(KPSUidGprsStatusValue, gprsState);
               if (wcdmaState == EPSWcdmaSuspend  && gprsState == EPSGprsSuspend) //this should not meet all the time.
               {
                 // user sent request from "No coverage" area, so all outstanding transactions will 

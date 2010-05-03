@@ -32,7 +32,7 @@ MW_LAYER_SYSTEMINCLUDE
 
 SOURCEPATH      ../Src
 
-SOURCE	httpFilterConnHandler.cpp
+SOURCE	HttpFilterConnHandler.cpp
 SOURCE	HttpFilterConnHandlerMain.cpp
 
 SOURCE          httpfilterconnhandlerObserverPS.cpp

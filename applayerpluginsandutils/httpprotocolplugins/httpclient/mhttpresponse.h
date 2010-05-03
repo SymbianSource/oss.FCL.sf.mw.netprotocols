@@ -42,6 +42,8 @@ public:
 	virtual void FailTransactionL() = 0;
 	
 	virtual TBool ResponseInformational () =0;
+	
+	virtual void FlushBodyDataIfNotRead() =0;
 
 	};
 

@@ -1004,6 +1004,7 @@ void CHttpClientHandler::CancelTransactionHook(CProtTransaction& aTransaction)
 		// Transaction is still alive - ask its connection manager to cancel it.
 		MHttpRequest& request = static_cast<CHttpRequestComposer&>(aTransaction.TxData());
 		MHttpResponse& response = static_cast<CHttpResponseParser&>(aTransaction.RxData());
+		response.FlushBodyDataIfNotRead();
 		manager->CancelSubmission(request, response);
 		
 		// Connection is now cancelled - remove the connection manager from the

@@ -28,11 +28,11 @@ VENDORID        VID_DEFAULT
 #if defined(ARMCC)
 deffile EABI/HttpFilterCommon.def
 #elif defined( WINSCW )
-deffile Bwinscw/HTTPFILTERCOMMON.def
+deffile BWINSCW/HTTPFILTERCOMMON.DEF
 #elif defined( WINS )
 deffile Bwins/HttpFilterCommon.def
 #else
-deffile Bmarm/HTTPFILTERCOMMON.def
+deffile BMARM/HTTPFILTERCOMMON.DEF
 #endif
 
 
