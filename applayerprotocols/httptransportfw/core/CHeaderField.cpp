@@ -118,7 +118,9 @@ CHeaderFieldPart* CHeaderField::PartL(TInt aIndex)
 	if ((aIndex < NumPartsL()) && (aIndex >= 0))
 		return iParts[aIndex];
 	else
-		return NULL;
+		User::Leave(KErrNotFound);
+	
+	return NULL;
 	}
 
 EXPORT_C

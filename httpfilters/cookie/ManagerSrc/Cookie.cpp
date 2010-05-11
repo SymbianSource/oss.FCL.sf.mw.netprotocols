@@ -531,6 +531,12 @@ void CCookie::CopyFromL( const CCookie& aCopyFrom  )
         {
         SetAttribute( EExpires, attributevalue, defaulted );
         }
+		
+	TTime nowTime;
+    nowTime.UniversalTime();
+    TDateTime attrTime = nowTime.DateTime();
+    THTTPHdrVal attributeVal( attrTime );
+    SetAttribute( EDate, attributeVal, defaulted );
 
     //SetCookie2( aCopyFrom.FromCookie2() );
     // Other properties

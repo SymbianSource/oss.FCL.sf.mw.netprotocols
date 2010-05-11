@@ -79,6 +79,7 @@ private:
 	void ResetTimeElapsed();
 	void DisplayTimeElapsed();
 	//
+	void TestDecodeEncodeCacheControlL();
 	void TestEncodeAcceptL();
 	void TestEncodeAcceptCharsetL();
 	void TestEncodeAuthorizationL();
