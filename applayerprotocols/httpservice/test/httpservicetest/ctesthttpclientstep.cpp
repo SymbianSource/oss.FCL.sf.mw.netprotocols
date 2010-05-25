@@ -52,7 +52,6 @@ CTestHttpClientStep::~CTestHttpClientStep()
 // TEF virtuals
 TVerdict CTestHttpClientStep::doTestStepPreambleL()
     {
-    TInt status;
     iActiveScheduler = new (ELeave) CActiveScheduler();
     CActiveScheduler::Install(iActiveScheduler);
     iTestParamArray = new(ELeave) CHttpClientTestParamArray;
@@ -66,7 +65,7 @@ TVerdict CTestHttpClientStep::doTestStepPreambleL()
     connPref.SetIapId(1);
     connPref.SetNetId(0);
     iHttpConnInfo = iHttpClient->HttpNetworkConnection();
-    status = iHttpConnInfo->Start();
+    User::LeaveIfError(iHttpConnInfo->Start());
     THttpHeaderValueVariant variant(KUserAgent());
     if(iHttpClient->AddRequestHeader(HTTP::EUserAgent, variant))
         {

@@ -20,9 +20,6 @@
 #include "chttpclienttestparams.h"
 #include <escapeutils.h>
 
-const TUint KCarriageReturn = '\r';
-const TUint KLineFeed       = '\n';
-const TUint KSpace          = ' ';
 
 CLocalTestServerStreamManager* CLocalTestServerStreamManager::NewL(CHTTPTestUtils& aTestUtils, MInputStream* aInStream, MOutputStream* aOutStream, CHttpClientTestParamArray& aTestParamArray)
 	{

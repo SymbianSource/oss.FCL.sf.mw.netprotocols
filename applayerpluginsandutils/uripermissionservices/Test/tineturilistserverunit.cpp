@@ -100,11 +100,11 @@ LOCAL_C void DeleteDatabase ()
 	RSqlDatabase::Delete ( KDatabaseName() );		
 	}
 
-LOCAL_C void TestUriListInitializerL ()
+/*LOCAL_C void TestUriListInitializerL ()
 	{
 	gListInterface = CUriListInterface::NewL ();
 //	delete listInterface;
-	}
+	}*/
 
 LOCAL_C CInetUriImpl* CreateUriL ( const TDesC8& aUri, TListType aListType, const TDesC8& aFavouriteName )
 	{
@@ -183,10 +183,10 @@ LOCAL_C CInetUriImpl* OpenUriL ( const TDesC8& aUri )
 	return uri;	
 	}
 
-LOCAL_C void CountUriL ()
+/*LOCAL_C void CountUriL ()
 	{
 	gTestWrapper->TEST ( gListInterface->CountUriL ( InetUriList::EBrowser, InetUriList::EWhiteList ) == 1 );
-	}
+	}*/
 	
 LOCAL_C void MatchUris ( const CInetUriImpl& aUri, const CInetUriImpl& aUri2 )
 	{
@@ -240,10 +240,11 @@ LOCAL_C void DoStorageTestsL ()
 	RemoveTestL ( uri3, KErrNone );
 	CInetUriImpl* uri4 = NULL;
 	TRAP ( err, uri4 = OpenUriL ( KTestUri() ) );
+	CleanupStack::PushL ( uri4 );
 	__LEAVEIFOOM__
 	gTestWrapper->TEST ( err == KErrUriNotFound );
 	
-	CleanupStack::PopAndDestroy (4); //uri, uri2, uri3, gListInterface		
+	CleanupStack::PopAndDestroy (5); //uri, uri2, uri3, uri4, gListInterface		
 	}
 
 LOCAL_C void AddMoreUrisTestL ()

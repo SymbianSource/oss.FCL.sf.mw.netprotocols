@@ -16,9 +16,7 @@
 #include <f32file.h>  
 #include "ctesthttpserviceauthentication.h"
 
-_LIT(KAuthURL, "Passing credentials for URL %S, realm %S\n");
-_LIT(KAuthType, "Using %S authentication\n");
-  
+
 CTestHttpServiceAuthentication::~CTestHttpServiceAuthentication()
     {  
     }

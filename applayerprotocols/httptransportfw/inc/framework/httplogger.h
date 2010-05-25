@@ -16,7 +16,7 @@
 /**
  @file httplogger.h
  @warning : This file contains Rose Model ID comments - please do not delete
- @publishedPartner
+ @publishedAll
  @released
 */
 
@@ -33,7 +33,7 @@ class THttpLogger : public TDesOverflow
 /** 
 A utility used in HTTP for logging in debug builds.  Log files are placed in the
 directory %EPOCROOT%/epoc32/wins/c/logs/http
-@publishedPartner
+@publishedAll
 @released
 */
 	{

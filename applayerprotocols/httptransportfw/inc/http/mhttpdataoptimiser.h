@@ -23,7 +23,7 @@
 
 
 /**
-@publishedPartner
+@publishedAll
 @released
 */
 class MHttpDataOptimiser
