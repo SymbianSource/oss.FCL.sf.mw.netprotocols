@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -90,7 +90,7 @@ class CHttpClientTransaction : public CBase
 	
 	private:
 	// Reserved for future use.
-	inline virtual void Reserved();
+	inline virtual void Reserved1();
 	inline virtual void Reserved2();
 	
 	protected:
@@ -101,11 +101,10 @@ class CHttpClientTransaction : public CBase
 	CHttpClientTransactionImpl* iHttpClientTrans;
 	};
 
-// Reserved for future use.
-inline void CHttpClientTransaction::Reserved()
-	{
-	}
-	
+inline void CHttpClientTransaction::Reserved1()
+    {
+    }
+
 inline void CHttpClientTransaction::Reserved2()
 	{
 	}

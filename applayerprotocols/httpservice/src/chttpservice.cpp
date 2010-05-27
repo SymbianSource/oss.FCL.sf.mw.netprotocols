@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -15,7 +15,9 @@
 
 #include "chttpservice.h"
 #include "httpclientutils.h"
-
+#include "chttpclientauthentication.h" 
+#include "mhttpserviceauthentication.h" 
+#include "chttpnetworkconnectioninfo.h"
 const TInt KMaxNoOfConnections = 6;
 const TInt KMaxTransToPipeline = 5;
 
@@ -43,6 +45,14 @@ EXPORT_C CHttpService::~CHttpService()
 	    }
 	delete iHttpServiceStruct;
 	}
+
+/**
+ * Destructor of the inner class CHttpServiceStruct
+ */ 
+CHttpService::CHttpServiceStruct::~CHttpServiceStruct()
+    {
+    delete iHttpClientAuthentication;
+    }
 
 /**
  * Retrieves the equivalent string for a give string ID from the 
@@ -212,6 +222,15 @@ EXPORT_C TInt CHttpService::AddCustomRequestHeader(const TDesC8& aHeaderName, co
 	return err;
 	}
 
+EXPORT_C TInt CHttpService::SetAuthentication(MHTTPServiceAuthentication* aCallback)
+    {
+    TInt error = KErrGeneral;
+    iHttpServiceStruct->iHttpClientAuthentication = CHttpClientAuthentication::New(iHttpServiceStruct->iHttpSession, aCallback);
+    if(iHttpServiceStruct->iHttpClientAuthentication)
+        error = KErrNone;
+    return error;
+    }
+
 /**
  * Constructor
  */
@@ -229,3 +248,9 @@ void CHttpService::ConstructL()
     SetMaxTransactionsToPipeline(KMaxTransToPipeline);    
 	}
 	
+EXPORT_C CHttpNetworkConnection* CHttpService::HttpNetworkConnection()
+    {
+    CHttpNetworkConnection *httpNetworkConn = CHttpNetworkConnection::New();
+    httpNetworkConn->SetHttpService(this);
+    return httpNetworkConn;
+    }

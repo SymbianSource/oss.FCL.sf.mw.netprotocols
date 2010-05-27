@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -19,9 +19,12 @@
 #include "ctestclienthttppost.h"
 #include <escapeutils.h>
 #include <thttphdrval.h>
+#include <commdbconnpref.h>
 #include "httptestutils.h"
 #include "clocaltestserver.h"
 #include "chttpclienttestparams.h"
+#include "ctesthttpserviceauthentication.h"
+#include "chttpnetworkconnectioninfo.h"
 
 _LIT(KTestCaseName, "TestCaseName");
 _LIT8(KUserAgent, "HTTP Client API Test");
@@ -43,19 +46,27 @@ CTestHttpClientStep::~CTestHttpClientStep()
     delete iTestUtils;    
     delete iTestParamArray;
     delete iActiveScheduler;
+    delete iTestHttpServiceAuthentication;
     }
 
 // TEF virtuals
 TVerdict CTestHttpClientStep::doTestStepPreambleL()
     {
+    TInt status;
     iActiveScheduler = new (ELeave) CActiveScheduler();
     CActiveScheduler::Install(iActiveScheduler);
     iTestParamArray = new(ELeave) CHttpClientTestParamArray;
     iTestUtils = CHTTPTestUtils::NewL(KTestHttpClientAPITestTitle());
-    iTestUtils->InitCommsL();
+    
     
     iTestServer = CLocalTestServer::NewL(*iTestUtils, *this, *iTestParamArray);
     iHttpClient = CHttpService::NewL();
+    TCommDbConnPref connPref;
+    connPref.SetDialogPreference(ECommDbDialogPrefDoNotPrompt);
+    connPref.SetIapId(1);
+    connPref.SetNetId(0);
+    iHttpConnInfo = iHttpClient->HttpNetworkConnection();
+    status = iHttpConnInfo->Start();
     THttpHeaderValueVariant variant(KUserAgent());
     if(iHttpClient->AddRequestHeader(HTTP::EUserAgent, variant))
         {
@@ -99,6 +110,12 @@ TVerdict CTestHttpClientStep::doTestStepL()
             }
         }
     
+    if(param->IsAuthenticationReqd())
+        {
+        iTestHttpServiceAuthentication = new CTestHttpServiceAuthentication();
+        User::LeaveIfError(iHttpClient->SetAuthentication(iTestHttpServiceAuthentication));
+        }
+  
     if(param->Method().CompareF(KGetMethod) == 0)
         {
         if(param->OnlineTest())
@@ -126,12 +143,10 @@ TVerdict CTestHttpClientStep::doTestStepL()
         {
         iHttpTrans->SetNoRetry();
         }
-    
     if(param->ResponseTimeoutEnable())
         {
         iHttpTrans->SetResponseTimeout(10);
         }
-    
     const RPointerArray<CHeaderInfo>& info = param->RequestHeaderInfos();
     for(TInt i = 0; i < info.Count(); ++i)
         {
@@ -161,7 +176,7 @@ TVerdict CTestHttpClientStep::doTestStepL()
                     THTTPHdrVal::TQConv q(value);
                     TInt val2 = q;
                     THttpHeaderValueVariant variant2(val2);
-                    // Set the header with the param
+                    /// Set the header with the param
                     iHttpTrans->AddRequestHeader(headerName, variant, paramName, variant2);
                     }
                 }

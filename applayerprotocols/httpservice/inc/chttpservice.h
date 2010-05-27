@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -20,7 +20,7 @@
 #include <http.h>
 #include <in_sock.h>
 #include "httpheaderiter.h"
-
+class CHttpNetworkConnection;
 /**
  * CHttpService represent a handle to the HTTP service instance for a set of client 
  * HTTP transactions[a request and its equivalent response]. The application can 
@@ -31,10 +31,12 @@
  * @publishedAll
  * @prototype 
  */
-
+class CHttpClientAuthentication;
+class MHTTPServiceAuthentication; 
 class CHttpService : public CBase
 	{
 	friend class CHttpClientTransactionImpl;	
+	friend class CHttpNetworkConnection;
 	public:
 	
 	IMPORT_C static CHttpService* NewL();
@@ -54,16 +56,21 @@ class CHttpService : public CBase
 	IMPORT_C TInt AddRequestHeader(TInt aHeaderId, const THttpHeaderValueVariant& aHeaderValue);		
 	IMPORT_C TInt AddCustomRequestHeader(const TDesC8& aHeaderName, const TDesC8& aHeaderValue);
 	
+	IMPORT_C TInt SetAuthentication(MHTTPServiceAuthentication* aCallback);
+	
+	IMPORT_C CHttpNetworkConnection* HttpNetworkConnection();
 	
 	private:
 	CHttpService();
 	void ConstructL();	
 	
-	class CHttpServiceStruct : public CBase
+	NONSHARABLE_CLASS(CHttpServiceStruct) : public CBase
 		{
 		public:
-		RHTTPSession	 iHttpSession;
-		RHTTPHeaders     iSessionHeaders; 
+		    ~CHttpServiceStruct();
+		RHTTPSession                  iHttpSession;
+		RHTTPHeaders                  iSessionHeaders; 
+		CHttpClientAuthentication*    iHttpClientAuthentication;
 		};
 	private:
 	   RHTTPSession Session()
@@ -73,7 +80,7 @@ class CHttpService : public CBase
 	private:
 	
 	
-	   CHttpServiceStruct* iHttpServiceStruct; // Implementation struct
+	   CHttpServiceStruct*         iHttpServiceStruct; // Implementation struct
 	};
 
 #endif // __CHTTPSERVICE_H__
