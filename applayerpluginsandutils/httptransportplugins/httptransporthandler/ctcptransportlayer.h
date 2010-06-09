@@ -103,7 +103,11 @@ private:	// methods from MCommsInfoProvider
 
 	virtual TBool HasConnection();
 	
-	void StartDefaultCommsConnectionL ();
+	virtual void StartDefaultCommsConnectionL ();
+
+	virtual void HostResolverFromCache(RHostResolver& aResolver);
+	
+	virtual void AddToHostResolverCache(RHostResolver& aResolver);
 
 private:	// methods
 
@@ -118,6 +122,10 @@ private:	// methods
 	inline MSocketControllerStore& SocketControllerStore();
 
 	inline MCommsInfoProvider& CommsInfoProvider();
+	
+	void EmptyHostResolverCacheIfNeeded();
+	
+	void EmptyHostResolverCache();
 	
 private:	// attributes
 
@@ -156,6 +164,8 @@ private:	// attributes
 /** The socket controller store
 */
 	RPointerArray<CSocketController>	iControllerStore;
+	
+	RArray<RHostResolver>               iHostResolverCache;
 	
 	TBool iPriority;
 

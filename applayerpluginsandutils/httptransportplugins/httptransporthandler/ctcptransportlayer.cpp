@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2001-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -25,6 +25,9 @@
 
 _LIT(KTcpProtName, "tcp");
 
+const TInt KMaxHostResolverCacheCount = 8; // 8 Should be sufficient here as we can have maximum of 8 connections
+                                           // at anytime to the host. And it is not neccassarly mean that 8 host resolvers
+                                           // will be operating simulataneously. 
 CTcpTransportLayer* CTcpTransportLayer::NewL(TAny* aTransportConstructionParams)
 /**	
 	The factory constructor.
@@ -54,7 +57,12 @@ CTcpTransportLayer::~CTcpTransportLayer()
 
 	// Delete the socket controllers
 	iControllerStore.ResetAndDestroy();
-
+	
+	
+	// Empty and close the host resolver cache.
+	EmptyHostResolverCache();
+	iHostResolverCache.Close();
+	
 	// Close the socket server session if owned
 	if( iOwnsConnection )
 		{
@@ -73,7 +81,7 @@ CTcpTransportLayer::~CTcpTransportLayer()
 	}
 
 CTcpTransportLayer::CTcpTransportLayer(MConnectionPrefsProvider& aTransLayerObserver)
-: CHttpTransportLayer(), iConnectionPrefsProvider(aTransLayerObserver)
+: CHttpTransportLayer(), iConnectionPrefsProvider(aTransLayerObserver), iHostResolverCache(KMaxHostResolverCacheCount)
 /**	
 	Constructor.
 */
@@ -191,6 +199,7 @@ MSocketConnector& CTcpTransportLayer::ConnectL(MSocketConnectObserver& aObserver
                     // Socket and controller will be deleted by itself
                     }
                 iConnectorStore.ResetAndDestroy();
+                EmptyHostResolverCacheIfNeeded();
                 }
             }	        
         }		
@@ -332,6 +341,9 @@ void CTcpTransportLayer::ConnectionCompleted(CSocketConnector& aOrphanedSocketCo
 	// Remove the socket connector from the store and compress the store.
 	iConnectorStore.Remove(index);
 	iConnectorStore.Compress();
+	
+	// Empty the host resolver cache if needed
+	EmptyHostResolverCacheIfNeeded();
 	}
 
 /*
@@ -355,6 +367,9 @@ void CTcpTransportLayer::SocketControllerShutdown(CSocketController& aOrphanedSo
 	// Remove the socket controller from the store and compress the store.
 	iControllerStore.Remove(index);
 	iControllerStore.Compress();
+	
+   // Empty the host resolver cache if needed
+    EmptyHostResolverCacheIfNeeded();
 	}
 
 /*
@@ -474,4 +489,48 @@ TBool CTcpTransportLayer::HasConnection()
 	return ( iConnection != NULL );
 	}
 
+void CTcpTransportLayer::HostResolverFromCache(RHostResolver& aResolver)
+    {
+    TInt count = iHostResolverCache.Count();
+    if(count > 0)
+        {
+        RDebug::Printf("Returning the host resolver from cache...");
+        // Returns the last host resolver that is added
+        aResolver = iHostResolverCache[count - 1];
+        iHostResolverCache.Remove(count - 1); // Remove from the cache.        
+        }
+    }
 
+void CTcpTransportLayer::AddToHostResolverCache(RHostResolver& aResolver)
+    {
+    if(iHostResolverCache.Append(aResolver) != KErrNone)
+        {
+        aResolver.Close();
+        }
+    }
+
+void CTcpTransportLayer::EmptyHostResolverCacheIfNeeded()
+    {
+    // Remove the host resolver if
+    // 1/ if the Connector store is empty and
+    // 2/ if the socket controller is empty
+    // This is important to get the mobility and one click connectivity cases working
+    // Otherwise the inconsistent behaviour will result as the RConnection & RSocketServ can be handled
+    // entirely outside of the HTTP stack, ie; from the application
+    if(iConnectorStore.Count() == 0 && iControllerStore.Count() == 0)
+        {
+        EmptyHostResolverCache();
+        }
+    }
+
+void CTcpTransportLayer::EmptyHostResolverCache()
+    {
+    TInt count = iHostResolverCache.Count();
+    while(count > 0)
+        {
+        // Close the RHostResolver and remove from the array
+        iHostResolverCache[count - 1].Close();
+        iHostResolverCache.Remove(--count);
+        }
+    iHostResolverCache.Compress();
+    }
