@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -87,6 +87,7 @@ void CHttpHdrCodecTest::RunTestsL()
 	ResetTimeElapsed();
 
 	// Run tests on parsed -> OTA data conversions, for each header implemented
+	TestDecodeEncodeCacheControlL();
 	TestEncodeAcceptL();
 	TestEncodeAcceptCharsetL();
 	TestEncodeAuthorizationL();
@@ -291,6 +292,53 @@ void CHttpHdrCodecTest::TestDuplicateHeaderDecodingL(RStringF aHeader,
 	iEngine->Utils().LogIt ( _L ("\nTestDuplicateHeaderDecodingL test success."));
 	}
 
+
+void CHttpHdrCodecTest::TestDecodeEncodeCacheControlL()
+	{
+	_LIT8(KCacheControlOTAVal, "private, max-age=360, must-revalidate");
+	RStringF cacheControl = iStrP.StringF(HTTP::ECacheControl,RHTTPSession::GetTable());
+	RStringF maxAge = iStrP.StringF(HTTP::EMaxAge,RHTTPSession::GetTable());
+	RHTTPHeaders hdr = GetHeadersLC();
+	hdr.SetRawFieldL(cacheControl, KCacheControlOTAVal, KFieldSeparator);
+	if(hdr.FieldPartsL(cacheControl) != 3)
+	    {
+        iEngine->Utils().LogIt(_L("\nCache-Control OTA comparison  failed -> [parts != 3]"));
+        User::Leave(KErrCorrupt);
+	    }
+	THTTPHdrVal hVal;
+	User::LeaveIfError(hdr.GetField(cacheControl,0,hVal));
+	if(hVal.StrF().DesC().Compare(_L8("private")) != 0)
+	    {
+	    iEngine->Utils().LogIt(_L("\nCache-Control OTA comparison  failed -> [private]"));
+	    User::Leave(KErrCorrupt);
+	    }
+	THTTPHdrVal paramVal;
+	User::LeaveIfError(hdr.GetParam(cacheControl, maxAge, paramVal, 1));
+	if(paramVal.Int() != 360)
+	    {
+	    iEngine->Utils().LogIt(_L("\nCache-Control OTA comparison  failed -> [300]"));
+	    User::Leave(KErrCorrupt);
+	    }
+	THTTPHdrVal hVal2;
+	User::LeaveIfError(hdr.GetField(cacheControl,2,hVal2));
+    if(hVal2.StrF().DesC().Compare(_L8("must-revalidate")) != 0)
+        {
+        iEngine->Utils().LogIt(_L("\nmust-revalidate OTA comparison  failed -> [private, max-age=300, must-revalidate]"));
+        User::Leave(KErrCorrupt);
+        }
+	
+	TPtrC8 rawHeader;
+	hdr.GetRawField(cacheControl, rawHeader);
+	if(rawHeader.CompareF(KCacheControlOTAVal) != 0)
+	    {
+	    iEngine->Utils().LogIt(_L("\nmust-revalidate OTA comparison  failed -> [300]"));
+	    User::Leave(KErrCorrupt);
+	    }
+	
+	ReleaseHeaders();
+	
+	iEngine->Utils().LogIt ( _L ("\nTestDecodeEncodeCacheControlL test success."));
+	}
 
 void CHttpHdrCodecTest::TestEncodeAcceptL()
 	{

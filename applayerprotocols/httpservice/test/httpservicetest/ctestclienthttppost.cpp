@@ -18,7 +18,6 @@
 #include <httpstringconstants.h>
 #include "mlocaltestserverobserver.h"
 #include "chttpclienttestparams.h"
-_LIT(KTestHttpClientAPITestTitle, "HTTP client API Unit Test Harness");
 _LIT(KTransferProgress, "File size: %d kb , Uploaded so far: %d kb"); 
 
 CTestClientHttpSimplePost* CTestClientHttpSimplePost::NewL(CHttpClientTestParams& aParams, MLocalTestServerObserver& aObserver, CHttpService& aClient, const TDesC8& aUri, CHTTPTestUtils& aUtils)

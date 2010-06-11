@@ -538,7 +538,7 @@ void CPipeliningTestEngine::RunTestL(const TDesC& aSecName, MPipeliningTestCase&
 	iTestUtils->StartTestL( aTestCase.TestCaseName() );
 	__TESTNAME(aTestCase.TestCaseName());
 	
-	CPipeliningTestClient* testClient;
+	CPipeliningTestClient* testClient = NULL;
 	if(aSecName.FindF(_L("TSWDEFECT")) ==0)
 	    {
 	    RDebug::Print(_L("TSWDEFECT"));
@@ -546,6 +546,7 @@ void CPipeliningTestEngine::RunTestL(const TDesC& aSecName, MPipeliningTestCase&
 	    if(aTestCase.TestCaseName().CompareF(KTestCaseLocalAndRemoteHost) == 0)
 	        {
 	        testClient = CTestCaseLocalAndRemoteHost::NewL(*iTestUtils, *this);
+	        CleanupStack::PushL(testClient);
 	        }
 	    else
 	        {
@@ -554,10 +555,10 @@ void CPipeliningTestEngine::RunTestL(const TDesC& aSecName, MPipeliningTestCase&
 	    }
 	else
 	    {
-	    testClient = CPipeliningTestClient::NewL(*iTestUtils, *this);    
+	    testClient = CPipeliningTestClient::NewL(*iTestUtils, *this);   
+	    CleanupStack::PushL(testClient);
 	    }	
-	CleanupStack::PushL(testClient);
-	
+		
 	testClient->SetTestCase(&aTestCase);
 	iTestServer->SetTestCase(&aTestCase);
 	testClient->StartClientL();

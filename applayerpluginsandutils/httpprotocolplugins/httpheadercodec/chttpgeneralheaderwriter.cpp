@@ -1,4 +1,4 @@
-// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -22,6 +22,7 @@
 #include "CHeaderField.h"
 
 _LIT8(KSemiSpaceSep,"; ");
+_LIT8(KCommaSpaceSep,", ");
 
 CHttpGeneralHeaderWriter* CHttpGeneralHeaderWriter::NewL(RStringPool aStringPool)
 /** 
@@ -91,7 +92,53 @@ void CHttpGeneralHeaderWriter::EncodeCacheControlL(RHeaderField& aHeader) const
 				directly
 */
 	{
-	DoTokenCsvListHeaderL(aHeader, KErrHttpEncodeCacheControl);
+	THeaderFieldPartIter iter = aHeader.PartsL();
+    iter.First();
+	if (iter.AtEnd())
+	   User::Leave(KErrHttpEncodeCacheControl);
+	
+	aHeader.BeginRawDataL();
+	do
+	    {
+	    const CHeaderFieldPart* part = iter();
+	    if(part == NULL)
+	        User::Leave(KErrHttpEncodeCacheControl);	    
+	    THTTPHdrVal ptVal = part->Value();
+	    if (ptVal.Type() != THTTPHdrVal::KStrFVal)
+	        User::Leave(KErrHttpEncodeCacheControl);
+	    const TDesC8& val = ptVal.StrF().DesC(); 
+	    if(val.Length() > 0)
+	        {
+	        aHeader.WriteRawDataL(val);
+	        }
+	    else
+	        {
+	        // Now we must have part as the strF value is KNulLDesC8
+	        THeaderFieldParamIter iter2 = part->Parameters();
+	        if(!iter2.AtEnd())
+	            {
+	            const CHeaderFieldParam* param = iter2();
+	            aHeader.WriteRawDataL(param->Name().DesC());
+	            aHeader.WriteRawDataL('=');
+	            THTTPHdrVal val2 = param->Value();
+	            if(val2.Type() == THTTPHdrVal::KTIntVal)
+	                {
+	                TBuf8<32> desc;
+	                desc.AppendNum(val2.Int());
+	                aHeader.WriteRawDataL(desc);
+	                }
+	            else if(val2.Type() == THTTPHdrVal::KStrFVal)
+	                {
+	                aHeader.WriteRawDataL(param->Name().DesC());
+	                }	            
+	            }
+	        }
+	    ++iter;
+	    if(!iter.AtEnd())
+	        aHeader.WriteRawDataL(KCommaSpaceSep());
+	    
+	    }while(!iter.AtEnd());
+	aHeader.CommitRawData();
 	}
 
 void CHttpGeneralHeaderWriter::EncodeConnectionL(RHeaderField& aHeader) const

@@ -18,17 +18,15 @@
 #include <http/rhttpresponse.h>
 #include <httperr.h>
 #include <httpstringconstants.h>
-#include <imcvcodc.h>      //for base64 en/decoding
 #include <bautils.h>
 #include <e32math.h>
 #include <hash.h>
 #include <e32const.h>
-#include <tconvbase64.h>
+#include <tconvbase64.h>  //for base64 en/decoding
 #include "testhttpfilter.h"
 _LIT8( KTESTHTTPFilterName, "TestHttp");
 _LIT8( KAuthenticationInfoStr, "Authentication-Info" );
 _LIT8( KUserAgentProductToken,"3gpp-gba");
-_LIT8( KColon, ":" );
 const TInt KB64KeySize = 64;
 _LIT(KTestHttpFilter, "TEST HTTP FILTER ");
 
@@ -243,7 +241,6 @@ void CTestFilter::CheckHeadersL(  RHTTPTransaction& aTrans )
 	
 	   TInt headerPart=0;    	
 	   THTTPHdrVal headerVal;
-       TInt cred = KErrNotFound;
        RStringF wwwAuthHeader = iStringPool.StringF(HTTP::EWWWAuthenticate,RHTTPSession::GetTable());
 	   RHTTPHeaders headers(aTrans.Response().GetHeaderCollection());
 
@@ -320,8 +317,6 @@ void CTestFilter::DoSubmitL( RHTTPTransaction aTransaction )
 	if(!found)
 	    hdr.SetFieldL(fieldname, iUserAgent);
 	
-    TInt cred = KErrNotFound;
-    
     if( iHaveCredentials )
         {
         TBuf8<KB64KeySize> keyBase64(_L8("Aladdin")); 

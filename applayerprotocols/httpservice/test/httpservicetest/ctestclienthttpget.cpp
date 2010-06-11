@@ -20,7 +20,6 @@
 #include <tinternetdate.h>
 _LIT8(KAcceptHeader, "Accept");
 _LIT8(KAcceptValue, "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
-_LIT(KTestHttpClientAPITestTitle, "HTTP client API Unit Test Harness");
 _LIT(KTransferProgress, "File size: %d kb , Downloaded so far: %d kb");
 
 CTestClientHttpSimpleGet* CTestClientHttpSimpleGet::NewL(CHttpClientTestParams& aParams, MLocalTestServerObserver& aObserver, CHttpService& aClient, const TDesC8& aUri, CHTTPTestUtils* aUtils)

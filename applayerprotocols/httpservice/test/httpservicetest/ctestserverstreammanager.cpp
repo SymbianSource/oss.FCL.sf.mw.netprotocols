@@ -18,10 +18,8 @@
 #include <moutputstream.h>
 #include "httptestutils.h"
 #include "chttpclienttestparams.h"
+#include <escapeutils.h>
 
-const TUint KCarriageReturn = '\r';
-const TUint KLineFeed       = '\n';
-const TUint KSpace          = ' ';
 
 CLocalTestServerStreamManager* CLocalTestServerStreamManager::NewL(CHTTPTestUtils& aTestUtils, MInputStream* aInStream, MOutputStream* aOutStream, CHttpClientTestParamArray& aTestParamArray)
 	{
@@ -68,19 +66,27 @@ void CLocalTestServerStreamManager::ReceivedDataIndL(const TDesC8& aBuffer)
 	    }
 	else
 	    {
-	    // Check to see if the buffer needs to grow
-        TInt maxLength  = iRequestStream->Des().MaxLength();
-        TInt reqdLength = iRequestStream->Length() + aBuffer.Length();
-	    if (reqdLength > maxLength)
+	    if(aBuffer.CompareF(iCurrentTestParam->EncodedAuthenticationRequest()) != 0)
 	        {
-	        HBufC8* largerBuffer = iRequestStream->ReAllocL(maxLength + aBuffer.Length());
-
-	        // Switch buffers. The old one was removed by ReAlloc.
-	        iRequestStream = largerBuffer;
+            // Check to see if the buffer needs to grow
+            TInt maxLength  = iRequestStream->Des().MaxLength();
+            TInt reqdLength = iRequestStream->Length() + aBuffer.Length();
+            if (reqdLength > maxLength)
+                {
+                HBufC8* largerBuffer = iRequestStream->ReAllocL(maxLength + aBuffer.Length());
+    
+                // Switch buffers. The old one was removed by ReAlloc.
+                iRequestStream = largerBuffer;
+                }
+    
+            // Can now append confidently
+            iRequestStream->Des().Append(aBuffer);   
+            }
+	    else
+	        {
+	        iRequestStream = aBuffer.AllocL();
+	      	iCurrentTestParam->SetAuthReqRes();
 	        }
-
-	    // Can now append confidently
-	    iRequestStream->Des().Append(aBuffer);
 	    }
 	   iInputStream->ReceivedDataRes();	    
 	ProcessRequestStreamL();
