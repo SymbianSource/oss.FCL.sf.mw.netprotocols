@@ -25,7 +25,7 @@ UID	0x1000008D 	0x101F8711
 CAPABILITY CAP_GENERAL_DLL
 VENDORID        VID_DEFAULT
 
-#if defined(ARMCC)
+#if defined(EABI)
 deffile EABI/HttpFilterCommon.def
 #elif defined( WINSCW )
 deffile BWINSCW/HTTPFILTERCOMMON.DEF

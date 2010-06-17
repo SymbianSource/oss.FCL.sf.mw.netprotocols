@@ -51,7 +51,7 @@ LIBRARY		EUSER.LIB HTTP.LIB BAFL.LIB
 LIBRARY		INETPROTUTIL.LIB efsrv.lib 
 LIBRARY		SysUtil.lib
 
-#if defined(ARMCC)
+#if defined(EABI)
         DEFFILE ../EABI/COOKIEMANAGERU_EKA2.def
 #elif defined( WINSCW )
         DEFFILE ../BWinsCw/COOKIEMANAGERU_EKA2.def
