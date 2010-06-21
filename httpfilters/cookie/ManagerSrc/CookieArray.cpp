@@ -1040,7 +1040,7 @@ void CCookieArray::ReserveL( TInt aNumberOfCookies )
 // ---------------------------------------------------------
 //
 TInt CCookieArray::GetCookies( const TDesC8& aRequestUri,
-                               RPointerArray<CCookie>& aCookies, TBool& aFound )// harendra: aFound is redundant
+                               RPointerArray<CCookie>& aCookies, TBool& aFound )
     {
     CLOG( ( ECookieArray, 0,
             _L( "-> CCookieArray::GetCookies for an URI" ) ) );
@@ -1092,7 +1092,7 @@ TInt CCookieArray::GetCookies( const TDesC8& aRequestUri,
                 PortMatch( requestPort, cookiePort ) &&
                 SecureMatch( requestScheme, *iCookies[i] ) )
                 {
-                CCookie* clone = CCookie::CloneL( *iCookies[i] );
+                CCookie* clone = CCookie::CloneL( *iCookies[i],requestDomain,requestPath,requestPort );
                 CleanupStack::PushL( clone );
                 err = aCookies.Append(clone);
                 CleanupStack::Pop(clone);

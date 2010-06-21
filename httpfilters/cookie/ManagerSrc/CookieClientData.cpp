@@ -9,7 +9,8 @@
 #include "cookie.h"
 #include "CookieArray.h"
 #include "CookieLogger.h"
-
+#include "CookieCommonConstants.h"
+#include <uri8.h>
 
 // ---------------------------------------------------------
 // CCookieGroupData::NewL
@@ -122,9 +123,29 @@ void CCookieClientData::StoreCookieAtClientSideL(const CCookie* aCookie,const TD
     {
     CLOG(( EClient, 0, _L("-> RCookieManager::StoreCookieAtClientSideL: aUri:%S"), &aUri ));
     //Creates a clone of the passed cookie objects as the ownership of this object is held by Clint of Cookie Manager Dll
+    TUriParser8 uriParser;
     
-    CCookie* clone = CCookie::CloneL( *aCookie );
-    CleanupStack::PushL( clone );
+    TInt err = uriParser.Parse( aUri );
+    CCookie* clone(NULL);
+    if (err !=KErrNone)
+        return;
+    else
+        {
+        // first get the details of the current requestUri,
+        // that is, Domain, Path and port
+        TPtrC8 requestPath( uriParser.IsPresent( EUriPath ) ?
+                            uriParser.Extract( EUriPath ) : KNullDesC8() );
+        TPtrC8 requestDomain( uriParser.IsPresent( EUriHost ) ?
+                            uriParser.Extract( EUriHost ) : KNullDesC8() );
+        TPtrC8 requestPort( uriParser.IsPresent( EUriPort ) ?
+                uriParser.Extract( EUriPort ) : KCookieDefaultRequestPort() );
+
+        clone = CCookie::CloneL( *aCookie,requestDomain,requestPath,requestPort);
+        CleanupStack::PushL( clone );
+        }
+
+    //CCookie* clone = CCookie::CloneL( *aCookie,requestDomain,requestPath);
+    //CleanupStack::PushL( clone );
   
     TInt index(0);
     CCookieArray* perscookiearray = CookieArray();

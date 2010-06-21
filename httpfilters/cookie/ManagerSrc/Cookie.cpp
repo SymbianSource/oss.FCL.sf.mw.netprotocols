@@ -181,11 +181,11 @@ EXPORT_C CCookie* CCookie::NewL( RStringPool aStringPool )
 // CCookie::NewL
 // ---------------------------------------------------------
 //
-CCookie* CCookie::CloneL( const CCookie& aCopy )
+CCookie* CCookie::CloneL( const CCookie& aCopy,const TDesC8& aDomain,const TDesC8& aPath, const TDesC8& aPort)
     {
     CCookie* self = new(ELeave) CCookie( aCopy.iStringPool );
     CleanupStack::PushL( self );
-    self->CopyFromL( aCopy );
+    self->CopyFromL( aCopy, aDomain, aPath, aPort);
     CleanupStack::Pop( self );
     return self;
     }
@@ -444,11 +444,13 @@ TInt CCookie::SetAttribute(  TCookieAttributeName aAttributeName,
 // CCookie::CopyFromL
 // ---------------------------------------------------------
 //
-void CCookie::CopyFromL( const CCookie& aCopyFrom  )
+void CCookie::CopyFromL( const CCookie& aCopyFrom, const TDesC8& aDomain, const TDesC8& aPath, const TDesC8& aPort  )
     {
     CLOG( ( ECookie, 0, _L( "-> CCookie::CopyFromL ") ) );
+    TBool defaultDiscard( EFalse );
     THTTPHdrVal attributevalue;
     TBool defaulted( EFalse );
+    iSetCookie2 = aCopyFrom.iSetCookie2;
     if ( aCopyFrom.Attribute( EName, attributevalue, defaulted ) != KErrNotFound )
         {
         if ( attributevalue.Type() != THTTPHdrVal::KStrVal )
@@ -463,6 +465,8 @@ void CCookie::CopyFromL( const CCookie& aCopyFrom  )
         else 
             {
             SetAttribute( EName, attributevalue, defaulted );    
+            const TPtrC8 pVal( attributevalue.Str().DesC() );
+            CLOG( ( ECookie, 0, _L8( "CCookie::CopyFromL - attribute EName Value : %S" ), &pVal ) );
             }
         }
 
@@ -479,69 +483,157 @@ void CCookie::CopyFromL( const CCookie& aCopyFrom  )
             }
          else
              {
-             SetAttribute( EValue, attributevalue, defaulted );             
+             SetAttribute( EValue, attributevalue, defaulted );
+             const TPtrC8 pVal( attributevalue.Str().DesC() );
+             CLOG( ( ECookie, 0, _L8( "CCookie::CopyFromL - attribute EValue Value : %S" ), &pVal ) );
              }
         }
-	if ( aCopyFrom.Attribute( EComment, attributevalue, defaulted ) != KErrNotFound )
+    if ( aCopyFrom.Attribute( EVersion, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( EComment, attributevalue, defaulted );
+        SetAttribute( EVersion, attributevalue, defaulted );    
+        SetFromNetscape( EFalse );
+        }
+    else
+        {
+        SetFromNetscape( ETrue );
         }
 
-	if ( aCopyFrom.Attribute( ECommentURI, attributevalue, defaulted ) != KErrNotFound )
+    if ( aCopyFrom.Attribute( EPath, attributevalue, defaulted ) != KErrNotFound )
         {
-        SetAttribute( ECommentURI, attributevalue, defaulted );
+         if ( attributevalue.Type() != THTTPHdrVal::KStrFVal )
+             {
+             SetAttribute( EPath, attributevalue, defaulted );    
+             }
         }
-
-	if ( aCopyFrom.Attribute( EDiscard, attributevalue, defaulted ) != KErrNotFound )
+    else
         {
-        SetAttribute( EDiscard, attributevalue, defaulted );
+        // defaulting
+        RStringF defPath = iStringPool.OpenFStringL( aPath );
+        THTTPHdrVal defPathVal( defPath );
+        SetAttribute( EPath, defPathVal, ETrue );// ignore the result 
+        defPath.Close();
         }
-
-	if ( aCopyFrom.Attribute( EDomain, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EDomain, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( EMaxAge, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EMaxAge, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( EPath, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EPath, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( EPort, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EPort, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( ESecure, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( ESecure, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( EVersion, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EVersion, attributevalue, defaulted );
-        }
-
-	if ( aCopyFrom.Attribute( EExpires, attributevalue, defaulted ) != KErrNotFound )
-        {
-        SetAttribute( EExpires, attributevalue, defaulted );
-        }
-		
-	TTime nowTime;
-    nowTime.UniversalTime();
-    TDateTime attrTime = nowTime.DateTime();
-    THTTPHdrVal attributeVal( attrTime );
-    SetAttribute( EDate, attributeVal, defaulted );
+    if ( aCopyFrom.Attribute( EDomain, attributevalue, defaulted ) != KErrNotFound )
+          {
+          if ( attributevalue.Type() != THTTPHdrVal::KStrFVal )
+              {
+              SetAttribute( EDomain, attributevalue, defaulted );    
+              }
+          }
+    else
+       {
+         // Default handling 
+         // in this case the default is the effective request host        
+         RStringF defDomain = iStringPool.OpenFStringL( aDomain );
+         THTTPHdrVal defdomVal( defDomain );
+         SetAttribute( EDomain, defdomVal, ETrue );// ignore the result 
+         defDomain.Close();
+       }
+  
+    
+    if ( aCopyFrom.Attribute( ESecure, attributevalue, defaulted ) != KErrNotFound )
+	      {
+            SetAttribute( ESecure, attributevalue, defaulted );    
+	      }
+    if (iNetscape)
+         {
+         if ( aCopyFrom.Attribute( EExpires, attributevalue, defaulted ) != KErrNotFound )
+              {
+                  SetAttribute( EExpires, attributevalue, defaulted );    
+              }
+         else if ( aCopyFrom.Attribute( EComment, attributevalue, defaulted ) != KErrNotFound ||
+                           aCopyFrom.Attribute( EMaxAge, attributevalue, defaulted ) != KErrNotFound )
+             {
+             iNetscape = EFalse;
+             }
+         }
+     if ( aCopyFrom.Attribute( EDate, attributevalue, defaulted ) != KErrNotFound )
+          {
+          TDateTime attrTime = attributevalue.DateTime();
+          THTTPHdrVal attributeVal( attrTime );
+          SetAttribute( CCookie::EDate, attributeVal, defaulted );
+          }
+     else
+         {
+           TTime nowTime;
+           nowTime.UniversalTime();
+           TDateTime attrTime = nowTime.DateTime();
+           THTTPHdrVal attributeVal( attrTime );
+           SetAttribute( EDate, attributeVal, defaulted );
+         }
+     if (iNetscape == EFalse)
+         {
+         if ( aCopyFrom.Attribute( EComment, attributevalue, defaulted ) != KErrNotFound )
+             {
+             SetAttribute( EComment, attributevalue );
+             }
+         else
+             {
+             
+             }
+         if ( aCopyFrom.Attribute( EMaxAge, attributevalue, defaulted ) != KErrNotFound)
+             {
+             SetAttribute( EMaxAge, attributevalue );
+             }
+         else
+             {
+              if(iSetCookie2)
+                  {
+                  defaultDiscard = ETrue;
+                  }
+             }
+         if(iSetCookie2)
+             {
+             if ( aCopyFrom.Attribute( ECommentURI, attributevalue, defaulted ) != KErrNotFound )
+                 {
+                 SetAttribute( ECommentURI, attributevalue, defaulted );
+                 }
+             else
+                 {
+                 
+                 }
+             if ( aCopyFrom.Attribute( EDiscard, attributevalue, defaulted ) != KErrNotFound )
+                  {
+                      SetAttribute( EDiscard, attributevalue, defaulted );    
+                  }
+             else
+                {
+                 if (defaultDiscard)
+                     {
+                     RStringF emptyStr = iStringPool.OpenFStringL( KNullDesC8() );
+                     THTTPHdrVal emptyVal( emptyStr );
+                     SetAttribute( EDiscard, emptyVal, ETrue );
+                     emptyStr.Close();
+                     }
+                 if (aCopyFrom.Attribute( EPort, attributevalue, defaulted ) != KErrNotFound)
+                     {
+                     SetAttribute( EPort, attributevalue, ETrue );    // ignore the result of this method
+                     }
+                 else
+                     {
+                     RStringF requestPort;
+                     if(!aPort.Compare(KNullDesC8()))
+                         {
+                         requestPort = iStringPool.OpenFStringL( aPort );
+                         }
+                     else
+                         {
+                         requestPort = iStringPool.OpenFStringL( KCookieDefaultRequestPort() );
+                         }
+                     THTTPHdrVal portVal( requestPort );
+                     SetAttribute( EPort, portVal, ETrue );
+                     requestPort.Close();
+                     }
+                }
+             
+             }
+             
+         }
+	
 
     //SetCookie2( aCopyFrom.FromCookie2() );
     // Other properties
-    iSetCookie2 = aCopyFrom.iSetCookie2;
-    iNetscape = aCopyFrom.iNetscape;
+    
     iSize = aCopyFrom.iSize;
     iReceivedTime = aCopyFrom.iReceivedTime;
     CLOG( ( ECookie, 0, _L( "<- CCookie::CopyFromL ") ) );
@@ -1034,7 +1126,7 @@ void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
 
 	iSetCookie2 = ( aFieldName == setCookie2Name );
 
-    TBool DefaultDiscard( EFalse );
+    TBool defaultDiscard( EFalse );
 
 	THTTPHdrVal hVal;
 
@@ -1237,7 +1329,7 @@ void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
             // in case of SetCookie2, also set Discard, defaulted
             if ( iSetCookie2 )
                 {
-                DefaultDiscard = ETrue;
+                defaultDiscard = ETrue;
                 }
            }
 
@@ -1275,7 +1367,7 @@ void CCookie::ConstructL( RHTTPHeaders aRequestHeaders, TInt aPartIndex,
                 { // Add default handling if applies
 		        // no defaulting for EDiscard
                 // only if it is caused by MAx-Age beeing not supplied
-                if ( DefaultDiscard )
+                if ( defaultDiscard )
                     {
 		            RStringF emptyStr = iStringPool.OpenFStringL( KNullDesC8() );
                     THTTPHdrVal emptyVal( emptyStr );

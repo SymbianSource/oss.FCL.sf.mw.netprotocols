@@ -30,7 +30,7 @@
 
 class RHTTPHeaders;
 class TUriC8;
-
+class TDesC8;
 // CONSTANTS
 
 // Attribute prefix : we have to pack cookies when either passing them over
@@ -240,7 +240,7 @@ class CCookie : public CBase
         * Copy from an already existing one.
         * @param aCopyFrom The already existing CCookie object
         */
-        void CopyFromL( const CCookie& aCopyFrom  );
+        void CopyFromL( const CCookie& aCopyFrom, const TDesC8& aDomain, const TDesC8& aPath, const TDesC8& aPort  );
 
         /**
         * Returns this cookie's StringPool.
@@ -267,7 +267,7 @@ class CCookie : public CBase
         * @return TBool indicating the cookies's Version attribute's notoriety.
         */
         TBool IsUnknownVersion() const;
-        static CCookie* CloneL( const CCookie& aCopy );
+        static CCookie* CloneL( const CCookie& aCopy,const TDesC8& aDomain, const TDesC8& aPath, const TDesC8& aPort);
 
 	private :	// class for internal use
         /**

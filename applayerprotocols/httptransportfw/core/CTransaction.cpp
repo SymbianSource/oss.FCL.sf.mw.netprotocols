@@ -42,7 +42,6 @@ void CTransaction::CancelTransaction(THTTPFilterHandle aStart)
 	Cancel();
 	// And send the cancel event
 	SynchronousSendEvent(THTTPEvent::ECancel, THTTPEvent::EOutgoing, aStart);
-
 	if (iStatus != EInFilter && iStatus != ECancelled)
 		iStatus = EPassive;
 	else
