@@ -20,5 +20,6 @@
 
 file=ABI_DIR\BUILD_DIR\CookieManager.dll        SHARED_LIB_DIR\CookieManager.dll
 file=ABI_DIR\BUILD_DIR\CookieServer.exe         PROGRAMS_DIR\CookieServer.exe
+data=EPOCROOT##epoc32\data\z\private\101F8530\CookieGroup.xml  private\101F8530\CookieGroup.xml
 
 #endif

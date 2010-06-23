@@ -12,3 +12,8 @@ EXPORTS
 	?StartCookieServer@@YAHPAX@Z @ 11 NONAME ; int StartCookieServer(void *)
 	?StoreCookie@RCookieManager@@QAEHABVCCookie@@ABVTUriC8@@@Z @ 12 NONAME ; int RCookieManager::StoreCookie(class CCookie const &, class TUriC8 const &)
 	?SetAppUidL@RCookieManager@@QAEHABK@Z @ 13 NONAME ; int RCookieManager::SetAppUidL(unsigned long const &)
+	?ClearAllAppUidCookies@RCookieManager@@QAEHABK@Z @ 14 NONAME ; int RCookieManager::ClearAllAppUidCookies(unsigned long const &)
+	?Close@RCookieManager@@QAEXXZ @ 15 NONAME ; void RCookieManager::Close(void)
+	?GetCookiesL@RCookieManager@@QAEXABVTDesC8@@AAV?$RPointerArray@VCCookie@@@@AAHAAK@Z @ 16 NONAME ; void RCookieManager::GetCookiesL(class TDesC8 const &, class RPointerArray<class CCookie> &, int &, unsigned long &)
+	?StoreCookie@RCookieManager@@QAEHABVCCookie@@ABVTUriC8@@AAK@Z @ 17 NONAME ; int RCookieManager::StoreCookie(class CCookie const &, class TUriC8 const &, unsigned long &)
+

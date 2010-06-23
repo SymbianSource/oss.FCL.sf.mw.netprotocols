@@ -42,7 +42,7 @@ EXPORT_C TInt StartCookieServer( TAny* /*anArg*/ )
     CLOG( ( EServerStart, 0, _L( "*****************" ) ) );
     CLOG( ( EServerStart, 0, _L( "-> StartCookieServerStart" ) ) );
 
-	__UHEAP_MARK;
+	//__UHEAP_MARK;
 
 	TBuf<32> name( KCookieServerThreadName );
 
@@ -96,7 +96,7 @@ EXPORT_C TInt StartCookieServer( TAny* /*anArg*/ )
 		delete cleanup;
 		}
 
-	__UHEAP_MARKEND;
+	//__UHEAP_MARKEND;
 
     CLOG( ( EServerStart, 0, _L( "<- StartCookieServerStart err%d" ),
                             result ) );

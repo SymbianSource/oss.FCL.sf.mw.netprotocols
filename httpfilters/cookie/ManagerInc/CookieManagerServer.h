@@ -25,15 +25,19 @@
 #include <http.h>
 #include <f32file.h>
 #include <e32def.h>
+#include <stringpool.h> 
 
 // Opcodes used in message passing between client and server
 enum TCookieServerRqst 
 	{
 	EStoreCookie,
-  EClearAllCookies,
+    EClearAllCookies,
 	EGetCookieSize,
 	EGetCookies,
-	ESetAppUid
+	ESetAppUid,
+	EDestroyCookies,
+	EGetCookieSharableFlag,
+	EClearAppUidCookies
     };
 
 // FORWARD DECLARATIONS
@@ -43,7 +47,9 @@ class CCookieArray;
 class CCookieTimer;
 class CCookieManagerSession;
 class TCookiePacker;
-
+class CCookieGroupDataArray;
+class CGroupIdArray;
+class TXmlEngElement;
 // CLASS DECLARATIONS
 
 /**
@@ -83,7 +89,7 @@ public:
     * Clears all cookies
     * @return The number of cookies removed
     */
-    TInt ClearAllCookies();
+    //TInt ClearAllCookies();
 
     /**
     * Returns a pointer to the stringpool we currently use.
@@ -94,7 +100,7 @@ public:
     /**
     * Returns a poitner for the persistent cookies we currently have.
     */
-    CCookieArray* CookieArray();
+    //CCookieArray* CookieArray();
 
 
     /**
@@ -112,24 +118,69 @@ public:
 	* @param aRequestUri The current HTTP request-URI.
 	* @param aIndex Cookie is inserted at the position of existing cookie, and exisiting cookie is removed.
     */
-    void StorePersistentCookieL( CCookie* aCookie, const TDesC8& aRequestUri, const TInt aIndex = -1 );
+    //void StorePersistentCookieL( CCookie* aCookie, const TDesC8& aRequestUri, const TInt aIndex = -1 );
 
 	/**
 	*
 	*/
-	TInt GetCookies( const TDesC8& aRequestUri,
-					RPointerArray<CCookie>& aCookies ) const;
+//	TInt GetCookies( const TDesC8& aRequestUri,
+//					RPointerArray<CCookie>& aCookies ) const;
 	
 	/**
 	*Sets the File Name of the Cookie File using AppUid				
     *@param aFileName The AppUid of the Application
     */
-    void SetFileName(TUint32& aAppUid);
+    //void SetFileName(TUint32& aAppUid);
     
     /**
     *@return the File Name of the Cookie file
     */    
     TDesC& GetFileName() const;
+    
+    /* Loading the group specific info from CookieGroupData.xml file
+     * 
+     */
+    TInt LoadGroupDataFromFileL( RFs& aFileSession );
+   
+    /* Parsing the  Xml elements
+     * 
+     */
+    void ParseElement( TXmlEngElement& aElement );
+    
+    /* 
+     * 
+     */    
+    CCookieArray* CookieArray( TInt aIndex );
+    
+    /*
+     * 
+     */
+    CCookieGroupDataArray* CookieGroupDataArray();
+    
+    /** 
+    * Get the relevant cookies for a transaction
+    * @param aRequestUri The URI of the current HTTP request.
+    * @param aCookies An array which will be filled with the cookies
+    * for aTransaction based on the index value.
+    * @param aIndex Indiactes Index Value.
+    */    
+    TInt GetCookies( const TDesC8& aRequestUri, RPointerArray<CCookie>& aCookies, TInt aIndex ) const;
+    
+    /* 
+     * 
+     */
+    CGroupIdArray* GroupIdArray();
+    
+    /*Changes Hexadecimal value to Decimal Value
+     * 
+     */
+    TInt ChangeToDecimal( TDes8& aBuf,TUint32& aUid );
+    
+    /* Extracting the attribute information from parsed xml element
+     * 
+     */
+    void SettingAttribute(TDesC8& aAttr, TDesC8& aVal,TUint32& aGroupId
+            , RArray<TUint32>& aSharedAppUidArray, TBool& aCookieSharableFlag  );
 
 private:
 	/**
@@ -162,7 +213,7 @@ private:
 	* content we can process it by calling ParseCookiesFromBufferL method.
 	* @return The error code indicating the type of failure.
     */
-    TInt ReadCookiesFromFile();
+    //TInt ReadCookiesFromFile();
 
 
     /**
@@ -173,7 +224,7 @@ private:
 	* cookie, but it may not neccessarily be true for ALL cookies.
 	* @return The error code indicating the type of failure.
     */
-    TInt WriteCookiesToFile();
+    //TInt WriteCookiesToFile();
 
 private:
     TUint32                 iSessionCount;
@@ -181,17 +232,18 @@ private:
 
 	CCookieTimer*           iCloseTimer;
 
-	HBufC*                  iCookieFileName;
-
-    RFs 					iFs;
-    CCookieArray*			iPersistentCookies;	// new-style
+	//HBufC*                  iCookieFileName;
+    //RFs 					iFs;
+    //CCookieArray*			iPersistentCookies;	// new-style
 
     RStringPool             iStringPool;
 
 	// As we open our string pool only in ConstructL we cannot instantiate the
 	// cookie packer in the constructor :(
 	TCookiePacker*			iCookiePacker;
-
+	CCookieGroupDataArray*  iCookieGroupDataArray;
+	CGroupIdArray*          iGroupIdArray;
+	
 	};
 
 
