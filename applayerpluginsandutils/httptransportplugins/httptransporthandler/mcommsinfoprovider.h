@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -78,6 +78,17 @@ public:	// methods
 	Starts a default RConnection
 	*/
 	virtual void StartDefaultCommsConnectionL () =0;
+	
+	/**
+	 Returns the RHostResolver if available in cache.
+	 */
+	virtual void HostResolverFromCache(RHostResolver& aResolver) =0;
+	
+	/**
+	 Add the RHostResolver to cache. If the adding fails then the RHostResolver will be
+	 closed
+	 */
+	virtual void AddToHostResolverCache(RHostResolver& aResolver) =0;
 	};
 
 #endif	// __MCOMMSINFOPROVIDER_H__

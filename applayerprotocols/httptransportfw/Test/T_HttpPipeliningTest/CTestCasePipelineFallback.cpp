@@ -16,7 +16,7 @@
 */
 
 
-#include "ctestcasepipelinefallback.h"
+#include "CTestCasePipelineFallback.h"
 #include "httptestutils.h"
 
 const TInt KTransactionCount = 30; // Submit 30 transactions

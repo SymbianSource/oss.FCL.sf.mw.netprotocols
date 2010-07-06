@@ -14,8 +14,8 @@
 //
 
 #include "httpheaderiter.h"
-#include "cheaders.h"
-#include "cheaderfield.h"
+#include "CHeaders.h"
+#include "CHeaderField.h"
 #include "httpclientutils.h"
 
 // This class needs to be optimized.

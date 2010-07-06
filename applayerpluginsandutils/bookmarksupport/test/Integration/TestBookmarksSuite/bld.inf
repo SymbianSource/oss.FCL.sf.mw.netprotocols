@@ -21,28 +21,28 @@ TestBookmarksSuite.mmp
 PRJ_TESTEXPORTS
 
 // Main Script file
-TestBookmarksSuite.script		C:\TestData\Scripts\TestBookmarksSuite.script
+TestBookmarksSuite.script		c:/testdata/scripts/testbookmarkssuite.script
 // Main ini file
-TestBookmarksSuite.ini			C:\TestData\Ini\TestBookmarksSuite.ini
+TestBookmarksSuite.ini			c:/testdata/ini/testbookmarkssuite.ini
 // Main Bat file to help running the tests
-TestBookmarksSuite.bat			\epoc32\tools\TestBookmarksSuite.bat
+TestBookmarksSuite.bat			/epoc32/tools/testbookmarkssuite.bat
 
 // Security tests scripts
-TestBookmarksSuite_Security.script	C:\TestData\Scripts\TestBookmarksSuite_Security.script
-Preliminary.script			C:\TestData\Scripts\Preliminary.script
-Cleanup.script				C:\TestData\Scripts\Cleanup.script
-Cap_00000000_TestBookmarks.script	C:\TestData\Scripts\Cap_00000000_TestBookmarks.script
-Cap_00000010_TestBookmarks.script	C:\TestData\Scripts\Cap_00000010_TestBookmarks.script
-Cap_00000020_TestBookmarks.script	C:\TestData\Scripts\Cap_00000020_TestBookmarks.script
-Cap_00008000_TestBookmarks.script	C:\TestData\Scripts\Cap_00008000_TestBookmarks.script
-Cap_00010000_TestBookmarks.script	C:\TestData\Scripts\Cap_00010000_TestBookmarks.script
-Cap_00018000_TestBookmarks.script	C:\TestData\Scripts\Cap_00018000_TestBookmarks.script
+TestBookmarksSuite_Security.script	c:/testdata/scripts/testbookmarkssuite_security.script
+Preliminary.script			c:/testdata/scripts/preliminary.script
+Cleanup.script				c:/testdata/scripts/cleanup.script
+Cap_00000000_TestBookmarks.script	c:/testdata/scripts/cap_00000000_testbookmarks.script
+Cap_00000010_TestBookmarks.script	c:/testdata/scripts/cap_00000010_testbookmarks.script
+Cap_00000020_TestBookmarks.script	c:/testdata/scripts/cap_00000020_testbookmarks.script
+Cap_00008000_TestBookmarks.script	c:/testdata/scripts/cap_00008000_testbookmarks.script
+Cap_00010000_TestBookmarks.script	c:/testdata/scripts/cap_00010000_testbookmarks.script
+Cap_00018000_TestBookmarks.script	c:/testdata/scripts/cap_00018000_testbookmarks.script
 
 // Security tests ini
-TestBookmarksSuite_Security.ini		C:\TestData\Ini\TestBookmarksSuite_Security.ini
+TestBookmarksSuite_Security.ini		c:/testdata/ini/testbookmarkssuite_security.ini
 
 // Security tests bat file
-TestBookmarksSuite_Security.bat		\epoc32\tools\TestBookmarksSuite_Security.bat
+TestBookmarksSuite_Security.bat		/epoc32/tools/testbookmarkssuite_security.bat
 
 // IBY file for H/W
-TestBookmarksSuite.IBY			\epoc32\rom\include\TestBookmarksSuite.IBY
+TestBookmarksSuite.IBY			/epoc32/rom/include/testbookmarkssuite.iby

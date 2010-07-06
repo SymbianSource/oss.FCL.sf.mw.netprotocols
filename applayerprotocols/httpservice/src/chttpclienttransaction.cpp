@@ -16,8 +16,8 @@
 #include "chttpclienttransaction.h"
 #include "chttpclienttransactionimpl.h"
 #include "httpclientutils.h"
-#include "cheaders.h"
-#include "cheaderfield.h"
+#include "CHeaders.h"
+#include "CHeaderField.h"
 #include "mhttpdatareceiver.h"
 #include "mhttpdatasender.h"
 

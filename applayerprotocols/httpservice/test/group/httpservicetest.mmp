@@ -34,7 +34,7 @@ SOURCE	ctesthttpclientstep.cpp
 SOURCE	chttpclienttestparams.cpp ctesthttpserviceauthentication.cpp
 
 USERINCLUDE 		../../inc
-USERINCLUDE 		../../../httptransportfw/test/t_utils
+USERINCLUDE 		../../../httptransportfw/Test/t_utils
 USERINCLUDE 		../../../httptransportfw/utils
 SYSTEMINCLUDE 		../../../../applayerpluginsandutils/httptransportplugins/httptransporthandler
 

@@ -38,13 +38,10 @@ void CTransaction::CancelTransaction(THTTPFilterHandle aStart)
 	{
 	// Delete all current events.
 	iEventQueue.Reset();
-	if(iStatus != ECancelled)
-		{
-		// Cancel the active object
-		Cancel();
-		// And send the cancel event
-		SynchronousSendEvent(THTTPEvent::ECancel, THTTPEvent::EOutgoing, aStart);
-		}
+	// Cancel the active object
+	Cancel();
+	// And send the cancel event
+	SynchronousSendEvent(THTTPEvent::ECancel, THTTPEvent::EOutgoing, aStart);
 	if (iStatus != EInFilter && iStatus != ECancelled)
 		iStatus = EPassive;
 	else
@@ -61,7 +58,6 @@ void CTransaction::Close()
 		{
 		CHeaderFieldPart::ClosePropertySet(iPropertySet);
 		delete iRequest;
-		iRequest = NULL;
 		delete this;
 		return;
 		}
@@ -85,10 +81,8 @@ void CTransaction::Close()
 	iSession.RemoveTransaction(this);
 	CHeaderFieldPart::ClosePropertySet(iPropertySet);
 	delete iRequest;
-	iRequest = NULL;
 	delete iResponse;
-	iResponse = NULL;
-
+	
 	// Cancel the active object
 	Cancel();
 
