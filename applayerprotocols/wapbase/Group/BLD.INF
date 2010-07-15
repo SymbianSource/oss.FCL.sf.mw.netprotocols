@@ -33,6 +33,49 @@ PRJ_EXPORTS
 // If there's no destination then the source file will be copied
 // to the same name in \epoc32\include
 
+//Export of the .dtd files
+//WINSCW UDEB
+../Tdtd/DTDs/si.dtd /epoc32/release/winscw/udeb/z/resource/wappush/si.dtd
+../Tdtd/DTDs/sl.dtd /epoc32/release/winscw/udeb/z/resource/wappush/sl.dtd
+
+//WINSCW UREL
+../Tdtd/DTDs/si.dtd /epoc32/release/winscw/urel/z/resource/wappush/si.dtd
+../Tdtd/DTDs/sl.dtd /epoc32/release/winscw/urel/z/resource/wappush/sl.dtd
+ 
+//WINS UDEB
+../Tdtd/DTDs/si.dtd /epoc32/release/wins/udeb/z/resource/wappush/si.dtd
+../Tdtd/DTDs/sl.dtd /epoc32/release/wins/udeb/z/resource/wappush/sl.dtd
+ 
+//WINS UREL
+../Tdtd/DTDs/si.dtd /epoc32/release/wins/urel/z/resource/wappush/si.dtd
+../Tdtd/DTDs/sl.dtd /epoc32/release/wins/urel/z/resource/wappush/sl.dtd
+ 
+//OTHER PLATFORM
+../Tdtd/DTDs/si.dtd /epoc32/data/z/resource/wappush/si.dtd
+../Tdtd/DTDs/sl.dtd /epoc32/data/z/resource/wappush/sl.dtd
+ 
+//Export of the .tok files
+//WINSCW UDEB
+../../wappushsupport/TokenFiles/si10.tok /epoc32/release/winscw/udeb/z/resource/wappush/si10.tok
+../../wappushsupport/TokenFiles/sl10.tok /epoc32/release/winscw/udeb/z/resource/wappush/sl10.tok
+ 
+//WINSCW UREL
+../../wappushsupport/TokenFiles/si10.tok /epoc32/release/winscw/urel/z/resource/wappush/si10.tok
+../../wappushsupport/TokenFiles/sl10.tok /epoc32/release/winscw/urel/z/resource/wappush/sl10.tok
+ 
+//WINS UDEB
+../../wappushsupport/TokenFiles/si10.tok /epoc32/release/wins/udeb/z/resource/wappush/si10.tok
+../../wappushsupport/TokenFiles/sl10.tok /epoc32/release/wins/udeb/z/resource/wappush/sl10.tok
+ 
+//WINS UREL
+../../wappushsupport/TokenFiles/si10.tok /epoc32/release/wins/urel/z/resource/wappush/si10.tok
+../../wappushsupport/TokenFiles/sl10.tok /epoc32/release/wins/urel/z/resource/wappush/sl10.tok
+ 
+//OTHER PLATFORM
+../../wappushsupport/TokenFiles/si10.tok /epoc32/data/z/resource/wappush/si10.tok
+../../wappushsupport/TokenFiles/sl10.tok /epoc32/data/z/resource/wappush/sl10.tok
+
+
 ../inc/attrlut.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(attrlut.h)
 ../inc/CBNFParser.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cbnfparser.h)
 ../inc/CBNFNode.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cbnfnode.h)
