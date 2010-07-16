@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -42,7 +42,7 @@ PRJ_EXPORTS
 ../inc/framework/crxdata.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/crxdata.h)
 ../inc/framework/cheadercodec.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/cheadercodec.h)
 ../inc/framework/CProtTransaction.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/cprottransaction.h)
-../inc/framework/httplogger.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/framework/httplogger.h)
+../inc/framework/httplogger.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/httplogger.h)
 ../inc/framework/MRxDataObserver.h	SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/mrxdataobserver.h)
 ../inc/framework/RHeaderField.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/framework/rheaderfield.h)
 ../inc/framework/logging.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/framework/logging.h)
@@ -77,7 +77,7 @@ PRJ_EXPORTS
 ../inc/http/thttphdrfielditer.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttphdrfielditer.h)
 ../inc/http/thttpfilterhandle.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttpfilterhandle.h)
 ../inc/http/thttphdrval.h					SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/thttphdrval.h)
-../inc/http/mhttpdataoptimiser.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/mhttpdataoptimiser.h)
+../inc/http/mhttpdataoptimiser.h				SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(http/mhttpdataoptimiser.h)
 ../inc/http/thttptable.h					SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/thttptable.h)
 ../httputils/inc/rexplicithttpsession.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(http/rexplicithttpsession.h)
 
@@ -267,5 +267,4 @@ gnumakefile ../group/wsptypestable.mak
 
 // Test HTTP Suite
 #include "../Test/Integration/group/bld.inf"
-
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2001-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -16,7 +16,7 @@
 /**
  @file httplogger.h
  @warning : This file contains Rose Model ID comments - please do not delete
- @publishedPartner
+ @publishedAll
  @released
 */
 
@@ -33,7 +33,7 @@ class THttpLogger : public TDesOverflow
 /** 
 A utility used in HTTP for logging in debug builds.  Log files are placed in the
 directory %EPOCROOT%/epoc32/wins/c/logs/http
-@publishedPartner
+@publishedAll
 @released
 */
 	{
