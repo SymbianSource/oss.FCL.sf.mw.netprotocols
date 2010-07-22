@@ -30,6 +30,8 @@
 #include <cookie.h>
 #include <cookieipc.h>
 
+//FORWARD Class Declaration
+class CCookieClientDataArray;
 // CLASS DECLARATION
 	
 /** 
@@ -87,6 +89,14 @@ class RCookieManager : public RSessionBase
 		* @return Error code indicating the result of the call.
 		*/		
 		IMPORT_C TInt SetAppUidL(const TUint32& aAppUid );
+        IMPORT_C void Close();
+        IMPORT_C TInt StoreCookie( const CCookie& aCookie,
+                                            const TUriC8& aUri,TUint32& aAppUid);
+        IMPORT_C void GetCookiesL( const TDesC8& aUri,
+                                   RPointerArray<CCookie>& aCookies, 
+                                   TBool& aCookie2Reqd,TUint32& aAppUid );
+        IMPORT_C TInt ClearAllAppUidCookies(const TUint32& aAppUid);
+
 
 	private :	// internal methods
 		/**
@@ -102,6 +112,9 @@ class RCookieManager : public RSessionBase
 		*/
 		TInt DoGetCookieSize( const TDesC8& aRequestUri,
 							TPckg<TInt>& aPkgSize ) const;
+							
+	    TInt DoGetCookieSize( const TDesC8& aRequestUri,
+							TPckg<TInt>& aPkgSize,TDesC& aAppUidPtr ) const;
 
 		/**
 		* Puts those cookies in the buffer that have been previously selected
@@ -115,17 +128,63 @@ class RCookieManager : public RSessionBase
 		*
 		*/
 		TInt DoStoreCookie( const TDesC8& aPackedCookie,
-							const TDesC8& aUri ) const;
+							const TDesC8& aUri,TDesC& aAppUidPtr ) const;
 
 		/**
 		*
 		*/
 		TVersion Version() const;
-
+		
+		TInt DestroyCookiesFromMemory( TInt& aDeleteStatus );
+		
+		void StoreCookieAtClientSide( const CCookie* aCookie, const TDesC8& aUri,TUint32 aWidgetUid =0);
+		
+		TInt GetClientSideCookies( const TDesC8& aRequestUri,RPointerArray<CCookie>& aCookies
+		        ,TBool& aFound, TUint32 aWidgetUid );
+		TInt GetCookieSharableFlagFromServer(TBool& aCookieSharableFlag ) const;
+		
 	private :	// data members
-		RStringPool iStringPool;
+	    //internal data structure for supporting Client side caching.
+        class TCookieMgrInternalStruct
+               {
+               public:
+               /* Constructor
+                * 
+                */    
+               TCookieMgrInternalStruct(RStringPool aStringPool)
+               : iCookiePacker(aStringPool),
+               iCookieClientDataArray(NULL)
+               {          
+               }
+               
+               /* Destructor
+                * 
+                */
+               ~TCookieMgrInternalStruct();
+               
+               /* Get Cookiepacker instance
+                * 
+                */
+               inline TCookiePacker& GetCookiePacker(){return iCookiePacker;}
+               
+               /* Get Client Data Array Instance
+                * 
+                */
+               inline CCookieClientDataArray* GetCookieClientDataArray(){return iCookieClientDataArray;}
+               
+               /* Initialization method for Cookie Client Data Array
+                * 
+                */
+               TInt Init();
+               
+               private:
+               TCookiePacker iCookiePacker;
+               CCookieClientDataArray* iCookieClientDataArray;
+               };
 
-		TCookiePacker iCookiePacker;
+     RStringPool iStringPool;
+     TCookieMgrInternalStruct* iCookieMgrData;  
+		
 	};
 
 #endif //__COOKIEMANAGER_CLIENT_H__

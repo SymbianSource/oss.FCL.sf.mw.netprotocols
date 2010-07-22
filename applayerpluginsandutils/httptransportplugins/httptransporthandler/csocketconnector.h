@@ -101,7 +101,9 @@ private:	// methods
 	void CompleteSelf();
 
 	void Suicide();
-
+	
+	TInt DoPendingDNSLookup();
+	TInt DoConnect();
 private:	// enums
 
 /**	

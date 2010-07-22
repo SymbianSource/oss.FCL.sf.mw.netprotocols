@@ -48,6 +48,8 @@ SOURCEPATH	../Test
 SOURCE  tineturilistserverunit.cpp
 SOURCE	testutils.cpp
 
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
 SOURCEPATH	../server/src
 SOURCE 		sqldbaccessor.cpp
 SOURCE 		urilistinterface.cpp

@@ -17,3 +17,8 @@ EXPORTS
 	_ZTI7CCookie @ 16 NONAME ; #<TI>#
 	_ZTV7CCookie @ 17 NONAME ; #<VT>#	
 	_ZN14RCookieManager10SetAppUidLERKm @ 18 NONAME
+	_ZN14RCookieManager11GetCookiesLERK6TDesC8R13RPointerArrayI7CCookieERiRm @ 19 NONAME
+	_ZN14RCookieManager11StoreCookieERK7CCookieRK6TUriC8Rm @ 20 NONAME
+	_ZN14RCookieManager21ClearAllAppUidCookiesERKm @ 21 NONAME
+	_ZN14RCookieManager5CloseEv @ 22 NONAME
+

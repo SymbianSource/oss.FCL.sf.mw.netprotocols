@@ -30,7 +30,9 @@
 #include "CookieManagerSession.h"
 
 #include "CookieServerDef.h"
-
+#include "CookieGroupDataArray.h"
+#include "CookieGroupData.h"
+#include "GroupIdInfoArray.h"
 
 // ---------------------------------------------------------
 // CCookieManagerSession::CCookieManagerSession
@@ -118,22 +120,185 @@ TInt CCookieManagerSession::ClearAllCookies( const RMessage2& aMessage )
 	TInt err = DoClearAllCookies( aMessage );
 
     CLOG( ( EServerSession, 0,
-				_L( "-> CCookieManagerSession::ClearAllCookies" ) ) );
+				_L( "<- CCookieManagerSession::ClearAllCookies" ) ) );
+
+    return err;
+    }
+// ---------------------------------------------------------
+// CCookieManagerSession::ClearAllCookies
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::ClearAllAppUidCookies( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::ClearAllAppUidCookies" ) ) );
+
+    TInt err = DoClearAllAppUidCookies( aMessage );
+
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::ClearAllAppUidCookies" ) ) );
 
     return err;
     }
 
+// ---------------------------------------------------------
+// CCookieManagerSession::DestroyCookies
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::DestroyCookies( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::DestroyCookies" ) ) );
+
+    TInt err = DoDestroyCookies( aMessage );
+
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::DestroyCookies" ) ) );
+
+    return err;
+    }
+// ---------------------------------------------------------
+// CCookieManagerSession::GetCookieSharableFlag
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::GetCookieSharableFlag( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::GetCookieSharableFlag" ) ) );
+
+    TInt err = DoGetCookieSharableFlag( aMessage );
+
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::GetCookieSharableFlag" ) ) );
+
+    return err;
+    }
 
 // ---------------------------------------------------------
+// CCookieManagerSession::DoGetCookieSharableFlag
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::DoGetCookieSharableFlag( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::DoGetCookieSharableFlag" ) ) );
+    TUint32 secureId = aMessage.SecureId().iId;
+    TBool cookiesharableflag(EFalse);
+    TInt count = iCookieServer.CookieGroupDataArray()->Count();
+    CCookieGroupDataArray* cookiegroupdataarray = iCookieServer.CookieGroupDataArray();
+    for (TInt i=0; i<count; i++)
+        {
+         if (cookiegroupdataarray->At(i)->GetGroupId()== secureId )
+             {
+             cookiesharableflag = cookiegroupdataarray->At(i)->GetCookieSharableFlag();
+             break;         
+             }
+         else 
+             {
+             TInt shared = cookiegroupdataarray->At(i)->TotalAppUid();
+             for (TInt j=0;j<shared;j++)
+                 {
+                  if (cookiegroupdataarray->At(i)->GetSharedUid(j)== secureId)
+                      {
+                      cookiesharableflag = cookiegroupdataarray->At(i)->GetCookieSharableFlag();
+                      break;
+                      }
+                 }
+             }
+         
+        }
+    TPckg<TBool> iFlag(cookiesharableflag);
+    CLOG( ( EServerSession, 0,_L( "<- CCookieManagerSession::DoGetCookieSharableFlag cookiesharableflag = %d" )
+            , cookiesharableflag ) );
+
+    return aMessage.Write( 0, iFlag );
+ 
+    
+    }
+//----------------------------------------------------------
 // CCookieManagerSession::DoClearAllCookies
 // ---------------------------------------------------------
 //
 TInt CCookieManagerSession::DoClearAllCookies( const RMessage2& aMessage )
 	{
-    TPckg<TInt> count( iCookieServer.ClearAllCookies() );
-    return aMessage.Write( 0, count );
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::DoClearAllCookies" ) ) );
+
+    TUint32 secureId = aMessage.SecureId().iId;
+    TInt groupDataIndex =0;
+   
+    if(iCookieServer.CookieGroupDataArray()->Count())
+        {
+        TInt err = iCookieServer.CookieGroupDataArray()->FindIndex(secureId, groupDataIndex);
+        if ( err == KErrNone )
+            {
+            CCookieGroupData* cookiegroupdata = iCookieServer.CookieGroupDataArray()->At(groupDataIndex);
+            TPckg<TInt>count(cookiegroupdata->ClearAllCookies());
+            iCookieServer.CookieGroupDataArray()->Remove(groupDataIndex);
+            return aMessage.Write( 0, count );
+            }
+        }
+    TPckg<TInt>count2(0);
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::DoClearAllCookies" ) ) );
+    return aMessage.Write( 0, count2 );
 	}
 
+//----------------------------------------------------------
+// CCookieManagerSession::DoClearAllAppUidCookies
+// For deleting cookies belongs to a specific appuid during 
+// uninstallation process of a widget
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::DoClearAllAppUidCookies( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                _L( "-> CCookieManagerSession::DoClearAllAppUidCookies" ) ) );
+
+    TUint32 secureId = aMessage.SecureId().iId;
+    TInt groupDataIndex =-1;
+    
+    //READ FROM MESSAGE
+    HBufC* packedAppUidBuf = HBufC::NewLC( aMessage.Int0() );
+    TPtr packedAppUidPtr( packedAppUidBuf->Des() );
+    aMessage.ReadL( 1, packedAppUidPtr );   
+    TLex lex(packedAppUidPtr);
+    TUint32 appUid(0);
+    TInt ret = lex.Val(appUid,EHex);
+
+    if(iCookieServer.CookieGroupDataArray()->Count())
+        {
+        TInt err = iCookieServer.CookieGroupDataArray()->FindIndex(secureId,appUid,groupDataIndex);
+        if ( err == KErrNone )
+            {
+            CCookieGroupData* cookiegroupdata = iCookieServer.CookieGroupDataArray()->At(groupDataIndex);
+            TPckg<TInt>count(cookiegroupdata->ClearAllCookies());
+            iCookieServer.CookieGroupDataArray()->Remove(groupDataIndex);
+            return aMessage.Write( 0, count );
+            }
+        }
+    TPckg<TInt>count2(0);
+    CLOG( ( EServerSession, 0,
+                 _L( "<- CCookieManagerSession::DoClearAllAppUidCookies" ) ) );
+    return aMessage.Write( 0, count2 );
+    }
+
+// ---------------------------------------------------------
+// CCookieManagerSession::DoDestroyCookies
+// ---------------------------------------------------------
+//
+TInt CCookieManagerSession::DoDestroyCookies( const RMessage2& aMessage )
+    {
+    CLOG( ( EServerSession, 0,
+                 _L( "-> CCookieManagerSession::DoDestroyCookies" ) ) );
+
+    TUint32 secureId = aMessage.SecureId().iId;
+    TInt err = iCookieServer.CookieGroupDataArray()->DestroyGroupData(secureId);
+    TPckg<TInt>status(err);
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::DoDestroyCookies err = %d" ),err ) );
+    return aMessage.Write( 0, status );
+    }
 
 // ---------------------------------------------------------
 // CCookieManagerSession::DoGetCookieSize
@@ -141,8 +306,27 @@ TInt CCookieManagerSession::DoClearAllCookies( const RMessage2& aMessage )
 //
 TInt CCookieManagerSession::DoGetCookieSize( const RMessage2& aMessage )
 	{
-    TInt err = KErrNone;
+	CLOG( ( EServerSession, 0,
+	                 _L( "-> CCookieManagerSession::DoGetCookieSize" ) ) );
 
+    TInt err = KErrNone;
+    HBufC* CookieBuf = HBufC::NewL(128);
+    TPtr CookiePtr( CookieBuf->Des() );
+    aMessage.ReadL( 0, CookiePtr );   
+    TLex lex(CookiePtr);
+    TUint32 appUid(0);
+    TInt ret = lex.Val(appUid,EHex);
+    delete CookieBuf;
+    TUint32 secureId = aMessage.SecureId().iId;
+    TUint32 groupId=0;
+    TBool cookieSharable(EFalse);
+    TInt retstatus = iCookieServer.GroupIdArray()->GetGroupId(secureId,groupId, cookieSharable);
+    if( groupId && retstatus != KErrNotFound )
+        {
+        secureId = groupId;
+        }
+    TInt groupDataIndex =0;
+    iCookieServer.CookieGroupDataArray()->GetGroupDataIndexL(secureId,appUid,cookieSharable,groupDataIndex);        
 	if ( iGetCookieList.Count() || iGetCookieListSize )
 		{
 		iGetCookieList.Reset();
@@ -151,19 +335,19 @@ TInt CCookieManagerSession::DoGetCookieSize( const RMessage2& aMessage )
 	else
 		{
 		// read in the size of the URI in bytes
-		TInt uriSize = aMessage.Int0();
+		TInt uriSize = aMessage.Int1();
 		HBufC8* uriBuf = HBufC8::New( uriSize );
         if ( uriBuf ) 
             {
 		    // read in the URI
 		    TPtr8 uriDes( uriBuf->Des() );
-		    err = aMessage.Read( 1, uriDes );
+		    err = aMessage.Read( 2, uriDes );
             if ( err == KErrNone )
                 {
 		        // fill the cookie array with the appropriate cookies :
 		        // both from the server (persistent cookies) and from our local 
 		        // cookie list (transient cookies)
-		        err = iCookieServer.GetCookies( uriDes, iGetCookieList );
+		        err = iCookieServer.GetCookies( uriDes, iGetCookieList,groupDataIndex );
                 if ( err == KErrNone )
                     {
         /*
@@ -182,7 +366,7 @@ TInt CCookieManagerSession::DoGetCookieSize( const RMessage2& aMessage )
 
 		            // writing back the result - the number of bytes to be copied
 		            TPckg<TInt> pkgSize( iGetCookieListSize );
-                    err = aMessage.Write( 2, pkgSize );
+                    err = aMessage.Write( 3, pkgSize );
                     }
                 }
 
@@ -193,7 +377,8 @@ TInt CCookieManagerSession::DoGetCookieSize( const RMessage2& aMessage )
             err = KErrNoMemory;
             }
 		}
-
+    CLOG( ( EServerSession, 0,
+                     _L( "<- CCookieManagerSession::DoGetCookieSize err = %d" ),err ) );
     return err;
 	}
 
@@ -266,7 +451,26 @@ void CCookieManagerSession::DoStoreCookieL( const RMessage2& aMessage )
     {
     CLOG( ( EServerSession, 0,
 			_L( "-> CCookieManagerSession::DoStoreCookie ") ) );
-
+    HBufC* cookiebuf = HBufC::NewL(128);
+    TPtr cookiePtr( cookiebuf->Des() );
+    aMessage.ReadL( 3, cookiePtr );   
+    TLex lex(cookiePtr);
+    TUint32 appUid(0);
+    TInt ret = lex.Val(appUid,EHex);
+    delete cookiebuf;
+    //Get THe Secure ID
+    TUint32 secureId = aMessage.SecureId().iId;
+    TInt groupDataIndex =0;
+    TUint32 groupId=0;
+    TBool cookieSharableFlag(EFalse);
+    TInt retstatus = iCookieServer.GroupIdArray()->GetGroupId(secureId,groupId, cookieSharableFlag);
+    if( groupId && retstatus != KErrNotFound )
+        {
+        secureId = groupId;
+        }
+    iCookieServer.CookieGroupDataArray()->GetGroupDataIndexL(secureId,appUid, cookieSharableFlag,groupDataIndex);        
+    CCookieGroupData* cookiegroupdata = iCookieServer.CookieGroupDataArray()->At(groupDataIndex);
+    //iGrDataArray->GetGroupDataIndexL(secureId, groupDataIndex);
     HBufC8* packedCookieBuf = HBufC8::NewLC( aMessage.Int0() );
     TPtr8 packedCookiePtr( packedCookieBuf->Des() );
     aMessage.ReadL( 1, packedCookiePtr );
@@ -282,15 +486,20 @@ void CCookieManagerSession::DoStoreCookieL( const RMessage2& aMessage )
     if( err == KErrNone )
         {
 	    // aMessage.Int2() == request-URI length
-	    HBufC8* uriBuf = HBufC8::NewLC( aMessage.Int2() );
+        //Hrdcoded value has taken as 4 slots has already been occupied and 
+        //there is no way to pass the uri length from client to Server
+        //this length is sufficient enough to accomodate a uri.
+        
+	    HBufC8* uriBuf = HBufC8::NewLC(500);
 	    TPtr8 uriPtr( uriBuf->Des() );
 
-    	aMessage.ReadL( 3, uriPtr );
+    	aMessage.ReadL( 2, uriPtr );
 
         // first need to check if it is present in the array as it must 
         // overwrite already existing cookies...
         TInt index(0);
-        CCookieArray* perscookiearray = iCookieServer.CookieArray();
+        //CCookieArray* perscookiearray = iCookieServer.CookieArray();
+        CCookieArray* perscookiearray = iCookieServer.CookieArray(groupDataIndex);
         if ( perscookiearray->DoesAlreadyExists( cookie, index ) )
             { // must overwrite !!!
             // but first add the new one if needed
@@ -301,19 +510,19 @@ void CCookieManagerSession::DoStoreCookieL( const RMessage2& aMessage )
      		if(index >=0)
      			{
      			// insert cookie at valid index    
-            	iCookieServer.StorePersistentCookieL( cookie, *uriBuf, index );
+     			cookiegroupdata->StorePersistentCookieL( cookie, *uriBuf, index );
             	// remove the old cookie
             	perscookiearray->Remove( index + 1 );
             	}
             else
                 {   // invalid index means old cookie has been deleted in the process of making room
                     // append the new cookie to the end of array
-                    iCookieServer.StorePersistentCookieL( cookie, *uriBuf );
+                cookiegroupdata->StorePersistentCookieL( cookie, *uriBuf );
                 }
             }
         else
             { // it is not in the array yet, add it now
-            iCookieServer.StorePersistentCookieL( cookie, *uriBuf );
+            cookiegroupdata->StorePersistentCookieL( cookie, *uriBuf );
             }
 
 	    CleanupStack::PopAndDestroy( uriBuf );
@@ -467,7 +676,41 @@ void CCookieManagerSession::ServiceL( const RMessage2& aMessage )
 		    aMessage.Complete(result);
 		    break;
 		    }
-		default :
+        case EDestroyCookies :
+            {
+            if ( result == KErrNone )
+                {
+                result = DestroyCookies( aMessage );
+                }
+
+            aMessage.Complete( result );
+
+            break;
+            }
+        case EGetCookieSharableFlag :
+            {
+            if ( result == KErrNone )
+                {
+                result = GetCookieSharableFlag( aMessage );
+                }
+
+            aMessage.Complete( result );
+
+            break;
+            }
+        case EClearAppUidCookies :
+            {
+            if ( result == KErrNone )
+                {
+                result = ClearAllAppUidCookies( aMessage );
+                }
+
+            aMessage.Complete( result );
+
+            break;
+            }
+
+        default :
 			PanicClient( aMessage, ECookieBadRequest );
 			break;
 		}
@@ -502,29 +745,25 @@ TInt CCookieManagerSession::StoreCookie( const RMessage2& aMessage )
 //
 TInt CCookieManagerSession::SetAppUidL(const RMessage2& aMessage )
     {
-   TInt ret(KErrNone);
-   //READ FROM MESSAGE
+    CLOG( ( EServerSession, 0,
+            _L( "-> CCookieManagerSession::SetAppUidL" ) ) );
+    TInt ret(KErrNone);
+    //READ FROM MESSAGE
     HBufC* packedCookieBuf = HBufC::NewLC( aMessage.Int0() );
     TPtr packedCookiePtr( packedCookieBuf->Des() );
     aMessage.ReadL( 1, packedCookiePtr );   
     TLex lex(packedCookiePtr);
     TUint32 appUid(0);
     ret = lex.Val(appUid,EHex);    
-
-    //Extract Appuid from File Name
-    TPtrC buf = iCookieServer.GetFileName();
-    TInt len = buf.LocateReverse('_');
-    TPtrC ptr(iCookieServer.GetFileName().Mid(len+1));
-    TInt len1 = ptr.LocateReverse('.');
-    TPtrC ptr1(ptr.Left(len1));
-    if(!packedCookiePtr.Compare(ptr1) || (len == KErrNotFound && !appUid ))
-        {
-        //Already the Same File
-        CleanupStack::PopAndDestroy(packedCookieBuf);
-        return ret;    
-        }                
-    iCookieServer.SetFileName(appUid);
+    TUint32 secureId = aMessage.SecureId().iId;
+    TInt groupDataIndex =0;
+    //iCookieServer.CookieGroupDataArray()->GetGroupDataIndexL(secureId,appUid,groupDataIndex);
+    CCookieGroupData* cookiegroupdata = iCookieServer.CookieGroupDataArray()->At(groupDataIndex);
+    cookiegroupdata->SetFileName(appUid,secureId);
     CleanupStack::PopAndDestroy(packedCookieBuf);
+    CLOG( ( EServerSession, 0,
+                _L( "<- CCookieManagerSession::SetAppUidL" ) ) );
+
     return ret;    
     }
 // End of file

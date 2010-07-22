@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<CookieManagerSettings>
+	<ShareGroup name="Web Browser" id="0x10008d39" cookie_apps_share="on">
+        <SharedApp name="WebBrowser" uid3="0x10008d39" >
+		</SharedApp>
+		<SharedApp name="DownloadManager" uid3="0x10008D60">
+  	    </SharedApp>
+        <SharedApp name="Ovi Music" uid3="0x101ffb51">
+            </SharedApp>
+		<SharedApp name="Music Player " uid3="0x102072C3">
+         </SharedApp>           
+	
+	</ShareGroup>
+
+	<ShareGroup name="WRT Widget" id="0x10282822" cookie_apps_share="off">
+         <SharedApp name="WRT Widget" uid3="0x10282822" >
+	     </SharedApp>
+	</ShareGroup>
+</CookieManagerSettings>

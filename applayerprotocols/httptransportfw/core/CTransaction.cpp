@@ -82,7 +82,7 @@ void CTransaction::Close()
 	CHeaderFieldPart::ClosePropertySet(iPropertySet);
 	delete iRequest;
 	delete iResponse;
-
+	
 	// Cancel the active object
 	Cancel();
 

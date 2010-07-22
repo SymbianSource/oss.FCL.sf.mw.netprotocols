@@ -87,6 +87,8 @@ NONSHARABLE_CLASS( CCookieArray ) : public CBase
 		*/
 		TInt GetCookies( const TDesC8& aRequestUri,
 						RPointerArray<CCookie>& aCookies );
+        TInt GetCookies( const TDesC8& aRequestUri,
+                                       RPointerArray<CCookie>& aCookies, TBool& iFound );
 
 		/**
 		*
@@ -123,6 +125,7 @@ NONSHARABLE_CLASS( CCookieArray ) : public CBase
 
 
         RPointerArray<CCookie>& CookieArray();
+        void ReserveL( TInt aNumberOfCookies );
 
 	private :	// internal method for cookie comparison
 		/**

@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -79,6 +79,7 @@ private:
 	void ResetTimeElapsed();
 	void DisplayTimeElapsed();
 	//
+	void TestDecodeEncodeCacheControlL();
 	void TestEncodeAcceptL();
 	void TestEncodeAcceptCharsetL();
 	void TestEncodeAuthorizationL();

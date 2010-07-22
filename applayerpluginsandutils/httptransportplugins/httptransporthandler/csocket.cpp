@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -43,6 +43,21 @@ CSocket* CSocket::NewL(MCommsInfoProvider& aCommsInfoProvider, TSocketType aSock
 	return self;
 	}
 
+CSocket* CSocket::New(MCommsInfoProvider& aCommsInfoProvider, TSocketType aSocketType)
+    {
+    CSocket* self = new CSocket(aCommsInfoProvider);
+    if(self)
+        {
+        TInt error = self->Construct(aSocketType);
+        if(error != KErrNone)
+            {
+            delete self;
+            self = NULL;
+            }
+        }
+    return self;
+    }
+
 CSocket::~CSocket()
 /**
 	Destructor.
@@ -70,53 +85,61 @@ void CSocket::ConstructL(TSocketType aSocketType)
 	@param		aSocketType	The type of the socket.
 */
 	{
-	switch( aSocketType )
-		{
-	case EProtocolSocket:
-		{
-		if ( iCommsInfoProvider.HasConnection() )
-			{
-			// Open a protocol socket with a RConnection
-			User::LeaveIfError(iSocket.Open(
-										   iCommsInfoProvider.SocketServer(),
-										   iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
-										   iCommsInfoProvider.ProtocolDescription().iSockType, 
-										   iCommsInfoProvider.ProtocolDescription().iProtocol,
-										   iCommsInfoProvider.Connection()
-										   ));				
-			}
-		else
-			{
-			// Open a protocol socket without a RConnection, we don't need one ( Loopback address )
-			User::LeaveIfError(iSocket.Open(
-										   iCommsInfoProvider.SocketServer(),
-										   iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
-										   iCommsInfoProvider.ProtocolDescription().iSockType, 
-										   iCommsInfoProvider.ProtocolDescription().iProtocol
-										   ));											
-			}
-		} break;
-	case EBlankSocket:
-		{
-		// Open a blank socket
-		User::LeaveIfError(iSocket.Open(iCommsInfoProvider.SocketServer()));
-		} break;
-	default:
-		User::Invariant();
-		}
-	TInt id = iCommsInfoProvider.SessionId();
-	if(id>=0) 
-		{
-		// set socket option
-		iSocket.SetOpt(KSOHttpSessionId, KSOLHttpSessionInfo, id);
-		iSocket.SetOpt(KSoTcpKeepAlive, KSolInetTcp, KTcpTriggeredKeepAlive);
-		}
-	if(aSocketType != EBlankSocket)
-	    {
-	    iSocket.SetOpt(KSoTcpNoDelay,KSolInetTcp,1);  // Disable the nagle.
-        iSocket.SetOpt(KSORecvBuf, KSOLSocket, KSocketRecvBufSize); // Set the socket recv buf to be 16K
-	    }
+    User::LeaveIfError(Construct(aSocketType));
 	}
+
+TInt CSocket::Construct(TSocketType aSocketType)
+    {
+    TInt error = KErrNone;
+    switch( aSocketType )
+        {
+    case EProtocolSocket:
+        {
+        if ( iCommsInfoProvider.HasConnection() )
+            {
+            // Open a protocol socket with a RConnection
+            error = iSocket.Open(iCommsInfoProvider.SocketServer(),
+                                 iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
+                                 iCommsInfoProvider.ProtocolDescription().iSockType, 
+                                 iCommsInfoProvider.ProtocolDescription().iProtocol,
+                                 iCommsInfoProvider.Connection()
+                                 );              
+            }
+        else
+            {
+            // Open a protocol socket without a RConnection, we don't need one ( Loopback address )
+            error = iSocket.Open(iCommsInfoProvider.SocketServer(),
+                                 iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
+                                 iCommsInfoProvider.ProtocolDescription().iSockType, 
+                                 iCommsInfoProvider.ProtocolDescription().iProtocol
+                                 );                                          
+            }
+        } break;
+    case EBlankSocket:
+        {
+        // Open a blank socket
+        error = iSocket.Open(iCommsInfoProvider.SocketServer());
+        } break;
+    default:
+        User::Invariant();
+        }
+    if(error == KErrNone)
+        {
+        TInt id = iCommsInfoProvider.SessionId();
+        if(id>=0) 
+            {
+            // set socket option
+            iSocket.SetOpt(KSOHttpSessionId, KSOLHttpSessionInfo, id);
+            iSocket.SetOpt(KSoTcpKeepAlive, KSolInetTcp, KTcpTriggeredKeepAlive);
+            }
+        if(aSocketType != EBlankSocket)
+            {
+            iSocket.SetOpt(KSoTcpNoDelay,KSolInetTcp,1);  // Disable the nagle.
+            iSocket.SetOpt(KSORecvBuf, KSOLSocket, KSocketRecvBufSize); // Set the socket recv buf to be 16K
+            }
+        }
+    return error;
+    }
 
 TInt CSocket::Listen(TUint aQSize, TUint16 aPort)
 /**	

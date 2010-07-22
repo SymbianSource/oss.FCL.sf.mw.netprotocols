@@ -25,6 +25,10 @@ DEFAULT
 
 PRJ_EXPORTS
 
+../data/CookieGroup.xml   /epoc32/data/z/private/101F8530/CookieGroup.xml
+
+
+
 // iby
 ../Rom/CookieFilter.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieFilter.iby)
 ../Rom/CookieManager.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(CookieManager.iby)

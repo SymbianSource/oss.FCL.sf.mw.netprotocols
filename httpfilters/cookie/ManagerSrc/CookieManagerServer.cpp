@@ -22,6 +22,14 @@
 #include <e32std.h>
 
 #include <sysutil.h>
+#include <bautils.h>
+#include <xmlengdomimplementation.h>
+#include <xmlengdocument.h>
+#include <xmlengdomparser.h>
+#include <xmlengattr.h>
+#include <xmlengnodelist.h>
+#include <xmlengelement.h>
+
 // #include <thttphdrval.h>
 
 // User includes
@@ -32,6 +40,9 @@
 #include "CookieManagerServer.h"
 #include "CookieManagerSession.h"
 #include "CookieServerDef.h"
+#include "CookieGroupDataArray.h"
+#include "GroupIdInfoArray.h"
+#include "CookieGroupData.h"
 
 // CONSTANTS
 
@@ -50,7 +61,7 @@ const TInt KCookieInitCloseTime = 60000000; // 1 minute
 #endif
 
 // This means 128 characters, considering Unicode
-const TInt KCookieMaxFileNameLength = 256;
+//const TInt KCookieMaxFileNameLength = 256;
 
 // Maximum file length
 //const TInt KCookieMaxFileLength = 204800;	// 200 kilobytes
@@ -58,12 +69,20 @@ const TInt KCookieMaxFileNameLength = 256;
 
 // Literals
 _LIT( KDefaultCookieFolder, "C:\\Private\\" );
+_LIT( KDefaultCookieXmlFolder, "Z:\\Private\\" );
 _LIT( KDefaultCookieFile,   "\\Cookies" );
 _LIT( KDefaultExtension, ".dat");
 _LIT( KUnderScore, "_");
+_LIT8(KHexDel,"0x");
+_LIT( KDefaultCookieGroupFile,   "\\CookieGroup.xml" );
+_LIT8(KGroupId,"id");
+_LIT8(KUid3,"uid3");
+_LIT8(KCookieSharable,"cookie_apps_share");
+_LIT8(KGroupName,"name");
+_LIT8(KOff,"off");
 
 // capability checking structures
-const TUint cookieServerPolicyRangeCount = 6;
+const TUint cookieServerPolicyRangeCount = 9;
 
 // server messages
 const TInt  cookieServerPolicyRanges[ cookieServerPolicyRangeCount ] =
@@ -73,7 +92,10 @@ const TInt  cookieServerPolicyRanges[ cookieServerPolicyRangeCount ] =
     2,  // EGetCookieSize
     3,  // EGetCookies
     4,  // ESetAppUid
-    5
+    5,   //EDestroyCookies
+    6,  //EGetCookieSharableFlag
+    7,  //EClearAppUidCookies
+    8
     };
 
 // connection between messages and events
@@ -84,6 +106,9 @@ const TUint8 cookieServerPolicyElementsIndex[ cookieServerPolicyRangeCount ] =
     1,  // EGetCookieSize
     1,  // EGetCookies
     0,  // ESetAppUid
+    0,  // EDestroyCookies
+    0,  //EGetCookieSharableFlag
+    0,  //EClearAppUidCookies
    	CPolicyServer::ENotSupported 	// applies all out of range requests
     };
 
@@ -131,22 +156,28 @@ void CCookieManagerServer::ConstructL()
 
     iStringPool.OpenL();
 
-	iCookiePacker = new (ELeave) TCookiePacker( iStringPool );
+    //iCookiePacker = new (ELeave) TCookiePacker( iStringPool );
+    iCookieGroupDataArray = CCookieGroupDataArray::NewL();
+    iGroupIdArray = CGroupIdArray::NewL();
 
-	iCookieFileName = HBufC::NewL( KCookieMaxFileNameLength );
-
-	iPersistentCookies = new (ELeave) CCookieArray;
-
-    TPtr fileName( iCookieFileName->Des() );
-
-    fileName.Copy( KDefaultCookieFolder );
-    fileName.AppendNum( RProcess().SecureId(), EHex );
-    fileName.Append( KDefaultCookieFile );
-    fileName.Append( KDefaultExtension );
-
+    RFs iFs;
     if ( iFs.Connect() == KErrNone )  // we could connect to the file server
-    ReadCookiesFromFile();
-
+        {
+         TBuf<60> groupfilePath(KNullDesC);
+         groupfilePath.Copy( KDefaultCookieXmlFolder );
+         groupfilePath.AppendNum( RProcess().SecureId(), EHex );
+         groupfilePath.Append( KDefaultCookieGroupFile );
+         if ( BaflUtils::FileExists( iFs, groupfilePath ) )
+            {
+             TRAPD(ret, LoadGroupDataFromFileL(iFs) );
+             if( ret != KErrNone )
+                 {
+                 CLOG( ( EServer, 0, _L( "CCookieManagerServer::ConstructL: Loading Group data Failed" ) ) );
+                 //Do Nothing
+                 }
+            }
+         iFs.Close();
+        }
 	StartL( KCookieServerName );
 
     CLOG( ( EServer, 0, _L( "<- CCookieManagerServer::ConstructL" ) ) );
@@ -180,20 +211,18 @@ CCookieManagerServer* CCookieManagerServer::NewL()
 //
 CCookieManagerServer::~CCookieManagerServer()
     {
+    CLOG( ( EServer, 0, _L( "-> CCookieManagerServer::~CCookieManagerServer" ) ) );
     iServerClosing = ETrue;
-
-	delete iPersistentCookies;
-
-	delete iCookieFileName;
-
-	iFs.Close();
-    iStringPool.Close();
-
-	delete iCookiePacker;
+    if(iCookieGroupDataArray)
+        {
+        delete iCookieGroupDataArray;
+        iCookieGroupDataArray = NULL;
+        }
+    delete iGroupIdArray;
 
     delete iCloseTimer;
-
-    CLOG( ( EServer, 0, _L( "CCookieManagerServer::~CCookieManagerServer") ) );
+    iStringPool.Close();
+    CLOG( ( EServer, 0, _L( "<-CCookieManagerServer::~CCookieManagerServer") ) );
     CLOG( ( EServer, 0, _L( "*****************" ) ) );
     }
 
@@ -277,199 +306,16 @@ void CCookieManagerServer::CloseSession()
         // e.g. 1 minute before doing so as starting a server is expensive
         // in many ways.
         CLOG( ( EServer, 0, _L( "Closing Server" ) ) );
-        iPersistentCookies->RemoveNonPersistent();
-		iCloseTimer->After( KCookieCloseTime );
+        iCloseTimer->After( KCookieCloseTime );
         //just write cookies back to the file when browser is closed,
         //no need wait till cookie server is shutdown.
-        WriteCookiesToFile();
+        //WriteCookiesToFile();
         }
 
     CLOG( ( EServer, 0, _L( "<- CCookieManagerServer::CloseSession" ) ) );
     }
 
 
-// ---------------------------------------------------------
-// CCookieManagerServer::ReadCookiesFromFile
-// ---------------------------------------------------------
-//
-TInt CCookieManagerServer::ReadCookiesFromFile()
-    {
-	CLOG( ( EServer, 0,
-					_L( "-> CCookieManagerServer::ReadCookiesFromFile" ) ) );
-
-	TInt err;
-	if ( iCookieFileName->Length() != 0 )
-		{
-		RFile file;
-		err = file.Open( iFs, *iCookieFileName,
-							EFileShareExclusive | EFileStream | EFileRead );
-			if ( err == KErrNone )	// the file does exist and could be opened
-				{
-				TInt size;
-				err = file.Size( size );
-				if ( err == KErrNone )	// size query was successful
-					{
-					HBufC8* fileBuffer = HBufC8::New( size );
-					if ( fileBuffer )// there was enough memory for fileBuffer
-						{
-						TPtr8 fileBufferDes( fileBuffer->Des() );
-						err = file.Read( fileBufferDes );
-						if ( err == KErrNone )
-							{
-							// unfortunately this method might leave, because
-							// it allocates memory for cookies dynamically
-							TRAP( err,
-								iCookiePacker->UnpackCookiesFromBufferL
-												( *fileBuffer, iPersistentCookies->CookieArray() ) );
-							if ( err != KErrNone )
-							    {
-								delete fileBuffer;
-								file.Close();
-								iFs.Delete(*iCookieFileName); //Delete file.
-								return KErrNotFound;
-							    }
-							}
-
-						delete fileBuffer;
-						}
-					else
-						{
-						err = KErrNoMemory;
-						}
-					}
-
-				file.Close();
-			}
-		}
-	else	// if iCookieFileName->Length() == 0
-		{
-		err = KErrNotFound;
-		}
-
-	CLOG( ( EServer, 0,
-				_L( "<- CCookieManagerServer::ReadCookiesFromFile, errcode%d"),
-				err ) );
-
-	return err;
-    }
-
-// ---------------------------------------------------------
-// CCookieManagerServer::WriteCookiesToFile
-// ---------------------------------------------------------
-//
-TInt CCookieManagerServer::WriteCookiesToFile()
-    {
-    CLOG( ( EServer, 0,
-				_L( "-> CCookieManagerServer::WriteCookiesToFile" ) ) );
-
-    TInt err(KErrNone);
-	if ( !iPersistentCookies->Count() )
-		{
-		CLOG( ( EServer, 0,
-				_L( "<- CCookieManagerServer::WriteCookiesToFile, errcode%d" ),
-				KErrNone ));
-
-        // delete cookie file
-    err = iFs.Delete( *iCookieFileName );
-		return err;
-		}
-
-	if ( iCookieFileName->Length() != 0 )
-		{
-		if ( CheckDiskSpace( iFs, *iCookieFileName ) )
-			{
-      iFs.CreatePrivatePath( EDriveC );
-			RFile file;
-			iFs.MkDirAll(*iCookieFileName);
-			err = file.Replace( iFs, *iCookieFileName,
-							EFileShareExclusive | EFileStream | EFileWrite );
-				if ( err == KErrNone )
-					{
-					// get the maximum length of cookies
-    				TInt cookieCount( iPersistentCookies->Count() );
-    				TInt size( 0 );
-    				TInt maxSize( 0 );
-					for( TInt i = 0; i < cookieCount; i++ )
-    					{
-    					if ( (*iPersistentCookies)[i]->Persistent() && 
-    						 !(*iPersistentCookies)[i]->Expired() )
-    						{
-	    					size = (*iPersistentCookies)[i]->Size( EFalse );
-	    					if( size > maxSize )
-	        					{
-		    				    maxSize = size;
-		    				    }
-		    				}
-		    			}
-		    		maxSize++;
-		    		CLOG( ( EServer, 0, _L("maxSize: %d"), maxSize ) );
-		    		// allocate buffer for it
-					HBufC8* fileBuffer = HBufC8::New( maxSize );
-					if ( fileBuffer )
-						{
-						TPtr8 fileBufferDes = fileBuffer->Des();
-
-						// we ignore a possible packing or file writing error
-						// in this loop as these kinds of errors are not fatal
-						// and may not reappear during the next iteration
-						for ( TInt i = 0; i < cookieCount; i++ )
-							{
-    					if ( (*iPersistentCookies)[i]->Persistent() && 
-    						 !(*iPersistentCookies)[i]->Expired() )
-    						{
-								fileBufferDes.SetLength(0);
-	
-								// use CliPackCookie as SrvPackCookie will 
-	                            // suppress the defaulted domain attribute...
-	                            err = iCookiePacker->CliPackCookie( fileBufferDes,
-																(*(*iPersistentCookies)[i]) );
-	
-								if ( err == KErrNone )
-									{
-									err = file.Write( *fileBuffer );
-									}
-								}
-							}
-
-						delete fileBuffer;
-						}
-					else
-						{
-						err = KErrNoMemory;
-						}
-
-					file.Close();
-					}
-				}
-			else	// there is not enough disk space
-				{
-				err = KErrDiskFull;
-			}
-		}
-	else	// if ( iCookieFileName->Length() == 0 )
-		{
-		err = KErrNotFound;
-		}
-
-	CLOG( ( EServer, 0,
-		_L( "<- CCookieManagerServer::WriteCookiesToFile, errcode%d" ), err ) );
-
-	return err;
-    }
-
-// ---------------------------------------------------------
-// CCookieManagerServer::ClearCookies
-// ---------------------------------------------------------
-//
-TInt CCookieManagerServer::ClearAllCookies()
-    {
-    TInt count = iPersistentCookies->ClearAllCookies();
-
-    // delete cookie file, just for sure
-    // this is done also in destructor
-    iFs.Delete( *iCookieFileName );
-    return count;
-    }
 
 // ---------------------------------------------------------
 // CCookieManagerServer::StringPool
@@ -485,73 +331,40 @@ RStringPool* CCookieManagerServer::StringPool()
 // CCookieManagerServer::CookieArray
 // ---------------------------------------------------------
 //
-CCookieArray* CCookieManagerServer::CookieArray()
+CCookieArray* CCookieManagerServer::CookieArray(TInt aIndex)
     {
-    return iPersistentCookies;
+    return iCookieGroupDataArray->CookieArray(aIndex);
     }
 
+
 // ---------------------------------------------------------
-// CCookieManagerServer::StorePersistentCookie
+// CCookieManagerServer::CookieGroupDataArray
 // ---------------------------------------------------------
 //
-void CCookieManagerServer::StorePersistentCookieL( CCookie* aCookie,
-												 const TDesC8& aRequestUri,
-												 const TInt aIndex )
-	{	 
-	if (aIndex == -1)
-		{
-		iPersistentCookies->AddL( aCookie, aRequestUri);
-		}
-	else
-		{
-		iPersistentCookies->InsertL( aCookie, aIndex);
-		}
+CCookieGroupDataArray* CCookieManagerServer::CookieGroupDataArray()
+    {
+    return iCookieGroupDataArray;
     }
 
+// ---------------------------------------------------------
+// CCookieManagerServer::GroupIdArray
+// ---------------------------------------------------------
+//
+CGroupIdArray* CCookieManagerServer::GroupIdArray()
+    {
+    return iGroupIdArray;
+    }
 
 // ---------------------------------------------------------
 // CCookieManagerServer::GetCookies
 // ---------------------------------------------------------
 //
 TInt CCookieManagerServer::GetCookies( const TDesC8& aRequestUri,
-									  RPointerArray<CCookie>& aCookies ) const
+                                      RPointerArray<CCookie>& aCookies,TInt aIndex ) const
 	{
-	return iPersistentCookies->GetCookies( aRequestUri, aCookies );
+    return iCookieGroupDataArray->GetCookies( aRequestUri, aCookies, aIndex);
 	}
 
-// ---------------------------------------------------------
-// CCookieManagerServer::SetFileName
-// ---------------------------------------------------------
-//
-void CCookieManagerServer::SetFileName(TUint32& aAppUid) 
-    {
-    *iCookieFileName = KNullDesC;
-    TPtr fileName( iCookieFileName->Des() );
-    fileName.Copy( KDefaultCookieFolder );
-    fileName.AppendNum( RProcess().SecureId(), EHex );
-    TBuf<KMaxFileName> buf(KDefaultCookieFile);
-    if(aAppUid)
-        {       
-        buf.Append(KUnderScore);        
-        buf.AppendNum(aAppUid,EHex);        
-        }
-    fileName.Append(buf);
-    fileName.Append(KDefaultExtension);      
-	//just write cookies back to the file before clearallcookies
-	WriteCookiesToFile();
-    //Delete the cookie list as we are going to read from File
-    iPersistentCookies->ClearAllCookies() ;
-    ReadCookiesFromFile();
-    }
-
-// ---------------------------------------------------------
-// CCookieManagerServer::GetFileName
-// ---------------------------------------------------------
-//
-TDesC& CCookieManagerServer::GetFileName() const
-    {
-    return *iCookieFileName;
-    }
 
 //**********************************
 // CCookieTimer
@@ -600,3 +413,154 @@ CCookieTimer* CCookieTimer::NewL()
 
 	return self;
 	}
+// ---------------------------------------------------------
+// CCookieTimer::LoadGroupDataFromFileL
+// ---------------------------------------------------------
+//
+TInt CCookieManagerServer::LoadGroupDataFromFileL( RFs& afileSession )
+    {
+    CLOG( ( EServer, 0, _L( "-> CCookieManagerServer::LoadGroupDataFromFileL" ) ) );
+    TBuf<60> groupfile(KNullDesC);
+    groupfile.Copy( KDefaultCookieXmlFolder );
+    groupfile.AppendNum( RProcess().SecureId(), EHex );
+    groupfile.Append( KDefaultCookieGroupFile );
+    RXmlEngDOMImplementation DOM_impl;
+    DOM_impl.OpenL();
+    RXmlEngDocument doc;
+    RXmlEngDOMParser parser;
+    TInt error = parser.Open( DOM_impl );
+    
+    if (error == KErrNone)
+     {
+
+
+       TRAPD( err, doc = parser.ParseFileL( afileSession, groupfile ) );
+       if ( ! err )
+           {
+           TXmlEngNode node;
+           TXmlEngElement element;
+           RXmlEngNodeList<TXmlEngElement> nodelist1;
+           RXmlEngNodeList<TXmlEngElement> nodelist2;
+           node = doc.DocumentElement();
+           node.AsElement().GetChildElements(nodelist1);
+           CleanupClosePushL(nodelist1);
+           CleanupClosePushL(nodelist2);
+           
+           while ( nodelist1.HasNext() ) //Parent Node
+             {
+                element = nodelist1.Next();
+                element.GetChildElements(nodelist2);
+                TPtrC8 name = element.Name();
+                     RArray<TUint32> sharedAppUidArray(5);
+                     TUint32 groupId = 0;
+                     TBool cookieSharableFlag;
+                     TBool entryHasAttributes = element.HasAttributes();
+                     if ( entryHasAttributes )
+                      {
+                        RXmlEngNodeList<TXmlEngAttr> attributeList;
+                        element.GetAttributes(attributeList);
+                        CleanupClosePushL(attributeList);
+                        while ( attributeList.HasNext() )
+                            {
+                            TXmlEngAttr attr = attributeList.Next();
+                            TPtrC8 attrName = attr.Name();
+                            TPtrC8 attrData = attr.Value();
+                            SettingAttribute(attrName,attrData,groupId,sharedAppUidArray,cookieSharableFlag );
+                            }
+                        CleanupStack::PopAndDestroy(); //attributeList
+                       }
+                         while( nodelist2.HasNext() )//Child Node
+                            {
+                              element = nodelist2.Next();
+                              if ( ! element.IsNull() )
+                                {
+                                  TPtrC8 name = element.Name();
+                                  TBool hasAttributes = element.HasAttributes();
+                                  RXmlEngNodeList<TXmlEngAttr> attributeList;
+                                  element.GetAttributes(attributeList);
+                                  TInt count = attributeList.Count();
+                                  CleanupClosePushL(attributeList);
+                                  while ( attributeList.HasNext() )
+                                      {
+                                      TXmlEngAttr attr = attributeList.Next();
+                                      TPtrC8 attrName = attr.Name();
+                                      TPtrC8 attrData = attr.Value();
+                                      SettingAttribute(attrName,attrData,groupId,sharedAppUidArray,cookieSharableFlag );
+                                      }
+                                  CleanupStack::PopAndDestroy(); //attributeList
+                                }
+                            }
+                     CGroupIdInfo* groupIdInfo = CGroupIdInfo::NewL( groupId, sharedAppUidArray, cookieSharableFlag );
+                     CleanupStack::PushL( groupIdInfo );
+                     iGroupIdArray->AddGroupIdL( groupIdInfo );
+                     CleanupStack::Pop( groupIdInfo );
+                     CCookieGroupData* cookieGroupData = CCookieGroupData::NewL(groupId,sharedAppUidArray,cookieSharableFlag);
+                     CleanupStack::PushL( groupIdInfo );
+                     iCookieGroupDataArray->AddGroupDataL(cookieGroupData);
+                     CleanupStack::Pop( groupIdInfo );
+                     sharedAppUidArray.Close();
+                 }
+           CleanupStack::PopAndDestroy(); //nodelist2
+           CleanupStack::PopAndDestroy(); //nodelist1
+           }
+     }
+    doc.Close();               
+    parser.Close();
+    DOM_impl.Close();
+    CLOG( ( EServer, 0, _L( "<- CCookieManagerServer::LoadGroupDataFromFileL" ) ) );
+    return KErrNone;
+    }
+
+// ---------------------------------------------------------
+// CCookieTimer::SettingAttribute
+// ---------------------------------------------------------
+//
+void CCookieManagerServer::SettingAttribute(TDesC8& attrName, TDesC8& attrData,TUint32& aGroupId
+        , RArray<TUint32>& aSharedAppUidArray, TBool& aCookieSharableFlag  )
+    {
+    CLOG( ( EServer, 0, _L( "-> CCookieManagerServer::SettingAttribute" ) ) );
+    TBuf8<100> groupname(KNullDesC8);
+    TBuf8<100> bufGroupId(KNullDesC8);
+    TBuf8<100> bufSharedAppUidName(KNullDesC8);
+    TUint32 sharedAppUid = 0;
+    if ( ! attrName.CompareF(KGroupName))
+         {
+          groupname.Copy(attrData);
+         } else if ( ! attrName.CompareF(KGroupId)) 
+              {
+              bufGroupId.Copy(attrData);
+              TInt err = ChangeToDecimal(bufGroupId, aGroupId);
+              
+              }else if ( ! attrName.CompareF(KUid3))
+                 {
+                 bufSharedAppUidName.Copy(attrData);
+                 TInt err = ChangeToDecimal(bufSharedAppUidName, sharedAppUid);
+                 if (err == KErrNone)
+                     aSharedAppUidArray.AppendL(sharedAppUid);
+                 
+                 } else if (! attrName.CompareF(KCookieSharable))
+                     {
+                      if ( !attrData.CompareF(KOff) )
+                          aCookieSharableFlag = EFalse;
+                      else
+                          aCookieSharableFlag = ETrue;
+                     }
+    CLOG( ( EServer, 0, _L( "<- CCookieManagerServer::SettingAttribute" ) ) );
+    }
+
+// ---------------------------------------------------------
+// CCookieTimer::ChangeToDecimal
+// ---------------------------------------------------------
+//
+TInt CCookieManagerServer::ChangeToDecimal( TDes8& aBuf,TUint32& aUid )
+    {
+    CLOG( ( EServer, 0, _L( "-> CCookieManagerServer::ChangeToDecimal" ) ) );
+     TBuf8<100> tempBuf;
+     TPtrC8 tempPtr = aBuf.Mid( KHexDel().Length());
+     tempBuf.Copy(tempPtr);
+     TLex8 lex(tempBuf);
+     TInt ret = lex.Val(aUid,EHex);
+     CLOG( ( EServer, 0, _L( "<- CCookieManagerServer::ChangeToDecimal" ) ) );
+     return ret;
+    }
+//EOF

@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -55,7 +55,6 @@ CSocketConnector::~CSocketConnector()
 	// Cleanup...
 	delete iHost;
 	delete iConnectingSocket;
-	iHostResolver.Close();
 
 //	__FLOG_CLOSE;
 	}
@@ -104,20 +103,33 @@ void CSocketConnector::ConnectL(MSocketConnectObserver& aObserver, const TDesC8&
 	iHost = HBufC::NewL(aRemoteHost.Length());
 	iHost->Des().Copy(aRemoteHost);
 	iPort = aRemotePort;
-
+		
+	TInt error = KErrNone;
     // Move to the PendingDNSLookup state and self complete.
     if(aRemoteAddress == NULL)
         {
-        // Address is unknown / DNS lookup is needed
+        RDebug::Printf("RemoteAddress is NULL so doing a DNS lookup");
         iState = EPendingDNSLookup;
+        // Address is unknown / DNS lookup is needed
+        error = DoPendingDNSLookup();
         }
     else
         {
+        RDebug::Printf("Remote address is known so doing a direct connect");
+        iState = EConnecting;
         // Address is know. No lookup is needed. Just go and connect.
         iHostDnsEntry().iAddr = *aRemoteAddress;
-        iState = EConnecting;
+        error = DoConnect();
         }
-	CompleteSelf();
+    
+    if(error != KErrNone)
+        {
+        iState = EPendingDNSLookup;
+        // Error the AO and handle the error in the normal path.
+        TRequestStatus* pStat = &iStatus;
+        User::RequestComplete(pStat, error);
+        SetActive();      
+        }
 	}
 
 void CSocketConnector::CompleteSelf()
@@ -193,80 +205,11 @@ void CSocketConnector::RunL()
 		{
 	case EPendingDNSLookup:
 		{
-#if defined (_DEBUG) && defined (_LOGGING)
-		TBuf8<KHostNameSize> host;
-		host.Copy((*iHost).Left(KHostNameSize)); //just get the KHostNameSize characters
-
-		__FLOG_1(_T8("Doing DNS lookup -> searching for host %S"), &host);
-#endif
-
-		__OOM_LEAVE_TEST
-
-		if ( iCommsInfoProvider.HasConnection() )
-			{
-			// Open the host resolver session with the preffered connection
-			User::LeaveIfError(iHostResolver.Open(
-												 iCommsInfoProvider.SocketServer(),
-												 iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
-												 KProtocolInetUdp,
-												 iCommsInfoProvider.Connection()
-												 ));				
-			}
-		else
-			{							
-			// Open the host resolver session with no connection
-			User::LeaveIfError(iHostResolver.Open(
-												 iCommsInfoProvider.SocketServer(),
-												 iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
-												 KProtocolInetUdp
-												 ));				
-			}
-
-		// Start the DNS lookup for the remote host name.
-		iHostResolver.GetByName(*iHost, iHostDnsEntry, iStatus);
-
-		// Move to the Connecting state and go active
-		iState = EConnecting;
-		SetActive();
+		User::LeaveIfError(DoPendingDNSLookup());
 		} break;
 	case EConnecting:
 		{
-		__OOM_LEAVE_TEST
-
-		// DNS lookup successful - form the internet address object
-		iAddress = TInetAddr(iHostDnsEntry().iAddr);
-		iAddress.SetPort(iPort);
-
-#if defined (_DEBUG) && defined (_LOGGING)
-		TBuf8<KHostNameSize> host;
-		host.Copy((*iHost).Left(KHostNameSize)); //just get the KHostNameSize characters
-
-		TBuf<KIpv6MaxAddrSize> ip16bit;
-		iAddress.Output(ip16bit);
-
-		TBuf8<KIpv6MaxAddrSize> ip;
-		ip.Copy(ip16bit);
-		
-		__FLOG_2(_T8("DNS lookup complete -> host %S has IP address %S"), &host, &ip);
-#endif
-		
-		// Start a default RConnection, if one is not started and not local loopback address		
-		if ( !iCommsInfoProvider.HasConnection() && !iAddress.IsLoopback() )
-			{
-			iCommsInfoProvider.StartDefaultCommsConnectionL ();				
-			}
-
-		// Create the connecting socket
-		iConnectingSocket = CSocket::NewL(iCommsInfoProvider, CSocket::EProtocolSocket);
-
-		// Start connecting to the remote client
-		iConnectingSocket->Connect(iAddress, iStatus);
-
-		__FLOG_2(_T8("Connecting -> to host %S on IP address %S"), &host, &ip);
-
-		// Move to the Connected state and go active
-		iState = EConnected;
-		SetActive();
+		User::LeaveIfError(DoConnect());
 		} break;
 	case EConnected:
 		{
@@ -334,6 +277,7 @@ void CSocketConnector::DoCancel()
 		{
 		// DNS lookup is pending - cancel
 		iHostResolver.Cancel();
+		iCommsInfoProvider.AddToHostResolverCache(iHostResolver); // Add to the cache.
 		} break;
 	case EConnected:
 		{
@@ -431,3 +375,103 @@ TInt CSocketConnector::RunError(TInt aError)
 
 	return error;
 	}
+
+TInt CSocketConnector::DoPendingDNSLookup()
+    {
+#if defined (_DEBUG) && defined (_LOGGING)
+        TBuf8<KHostNameSize> host;
+        host.Copy((*iHost).Left(KHostNameSize)); //just get the KHostNameSize characters
+
+        __FLOG_1(_T8("Doing DNS lookup -> searching for host %S"), &host);
+#endif        
+     TInt error = KErrNone;
+     
+     iCommsInfoProvider.HostResolverFromCache(iHostResolver); // Get the RHostResolver from the cache
+     if(iHostResolver.SubSessionHandle() <= 0)
+         {
+         RDebug::Printf("No host resolver. Open a new one...");
+         if ( iCommsInfoProvider.HasConnection() )
+            {
+            // Open the host resolver session with the preffered connection
+            error = iHostResolver.Open(iCommsInfoProvider.SocketServer(),
+                                       iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
+                                       KProtocolInetUdp,
+                                       iCommsInfoProvider.Connection());                
+             }
+          else
+            {                           
+            // Open the host resolver session with no connection
+            error = iHostResolver.Open(iCommsInfoProvider.SocketServer(),
+                                       iCommsInfoProvider.ProtocolDescription().iAddrFamily, 
+                                       KProtocolInetUdp);                
+            }
+         }
+     
+     if(error != KErrNone)
+        {
+        return error;
+        }
+        
+    // Start the DNS lookup for the remote host name.
+    iHostResolver.GetByName(*iHost, iHostDnsEntry, iStatus);
+
+    // Move to the Connecting state and go active
+    iState = EConnecting;
+    SetActive();    
+    return error;
+    }
+
+TInt CSocketConnector::DoConnect()
+    {
+    // DNS lookup successful - form the internet address object
+    iAddress = TInetAddr(iHostDnsEntry().iAddr);
+    iAddress.SetPort(iPort);
+    
+    // Add the RHostResolver to the cache.
+    if(iHostResolver.SubSessionHandle() > 0)
+        {
+        iCommsInfoProvider.AddToHostResolverCache(iHostResolver);
+        }
+    
+#if defined (_DEBUG) && defined (_LOGGING)
+    TBuf8<KHostNameSize> host;
+    host.Copy((*iHost).Left(KHostNameSize)); //just get the KHostNameSize characters
+
+    TBuf<KIpv6MaxAddrSize> ip16bit;
+    iAddress.Output(ip16bit);
+
+    TBuf8<KIpv6MaxAddrSize> ip;
+    ip.Copy(ip16bit);
+    
+    __FLOG_2(_T8("DNS lookup complete -> host %S has IP address %S"), &host, &ip);
+#endif
+   
+    // Start a default RConnection, if one is not started and not local loopback address        
+    if ( !iCommsInfoProvider.HasConnection() && !iAddress.IsLoopback() )
+        {
+        // it is ok to TRAP here as the method will be called only once.
+        TRAPD(error, iCommsInfoProvider.StartDefaultCommsConnectionL ());
+        if(error != KErrNone)
+            {
+            return error;
+            }
+        }
+
+    // Create the connecting socket
+    iConnectingSocket = CSocket::New(iCommsInfoProvider, CSocket::EProtocolSocket);
+    if(!iConnectingSocket)
+        {
+        return KErrNoMemory;
+        }
+    
+    // Start connecting to the remote client
+    iConnectingSocket->Connect(iAddress, iStatus);
+    SetActive();
+    __FLOG_2(_T8("Connecting -> to host %S on IP address %S"), &host, &ip);
+
+    // Move to the Connected state and go active
+    iState = EConnected;
+    return KErrNone;
+    }
+
+

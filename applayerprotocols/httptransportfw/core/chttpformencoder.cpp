@@ -70,8 +70,8 @@ TInt CHTTPFormEncoder::OverallDataSize()
 	
 TInt CHTTPFormEncoder::Reset()
 	{
-	// Not implemented here
-	return KErrNotSupported;
+    iState = EAllowAppendData;
+	return KErrNone;
 	}
 
 EXPORT_C void CHTTPFormEncoder::AddFieldL(const TDesC8& aFieldName, const TDesC8& aFieldValue)

@@ -316,9 +316,12 @@ TInt CHttpRequestBatcher::SendTimeOutVal()
 	return iObserver->SendTimeOutVal();
 	}
 
-void CHttpRequestBatcher::SetTCPCorking(TBool /* aValue */)
+void CHttpRequestBatcher::SetTCPCorking(TBool  aValue )
     {
-    
+    if (iOutputStream)
+            {
+            iOutputStream->SetTCPCorking(aValue);
+            }
     }
 
 

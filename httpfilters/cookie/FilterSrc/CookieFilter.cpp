@@ -34,6 +34,9 @@ _LIT8(KVersionValue, "$Version=1");
 _LIT8(KEmpty, "");
 _LIT8( KCookieUsage, "CookiesEnabled" );
 _LIT8( KAppUid, "Appuid" );
+_LIT8( KHttpConnectMethod, "CONNECT");
+_LIT8( KSecureHttpScheme, "https://");
+const TInt KSecureHttpSchemeLength = 8;
 
 // ---------------------------------------------------------
 // CCookieFilter::InstallFilterL
@@ -248,8 +251,21 @@ void CCookieFilter::HandleRequestHeadersL( RHTTPTransaction aTransaction )
 
 	TBool cookie2Reqd = EFalse;
 	RPointerArray<CCookie> cookies(20);
+    HBufC8* requestUriBuf( NULL );
 	TPtrC8 requestUri( aTransaction.Request().URI().UriDes() );
-
+    TPtrC8 requestMethod( aTransaction.Request().Method().DesC() );
+    if( (requestMethod.CompareF(KHttpConnectMethod) == 0) && (requestUri.Left(KSecureHttpSchemeLength).CompareF(KSecureHttpScheme) == 0))
+        {
+        // if we are performing an HTTP CONNECT to create tunnel for original https:// request, we
+        // should not include secure cookies in this HTTP request since they will be in clear text.
+        // to ensure that Cookie manager does not add these into cookie array, change scheme so
+        // it appears as non-secure transaction
+        requestUriBuf = requestUri.Alloc();
+        CleanupStack::PushL(requestUriBuf);        
+        TPtr8 requestUriPtr = requestUriBuf->Des();
+        requestUriPtr.Delete(4, 1);  // remove char in pos 4 to change https:// to http:// 
+        requestUri.Set(requestUriPtr);
+        }
 	TBool ret;
 	RStringF appuid = iStringPool.OpenFStringL( KAppUid );
 	THTTPHdrVal hdrVal;
@@ -260,10 +276,14 @@ void CCookieFilter::HandleRequestHeadersL( RHTTPTransaction aTransaction )
 	    {
     	appuidValue = hdrVal.Int();    	       
 	    }
-	iCookieManager.SetAppUidL(appuidValue); 
+	//iCookieManager.SetAppUidL(appuidValue); 
     appuid.Close();
     
-    iCookieManager.GetCookiesL( requestUri, cookies, cookie2Reqd );
+    iCookieManager.GetCookiesL( requestUri, cookies, cookie2Reqd,appuidValue );
+    if( requestUriBuf )
+        {
+        CleanupStack::PopAndDestroy( requestUriBuf );
+        }
 
 	TInt numCookies = cookies.Count();
 	for ( TInt ii = 0; ii < numCookies; ++ii )
@@ -343,11 +363,11 @@ void CCookieFilter::HandleResponseHeadersL( RHTTPTransaction aTransaction )
     	    {
     	    appuidValue = hdrVal.Int();                                     
     	    }	
-        iCookieManager.SetAppUidL(appuidValue);    
+        //iCookieManager.SetAppUidL(appuidValue);    
         appuid.Close();       
         
 		User::LeaveIfError( iCookieManager.StoreCookie( *cookie,
-														requestUri ) );
+														requestUri,appuidValue ) );
 
 		CleanupStack::PopAndDestroy();	// cookie
         }
