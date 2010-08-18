@@ -23,12 +23,13 @@
 
 #include <sysutil.h>
 #include <bautils.h>
-#include <xmlengdomimplementation.h>
-#include <xmlengdocument.h>
-#include <xmlengdomparser.h>
-#include <xmlengattr.h>
-#include <xmlengnodelist.h>
-#include <xmlengelement.h>
+#include <xml/dom/xmlengdomimplementation.h>
+#include <xml/dom/xmlengdocument.h>
+#include <xml/dom/xmlengdomparser.h>
+#include <xml/dom/xmlengattr.h>
+#include <xml/dom/xmlengnodelist.h>
+#include <xml/dom/xmlengelement.h>
+
 
 // #include <thttphdrval.h>
 
