@@ -108,14 +108,12 @@ void CSocketConnector::ConnectL(MSocketConnectObserver& aObserver, const TDesC8&
     // Move to the PendingDNSLookup state and self complete.
     if(aRemoteAddress == NULL)
         {
-        RDebug::Printf("RemoteAddress is NULL so doing a DNS lookup");
         iState = EPendingDNSLookup;
         // Address is unknown / DNS lookup is needed
         error = DoPendingDNSLookup();
         }
     else
         {
-        RDebug::Printf("Remote address is known so doing a direct connect");
         iState = EConnecting;
         // Address is know. No lookup is needed. Just go and connect.
         iHostDnsEntry().iAddr = *aRemoteAddress;
@@ -389,7 +387,6 @@ TInt CSocketConnector::DoPendingDNSLookup()
      iCommsInfoProvider.HostResolverFromCache(iHostResolver); // Get the RHostResolver from the cache
      if(iHostResolver.SubSessionHandle() <= 0)
          {
-         RDebug::Printf("No host resolver. Open a new one...");
          if ( iCommsInfoProvider.HasConnection() )
             {
             // Open the host resolver session with the preffered connection

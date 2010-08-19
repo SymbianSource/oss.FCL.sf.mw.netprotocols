@@ -116,22 +116,6 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestTldPolicyStep 	c:\testda
 END_TESTCASE 	IWS-WLBL-TLD-CIT-NEG-0004-0002
 
 
-START_TESTCASE	IWS-WLBL-CIT-POS-0037-0002
-//ReadCap_Get_All_WhiteList_Uris
-
-//! @file			Cap_00000000_TestWListBListUri.script
-//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0037-0002
-//! @SYMTestCaseDesc 		To find/match  uris using service-type/list-type, the application must have ReadDeviceData capability
-//! @SYMFssID			
-//! @SYMTestStatus 		Released
-//! @SYMTestPriority 		Critical
-//! @SYMTestActions 		Try to find/match uris  using service-type/list-type when application has ReadDeviceData capability.
-//! @SYMTestExpectedResults 	The operation must pass.
-//! @SYMTestType 		CIT
-RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestMatchUriTypeStep    c:\testdata\ini\TestWListBListUriSuite.ini  ReadCap_Get_All_WhiteList_Uris_1
-END_TESTCASE 	IWS-WLBL-CIT-POS-0037-0002
-
-
 START_TESTCASE	IWS-WLBL-CIT-POS-0037-0003
 //ReadCap_Get_ListType_WhiteListed_Uri
 

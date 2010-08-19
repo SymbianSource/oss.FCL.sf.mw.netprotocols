@@ -314,7 +314,9 @@ void CHttpConnectionManager::CancelSubmission(MHttpRequest& aRequest, MHttpRespo
 		// The request has not been made - just need to remove the request and
 		// response objects from the pending queues.
 		iPendingRequests.Remove(requestIndex);
-		iPendingResponses.Remove(responseIndex);
+		
+		if (KErrNotFound != responseIndex)
+		    iPendingResponses.Remove(responseIndex);
 		}
 	else if( responseIndex != KErrNotFound )
 		{
@@ -1281,13 +1283,16 @@ void CHttpConnectionManager::DoResponseCompletion ()
 			TPtrC8 data;
 			__FLOG_0(_T8("!! doing an immediate socket read"));					
 			TInt ret = iInputStream->ImmediateRead ( data );
+			if (ret) //we have some data read..so parse it
+				{
+				responseCompleted = iCurrentResponse->CompleteResponse ( data );
+				}
 			if ( ( iPendingResponses.Count() == 0 ) || ret <= KErrNone )
 				{
 				__FLOG_0(_T8("!! Breaking from the loop"));
 				// no further data is expected or there is a socket error
 				break;					
 				}
-			responseCompleted = iCurrentResponse->CompleteResponse ( data );
 			}
 		}
 	}

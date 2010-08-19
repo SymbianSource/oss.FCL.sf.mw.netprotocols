@@ -588,6 +588,11 @@ void CTestEngine::GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecu
 	aSecurityPolicy = NULL;
 	}
 
+void CTestEngine::GetSecurityPrefs(MSecurityPolicy*& /*aSecurityPolicy*/, TInt& /*aDialogPref*/)
+    {
+    // dummy implementation
+    }
+
 TBool CTestEngine::ImmediateSocketShutdown()
 	{
 	if (iUseConnection)

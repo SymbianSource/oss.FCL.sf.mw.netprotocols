@@ -40,6 +40,5 @@ START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE_ADD_SECURITY-0001
 //! @SYMTestType 		CIT
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_6
-RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_5
 END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE_ADD_SECURITY-0001
 

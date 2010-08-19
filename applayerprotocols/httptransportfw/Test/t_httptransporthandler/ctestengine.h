@@ -103,6 +103,11 @@ private:	// methods from MCommsConnectionProvider
 */
 	virtual void GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy);
 
+/** @fn         GetSecurityPrefs(MSecurityPolicy* aSecurityPolicy, TInt& aDialogPref)
+    @see        MCommsConnectionProvider    
+*/
+	virtual void GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref);
+
 /**	@fn			ImmediateSocketShutdown()
 	@see		MCommsConnectionProvider	
 */
@@ -115,6 +120,7 @@ private:	// methods from MCommsConnectionProvider
 
 	virtual TInt SessionId();
 	TInt GetRecvBufferSize();
+	TInt GetSocketImmediateCloseTimeout(){ return KErrNotFound;}
 
 private:	// typedefs
 

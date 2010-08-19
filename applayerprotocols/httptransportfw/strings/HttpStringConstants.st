@@ -301,3 +301,17 @@ EEnableStrictConnectHeaders _057
 # 
 EHttpOptimalPipelining _061
 EHttpEnableOptimalPipelining _062
+#
+# Property name to set the TCP socket timeout. If the socket is idle for the period
+# the socket will be closed
+#
+EHttpSocketTimeoutValue _063
+#Propery name to set the transaction should not be retried if there is any error
+#
+EHttpPropagateDefaultError _064
+#
+# Property name and value to be used for allowing untrusted certificates
+#
+EDialogAutomaticAllowed _071
+#Property name to set the TCP socket immediate close timewait. This will enable the Lingering option in tcp.
+EHttpSocketImmediateClosetTimeOutValue  _65

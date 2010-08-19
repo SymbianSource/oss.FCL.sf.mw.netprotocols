@@ -81,22 +81,6 @@ START_TESTCASE	IWS-WLBL-CAP_00000020_TESTWLISTBLISTURI-0001
 RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriListTypeStep    c:\testdata\ini\TestWListBListUriSuite.ini  WriteCap_Get_ListType_WhiteListed_Uri_1
 END_TESTCASE 	IWS-WLBL-CAP_00000020_TESTWLISTBLISTURI-0001
 
-START_TESTCASE	IWS-WLBL-TLD-CIT-NEG-0004-0003
-//WriteCap_Tld_WhiteList_Uris
-
-//! @file			Cap_00000000_TestWListBListUri.script
-//! @SYMTestCaseID		IWS-WLBL-TLD-CIT-NEG-0004-0003
-//! @SYMTestCaseDesc 		Shouldn't be able to query tld info when the application does not have ReadDeviceData
-//! @SYMFssID			
-//! @SYMTestStatus 		Implemented
-//! @SYMTestPriority 		Critical
-//! @SYMTestActions 		Try to find query tld info when application has WriteDeviceData capability.
-//! @SYMTestExpectedResults 	It should fail with KErrPermissionDenied error as expected.
-//! @SYMREQ						REQ11666
-//! @SYMTestType 		CIT
-RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestTldPolicyStep    c:\testdata\ini\TestWListBListUriSuite.ini  WriteCap_Tld_WhiteList_Uris_1
-END_TESTCASE 	IWS-WLBL-TLD-CIT-NEG-0004-0003
-
 START_TESTCASE	IWS-WLBL-CIT-POS-0038-0002
 //WriteCap_Update_Uri_ListType
 
@@ -112,21 +96,6 @@ START_TESTCASE	IWS-WLBL-CIT-POS-0038-0002
 RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUpdateUriListTypeStep 	c:\testdata\ini\TestWListBListUriSuite.ini  WriteCap_Update_Uri_ListType_1
 END_TESTCASE 	IWS-WLBL-CIT-POS-0038-0002
 
-
-START_TESTCASE	IWS-WLBL-CAP_00000020_TESTWLISTBLISTURI-0002
-//WriteCap_Find_Uris_Count
-
-//! @file			Cap_00000000_TestWListBListUri.script
-//! @SYMTestCaseID		IWS-WLBL-CAP_00000020_TESTWLISTBLISTURI-0002
-//! @SYMTestCaseDesc 		It doesn't require any capability to find the count of matching uris using service-type/list-type.
-//! @SYMFssID			
-//! @SYMTestStatus 		Implemented
-//! @SYMTestPriority 		Critical
-//! @SYMTestActions 		Try to find the count of matching uris  using service-type/list-type when application has WriteDeviceData capability.
-//! @SYMTestExpectedResults 	The operation must pass.
-//! @SYMTestType 		CIT
-RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriCountStep 	c:\testdata\ini\TestWListBListUriSuite.ini  WriteCap_Find_Uris_Count_1
-END_TESTCASE 	IWS-WLBL-CAP_00000020_TESTWLISTBLISTURI-0001
 
 START_TESTCASE	IWS-WLBL-CIT-POS-0038-0003
 //WriteCap_Add_Uri_WhiteList

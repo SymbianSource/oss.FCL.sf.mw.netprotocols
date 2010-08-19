@@ -146,20 +146,7 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriListTypeStep    c:\te
 END_TESTCASE 	IWS-WLBL-CIT-NEG-0029-0003
 
 
-START_TESTCASE	IWS-WLBL-CIT-NEG-0029-0004
-//NoneCap_Find_Uris_Count
 
-//! @file			Cap_00000000_TestWListBListUri.script
-//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0029-0004
-//! @SYMTestCaseDesc 		It doesn't require any capability to find the count of matching uris using service-type/list-type.
-//! @SYMFssID			
-//! @SYMTestStatus 		Implemented
-//! @SYMTestPriority 		Critical
-//! @SYMTestActions 		Try to find the count of matching uris  using service-type/list-type when application has none of the capabilities
-//! @SYMTestExpectedResults 	The operation must pass.
-//! @SYMTestType 		CIT
-RUN_TEST_STEP 	100 	TestWListBListUriServer_Cap     TestUriCountStep 	c:\testdata\ini\TestWListBListUriSuite.ini  NoneCap_Find_Uris_Count_1
-END_TESTCASE 	IWS-WLBL-CIT-NEG-0029-0004
 
 
 

@@ -27,5 +27,5 @@
 ;Files to be eclipsed
 ""-"z:\sys\bin\ineturilistserver.exe"
 ""-"z:\private\20009d70\ineturilist.xml"
-""-"z:\private\20009d70\tldpolicy.xml"
+""-"z:\private\20009d70\defaulttldpolicy.xml"
 ;End of file

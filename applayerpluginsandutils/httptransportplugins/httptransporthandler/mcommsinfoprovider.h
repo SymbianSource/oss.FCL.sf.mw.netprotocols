@@ -89,6 +89,8 @@ public:	// methods
 	 closed
 	 */
 	virtual void AddToHostResolverCache(RHostResolver& aResolver) =0;
+	
+	virtual TInt GetSocketImmediateCloseTimeout()=0;
 	};
 
 #endif	// __MCOMMSINFOPROVIDER_H__

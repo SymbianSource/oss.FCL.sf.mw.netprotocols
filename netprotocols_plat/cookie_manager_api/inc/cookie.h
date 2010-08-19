@@ -472,6 +472,6 @@ class CCookie : public CBase
 		TTime iReceivedTime;
 	};
 
-#include <Cookie.inl>
+#include <cookie.inl>
 
 #endif //	__CCOOKIE_H__

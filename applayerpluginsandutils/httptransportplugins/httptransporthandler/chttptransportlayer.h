@@ -79,6 +79,15 @@ private:	// attributes
 */
 	TUid	iDtor_ID_Key;
 
+public:     // enums
+	
+	enum THttpDialogMode
+		{ 
+		ETHttpDialogModeUnattended = 0,
+		ETHttpDialogModeAttended  = 1,
+		ETHttpDialogModeAllowAutomatic = 2
+		};
+
 	};
 	
 #include "chttptransportlayer.inl"
