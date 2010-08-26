@@ -1,0 +1,222 @@
+WAP6.2 Release 0.8 29-Sep-2003
+==============================
+Released into:	
+Built against:	
+Released By:	Omer Saleem
+
+Summary
+=======
+Removed all test code from WapBase. The wapbase test code is never built or run and cannot be built due to missing components and a number of build errors. This code redundant and has been removed as part of work to fix leavescan errors.
+
+
+WAP6.2 Release 0.7 22-Jan-2003
+==============================
+Released into:	Typhoon Release 2107
+Built against:	Typhoon 2106
+Released By:	Omer Saleem
+
+Summary
+=======
+Fixed defect INC012136 - WAP Push: Framework receiving WP message assumes that content type is always well known
+
+
+WAP6.2 Release 0.6 23-Oct-2001
+==============================
+Released into:	GT Mainline 536
+Built against:	GT Mainline 531 (WINS and ARMI)
+Released By:	David Cunado
+
+Summary
+=======
+Removed all Wap Components except those needed for WAP Push. 
+The dlls from the WapPlugins Component that are needed are built as part of WapPushSupport component. 
+All the Wap Code remains in the mainline, so this new component just uses uses the existing code.
+This has no new code, just a new bld.inf that uses all existing code.
+
+WAP6.2 Release 0.5 29-Aug-2001
+==============================
+Released into:	GT Mainline 497
+Built against:	GT Mainline 495 (WINS and ARM4)
+Released By:	Omer Saleem
+
+Summary
+=======
+
+1) Fixed iby files for correct rom building
+2) Converted wap push plugins to use ECOM plugin architecture
+3) Updated Rose models
+4) Updated Waptestui to include HTTP & WSP support and canceling functionality
+
+Issues
+======
+
+1. Architecture issue + breaks BC to change.
+Wap control is giving UI access to top level plugin via API for copy and select all functionality. 
+Sharing of RFs around Wap GT as its being connected to over 30 times in release code
+
+2. Trivial code cleanup stuff
+Epoc32\include folder is polluted with wap headers and perhaps go into a wap subfolder. 
+A lot of redundant code and sub-components (eg wbxmltest, turl). 
+
+3. Building issues
+Should wappush be in the platform_build because its not at the moment. - Answer is No its really a separate component.
+
+4. Configuration issues
+waprd is removed from gt.txt and so is not build with gt code, it has been moved to quartz - This needs to be fixed with the Quartz team for 6.2 Effectively they have grabbed some GT code.
+
+5. Known Defects
+Defect with wapstack is failing wap mainline build smoke tests - Being looked @ by Chris Trick, and should have been resolved by EOW 35
+
+6. Hardware testing
+Minimal hardware testing has been carried out on assabet. Problems that exist was that it would not connect using NT Ras and rendered decks had to be forced to redraw by pressing an arrow key to display the deck.
+
+
+
+WAP6.2 Release 0.4 08-Aug-2001
+==============================
+Released into:	GT Mainline 483
+Built against:	GT Mainline 481 (WINS and ARMI)
+Released By:	Omer Saleem
+
+Summary
+=======
+
+1) Fixed all Wap test harnesses
+2) Added missing distribution.policy files
+3) Implemented ECOM plugin architure and removed the old one
+4) Converted all plugins to new ECOM plugins
+5) Fixed rendering defects SAM-4Z7HMU, UDN-4YXHHZ, UDN-4YXDPT, SAM-4YGD4M.
+6) Changed MMP's to reduce warnings
+
+
+WAP6.2 Release 0.3 13-Jul-2001 (Part III)
+========================================
+Released into:	GT Mainline 465
+Built against:  GT Mainline 462 (WINS and ARMI)
+Released By:	David Cunado
+
+Summary
+=======
+
+1. Adding missing export
+
+WAP6.2 Release 0.3 13-Jul-2001 (Part II)
+========================================
+Released into:	GT Mainline 465
+Built against:  GT Mainline 462 (WINS and ARMI)
+Released By:	David Cunado
+
+Summary
+=======
+
+1.Adding WapTestUi App.
+
+WAP6.2 Release 0.3 13-Jul-2001 (Part I)
+=======================================
+Released into:	GT Mainline 465
+Built against:  GT Mainline 462 (WINS and ARMI)
+Released By:	David Cunado
+
+Summary
+=======
+
+1. Added CommDb 2-box solutions changes.
+2. Removed WapUtils component from build list for development platform_build.
+3. Changed TWmlLibMachine and TWapLCtx to use the changed Wap Local context Dll name - now is WapLCtx.lib. Also had other updates. Note - TWmlLibMachine syil has linkage problems (but is test code - fix on next release).
+4. Changed MMP files through-out to use INetProtUtil.lib instead of WapUtils.lib.
+5. Fixed TEng to build and run - fixed memory leak and bulid problems due to MDialogProvider API changes,
+6. Fix for wap rendering for the hotspot mis-alignment - not yet complete.
+7. Added unknown content handler - included changes to wmlscriptdatahandler to replace CDefaultDataHandler with CUnknownContentDataHandler.
+8. Added distribution policy files wtai
+
+
+WAP6.2 Release 0.2 13-Jun-2001
+==============================
+Released into:	GT Mainline 443
+Built against:  GT Mainline 441 (ARMI)
+Released By:	David Cunado
+Changelist:	???????
+
+Summary
+=======
+Changes to WapEngine.iby to include uaprof and wtai dlls.
+
+WAP6.2 Release 0.2 11-Jun-2001
+==============================
+Released into:	GT Mainline 441
+Built against:  GT Mainline 435 (WINS and ARMI)
+Released By:	David Cunado
+Changelist:	???????
+
+Summary
+=======
+Changes to TEng test code to implement new functions in MDialogProvider class.
+
+WAP6.2 Release 0.1 04-Jun-2001
+===================================
+Released into:	GT Mainline 437
+Built against:  GT Mainline 435 (WINS and ARMI)
+Released By:	Omer Saleem
+Uses:		EUSER EFSRV ETEL CNTMODEL GSMAVD COMMDB BAFL
+Changelist:	??????
+
+Summary
+=======
+
+This release contains two new components for the WAP Browser 6.2, these are for WTAI Public and UAProfs, each is detailed below:
+
+1) This is the first iteration release for the WTAI Public component of the GT 0101 Wap Browser 6.2 project. This release for WTAI Public involves four main changes:
+* wtaipublic.dll contains the core functionality required by WTAI
+* wtaiplugin.dll provided the URI scheme handler for the wtai scheme
+* changes to the WMLScript engine to incorporate the WTAI scripting commands
+* changes to the MWapControlObserver (MDialogProvider) interface to provide the new required dialog for WTAI
+
+2) This is the first iteration release for the UAProf component of the GT 0101 Wap Browser 6.2 project. This release provides the following deliverables:
+* uaprof.dll This provides all the functionality required for UAProf using profiles and profile-diffs supplied in the form of files in a specific directory
+* Changes made to the HTTP plugin to use the UAProf functionality to sent the header data requires and parse any returned UAProf data
+
+Use Cases Delivered
+===================
+
+WTAI Public:
+------------
+All the use cases outlined in the document "GT0101 UCM.03 WTAI 6.2 Customer Use Case Analysis.doc" have been delivered in this release. This includes:
+* Making a voice call using a URI
+* Making a voice call using WMLScript
+* Sending DTMF tones using a URI
+* Sending DTMF tones using WMLScript
+* Adding a phonebook entry using a URI
+* Adding a phonebook entry using WMLScript
+* Providing a method to cancel dialing a voice call
+* Providing a method to cancel sending DTMF tones
+
+UAProfs:
+--------
+All the use cases detailed in the document "GT0101 UCM.04 UAProf 6.2 Customer Use Case Analysis.doc" have been implemented in this release with the exception of the use cases related to the RDF Compiler which is fulfilled in the RDF Compiler component. The use cases include:
+* Establish UAProf-aware WSP Session
+* Request Content Generate for Device CPI Cached at WAP Gateway
+* Form Device CPI
+* Add a Profile to the Device CPI
+* Remove a Profile from the Device CPI
+* Add a User-Preference to the Device CPI
+* Remove a User-Preference from the Device CPI
+
+More Information
+================
+
+The changes made in this release change the MWapControlObserver interface which is implemented by the WAP UI, therefore the changes made will break the UI. To allow the UI to compile, the WAP UI will also be modified with stub functions to allow it to compile and will later be implemented by the WAP UI team.
+
+This release of the UAProf component contains the implementation supporting UAProf including dynamic profile data building. However for this release HTTP will not be using the dynamic profiles and profiles will only be required for the establishment of the session only.
+
+Known Issues
+============
+
+WTAI Public:
+------------
+* When WTAI makes a call, any current active calls (data or voice) are put on hold and the new voice call is made. We need to know how this should be handled, whether we will be using GPRS with an always on feel, or whether we should hang up a data call if one exists.
+* When WTAI makes a call, does the phone app pick up the new call or do we need to inform it of the new call
+* When returning the result of a WTAI function invoked from a URI, does the variable name after the '!' have to be var_name or $var_name
+
+UAProfs:
+--------
+* The current implementation provides dynamic profiles by changing the number of CPI files in the profile depot directory. This means that profiles can only be changed by adding and removing files, not by modifying existing ones.

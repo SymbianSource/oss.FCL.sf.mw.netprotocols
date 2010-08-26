@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="WAP Base">
+  <purpose>
+  </purpose>
+
+  <preq number="1182" title="GNU Make-based build system" revision="003">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations
+  </preq>
+
+  <defect number="DEF093413" title="Bad distribution.policy file Schedule 12 category" revision="002">
+    Modified bad distribution.policy files
+  </defect>
+
+  <defect number="DEF074710" title="Wapbrowser DTD/TOK files are in an unsecure location" revision="001">
+    Wapbrowser DTD/TOK files are in an unsecure location
+    The DTD/TOK files have been moved to a secure location
+  </defect>
+</relnotes>

@@ -1,0 +1,30 @@
+#
+# Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+# Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+#
+# Description: 
+#
+
+component	wap-browser_wapbase
+source	\sf\mw\netprotocols\applayerprotocols\wapbase
+
+#GeorgeS: Files below are part of wap-browser_wappushsupport.mrp
+
+#source	\sf\os\unref\orphan\comgen\wap-browser\Wap6.2 Release Notes.txt
+
+binary	\sf\mw\netprotocols\applayerprotocols\wapbase\Group	all
+exports	\sf\mw\netprotocols\applayerprotocols\wapbase\Group
+notes_source	\component_defs\release.src
+
+
+ipr E 
+

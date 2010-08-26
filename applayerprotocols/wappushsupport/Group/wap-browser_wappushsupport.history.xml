@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="WAP Push Handlers">
+  <purpose>
+    Plugins and handlers including SISL (Several Interfaces, Single Logic) supporting WAP Push, uses WAP message API
+  </purpose>
+
+  <preq number="775" title="Alignment of CBR and System Model components" revision="004">
+    The contents of wapengine/inc and wapservers/inc are moved to wapplugins/inc.Also the content of WapPushSupport/group is moved to wapplugins/group.
+  </preq>
+
+  <preq number="1182" title="GNU Make-based build system" revision="003">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations
+  </preq>
+
+  <defect number="DEF093413" title="Bad distribution.policy file Schedule 12 category" revision="002">
+    Modified bad distribution.policy files
+  </defect>
+
+  <defect number="INC088495" title="wappushsupport bld file incorrect" revision="001">
+    Obsolete header file paths and mmp file paths are removed from /wapplugins/group/bld.inf
+  </defect>
+</relnotes>
