@@ -18,7 +18,7 @@
 
 #include <e32base.h>
 #include <http.h>
-#include "cpipeliningtestclient.h"
+#include "CPipeliningTestClient.h"
 
 
 class CHTTPTestUtils;

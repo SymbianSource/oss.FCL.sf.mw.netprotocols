@@ -16,12 +16,10 @@
 // User includes
 #include "csecuresocketcontroller.h"
 #include "thttptrlayerpanic.h"
-#include "chttptransportlayer.h"
 #include <x509certext.h>
 #include <securesocket.h>
 #include <ssl_internal.h>
-#include <featdiscovery.h>
-#include <featureuids.h>
+
 
 CSecureSocketController* CSecureSocketController::NewL(TAny* aInitParams)
 /**
@@ -75,29 +73,17 @@ void CSecureSocketController::StartSecureHandshakeL(TRequestStatus& aStatus, con
 	{
 	// Create the secure layer
 	if( iTlsSocket == NULL )
-		iTlsSocket = CSecureSocket::NewL(iSocket, aProtocolVersion);
-	MSecurityPolicy* securityPolicy = NULL;
-	
-	TBool allowUntrustedCertificates = EFalse;
-
-	allowUntrustedCertificates = CFeatureDiscovery::IsFeatureSupportedL(NFeature::KFeatureIdFfHttpAllowUntrustedCertificates);
+		{
+        iTlsSocket = CSecureSocket::NewL(iSocket, aProtocolVersion);
+        }
 	// Get the security preferences, dialog prompt and security policy
-	if( allowUntrustedCertificates )
-		{
-		TInt dialogPref( CHttpTransportLayer::ETHttpDialogModeAttended );
-		iCommsInfoProvider.SecurityPreferences(dialogPref, securityPolicy);
-		if ( CHttpTransportLayer::ETHttpDialogModeAllowAutomatic == dialogPref )
-            {
-            User::LeaveIfError(iTlsSocket->SetDialogMode(EDialogModeAllowAutomatic));
-            }
-		}
-	else
-		{
-		TBool dialogPref = ETrue;
-		iCommsInfoProvider.SecurityPreferences(dialogPref, securityPolicy);
-		if( !dialogPref )
-            User::LeaveIfError(iTlsSocket->SetDialogMode(EDialogModeUnattended));
-		}
+	TBool dialogPref = ETrue;
+	MSecurityPolicy* securityPolicy = NULL;
+	iCommsInfoProvider.SecurityPreferences(dialogPref, securityPolicy);
+
+	// Dialog preferences
+	if( !dialogPref )
+		User::LeaveIfError(iTlsSocket->SetDialogMode(EDialogModeUnattended));
 
 	// Security policy preferences
 	if( securityPolicy )

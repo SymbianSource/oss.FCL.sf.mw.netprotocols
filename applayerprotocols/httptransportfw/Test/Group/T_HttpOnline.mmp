@@ -35,7 +35,7 @@ USERINCLUDE	. ../T_HttpOnline ../t_utils ../../inc
 USERINCLUDE ../../inc/framework ../../../httpexamples/cookies/example ../../../httpexamples/testcpimanager
 SOURCEPATH 	../T_HttpOnline 
 SOURCE		t_httponline.cpp T_CancelMultiTrans.cpp T_CancelSingleTrans.cpp T_MultiTrans.cpp T_MultiTransConcurrent.cpp CINC102380.cpp
-SOURCE		T_PersistentConn.cpp T_PostBodyChunks.cpp T_RespChunkSize.cpp T_Proxies.cpp DEF079378.cpp CINC082448.cpp INC094209.cpp CINC097492.cpp cinc105767.cpp CINC097492_2.cpp CINC097492_3.cpp CINC097492_4.cpp CR1130.cpp crecvbufsizetest1.cpp crecvbufsizetest2.cpp
+SOURCE		T_PersistentConn.cpp T_PostBodyChunks.cpp T_RespChunkSize.cpp T_Proxies.cpp DEF079378.cpp CINC082448.cpp INC094209.cpp CINC097492.cpp cinc105767.cpp CINC097492_2.cpp CINC097492_3.cpp CINC097492_4.cpp CR1130.cpp crecvbufsizetest1.cpp crecvbufsizetest2.cpp CPDEF143929.cpp
 
 SOURCE		T_Cookies.cpp T_UAProf.cpp T_MultiTransMalformedStatusLine.cpp
 SOURCE		T_SocketShutdownMode.cpp CINC110203.cpp cinc112633.cpp cinc112633_2.cpp
@@ -51,3 +51,4 @@ VENDORID 0x70000001
 UID 0x1000007A 0x102729D3
 
 SMPSAFE
+

@@ -27,7 +27,7 @@ data=EPOCROOT##epoc32\data\Z\private\20009d70\backup_registration.xml	private\20
 data=EPOCROOT##epoc32\data\Z\private\20009d70\ineturilist.xml	private\20009d70\ineturilist.xml
 
 //tldpolicy.xml is Exported to Z: path and it can be upgarded by using Upgrade.sis
-data=EPOCROOT##epoc32\data\Z\private\20009d70\defaulttldpolicy.xml 	private\20009d70\defaulttldpolicy.xml
+data=EPOCROOT##epoc32\data\Z\private\20009d70\tldpolicy.xml 	private\20009d70\tldpolicy.xml
 
 data=EPOCROOT##epoc32\data\Z\system\install\ineturilist_stub.SIS  system\install\ineturilist_stub.SIS
 #include <sql.iby>

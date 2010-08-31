@@ -22,10 +22,9 @@ PRJ_EXPORTS
 
 ineturilist.iby		/epoc32/rom/include/ineturilist.iby
 backup_registration.xml  z:/private/20009d70/backup_registration.xml
-defaulttldpolicy.xml  z:/private/20009d70/defaulttldpolicy.xml  
-
 //Dummy ineturilist.xml file is Exported to Z: path and it can be upgarded by using Upgrade.sis
 ../stubSis/ineturilist.xml		z:/private/20009d70/ineturilist.xml
+../stubSis/tldpolicy.xml		z:/private/20009d70/tldpolicy.xml
 
 PRJ_TESTEXPORTS
 

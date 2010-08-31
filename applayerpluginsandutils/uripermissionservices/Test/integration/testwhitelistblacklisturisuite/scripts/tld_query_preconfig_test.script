@@ -68,7 +68,18 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\i
 PRINT  Executing Query TLD Policy data
 //! White List type
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_2
-RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_5
+//! Black List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_8
+
+PRINT ----------------------------------------------
+PRINT  Test Backup
+PRINT ----------------------------------------------
+RUN_TEST_STEP 100 burtestserver TestBackup c:\testdata\ini\TestWListBListUriSuite.ini backuprestore
 
 PRINT ----------------------------------------------
 PRINT  Test Restore
@@ -82,4 +93,6 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\i
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_WhiteList_6
 //! White List type
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_2
+//! Black List type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_2
 END_TESTCASE                  IWS-WLBL-TLD-CIT-POS-0007

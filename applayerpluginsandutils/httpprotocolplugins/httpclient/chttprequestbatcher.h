@@ -116,8 +116,7 @@ private:	// attributes
 	RTimer						iTimer;
 
 	TBool						iTimerCompleted;
-	
-	TBool						iSendingRequest;
+
 public:	// attributes
 	__FLOG_DECLARATION_MEMBER2
 	};

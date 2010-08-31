@@ -33,7 +33,7 @@
 
 #include <centralrepository.h>
 #include <HttpFilterAcceptHeaderPrivateCRKeys.h>
-#include <browseruisdkcrkeys.h>
+#include <BrowserUiSDKCRKeys.h>
 
 // EXTERNAL FUNCTION PROTOTYPES
 
@@ -551,8 +551,12 @@ void CHttpFilterAcceptHeader::ComposeMultipleLanguagesStringL()
 
 	// Declare a language arrays
 	CArrayFixFlat<TInt>* systemEpocLanguageCodes = 0;
-	// Get installed language codes 
-	User::LeaveIfError( SysLangUtil::GetInstalledLanguages(systemEpocLanguageCodes) ); 
+	// Get installed language codes
+	// coverity [alloc_fn]
+	// coverity [freed_arg]
+	User::LeaveIfError( SysLangUtil::GetInstalledLanguages(systemEpocLanguageCodes) );
+		
+	// coverity [double_free] 
 	CleanupStack::PushL( systemEpocLanguageCodes ); 
 
 	// Compose the String such as "en;q=1.0, es;q=0.5, fr;q=0.5"

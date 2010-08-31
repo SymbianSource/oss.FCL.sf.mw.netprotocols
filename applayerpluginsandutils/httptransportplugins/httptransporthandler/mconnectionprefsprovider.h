@@ -68,16 +68,6 @@ public: // Methods
 	virtual void GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy) =0;
 
 /**
-	Callback used by the transport layer to query a client to provide security 
-	preferences.
-	@param		aDialogPref	indicating whether clients should be 
-								prompted or not.
-	@param		aSecurityPolicy	The security policy provider, can be NULL if not
-								provided.
-*/
-	virtual void GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref) =0;
-
-/**
 	Callback function that indicates the socket shutdown mode. This method instructs the
 	transport layer to shutdown	the socket immediately.
 	@return		A boolean indicating whether the socket should be shutdown immediately or not.
@@ -97,13 +87,6 @@ public: // Methods
 	@return    Returns the receive buffer size.
 */
 	virtual TInt GetRecvBufferSize() = 0;
-	
-/*
- *  Callback function used by the transport layer to get the socket timeout value. The result is either a non-negative integer, or an error code.
-      
-    @Returns the socket close timeout value to set the lingering value for socket.
- */
-    virtual TInt GetSocketImmediateCloseTimeout()=0;    
 
 	};
 

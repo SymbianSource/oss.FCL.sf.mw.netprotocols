@@ -27,7 +27,6 @@
 #include "mhttpresponseobserver.h"
 #include "thttpclientpanic.h"
 #include "chttpconnectioninfo.h"
-#include <e32math.h>
 
 _LIT8(KHeaderSeparator,	"\n");
 
@@ -296,15 +295,9 @@ void CHttpResponseParser::ConnectionError(TInt aError)
 			
 			}
 		else
-	        {		    
-            // Check client has asked to return Default Error occured while Disconnect received
-            if (clientTrans->PropogateDefaultError())
-               {
-               NotifyObserverError(aError);             
-               return;
-               }
-            // Need to map to appropriate error code if the disconnect notification is
-            // asked by the client			
+	        {
+			// Need to map to appropriate error code if the disconnect notification is
+			// asked by the client
 			if ( clientTrans->NeedDisconnectNotification() )
 				{
 				CHttpRequestComposer& request = static_cast<CHttpRequestComposer&>(iProtTrans->TxData());
@@ -505,40 +498,6 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                  }
 		}
 		
- 		if (name.DesC().CompareF(stringPool.StringF(HTTP::EWWWAuthenticate,RHTTPSession::GetTable()).DesC()) == KErrNone)
-            {
-            _LIT8(KNtlmProtocolName,"NTLM");
-            if (aFieldValue.FindF(KNtlmProtocolName)!= KErrNotFound)
-                {
-                CHttpClientTransaction& protTran = static_cast<CHttpClientTransaction&>(*iProtTrans);
-                CHttpConnectionManager* manager = protTran.ConnectionManager();
-                _LIT8( KNtlmConnId, "NTLMConnId" );
-                if (aFieldValue.Length() >=  4 )
-                    {
-                    if (manager->GetNtlmConnId() == KErrNotFound)
-                        {
-                        TInt ntmlConnId= Math::Random()%5789; //some magic number to get random connection  id
-                        manager->SetNtlmConnId(ntmlConnId);
-                        RStringF ntlmId= stringPool.OpenFStringL( KNtlmConnId );
-                        CleanupClosePushL(ntlmId);
-                        THTTPHdrVal value;
-                        value.SetInt( ntmlConnId );
-                        trans.PropertySet().SetPropertyL( ntlmId, value );
-                        CleanupStack::PopAndDestroy(&ntlmId);
-                        }
-                    else
-                        {
-                        RStringF ntlmId= stringPool.OpenFStringL( KNtlmConnId );
-                        CleanupClosePushL(ntlmId);
-                        THTTPHdrVal value;
-                        value.SetInt(manager->GetNtlmConnId());
-                        trans.PropertySet().SetPropertyL( ntlmId, value );    
-                        CleanupStack::PopAndDestroy(&ntlmId);
-                        }
-                    }
-               }
-            }
- 		
 		CleanupStack::PopAndDestroy(&name);
 		
 		if( BodyComplete() && !GotTrailers() )	
@@ -700,6 +659,7 @@ void CHttpResponseParser::MessageCompleteL(const TPtrC8& aExcessData)
 	if( !ConsumingResponse() )
 		{
 		iResponseObserver.ResponseComplete(aExcessData);
+
 		if ( iCancellingResponse )
 			{
 			return;
@@ -808,11 +768,9 @@ TBool CHttpResponseParser::ResponseCompleted ()
 TBool CHttpResponseParser::NeedCompletion ()
 	{
 	RHTTPTransaction trans = iProtTrans->Transaction ();
-	TInt statusCode = trans.Response().StatusCode();
-	if ( HTTPStatus::IsRedirection ( statusCode )|| statusCode == HTTPStatus::EUnauthorized )
+	if ( HTTPStatus::IsRedirection ( trans.Response().StatusCode() ) )
 		{
 		// If it is a redirection message then we need to complete the response
-		// for 401 error..we have to continue on the same port..so we need to complete the response immediately
 		return ETrue;			
 		}
 	return EFalse;		

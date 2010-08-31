@@ -22,7 +22,7 @@
 #include <e32base.h>
 #include <http.h>
 
-#include "cbatchingtestcase.h"
+#include "CBatchingTestCase.h"
 
 class CHTTPTestUtils;
 

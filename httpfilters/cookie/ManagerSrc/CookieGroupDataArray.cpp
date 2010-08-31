@@ -79,7 +79,7 @@ CCookieGroupDataArray::~CCookieGroupDataArray()
         {
          iCookieGroupData->ResetAndDestroy();
          iCookieGroupData->Close();
-         delete iCookieGroupData;
+         //delete iCookieGroupData;
          iCookieGroupData = NULL;
         }
     CLOG( ( EClient, 0, _L( "<- CCookieGroupDataArray::~CCookieGroupDataArray" ) ) );

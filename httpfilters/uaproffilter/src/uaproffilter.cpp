@@ -30,10 +30,10 @@
 #include <http/rhttpheaders.h>
 #include <httperr.h>
 
-#include <browseruisdkcrkeys.h>
-#include <webutilsinternalcrkeys.h>//for the profile strings
+#include <BrowserUiSDKCRKeys.h>
+#include <WebUtilsInternalCRKeys.h>//for the profile strings
 
-#include <cuseragent.h>
+#include <CUserAgent.h>
 #include <featmgr.h>
 #include <bldvariant.hrh>
 

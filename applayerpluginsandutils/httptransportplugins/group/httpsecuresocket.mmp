@@ -42,5 +42,5 @@ TARGET httpsecuresocket.rsc
 end
 
 LIBRARY 		euser.lib securesocket.lib  
-LIBRARY			x509.lib ecom.lib esock.lib featdiscovery.lib
+LIBRARY			x509.lib ecom.lib esock.lib
 SMPSAFE

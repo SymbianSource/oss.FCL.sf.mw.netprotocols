@@ -39,6 +39,8 @@ START_TESTCASE                IWS-WLBL-TLD-CIT-POS-0001-0001
 PRINT  Executing Deletion of existing database
 //! Delete the existing database and forcing to create new database
 RUN_UTILS DeleteFile c:\private\10281e17\[20009D70]URIList.dat
+PRINT  Executing AppInstall
+RUN_TEST_STEP	1000	systemtest_security	AppInstall		c:\testdata\ini\TestWListBListUriSuite.ini	isolated_app_duplicate
 
 PRINT  Executing Query TLD List Type
 //! White List type
@@ -57,7 +59,7 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\i
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_WhiteList_4
 
 //! Black List type
-
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_2
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestTldPolicyStep 	c:\testdata\ini\testldpolicy.ini  Query_Tld_Policy_BlackList_5
 
 END_TESTCASE                  IWS-WLBL-TLD-CIT-POS-0001-0001

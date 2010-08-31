@@ -17,7 +17,7 @@ TARGET		  testhttpmessage.exe
 TARGETTYPE	  exe
 UID			 0 0xE30FF9B5
 
-USERINCLUDE	    ../testhttpMessage ../t_utils
+USERINCLUDE	    ../testhttpmessage ../t_utils
 SYSTEMINCLUDE	 ../../httpmessage
 
 #ifdef SYMBIAN_OLD_EXPORT_LOCATION
@@ -27,7 +27,7 @@ MW_LAYER_SYSTEMINCLUDE_SYMBIAN
 SYSTEMINCLUDE	/epoc32/include/mw/http
 #endif
 
-SOURCEPATH	  ../testhttpMessage
+SOURCEPATH	  ../testhttpmessage
 SOURCE		  ctestengine.cpp ctestmessagecomposer.cpp testhttpmessage.cpp ctestmessageparser.cpp 
 
 LIBRARY		 euser.lib http.lib inetprotutil.lib bafl.lib httpmessage.lib efsrv.lib httptestutils.lib

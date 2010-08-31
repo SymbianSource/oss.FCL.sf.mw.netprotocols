@@ -129,8 +129,7 @@ public:
 	void DisablePipelining();
 	void AppendPipelineFailedHost(const TDesC8& aHost);
 	inline TBool SecureRetry(){ return iSecureRetry;}
-	inline void SetNtlmConnId(TInt aId){ iNtlmId=aId;}
-    inline TInt GetNtlmConnId(){ return iNtlmId;}
+
 
 	
 private:	// methods from MHttpRequestObserver
@@ -238,7 +237,6 @@ private:
 	TBool                   iSecureRetry;
 	TBool                   iEnableOptimalPipeline;
 	TBool					iTunnel;
-	TInt                    iNtlmId;
 	TInt					iMaxTransactionsToPipeline;
 	TBitFlags8				iFlags;
 	MSocketFactory&			iSocketFactory;

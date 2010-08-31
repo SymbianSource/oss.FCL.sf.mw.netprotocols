@@ -173,6 +173,7 @@ NONSHARABLE_CLASS( CCookieManagerSession ) : public CSession2
 
 		// The size of the temporary cookie list in bytes
 		TInt iGetCookieListSize;
+
 	};
 
 #endif //__COOKIEMANAGER_SESSION_H__
