@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -27,6 +27,7 @@ const TInt KTcpTriggeredKeepAlive	= 2;
 const TInt KSocketRecvBufSize = 16 * 1024;
 const TInt KSocketSendBufSize = 16 * 1024;
 const TInt KSocketDefaultSendBufSize = 4 * 1024;
+const TUint32 KSoTcpLingerinMicroSec = 0x101F55F6;//linger constant to send close connection fast
 
 CSocket* CSocket::NewL(MCommsInfoProvider& aCommsInfoProvider, TSocketType aSocketType)
 /**	
@@ -137,6 +138,16 @@ TInt CSocket::Construct(TSocketType aSocketType)
             iSocket.SetOpt(KSoTcpNoDelay,KSolInetTcp,1);  // Disable the nagle.
             iSocket.SetOpt(KSORecvBuf, KSOLSocket, KSocketRecvBufSize); // Set the socket recv buf to be 16K
             }
+        
+        TInt lingerTimeout = iCommsInfoProvider.GetSocketImmediateCloseTimeout();
+        if (lingerTimeout != KErrNotFound)
+            {
+            TPckgBuf<TSoTcpLingerOpt> linger;
+            linger().iOnOff  = 1;
+            linger().iLinger =  lingerTimeout;
+            iSocket.SetOpt(KSoTcpLingerinMicroSec, KSolInetTcp, linger);
+            }
+        
         }
     return error;
     }

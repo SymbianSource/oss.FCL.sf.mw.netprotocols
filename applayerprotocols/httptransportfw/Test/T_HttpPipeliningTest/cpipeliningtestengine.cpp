@@ -58,7 +58,7 @@
 #include "ctestcase24.h"
 #include "ctestcase25.h"
 #include "ctestcase26.h"
-#include "CTestCasePipelineFallback.h"
+#include "ctestcasepipelinefallback.h"
 #include "CDEF143497.h"
 
 _LIT(KTestHttpPipeliningTestTitle, "HTTP Pipelining Unit Test Harness");

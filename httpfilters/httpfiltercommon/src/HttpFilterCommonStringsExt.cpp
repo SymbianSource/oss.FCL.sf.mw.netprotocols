@@ -926,7 +926,7 @@ HttpFilterCommonStringsExt::TLanguageStrings HttpFilterCommonStringsExt::GetInde
         index = EMacedonian;
         break;
         case ELangMalay:                     // 70
-        case ELangMalay_Apac:                // 326
+        case ELangMalay_Apac:        	     //326	
         index = EMalay;
         break;
         case ELangMalayalam:                 // 71

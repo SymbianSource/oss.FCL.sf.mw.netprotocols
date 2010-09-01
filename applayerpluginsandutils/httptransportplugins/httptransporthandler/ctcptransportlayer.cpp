@@ -430,6 +430,14 @@ void CTcpTransportLayer::SecurityPreferences(TBool& aDialogPrompt, MSecurityPoli
 	iConnectionPrefsProvider.GetSecurityPrefs(aDialogPrompt, aSecurityPolicy);
 	}
 
+void CTcpTransportLayer::SecurityPreferences(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref)
+/**	
+	@see		MCommsInfoProvider
+*/
+	{
+	iConnectionPrefsProvider.GetSecurityPrefs(aSecurityPolicy, aDialogPref);
+	}
+
 TBool CTcpTransportLayer::OwnsConnection()
 /**	
 	@see		MCommsInfoProvider
@@ -446,6 +454,14 @@ TInt  CTcpTransportLayer::SessionId()
 	{
 	return iConnectionPrefsProvider.SessionId();
 	}
+
+TInt  CTcpTransportLayer::GetSocketImmediateCloseTimeout()
+/** 
+    @see        MCommsInfoProvider
+*/
+    {
+    return iConnectionPrefsProvider.GetSocketImmediateCloseTimeout();
+    }
 
 void CTcpTransportLayer::StartDefaultCommsConnectionL ()
 	{

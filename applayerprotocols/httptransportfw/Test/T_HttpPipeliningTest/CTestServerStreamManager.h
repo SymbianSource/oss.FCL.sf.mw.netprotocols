@@ -69,8 +69,8 @@ private:
 	// From MOutputStreamObserver
 	void SendDataCnfL();
 	void SecureClientCnf();
-	void OutputStreamCloseInd(TInt aError);
 	inline TBool SecureRetry(){ return EFalse;}
+	void OutputStreamCloseInd(TInt aError);
 	void MOutputStreamObserver_Reserved();
     virtual void OnSendTimeOut();
 	virtual TInt SendTimeOutVal();

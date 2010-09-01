@@ -526,11 +526,7 @@ void TCookiePacker::UnpackCookiesFromBufferL( const TDesC8& aBuffer,
 
 	while ( bufferPtr < bufferEndPtr )
 		{
-		// coverity [alloc_fn]
-		// coverity [assign]	
 		CCookie* cookie = CCookie::NewL( iStringPool );
-		
-		// coverity [push]
 		CleanupStack::PushL( cookie );
 
 		UnpackCookieL( bufferPtr, *cookie );
@@ -544,11 +540,9 @@ void TCookiePacker::UnpackCookiesFromBufferL( const TDesC8& aBuffer,
 			// The cookie pointer array (i.e. iCookies) takes over the
 			// ownership
 			User::LeaveIfError( aCookies.Append( cookie ) );
-			
-			// coverity [pop]
+
 			CleanupStack::Pop();	// cookie
 			}
-		// coverity [memory_leak]	
 		}
     }
 

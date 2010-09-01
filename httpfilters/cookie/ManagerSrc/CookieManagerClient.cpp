@@ -81,10 +81,6 @@ EXPORT_C TInt RCookieManager::ClearCookies( TInt& aDeletedCookies )
 EXPORT_C TInt RCookieManager::Connect()
     {
     CLOG( ( EClientConnect, 0, _L( "-> RCookieManager::Connect" ) ) );
-    iCookieMgrData = new TCookieMgrInternalStruct(iStringPool);
-    if (!(iCookieMgrData && iCookieMgrData->Init() == KErrNone))
-        return KErrNoMemory;
-            
     TInt error = KErrNone;
     RProcess server;
     error = server.Create( KCookieServerExe, TPtr( NULL, 0 ),
@@ -114,7 +110,12 @@ EXPORT_C TInt RCookieManager::Connect()
     CLOG( ( EClientConnect, 0, _L( "Creating server session" ) ) );
     error = CreateSession( KCookieServerName, Version() );
     CLOG( ( EClientConnect, 0, _L( "Server session created, errcode%d" ), error ) );
-
+    if(error == KErrNone)
+    	{
+	iCookieMgrData = new TCookieMgrInternalStruct(iStringPool);
+	if (!(iCookieMgrData && iCookieMgrData->Init() == KErrNone))
+		return KErrNoMemory;
+    	}
     CLOG( ( EClientConnect, 0, _L( "<- RCookieManager::Connect" ) ) );
     return error;
     }
@@ -334,7 +335,7 @@ EXPORT_C TInt RCookieManager::SetAppUidL( const TUint32& aAppUid )
     //Appuid value only takes 8 chars
     HBufC* buf = HBufC::NewLC(8);
     TPtr ptr(buf->Des());
-    ptr.AppendNum(aAppUid,EHex);
+    ptr.AppendNum(aAppUid,EHex);    
     TInt error = SendReceive(ESetAppUid,TIpcArgs(ptr.Length(),&ptr)); 
     CleanupStack::PopAndDestroy();
     CLOG(( EClient, 0, _L("<-RCookieManager::SetAppUid") ));
@@ -348,6 +349,10 @@ EXPORT_C TInt RCookieManager::SetAppUidL( const TUint32& aAppUid )
 EXPORT_C void RCookieManager::Close()
     {
     CLOG(( EClient, 0, _L("-> RCookieManager::Close") ));
+    if( !Handle() )
+        {
+        return;
+        }
     TInt deletestatus =0;
     DestroyCookiesFromMemory(deletestatus);
     delete iCookieMgrData;

@@ -1,4 +1,4 @@
-// Copyright (c) 2007-2010 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -41,7 +41,6 @@
 // Loads the physical device drivers
 void CTestHttpBaseStep::InitCommsL()
 	{
-#ifndef SIROCCO_CODE_MIGRATION
 	TInt ret = User::LoadPhysicalDevice(PDD_NAME);
 	User::LeaveIfError(ret == KErrAlreadyExists?KErrNone:ret);
 
@@ -55,7 +54,6 @@ void CTestHttpBaseStep::InitCommsL()
 	User::LeaveIfError(ret == KErrAlreadyExists?KErrNone:ret);
 	ret = StartC32();
 	User::LeaveIfError(ret == KErrAlreadyExists?KErrNone:ret);
-#endif //SIROCCO_CODE_MIGRATION
 	}
 	
 

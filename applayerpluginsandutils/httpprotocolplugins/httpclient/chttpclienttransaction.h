@@ -35,7 +35,8 @@ public:
 	void IncRetryCount ();
 	TBool RetryNeeded ();
     TBool NeedDisconnectNotification () const;
-
+    TBool PropogateDefaultError() const;
+    
 public:	// methods from CProtTransaction
 
 	virtual void CreateTxDataL();

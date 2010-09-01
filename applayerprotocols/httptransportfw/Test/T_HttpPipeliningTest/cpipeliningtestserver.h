@@ -57,11 +57,13 @@ private:
 	TBool SupplyCommsConnection(RConnection*& aConnectionPtr);
 	void SetCommsConnectionL(RConnection* aConnectionPtr);
 	void GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy);
+	void GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref);
 	TBool ImmediateSocketShutdown();
 	TInt SessionId();
 	virtual TBool SupplySocketServerHandle ( TInt& aSocketServerHandle );
  	virtual void SetSocketServerHandleL ( TInt aSocketServerHandle );
 	TInt GetRecvBufferSize();
+	TInt GetSocketImmediateCloseTimeout(){ return KErrNotFound;}
 
 private:
 	CHTTPTestUtils& 			iTestUtils;

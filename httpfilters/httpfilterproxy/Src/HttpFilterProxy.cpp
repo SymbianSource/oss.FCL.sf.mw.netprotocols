@@ -142,11 +142,11 @@ void CHttpFilterProxy::ConstructL()
                                             RStringF(),                // The header whose presence triggers this filter, or KNullDesC to trigger on any header
                                             KAnyStatusCode,            // The status code that triggers this filter, or KAnyStatusCode to trigger on any status code
                                             ECache - KProxyOrderOffset,// The position of the filter in the queue
-                                            iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,RHTTPSession::GetTable()));  //The name of the filter to add
+                                            iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,HttpFilterCommonStringsExt::GetTable()));  //The name of the filter to add
 
 	// register for notification of KErrNotReady error codes
 	// this allows us to re-start the connection if it fails
-	iSession->FilterCollection().AddFilterL(*this, KErrNotReady, MHTTPFilter::ETidyUp -1, iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,RHTTPSession::GetTable()));
+	iSession->FilterCollection().AddFilterL(*this, KErrNotReady, MHTTPFilter::ETidyUp -1, iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,HttpFilterCommonStringsExt::GetTable()));
 }
 
 //---------------------------------------------------------------------------------------------

@@ -20,6 +20,7 @@
 #include <InetProtUtil.iby>
 #endif
 
+#include <GtEmailMtm.iby>
 #include <httpservice.iby>
 
 // HTTP Core

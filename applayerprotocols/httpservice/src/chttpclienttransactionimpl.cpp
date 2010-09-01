@@ -19,7 +19,7 @@
 #include "chttpservice.h"
 #include "chttpdatareceiver.h"
 #include "chttpdatasender.h"
-#include "CHeaders.h"
+#include "cheaders.h"
 
 CHttpClientTransactionImpl* CHttpClientTransactionImpl::NewL(CHttpService& aClient, CHttpClientTransaction& aTrans, const TDesC8& aMethod, const TDesC8& aUri)
 	{

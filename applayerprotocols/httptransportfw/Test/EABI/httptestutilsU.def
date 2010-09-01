@@ -125,5 +125,4 @@ EXPORTS
 	_ZThn56_N18CHttpTestTransBase5ResetEv @ 124 NONAME ; #<thunk>#
 	_ZN14CHTTPTestUtils23CleanupFailedTestsArrayEv @ 125 NONAME
 	_ZN14CHTTPTestUtils23CreateFailedTestsArrayLEv @ 126 NONAME
-	_ZN11CScriptFile7SectionERK7TDesC16 @ 127 NONAME
-	
+

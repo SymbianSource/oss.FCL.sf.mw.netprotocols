@@ -1,0 +1,55 @@
+Title	: how-to add security certificate for TLS clients 
+Owner	: Subramanian RS
+Date	: 25-10-2005
+Copyright (C) Symbian Limited 2005 - 2006. All rights reserved.
+--------------------------------------------------------------------------------------
+
+The following procedure need to be followed when the security certificate expires.
+
+1. If u are going to add 91 certificate then Download code from //EPOC/release/9.1/common/generic/security/  and if u are going to add 92 Certificate then download the code from //EPOC/master/common/generic/security/ ( download whole folder )
+
+2. Build the code in the following order.
+   1. Build security\testframework ( build only for test )
+   2. Build security\filetokens    
+   3. Build secuirty\swi   ( During build, it might show mspdb60.dll is missing. Add the folder path which contains this file in PATH environment variable. Normally, it will be available in <root>:\apps\MSVC6\Common\MSDev98\Bin )
+   4. Build security\certman
+
+3. The secure server page need to be opened with https://lon-cn-lxwaptest2.closedtest.intra ( The SecureServerName can be found in http\test\data\ini\settings.ini file. At the moment it is  lon-cn-lxwaptest2.closedtest.intra ). Open the page in Internete Explorer. Click the "lock" icon found in the status bar. Go to "Details" tab. Click "Copy to File". Export the certificate information into a file. Save the file in winscw\c folder. Name the file as wapca2005.cer or ... 
+
+4. Copy the file http\test\Data\certs\httptestcert.txt into winscw\c\tcertstore\scripts. Modify the file as follows.
+   1. <actionname>Set the trust for HTTP test cert</actionname>
+      ...
+      <label>wapca2005</label>    ( Change the label name. In this case, it is wapca2005 )
+      ...
+   2. <actionname>Get applications for HTTP test cert</actionname>
+      ...
+      <label>wapca2005</label>    ( Change the label name. In this case, it is wapca2005 )
+      ...
+   3. <actionname>Get applications for HTTP test cert</actionname>
+      ...
+      <label>wapca2005</label>    ( Change the label name. In this case, it is wapca2005 )
+      ...
+
+5. Copy the http\test\data\certs\addcert.txt into winscw\c\. Modify the file as follows
+
+   1. <actionname>Add the certificate wapca2005</actionname>  ( Change the actionname description accordingly. )
+      ...
+      <certfile>c:\wapca2005.cer</certfile>   ( Change the file path accordingly if the wapca2005.cer is saved in a different location )
+      ...
+   2. <actionname>Set applications for wapca2005</actionname> ( Change the actionname description accordingly. )
+      ...
+      <label>wapca2005</label>   ( Change the label name. )
+      ...
+
+6. Run the test - t_certstore c:\addcert.txt c:\addcert.log. Check the log file for success/failure. This will generate cacerts.dat file in c\private\101f72a6.
+
+7. Run the test - t_certstore c:\tcertstore\scripts\httptestcert.txt c:\addclient.log. This will generate certclients.dat file in c\private\101f72a6.
+
+8. Copy cacerts.dat & certclients.dat into http\test\data\certs\. Modify the bld.inf, automated_httptest.iby, t_httponline.iby files accordingly and build the http component.
+
+For more information refer:
+1. //EPOC/master/common/generic/security/certman/documentation/Building a certificate store.rtf
+2. //EPOC/master/common/generic/security/certman/documentation/building-certstore.txt
+
+
+

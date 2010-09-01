@@ -40,7 +40,7 @@ SOURCE          httpfilterconnhandlerObserverPS.cpp
 SOURCEPATH      ../Data
 
 START RESOURCE 101F8585.rss
-TARGET      HttpFilterConnHandler.rsc
+TARGET      httpfilterconnhandler.rsc
 END
 
 LIBRARY HttpFilterCommon.lib http.lib euser.lib bafl.lib ecom.lib inetprotutil.lib

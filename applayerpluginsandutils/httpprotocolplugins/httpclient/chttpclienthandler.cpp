@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -654,6 +654,7 @@ TBool CHttpClientHandler::SelectConnectionManagerL(const CHttpConnectionInfo& aC
 	return newConnection;
 	}
 
+
 CHttpConnectionManager* CHttpClientHandler::SelectTunnelConnectionL(const CHttpConnectionInfo& aConnectionInfo, RHTTPTransaction aTrans, TBool aCanPipeline)
 	{
 	// Look for connection manager that is a tunnel connection via appropriate
@@ -765,6 +766,48 @@ CHttpConnectionManager* CHttpClientHandler::SelectTunnelConnectionL(const CHttpC
 		}
 	return manager;
 	}
+
+
+/*
+*   The below function selects correct NTLM connection manger. Connection manager is associate with a socket.
+*   NTLM protocol needs all authentication messages Negotiate(->),Challenge(<-) and Authorise(->) packets
+*   to be sent on the same port.  In this function, the connection manager is identified by NTLM id which is set
+*   when CHttpResponseParser when 401 unauthorised message is received from ntlm enabled server.
+*   The same iNtlmConnId will be maintained until authentication is successful. 
+*/
+CHttpConnectionManager* CHttpClientHandler::SelectNtlmConnectionL(const CHttpConnectionInfo& aConnectionInfo,RHTTPTransaction aTrans)
+    {
+    
+    TInt ntlmConnId;
+    CHttpConnectionManager* fourthChoice=NULL;
+    _LIT8( KNtlmId, "NTLMConnId" );
+    RStringPool stringPool = aTrans.Session().StringPool();
+    RStringF ntlmId = stringPool.OpenFStringL( KNtlmId );
+    THTTPHdrVal value;
+    
+    if (aTrans.PropertySet().Property(ntlmId,value))
+        {
+        ntlmConnId = value.Int();
+        for (TInt i=0;i<iConnectionManagers.Count();i++)
+            {
+            const CHttpConnectionInfo& connectionInfo = iConnectionManagers[i]->ConnectionInfo();
+            if( connectionInfo.HostAndPortMatches(aConnectionInfo) )
+                {
+                if (iConnectionManagers[i]->GetNtlmConnId() ==  ntlmConnId)
+                    {
+                    ntlmId.Close();
+                    return iConnectionManagers[i];
+                    }
+                }
+            else
+                {
+                fourthChoice = iConnectionManagers[i];
+                }
+            }
+        }
+    ntlmId.Close();
+    return fourthChoice;
+    }
 
 TInt CHttpClientHandler::MaxNumConnectionManagers() const
 	{
@@ -930,9 +973,32 @@ TBool CHttpClientHandler::ServiceL(CProtTransaction& aTrans)
 		}
 	else
 		{
-		// Look for a normal connection.
-		isNewConnection = SelectConnectionManagerL(*info, aTrans.Transaction(), canPipeline, manager);
-		}
+        THTTPHdrVal value;
+        _LIT8( KNtlmStateStr, "NTLMState" );
+        RStringPool stringPool = iSession.StringPool();
+        RStringF strF = stringPool.OpenFStringL( KNtlmStateStr );
+        CleanupClosePushL(strF);
+        if ( aTrans.Transaction().PropertySet().Property( strF, value ) && (value.Int() == ENtlmNegotiate || value.Int() == ENtlmAuthenticate) )
+            {
+            manager = SelectNtlmConnectionL(*info,aTrans.Transaction());
+            if (manager == NULL)
+                {
+                __FLOG_0(_T8("No NTLM connection manger!!!"));
+                }
+            else if (value.Int() == ENtlmAuthenticate)
+                {
+#if defined (_DEBUG) && defined (_LOGGING)
+                __FLOG_1(_T8(" NTLM AUTH msg Id %d and resetting to  -1"),manager->GetNtlmConnId());
+#endif
+                manager->SetNtlmConnId(KErrNotFound);//reset it
+                }
+            }
+        else// Look for a normal connection.
+            {
+            isNewConnection = SelectConnectionManagerL(*info, aTrans.Transaction(), canPipeline, manager);
+            }
+        CleanupStack::PopAndDestroy(&strF);
+        }
 
 	if( manager != NULL )
 		{
@@ -1114,6 +1180,32 @@ void CHttpClientHandler::GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*
 		}
 	}
 
+void CHttpClientHandler::GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref)
+	{
+	// Set the security policy
+	aSecurityPolicy = iSecurityPolicy;
+
+	// Set the dialog info - check the session properties
+	THTTPHdrVal value;
+	RStringF secureDialog = iSession.StringPool().StringF(HTTP::ESecureDialog, iStringTable);
+	TBool hasValue = iSession.ConnectionInfo().Property(secureDialog, value);
+	if( hasValue && value.Type() == THTTPHdrVal::KStrFVal && 
+		value.StrF().Index(iStringTable) == HTTP::EDialogNoPrompt )
+		{
+		// Client has requested to not be prompted
+		aDialogPref = CHttpTransportLayer::ETHttpDialogModeUnattended;
+		}
+	else if ( hasValue && value.Type() == THTTPHdrVal::KStrFVal && 
+	        value.StrF().Index(RHTTPSession::GetTable()) == HTTP::EDialogAutomaticAllowed )
+		{
+        aDialogPref = CHttpTransportLayer::ETHttpDialogModeAllowAutomatic;
+		}
+	else
+		{
+		// The default value - the client will be prompted
+		aDialogPref = CHttpTransportLayer::ETHttpDialogModeAttended;
+		}
+	}
 TBool CHttpClientHandler::ImmediateSocketShutdown()
 	{
 	TBool immediateSocketShutdown = EFalse;
@@ -1150,6 +1242,22 @@ TInt CHttpClientHandler::SessionId()
 		}
 	return result;
 	}
+
+TInt CHttpClientHandler::GetSocketImmediateCloseTimeout()
+    {
+    THTTPHdrVal value;
+    TInt result = KErrNotFound;
+    const TBool hasValue = iSession.ConnectionInfo().Property(iSession.StringPool().StringF(HTTP::EHttpSocketImmediateClosetTimeOutValue, iStringTable), value);
+    if( hasValue && value.Type()==THTTPHdrVal::KTIntVal) // silently ignore inappropriate types
+        {
+        result = value.Int();
+        if(result<0)
+            {
+            result = KErrNotFound;
+            }
+        }
+    return result;
+    }
 
 
 /*

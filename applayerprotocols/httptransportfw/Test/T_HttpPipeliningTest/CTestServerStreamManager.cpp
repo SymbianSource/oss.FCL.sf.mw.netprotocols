@@ -19,7 +19,7 @@
 #include "CTestServerStreamManager.h"
 #include "httptestutils.h"
 #include "MPipeliningTestCase.h"
-#include "CTestCasePipelineFallback.h"
+#include "ctestcasepipelinefallback.h"
 
 const TInt KTimeOut = 50000000;
 const TInt KResponseBatchSize = 5;

@@ -1,4 +1,4 @@
-// Copyright (c) 1998-2010 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -47,7 +47,6 @@ GLDEF_C TInt E32Main() // main function called by E32
     }
 LOCAL_C void InitCommsL()
 	{
-#ifndef SIROCCO_CODE_MIGRATION
 	TInt err;
 
 	err=User::LoadPhysicalDevice(PDD_NAME);
@@ -57,7 +56,6 @@ LOCAL_C void InitCommsL()
 	err=User::LoadLogicalDevice(LDD_NAME);
 	if (err!=KErrNone && err!=KErrAlreadyExists)
 		User::Leave(err);
-#endif //SIROCCO_CODE_MIGRATION
 	}
 
 LOCAL_C void callExampleL() // initialize and call example code under cleanup stack

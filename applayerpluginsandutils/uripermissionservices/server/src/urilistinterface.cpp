@@ -36,7 +36,7 @@ const TInt pkgId(0x2000A471);
 _LIT(KRomDirectory, "z");
 _LIT(KUriListFile, ":\\private\\20009D70\\ineturilist.xml");
 #ifndef SYMBIAN_ENABLE_SPLIT_HEADERS
-_LIT(KPolicyFile, ":\\private\\20009D70\\tldpolicy.xml");
+_LIT(KPolicyFile, ":\\private\\20009D70\\defaulttldpolicy.xml");
 #endif	//SYMBIAN_ENABLE_SPLIT_HEADERS
 
 CUriListInterface::CUriListInterface ()
@@ -958,7 +958,7 @@ If a valid upgraded policy file exist then, database will be updated to later ve
 void CUriListInterface::InitializePolicyDatabaseL ()
 	{
 	//Install the file with ROM Policy data if ROM file exists	
-	_LIT( KDefaultFilePath, "z:\\private\\20009d70\\tldpolicy.xml");
+	_LIT( KDefaultFilePath, "z:\\private\\20009d70\\defaulttldpolicy.xml");
 	if( FileExist( KDefaultFilePath() ) )
 		{
 		CTldListInitializer* tldlistInitializer = CTldListInitializer::NewL ( *this );
@@ -981,7 +981,7 @@ void CUriListInterface::UpgradePolicyDatabaseL()
 	{
 	//Upgrade DB if Policy file is installed
 	//Get the Installed file path
-	_LIT(KTldPolicyFile, "c:\\private\\20009d70\\tldpolicy.xml");
+	_LIT(KTldPolicyFile, "c:\\private\\20009d70\\defaulttldpolicy.xml");
 	if(!FileExist( KTldPolicyFile() ))
 		{
 		return;	
@@ -1073,6 +1073,8 @@ TBool CUriListInterface::IsBlackListedUriL( const TDesC8& aUri )
 	{
 	TBool blackListed(EFalse);
 	TPolicyQueryArgs blackListArgs ( InetUriList::EBlackList, InetUriList::EPolicyCharSet );
+	if (!QueryForGlobalChars(blackListArgs,aUri,InetUriList::EBlackList))
+	{
 	CUriQueryFilter* queryFilter = QueryWithTldL ( aUri, blackListArgs );
 	CleanupStack::PushL(queryFilter);
 	MDBTransaction& dbTrans = queryFilter->DBTransaction();
@@ -1098,8 +1100,72 @@ TBool CUriListInterface::IsBlackListedUriL( const TDesC8& aUri )
 		User::Leave(InetUriList::KErrInvalidTLD);
 		}
 	CleanupStack::PopAndDestroy(queryFilter);
+	}
 	return blackListed;
 	}
+
+TBool CUriListInterface::QueryForGlobalChars(TPolicyQueryArgs &aPolicyQueryArgs,const TDesC8& aUri,InetUriList::TListType aListType )
+   {
+     RBuf8 queryBuf; 
+    TBool blackOrWhiteListed(EFalse);
+    _LIT8 ( KSelectStmt, "SELECT * FROM %S where ");
+    CleanupClosePushL ( queryBuf );
+    queryBuf.CreateL ( KMaxDbStmtLen );
+    queryBuf.AppendFormat ( KSelectStmt(), &(KTldTblName()) );
+    _LIT8(KGlobal,"GlobalChars");
+    const TDesC8& tldName (iStringPool.String (TLDLIST::ETLDName,TLDLIST::Table).DesC());
+    _LIT8(KSql, "( %S=:V1 ) " );
+    queryBuf.AppendFormat( KSql,&tldName );
+
+    //Prepare the query
+    MDBTransaction* dbTrans = iDbAccessor->PrepareTransactionL ( queryBuf );
+    CleanupStack::PopAndDestroy (); //queryBuf
+    CleanupStack::PushL ( TCleanupItem ( CUriListInterface::DestroyTransObj, dbTrans ) );
+    TInt lt = aPolicyQueryArgs.Get ( TPolicyQueryArgs::ETldListType );
+    RBuf8 upperCaseUri;
+    upperCaseUri.Create(KGlobal());
+    upperCaseUri.UpperCase();
+    dbTrans->BindTextL(0, KGlobal());
+
+	    // Execute the query
+    CUriQueryFilter* queryFilter = CTldPolicyDataFilter::NewL ( dbTrans );
+    upperCaseUri.Close();
+    CleanupStack::Pop (); // dbTrans
+	        
+
+    CleanupStack::PushL(queryFilter);
+    MDBTransaction& dbTran = queryFilter->DBTransaction();
+    if ( dbTran.Next() && queryFilter->MatchRecordL() )
+        {
+        const TDesC8& charSet = dbTran.ColumnTextL ( TLDLIST::ECharacterSet );
+        //Policy file contains empty body for Requested white/Black listed data
+        __ASSERT_ALWAYS( charSet.Length() > 0, User::Invariant() );
+        RArray<TChar> policyCharList;
+        CleanupClosePushL(policyCharList);
+        //Tokenize the results
+        TokenizeStringL( charSet, policyCharList);
+        //Get the host and check whether any of these char is in PolicyCharList
+        HBufC8* host = ExtractHostL(aUri);
+        CleanupStack::PushL(host);
+        if (aListType == InetUriList::EBlackList)
+            {
+            blackOrWhiteListed = IsBlackListedHost( host->Des(), policyCharList );
+            }
+        else
+            {
+            blackOrWhiteListed = IsWhiteListedHostL( host->Des(), policyCharList );
+            }
+        CleanupStack::PopAndDestroy(2); //host, PolicyCharList
+        }
+    else
+        {
+        //Requested Policydata Not available for this TLD
+        CleanupStack::PopAndDestroy(queryFilter);
+        User::Leave(InetUriList::KErrInvalidTLD);
+        }
+    CleanupStack::PopAndDestroy(queryFilter);
+    return blackOrWhiteListed;
+    }
 
 /**
 return ETrue if Uri is WhiteListed, else return EFalse
@@ -1109,6 +1175,8 @@ TBool CUriListInterface::IsWhiteListedUriL( const TDesC8& aUri )
 	{
 	TBool whiteListed (EFalse);
 	TPolicyQueryArgs whiteListArgs ( InetUriList::EWhiteList, InetUriList::EPolicyCharSet );
+	if (!QueryForGlobalChars(whiteListArgs, aUri,InetUriList::EWhiteList))
+	{
 	CUriQueryFilter* queryFilter = QueryWithTldL ( aUri, whiteListArgs );
 	CleanupStack::PushL(queryFilter);
 	MDBTransaction& dbTrans = queryFilter->DBTransaction();
@@ -1134,6 +1202,7 @@ TBool CUriListInterface::IsWhiteListedUriL( const TDesC8& aUri )
 		User::Leave(InetUriList::KErrInvalidTLD);
 		}
 	CleanupStack::PopAndDestroy(queryFilter);
+	}
 	return whiteListed;
 	}
 

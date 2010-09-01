@@ -68,12 +68,25 @@ void CHttpRequestBatcher::SendRequestImmediatelyL(const TDesC8& aBuffer)
 #if defined (_DEBUG) && defined (_LOGGING)
 		__FLOG_0(_T8("!! Send the first request i.e. not batching"));
 #endif
-
+	
+	// This function will be called when the request is sent first time on a newly
+	// opened connection. So no need to mark it as sending...
 	iOutputStream->SendDataReqL(aBuffer);
 	}
 
 void CHttpRequestBatcher::SendRequestsBatchedL(const TDesC8& aBuffer)
 	{
+	if(iSendingRequest) 
+		{
+		// The batcher is not having enough data [batching buffer size] size
+		// available. It would have been requested the supplier to provide more data.
+		// By the time the timer would have been expired and the batcher would have been sent the data.
+		// Before the notificaiton of the confirmation of data is sent the supplier can give more data
+		// to the batcher which will make the batcher to send the data again and double RSocket :: Send
+		// will cause the panic.. At this point the excess data will be empty
+		iExcessData.Set(aBuffer);
+		return; // Dont send the data here. Send once the confirmation of previous send has received
+		}
 	StartTimer();
 
 	BatchRequestsL(aBuffer);
@@ -106,6 +119,7 @@ void CHttpRequestBatcher::BatchRequestsL(const TDesC8& aBuffer)
 #endif
 
 		// Send the request with a filled-up buffer
+		iSendingRequest = ETrue;
 		iOutputStream->SendDataReqL(iDataToSend);
 
 		// Save the excess data from this request
@@ -188,6 +202,7 @@ void CHttpRequestBatcher::Reset ()
 
 void CHttpRequestBatcher::SendDataCnfL()
 	{
+	iSendingRequest = EFalse; // Confirmation of data send has received. reset the flag
 	// If this is the first request send a confirmation to the observer that the data
 	// has been sent and then set the function pointer to the SendRequestBatched() method.
 	if (iFuncPtr == &CHttpRequestBatcher::SendRequestImmediatelyL)
@@ -235,6 +250,7 @@ void CHttpRequestBatcher::HandleExcessDataL()
 		// It's possible that the excess data is larger than the maximum allowable size of the buffer in
 		// which case this excess data is used to fill up another buffer and a request made.
 		iDataToSend.Append(iExcessData.Left(iMaxBufferSize));
+		iSendingRequest = ETrue;
 		iOutputStream->SendDataReqL(iDataToSend);
 		iExcessData.Set(iExcessData.Mid(iMaxBufferSize));
 		}
@@ -290,6 +306,7 @@ void CHttpRequestBatcher::RunL()
 #endif
 
 		// Timer has completed before the buffer has been filled, therefore send the request now.
+		iSendingRequest = ETrue;
 		iOutputStream->SendDataReqL(iDataToSend);
 		}
 	iTimerCompleted = ETrue;
@@ -319,9 +336,9 @@ TInt CHttpRequestBatcher::SendTimeOutVal()
 void CHttpRequestBatcher::SetTCPCorking(TBool  aValue )
     {
     if (iOutputStream)
-            {
-            iOutputStream->SetTCPCorking(aValue);
-            }
+        {
+        iOutputStream->SetTCPCorking(aValue);
+        }
     }
 
 

@@ -34,6 +34,15 @@ class TCertInfo;
 class TDNInfo;
 class CHttpPipelineFallback;
 
+/**
+ * Enumeration for NTLM authentication state.
+ */
+enum {
+        ENtlmIdle,
+        ENtlmNegotiate,
+        ENtlmAuthenticate
+    };
+
 class CHttpClientHandler : public CProtocolHandler, 
 						   public MConnectionPrefsProvider,
 						   public MRxDataObserver,
@@ -65,10 +74,12 @@ private:	// methods from MConnectionPrefsProvider
 	virtual void SetCommsConnectionL( RConnection* aConnectionPtr );
 	virtual void SetSocketServerHandleL ( TInt aSocketServerHandle );
 	virtual void GetSecurityPrefs( TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy );
+	virtual void GetSecurityPrefs( MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref );
 	virtual TBool ImmediateSocketShutdown();
 	virtual TInt SessionId();
 	virtual TInt GetRecvBufferSize();
-
+	virtual TInt GetSocketImmediateCloseTimeout();
+	
 private:	// methods from MRxDataObserver
 	
 	virtual void SetStatusL(CRxData& aRxData, TInt aStatus);	
@@ -93,6 +104,7 @@ private:
 	void AddTunnelInfoL(RHTTPTransaction aTrans, const TDesC8& aHost, TInt aPort);
 	TBool SelectConnectionManagerL(const CHttpConnectionInfo& aConnectionInfo, RHTTPTransaction aTrans, TBool aCanPipeline, CHttpConnectionManager *&aManager);
 	CHttpConnectionManager* SelectTunnelConnectionL(const CHttpConnectionInfo& aConnectionInfo, RHTTPTransaction aTrans, TBool aCanPipeline);
+	CHttpConnectionManager* SelectNtlmConnectionL(const CHttpConnectionInfo& aConnectionInfo,RHTTPTransaction aTrans);
 	TInt MaxNumConnectionManagers() const;
 	void SetupProxyInformation(RHTTPTransaction aTrans);
 	TBool CheckPipelineSupport(RHTTPTransaction aTrans);

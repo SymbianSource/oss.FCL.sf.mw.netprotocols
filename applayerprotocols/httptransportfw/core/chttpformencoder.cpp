@@ -70,7 +70,7 @@ TInt CHTTPFormEncoder::OverallDataSize()
 	
 TInt CHTTPFormEncoder::Reset()
 	{
-    iState = EAllowAppendData;
+	iState = EAllowAppendData;
 	return KErrNone;
 	}
 

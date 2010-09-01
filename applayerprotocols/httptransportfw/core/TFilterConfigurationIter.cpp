@@ -79,7 +79,7 @@ EXPORT_C TInt TFilterConfigurationIterator::Next()
 		// If the next filter is a mandatory filter then move on to the next filter
 		if( iFilterInfoList[iCurrentFilterIndex]->iCategory == TSessionFilterInfo::EMandatory )
 			return Next();
-		++iCurrentFilterIndex;
+		++iCurrentFilterIndex;	
 		}
 
 	return KErrNone;

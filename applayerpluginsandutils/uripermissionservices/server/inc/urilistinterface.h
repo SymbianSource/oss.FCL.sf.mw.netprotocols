@@ -102,6 +102,7 @@ class CUriListInterface : public CBase
 	
 	TBool IsWhiteListedUriL( const TDesC8& aUri );
 	TBool IsBlackListedUriL( const TDesC8& aUri );
+	TBool QueryForGlobalChars(TPolicyQueryArgs &aPolicyQueryArgs,const TDesC8& aUri,InetUriList::TListType aListType);
 	TBool IsBlackListedHost( const TDesC8& aHost, RArray<TChar>& aList );
 	TBool IsNextCharInList(TChar aChar, RArray<TChar>& aPolicyList);
 	TBool IsWhiteListedHostL( const TDesC8& aHost, RArray<TChar>& aPolicyList );

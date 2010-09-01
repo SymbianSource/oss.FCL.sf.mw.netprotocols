@@ -13,7 +13,7 @@
 // Description:
 //
 
-#include "ctestcase26.h"
+#include "CTestCase26.h"
 #include "httptestutils.h"
 
 const TInt KTransactionCount = 14;

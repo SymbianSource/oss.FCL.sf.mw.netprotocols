@@ -110,3 +110,28 @@ TBool CHttpClientTransaction::NeedDisconnectNotification () const
 		}
 	return needDisconnectNotification;	
 	}
+
+
+TBool CHttpClientTransaction::PropogateDefaultError() const
+    {
+    TBool noRetry=EFalse;
+    RHTTPTransaction myTransaction = Transaction (); 
+    RHTTPSession mySession = myTransaction.Session ();
+    RStringPool myStringPool ( mySession.StringPool () );
+    RStringF retrySet = myStringPool.StringF( HTTP::ENotifyOnDisconnect, iStringTable );
+
+    RHTTPPropertySet transactionProperties = myTransaction.PropertySet();
+    RHTTPPropertySet sessionProperties = mySession.ConnectionInfo();
+        
+    THTTPHdrVal hdrVal;
+        
+    // Check the transaction properties for the disconnect notification
+    // If it is set then it should be used.
+    if ( transactionProperties.Property ( retrySet, hdrVal ) || sessionProperties.Property ( retrySet, hdrVal ) )   
+        {
+        __ASSERT_DEBUG( hdrVal.Type() == THTTPHdrVal::KStrFVal, User::Invariant() );
+            
+        noRetry = ( hdrVal.StrF().Index(iStringTable) == HTTP::EHttpPropagateDefaultError );
+        }
+    return noRetry;  
+    }

@@ -13,7 +13,7 @@
 // Description:
 //
 
-#include "testhttpmessage.h"
+#include "TestHttpMessage.h"
 #include <e32base.h>
 #include <e32std.h>
 #include <e32cons.h>			// Console

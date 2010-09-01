@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2010 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -40,7 +40,6 @@
 
 void RHttpTestUtils::InitCommsL()
 	{
-#ifndef SIROCCO_CODE_MIGRATION
 	TInt ret = User::LoadPhysicalDevice(PDD_NAME);
 	User::LeaveIfError(ret);
 
@@ -55,6 +54,5 @@ void RHttpTestUtils::InitCommsL()
 
 	ret = StartC32();
 	User::LeaveIfError(ret);
-#endif //SIROCCO_CODE_MIGRATION
 	}
 

@@ -56,7 +56,7 @@ CCookieClientDataArray::~CCookieClientDataArray()
         {
          iCookieClientData->ResetAndDestroy();
          iCookieClientData->Close();
-         //delete iCookieClientData;
+         delete iCookieClientData;
          iCookieClientData = NULL;
         }
     CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::~CCookieClientDataArray" ) ) );

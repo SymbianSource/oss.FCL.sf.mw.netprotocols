@@ -67,7 +67,7 @@ EXPORT_C CScriptFile::~CScriptFile()
 	delete iComponent;
 	}
 
-EXPORT_C CScriptSection* CScriptFile::Section(const TDesC& aSectionName)
+CScriptSection* CScriptFile::Section(const TDesC& aSectionName)
 	{
 	CScriptSection* section = iLastSection;
 
