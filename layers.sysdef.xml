@@ -7,6 +7,16 @@
     <layer name="mw_layer">
       <module name="netprotocols">
 	    <unit unitID="netdo.netprotocols" mrp="" bldFile="&layer_real_source_path;/group" name="netprotocols"/>
+	    <unit unitID="netdo.bookmarksupport" mrp="" bldFile="&layer_real_source_path;/applayerpluginsandutils/bookmarksupport/group" name="bookmarksupport"/>
+	    <unit unitID="netdo.httpprotocolplugins" mrp="" bldFile="&layer_real_source_path;/applayerpluginsandutils/httpprotocolplugins/group" name="httpprotocolplugins"/>
+	    <unit unitID="netdo.httptransportplugins" mrp="" bldFile="&layer_real_source_path;/applayerpluginsandutils/httptransportplugins/group" name="httptransportplugins"/>
+	    <unit unitID="netdo.uripermissionservices" mrp="" bldFile="&layer_real_source_path;/applayerpluginsandutils/uripermissionservices/group" name="uripermissionservices"/>
+	    <unit unitID="netdo.ftpengine" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/ftpengine/group" name="ftpengine"/>
+	    <unit unitID="netdo.httpservice" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/httpservice/group" name="httpservice"/>
+	    <unit unitID="netdo.httptransportfw" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/httptransportfw/group" name="httptransportfw"/>
+	    <unit unitID="netdo.telnetengine" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/telnetengine/group" name="telnetengine"/>
+	    <unit unitID="netdo.wapbase" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/wapbase/group" name="wapbase"/>
+	    <unit unitID="netdo.wappushsupport" mrp="" bldFile="&layer_real_source_path;/applayerprotocols/wappushsupport/group" name="wappushsupport"/>
       </module>
     </layer>
   </systemModel>
