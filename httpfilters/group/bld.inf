@@ -21,7 +21,7 @@
 #include "../deflatefilter/group/bld.inf"
 //#include "../httpfilteracceptheader/group/bld.inf"
 #include "../httpfilterauthentication/group/bld.inf"
-#include "../httpfilterconnhandler/group/bld.inf"
+//#include "../httpfilterconnhandler/group/bld.inf"
 #include "../httpfilteriop/group/bld.inf"
 //#include "../httpfilterproxy/group/bld.inf"
 //#include "../uaproffilter/group/bld.inf"
