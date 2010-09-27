@@ -13,6 +13,8 @@
 // Description:
 //
 
+//RTEST
+
 target          tbookmarkbackup.exe
 targettype      exe
 CAPABILITY 	AllFiles ReadUserData WriteUserData
@@ -41,7 +43,7 @@ SOURCEPATH ../test/cenrepsrv
 SOURCE testabclient.cpp backup.cpp inifile.cpp obsrvr.cpp panic.cpp sessnotf.cpp shrepos.cpp srvrepos.cpp srvres.cpp clientrequest.cpp cachemgr.cpp
 
 LIBRARY	euser.lib bookmarkdb.lib inetprotutil.lib estlib.lib
-LIBRARY	bafl.lib efsrv.lib charconv.lib estor.lib cinidata.lib centralrepository.lib
+LIBRARY	bafl.lib efsrv.lib charconv.lib estor.lib iniparser.lib centralrepository.lib
 
 VENDORID 0x70000001
 

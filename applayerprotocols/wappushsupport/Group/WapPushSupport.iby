@@ -38,6 +38,5 @@ data=MULTI_LINGUIFY(RSC ZSYSTEM\Errors\WapBaseErr	System\Errors\WapBaseErr)
 file=ABI_DIR\BUILD_DIR\XmlElemt.dll				System\Libs\Xmlelemt.dll
 file=ABI_DIR\BUILD_DIR\WbxmlLib.dll				System\Libs\Wbxmllib.dll
 file=ABI_DIR\BUILD_DIR\HTTPResponse.dll				System\Libs\HTTPResponse.dll
-file=ABI_DIR\BUILD_DIR\Xmllib.dll				System\Libs\Xmllib.dll
-
+// file=ABI_DIR\BUILD_DIR\xmllib.dll				System\Libs\xmllib.dll
 #endif

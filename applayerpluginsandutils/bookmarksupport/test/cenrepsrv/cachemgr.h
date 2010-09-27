@@ -17,7 +17,8 @@
 #define CACHEMGR_H
 
 #include <e32base.h>
-#include <cinidata.h>
+//#include <cinidata.h> //Commented and added the below line as part of TEF2 to TEF3 migration
+#include <iniparser.h>
 #include "log.h"
 #include "panic.h"
 #include "srvdefs.h"
