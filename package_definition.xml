@@ -11,23 +11,11 @@
       <component id="deflatefilter" filter="s60" name="Deflate Filter" class="plugin">
         <unit bldFile="httpfilters/deflatefilter/group"/>
       </component>
-      <component id="httpfilteracceptheader" filter="s60" name="Accept Header Filter" class="plugin">
-        <unit bldFile="httpfilters/httpfilteracceptheader/group"/>
-      </component>
       <component id="httpfilterauthentication" filter="s60" name="Authentication Filter" class="plugin">
         <unit bldFile="httpfilters/httpfilterauthentication/group"/>
       </component>
-      <component id="httpfilterconnhandler" filter="s60" name="Connection Handler Fitler" class="plugin">
-        <unit bldFile="httpfilters/httpfilterconnhandler/group"/>
-      </component>
       <component id="httpfilteriop" filter="s60" name="HTTP IOP Filter" class="plugin">
         <unit bldFile="httpfilters/httpfilteriop/group"/>
-      </component>
-      <component id="httpfilterproxy" filter="s60" name="HTTP Proxy Filter" class="plugin">
-        <unit bldFile="httpfilters/httpfilterproxy/group"/>
-      </component>
-      <component id="uaproffilter" filter="s60" name="UAProf Filter" class="plugin">
-        <unit bldFile="httpfilters/uaproffilter/group"/>
       </component>
     </collection>
     <collection id="applayerprotocols" name="Application Layer Protocols" level="server">
