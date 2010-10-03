@@ -35,7 +35,7 @@ PRJ_EXPORTS
 ../inc/MDataProviderObserver.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mdataproviderobserver.h)
 ../inc/httpstd.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(httpstd.h)
 ../XmlElement/XMLELEMT.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(xmlelemt.h)
-../XmlLib/XmlLib.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(xmllib.h)
+// ../XmlLib/XmlLib.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(xmllib.h)
 ../inc/WbConverter.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wbconverter.h)
 ../inc/MWbxmlConverterObserver.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mwbxmlconverterobserver.h)
 ../HTTPResponse/CHTTPResponse.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(chttpresponse.h)
@@ -63,5 +63,5 @@ PRJ_MMPFILES
 ../mmpfiles/XmlElement.mmp
 ../mmpfiles/WbxmlLib.mmp
 ../mmpfiles/HTTPResponse.mmp
-../mmpfiles/XmlLib.mmp
+// ../mmpfiles/XmlLib.mmp
 PRJ_TESTMMPFILES
