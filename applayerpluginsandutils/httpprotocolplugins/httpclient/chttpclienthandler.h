@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -33,6 +33,15 @@ class CX500DistinguishedName;
 class TCertInfo;
 class TDNInfo;
 class CHttpPipelineFallback;
+
+/**
+ * Enumeration for NTLM authentication state.
+ */
+enum {
+        ENtlmIdle,
+        ENtlmNegotiate,
+        ENtlmAuthenticate
+    };
 
 class CHttpClientHandler : public CProtocolHandler, 
 						   public MConnectionPrefsProvider,
@@ -93,6 +102,7 @@ private:
 	void AddTunnelInfoL(RHTTPTransaction aTrans, const TDesC8& aHost, TInt aPort);
 	TBool SelectConnectionManagerL(const CHttpConnectionInfo& aConnectionInfo, RHTTPTransaction aTrans, TBool aCanPipeline, CHttpConnectionManager *&aManager);
 	CHttpConnectionManager* SelectTunnelConnectionL(const CHttpConnectionInfo& aConnectionInfo, RHTTPTransaction aTrans, TBool aCanPipeline);
+	CHttpConnectionManager* SelectNtlmConnectionL(const CHttpConnectionInfo& aConnectionInfo,RHTTPTransaction aTrans);
 	TInt MaxNumConnectionManagers() const;
 	void SetupProxyInformation(RHTTPTransaction aTrans);
 	TBool CheckPipelineSupport(RHTTPTransaction aTrans);

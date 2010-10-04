@@ -314,7 +314,9 @@ void CHttpConnectionManager::CancelSubmission(MHttpRequest& aRequest, MHttpRespo
 		// The request has not been made - just need to remove the request and
 		// response objects from the pending queues.
 		iPendingRequests.Remove(requestIndex);
-		iPendingResponses.Remove(responseIndex);
+
+		if (KErrNotFound != responseIndex)
+			iPendingResponses.Remove(responseIndex);
 		}
 	else if( responseIndex != KErrNotFound )
 		{

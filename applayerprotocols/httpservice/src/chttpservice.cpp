@@ -23,7 +23,8 @@ const TInt KMaxTransToPipeline = 5;
 
 /**
  * The default 2-phase constructor to create a CHttpService instance
- * 
+ * @publishedAll
+ * @prototype  
  */
 EXPORT_C CHttpService* CHttpService::NewL()
 	{
@@ -35,6 +36,8 @@ EXPORT_C CHttpService* CHttpService::NewL()
 	}
 /**
  * Destructor
+ * @publishedAll
+ * @prototype  
  */	
 
 EXPORT_C CHttpService::~CHttpService()
@@ -63,6 +66,9 @@ CHttpService::CHttpServiceStruct::~CHttpServiceStruct()
  * 
  * @return KErrNotFound if the string ID is not found in the HTTP string pool
  *          otherwise KErrNone for success
+ *          
+ * @publishedAll
+ * @prototype 
  */
 EXPORT_C TInt CHttpService::String(TInt aStringId, TPtrC8& aPtr)
     {
@@ -105,7 +111,9 @@ EXPORT_C TInt CHttpService::SetProxy(const TDesC8& aProxyAddress)
  * 
  * @return Proxy address otherwise KNullDesC8 if the proxy information
  *         is not set.
- * 
+ *         
+ * @publishedAll
+ * @prototype  
  */
 
 EXPORT_C const TDesC8& CHttpService::ProxyAddress() const
@@ -130,6 +138,9 @@ EXPORT_C const TDesC8& CHttpService::ProxyAddress() const
  * at any time. The default no. of connections that the CHttpService instance uses is 6.
  * 
  * @param aValue aValue No. of connections
+ * 
+ * @publishedAll
+ * @prototype  
  */
 
 EXPORT_C void CHttpService::SetMaxConnections(TInt aValue)
@@ -160,7 +171,13 @@ EXPORT_C TInt CHttpService::MaxConnections() const
 	return 0;
 	}
 	
-
+/**
+ * Sets the maximum number of transactions to be pipelined.
+ * @param aValue - number of transactions
+ *
+ * @publishedAll
+ * @prototype 
+ */ 
 EXPORT_C void CHttpService::SetMaxTransactionsToPipeline(TInt aValue)
 	{
 	RHTTPSession sess = iHttpServiceStruct->iHttpSession;
@@ -169,7 +186,13 @@ EXPORT_C void CHttpService::SetMaxTransactionsToPipeline(TInt aValue)
 	
 	connInfo.SetProperty(sp.StringF(HTTP::EMaxNumTransactionsToPipeline, RHTTPSession::GetTable()), THTTPHdrVal(aValue));				
 	}
-	
+
+/**
+ * Returns the maximum number of transactions to be pipelined.
+ * 
+ * @publishedAll
+ * @prototype 
+ */ 
 EXPORT_C TInt CHttpService::MaxTransactionsToPipeline() const
 	{
 	RHTTPSession sess = iHttpServiceStruct->iHttpSession;
@@ -190,6 +213,9 @@ EXPORT_C TInt CHttpService::MaxTransactionsToPipeline() const
  * 
  * @param aStringId - Pre-defined String ID in the HTTP string pool
  * @param aHeaderValue - Value for the header 
+ * 
+ * @publishedAll
+ * @prototype 
  */
 EXPORT_C TInt CHttpService::AddRequestHeader(TInt aStringId, const THttpHeaderValueVariant& aHeaderValue)
 	{
@@ -207,6 +233,9 @@ EXPORT_C TInt CHttpService::AddRequestHeader(TInt aStringId, const THttpHeaderVa
  * 
  * @param aHeaderName - Custom header name
  * @param aHeaderValue - Value for the header 
+ * 
+ * @publishedAll
+ * @prototype 
  */
 EXPORT_C TInt CHttpService::AddCustomRequestHeader(const TDesC8& aHeaderName, const TDesC8& aHeaderValue)
 	{
@@ -222,6 +251,14 @@ EXPORT_C TInt CHttpService::AddCustomRequestHeader(const TDesC8& aHeaderName, co
 	return err;
 	}
 
+/**
+ * This method facilitates to set to construct the authentication credentials to be passed by the application
+ * The derived class from MHTTPServiceAuthentication  will be called from the framework, if authentication is required.
+ * @param aCallback - Derived class from MHTTPServiceAuthentication
+ *
+ * @publishedAll
+ * @prototype 
+ */
 EXPORT_C TInt CHttpService::SetAuthentication(MHTTPServiceAuthentication* aCallback)
     {
     TInt error = KErrGeneral;
@@ -247,10 +284,50 @@ void CHttpService::ConstructL()
     SetMaxConnections(KMaxNoOfConnections);
     SetMaxTransactionsToPipeline(KMaxTransToPipeline);    
 	}
-	
+
+/**
+ * returns the CHttpNetworkConnection instance created by the framework.
+ * The class can be used to set the connection properties.
+ *
+ * @publishedAll
+ * @prototype 
+ */
 EXPORT_C CHttpNetworkConnection* CHttpService::HttpNetworkConnection()
     {
     CHttpNetworkConnection *httpNetworkConn = CHttpNetworkConnection::New();
     httpNetworkConn->SetHttpService(this);
     return httpNetworkConn;
+    }
+
+void CHttpService::RemoveUnwantedFilters()
+    {
+    THTTPFilterRegistration filterInfo;
+    RStringPool stringPool = iHttpServiceStruct->iHttpSession.StringPool();
+
+    RHTTPFilterCollection filterArray = iHttpServiceStruct->iHttpSession.FilterCollection();
+    THTTPFilterIterator iter = filterArray.Query();
+    const TStringTable& st = RHTTPSession::GetTable();
+  
+    iter.First();
+
+    while (!iter.AtEnd())
+        {
+        // Get next filter registration info
+        filterInfo = iter();
+        RStringF filterName = stringPool.StringF(filterInfo.iName);
+        switch(filterName.Index(st))
+            {
+            //dont remove these filters
+            case HTTP::EClient:
+            case HTTP::EProtocolHandler:
+            case HTTP::EValidation:
+            case HTTP::ERedirect:
+            case HTTP::EHttpConnectFilter:
+                break;
+            //anything other than above, remove.    
+            default:
+                filterArray.RemoveFilter(filterName);
+             }
+        ++iter;
+        }
     }

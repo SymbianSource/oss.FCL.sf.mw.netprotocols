@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -20,6 +20,7 @@
 #include <http/rhttpheaders.h>
 #include <http/framework/mrxdataobserver.h>
 #include <httperr.h>
+#include <e32math.h>
 
 #include "chttpclienttransaction.h"
 #include "chttpconnectionmanager.h"
@@ -497,6 +498,40 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                  manager->AppendPipelineFailedHost(hostVal.StrF().DesC());
                  }
 		}
+ 		
+ 		if (name.DesC().CompareF(stringPool.StringF(HTTP::EWWWAuthenticate,RHTTPSession::GetTable()).DesC()) == KErrNone)
+            {
+            _LIT8(KNtlmProtocolName,"NTLM");
+            if (aFieldValue.FindF(KNtlmProtocolName)!= KErrNotFound)
+                {
+                CHttpClientTransaction& protTran = static_cast<CHttpClientTransaction&>(*iProtTrans);
+                CHttpConnectionManager* manager = protTran.ConnectionManager();
+                _LIT8( KNtlmConnId, "NTLMConnId" );
+                if (aFieldValue.Length() >=  4 )
+                    {
+                    if (manager->GetNtlmConnId() == KErrNotFound)
+                        {
+                        TInt ntmlConnId= Math::Random()%5789; //some magic number to get random connection  id
+                        manager->SetNtlmConnId(ntmlConnId);
+                        RStringF ntlmId= stringPool.OpenFStringL( KNtlmConnId );
+                        CleanupClosePushL(ntlmId);
+                        THTTPHdrVal value;
+                        value.SetInt( ntmlConnId );
+                        trans.PropertySet().SetPropertyL( ntlmId, value );
+                        CleanupStack::PopAndDestroy(&ntlmId);
+                        }
+                    else
+                        {
+                        RStringF ntlmId= stringPool.OpenFStringL( KNtlmConnId );
+                        CleanupClosePushL(ntlmId);
+                        THTTPHdrVal value;
+                        value.SetInt(manager->GetNtlmConnId());
+                        trans.PropertySet().SetPropertyL( ntlmId, value );    
+                        CleanupStack::PopAndDestroy(&ntlmId);
+                        }
+                    }
+               }
+            }
 		
 		CleanupStack::PopAndDestroy(&name);
 		

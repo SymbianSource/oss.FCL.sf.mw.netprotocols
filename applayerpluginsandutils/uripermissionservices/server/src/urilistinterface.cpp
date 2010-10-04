@@ -668,7 +668,8 @@ CUriQueryFilter* CUriListInterface::DoQueryWithTldL ( const TDesC8& aUri, const 
 	CleanupStack::PushL ( TCleanupItem ( CUriListInterface::DestroyTransObj, dbTrans ) );
 	TInt lt = aQueryArgs.Get ( TPolicyQueryArgs::ETldListType );
 	RBuf8 upperCaseUri;
-	upperCaseUri.Create(aUri);
+	CleanupClosePushL(upperCaseUri);
+	upperCaseUri.CreateL(aUri);
 	upperCaseUri.UpperCase();
 	dbTrans->BindTextL(0, aUri);
 	dbTrans->BindIntL(1, lt);
@@ -676,7 +677,7 @@ CUriQueryFilter* CUriListInterface::DoQueryWithTldL ( const TDesC8& aUri, const 
 	
 	// Execute the query
 	CUriQueryFilter* queryFilter = CTldPolicyDataFilter::NewL ( dbTrans );
-	upperCaseUri.Close();
+	CleanupStack::PopAndDestroy (); //upperCaseUri
 	CleanupStack::Pop (); // dbTrans
 	return queryFilter;	// return the queryFilter
 	}
@@ -1244,6 +1245,8 @@ HBufC8* CUriListInterface::ExtractHostL( const TDesC8& aUri )
 	HBufC8* tldPtr;
 	User::LeaveIfError ( tldUri1.Parse ( aUri ) );
 	TBool isSchemePresent = tldUri1.IsPresent( EUriScheme );
+	CleanupClosePushL ( tld );
+	CleanupClosePushL ( customisedUri );
 	if (!isSchemePresent)
 	{
         _LIT8(KHttp, "http://");
@@ -1251,26 +1254,26 @@ HBufC8* CUriListInterface::ExtractHostL( const TDesC8& aUri )
 	    urirbuf.CleanupClosePushL();
 	    urirbuf.CreateL(KHttp,aUri.Length()+7);
 	    urirbuf.Append(aUri);
-	    customisedUri.Create( DoNormalisationLC ( urirbuf ) );
+	    customisedUri.CreateL( DoNormalisationLC ( urirbuf ) );
 	    TUriParser8 tldUri2;
 	    User::LeaveIfError ( tldUri2.Parse ( customisedUri ) );
 	    __ASSERT_ALWAYS(tldUri2.IsPresent( EUriHost ), User::Invariant());
-	    tld.Create( tldUri2.Extract(EUriHost) );
+	    tld.CreateL( tldUri2.Extract(EUriHost) );
 	    tldPtr = tld.AllocL();
 	    CleanupStack::PopAndDestroy(2); //calls aRBuf.Close()and DoNormalisationLC pop
 	    
 	 }
 	else 
 	{   
-        customisedUri.Create( DoNormalisationLC ( aUri ) );
+        customisedUri.CreateL( DoNormalisationLC ( aUri ) );
         User::LeaveIfError ( tldUri1.Parse ( customisedUri ) );
         __ASSERT_ALWAYS(tldUri1.IsPresent( EUriHost ), User::Invariant());
-        tld.Create( tldUri1.Extract(EUriHost) );
+        tld.CreateL( tldUri1.Extract(EUriHost) );
         tldPtr = tld.AllocL();
         CleanupStack::PopAndDestroy ();//objects added in DoNormalisationLC
     }
-	 tld.Close();
-	 customisedUri.Close();
+	CleanupStack::PopAndDestroy (); //customisedUri
+	CleanupStack::PopAndDestroy (); //tld
 	 return tldPtr;
 	}	
 

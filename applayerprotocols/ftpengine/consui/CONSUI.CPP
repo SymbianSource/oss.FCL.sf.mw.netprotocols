@@ -48,8 +48,7 @@ LOCAL_C void doExampleL()
 //	TPtrC	DNSName(_L("radian.ee.ic.ac.uk"));
 //
 
-	myFtpUI = new (ELeave) CFtpUI;
-    CleanupStack::PushL(myFtpUI);
+	myFtpUI = CFtpUI::NewLC();
 	CActiveScheduler* exampleScheduler=new (ELeave) CActiveScheduler;
     CleanupStack::PushL(exampleScheduler);
     CActiveScheduler::Install(exampleScheduler);

@@ -266,7 +266,8 @@ void CTldListInitializer::SaveTldName(const Xml::RAttributeArray&  aAttributes)
 			// Store the TLD name for later use
 			__ASSERT_ALWAYS(KLocalName8.CompareF( KName ) == 0, User::Invariant() );
 			iTldName.Close();
-			iTldName.Create( KAttribute.Value().DesC() );
+			TInt err = iTldName.Create( KAttribute.Value().DesC() );
+			__ASSERT_ALWAYS(KErrNone == err, User::Invariant() );
 			break;	
 			}
 		}

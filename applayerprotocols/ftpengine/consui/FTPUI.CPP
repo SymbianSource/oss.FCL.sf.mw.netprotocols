@@ -237,6 +237,27 @@ switch(Parse(iCmdConsole->FetchCmd()))
 	}
 }
 
+
+CFtpUI* CFtpUI::NewL()
+    {
+    CFtpUI* self = CFtpUI::NewLC();
+    CleanupStack::Pop();
+    return self;
+    }
+
+CFtpUI* CFtpUI::NewLC()
+    {
+    CFtpUI* self = new(ELeave) CFtpUI();
+    CleanupStack::PushL(self);
+    self->ConstructL();
+    return self;
+    }
+
+void CFtpUI::ConstructL()
+    {
+    User::LeaveIfError(iFs.Connect(KFileServerDefaultMessageSlots));
+    }
+
 CFtpUI::CFtpUI(void)
 {
 iCurCmd = EInvalid ;
@@ -244,7 +265,6 @@ iConnMode = CFTPSession::EActive;
 iOpenMode = CFTPSession::EOverwrite;
 iType = CFTPSession::EBinary;
 iState = EInputCmd;
-iFs.Connect(KFileServerDefaultMessageSlots);
 }
 
 CFtpUI::~CFtpUI(void)

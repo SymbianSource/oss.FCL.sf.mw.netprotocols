@@ -62,7 +62,8 @@ class CHttpService : public CBase
 	
 	private:
 	CHttpService();
-	void ConstructL();	
+	void ConstructL();
+	void RemoveUnwantedFilters();
 	
 	NONSHARABLE_CLASS(CHttpServiceStruct) : public CBase
 		{

@@ -86,7 +86,8 @@ EXPORT_C void TTimerLogger::EndTimer(const TDesC& aComment)
 	TTimeIntervalMicroSeconds iTimeDifference = iEndTime.MicroSecondsFrom(iStartTime);	
 	_LIT(KTimeDiff, ",%d microseconds\n");
 	RBuf myBuf;
-	myBuf.Create (aComment.Length()+64);
+	TInt err = myBuf.Create (aComment.Length()+64);
+	__ASSERT_ALWAYS(KErrNone == err, User::Invariant() );
 	myBuf.Append (aComment );
 	myBuf.AppendFormat(KTimeDiff, iTimeDifference.Int64());
     LogIt(myBuf);

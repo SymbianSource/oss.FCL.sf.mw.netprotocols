@@ -37,6 +37,16 @@ a simple FTPui
 */
 {
 public:
+    static CFtpUI* NewL();
+    static CFtpUI* NewLC();    
+    
+    ~CFtpUI(void);
+    
+private:
+    CFtpUI(void);
+    void ConstructL();
+    
+public:
 	/** Console callback Minterface */
 	void CmdReady(void);
 	void Escape(void);
@@ -63,8 +73,7 @@ public:
 	/** Message reported by server */
 	void ServerMessage(const TDesC8&);
 	/** FTP User interface specific methods */
-	CFtpUI(void);
-	~CFtpUI(void);
+	
 	/** Execute a previously parsed command */
 	TBool Execute(void);	
 	void SetConsole(CConsoleBase*);

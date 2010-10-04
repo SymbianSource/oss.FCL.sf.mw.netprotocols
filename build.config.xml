@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/netprotocols">
+]>
+
+<SystemDefinition name="netprotocols" schema="1.4.0">
+	<systemModel>
+		<layer name="mw_layer">
+			<module name="netprotocols">
+				<unit unitID="production1" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\bookmarksupport\group" name="production1" />
+				<unit unitID="production2" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\bookmarksupport\test\Integration\TestBookmarksSuite" name="production2" />
+				<unit unitID="production3" mrp="" bldFile="\sf\mw\netprotocols\applayerprotocols\httptransportfw\group\build_all" name="production3" />
+				<unit unitID="production4" mrp="" bldFile="\sf\mw\netprotocols\applayerprotocols\httptransportfw\Test\integration\group" name="production4" />
+				<unit unitID="production5" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\uripermissionservices\group" name="production5" />
+				<unit unitID="production6" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\uripermissionservices\Test\integration\testwhitelistblacklisturisuite\group" name="production6" />
+			</module>
+		</layer>
+		<layer name="api_test_layer">
+			<module name="netprotocols_test">
+				<unit unitID="test1" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\bookmarksupport\group" name="test1" />
+				<unit unitID="test2" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\bookmarksupport\test\Integration\TestBookmarksSuite" name="test2" />
+				<unit unitID="test3" mrp="" bldFile="\sf\mw\netprotocols\applayerprotocols\httptransportfw\group\build_all" name="test3" />
+				<unit unitID="test4" mrp="" bldFile="\sf\mw\netprotocols\applayerprotocols\httptransportfw\Test\integration\group" name="test4" />
+				<unit unitID="test5" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\uripermissionservices\group" name="test5" />
+				<unit unitID="test6" mrp="" bldFile="\sf\mw\netprotocols\applayerpluginsandutils\uripermissionservices\Test\integration\testwhitelistblacklisturisuite\group" name="test6" />
+				<unit unitID="test7" mrp="" bldFile="\sf\mw\netprotocols\applayerprotocols\httpservice\group" name="test7" />
+		</module>
+		</layer>
+	</systemModel>
+</SystemDefinition>

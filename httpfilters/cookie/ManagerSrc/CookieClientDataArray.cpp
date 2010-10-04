@@ -52,11 +52,11 @@ void CCookieClientDataArray::Init()
 CCookieClientDataArray::~CCookieClientDataArray()
     {
     CLOG( ( EClient, 0, _L( "-> CCookieClientDataArray::~CCookieClientDataArray" ) ) );
-    if(iCookieClientData && iCookieClientData->Count())
+    if(iCookieClientData)
         {
          iCookieClientData->ResetAndDestroy();
          iCookieClientData->Close();
-         //delete iCookieClientData;
+         delete iCookieClientData;
          iCookieClientData = NULL;
         }
     CLOG( ( EClient, 0, _L( "<- CCookieClientDataArray::~CCookieClientDataArray" ) ) );
