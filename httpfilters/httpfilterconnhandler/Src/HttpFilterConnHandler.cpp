@@ -109,7 +109,8 @@ TBool LocalHostCheckL(RHTTPTransaction& aTransaction)
 // -----------------------------------------------------------------------------
 //
 CHttpFilterConnHandler::CHttpFilterConnHandler(RHTTPSession* aSession, MConnectionCallback* aConnCallback):
-        iConnCallback (aConnCallback)
+        iConnCallback (aConnCallback),
+        iLastIapId (0)
 {
     __ASSERT_DEBUG(aConnCallback != NULL, PanicHttpFiltersConnHandler());
     __ASSERT_DEBUG(aSession != NULL, PanicHttpFiltersConnHandler());
@@ -385,6 +386,37 @@ void CHttpFilterConnHandler::CreateConnectionL(
         // Set socket server handle
         connInfo.SetPropertyL(stringPool.StringF(HTTP::EHttpSocketServ,
                               RHTTPSession::GetTable()), THTTPHdrVal((TInt)sockSvrHandle));
+
+        // Double check that client has set newConn properly
+        if (!newConn)
+        {
+            RConnection* connPtr = NULL;
+            TUint32 iapId = 0;
+            
+            // Client claims that connection has not changed, make sure
+            connPtr = REINTERPRET_CAST(RConnection*, connectionPtr);
+            error = connPtr->GetIntSetting ( _L("IAP\\Id"), iapId );
+            // If reading failed or the IAP has changed since last query -> set newConn bit
+            if ((error != KErrNone) || (iLastIapId != iapId))
+            {
+                newConn = ETrue;
+                iLastIapId = iapId;
+            }
+        }
+        else if (iLastIapId == 0)
+        {
+            RConnection* connPtr = NULL;
+            TUint32 iapId = 0;
+            
+            // Initialize last IAP variable for the first transaction
+            connPtr = REINTERPRET_CAST(RConnection*, connectionPtr);
+            error = connPtr->GetIntSetting ( _L("IAP\\Id"), iapId );
+            if ((error != KErrNone) || (iLastIapId != iapId))
+            {
+                iLastIapId = iapId;
+            }
+        }
+        
         // Set aNewConn flag
         connInfo.SetPropertyL(stringPool.StringF(HttpFilterCommonStringsExt::EHttpNewConnFlag,
                               HttpFilterCommonStringsExt::GetTable()), THTTPHdrVal((TBool)newConn));

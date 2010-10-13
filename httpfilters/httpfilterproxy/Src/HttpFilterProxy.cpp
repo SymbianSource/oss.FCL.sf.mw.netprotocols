@@ -23,6 +23,7 @@
 #include <cdbstore.h>
 #include <commdbconnpref.h>
 
+
 // User Includes
 #include "HttpFilterProxy.h"
 #include "httpfiltercommonstringsext.h"
@@ -142,11 +143,11 @@ void CHttpFilterProxy::ConstructL()
                                             RStringF(),                // The header whose presence triggers this filter, or KNullDesC to trigger on any header
                                             KAnyStatusCode,            // The status code that triggers this filter, or KAnyStatusCode to trigger on any status code
                                             ECache - KProxyOrderOffset,// The position of the filter in the queue
-                                            iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,HttpFilterCommonStringsExt::GetTable()));  //The name of the filter to add
+                                            iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,RHTTPSession::GetTable()));  //The name of the filter to add
 
 	// register for notification of KErrNotReady error codes
 	// this allows us to re-start the connection if it fails
-	iSession->FilterCollection().AddFilterL(*this, KErrNotReady, MHTTPFilter::ETidyUp -1, iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,HttpFilterCommonStringsExt::GetTable()));
+	iSession->FilterCollection().AddFilterL(*this, KErrNotReady, MHTTPFilter::ETidyUp -1, iStringPool.StringF(HttpFilterCommonStringsExt::EProxyFilter,RHTTPSession::GetTable()));
 }
 
 //---------------------------------------------------------------------------------------------
@@ -364,44 +365,48 @@ void CHttpFilterProxy::SetProxyL(const RHTTPTransaction aTransaction)
                 iUsage = ETrue;
             }
         }
-//      }
     }
 
     // We should not use proxy if the uri matches to one of exceptions from the exception list
     // In this case the Origing server will be used
 
     ExcptionsCompare(aTransaction);
-    
     // Respect proxy settings already defined by client or higher HTTP filter
     THTTPHdrVal proxyUsage;  // Check if property present or not present, not the value.
-    if ( !iConnInfo.Property(iStringPool.StringF(HTTP::EProxyUsage,
-                            RHTTPSession::GetTable()), proxyUsage)) 
-   	{ 
-
+    
+    if ( iUsage) 
+   		{ 
+       
 		// Set the proxy address and proxy Usage
 		proxyAddress = THTTPHdrVal(iProxyAddress);
-
-		iConnInfo.RemoveProperty(iStringPool.StringF(HTTP::EProxyAddress,
+		if (iConnInfo.Property(iStringPool.StringF(HTTP::EProxyUsage,
+		                            RHTTPSession::GetTable()), proxyUsage))
+        	{
+			iConnInfo.RemoveProperty(iStringPool.StringF(HTTP::EProxyAddress,
 		                        RHTTPSession::GetTable()));
-		iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyAddress,
-		                      RHTTPSession::GetTable()), proxyAddress);
-
-		iConnInfo.RemoveProperty(iStringPool.StringF(HTTP::EProxyUsage,
+	
+			iConnInfo.RemoveProperty(iStringPool.StringF(HTTP::EProxyUsage,
 		                        RHTTPSession::GetTable()));
-		if (iUsage)
-		{
-		    iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyUsage,
+        	}
+
+		iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyUsage,
 		                          RHTTPSession::GetTable()), iStringPool.StringF(HTTP::EUseProxy,
 		                                  RHTTPSession::GetTable()));
+	
+		iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyAddress,
+		                                RHTTPSession::GetTable()), proxyAddress);
+
 		}
-		else
+	else
 		{
-		    iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyUsage,
+		iConnInfo.SetPropertyL(iStringPool.StringF(HTTP::EProxyUsage,
 		                          RHTTPSession::GetTable()), iStringPool.StringF(HTTP::EDoNotUseProxy,
 		                                  RHTTPSession::GetTable()));
+		iConnInfo.RemoveProperty(iStringPool.StringF(HTTP::EProxyAddress,
+		                                    RHTTPSession::GetTable()));
+		    
 		}
     	
-   	}  
     
 
     // Cleanup strings.

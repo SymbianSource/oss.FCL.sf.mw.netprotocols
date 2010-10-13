@@ -90,7 +90,10 @@ public:	// methods
 	 */
 	virtual void AddToHostResolverCache(RHostResolver& aResolver) =0;
 	
-	virtual TInt GetSocketImmediateCloseTimeout()=0;
+	/*
+	 * Returns the socket close timeout value to set the lingering value for socket.
+	 */
+	 virtual TInt GetSocketImmediateCloseTimeout()=0;
 	};
 
 #endif	// __MCOMMSINFOPROVIDER_H__

@@ -43,7 +43,7 @@ START RESOURCE 101F8585.rss
 TARGET      httpfilterconnhandler.rsc
 END
 
-LIBRARY HttpFilterCommon.lib http.lib euser.lib bafl.lib ecom.lib inetprotutil.lib
+LIBRARY HttpFilterCommon.lib http.lib euser.lib bafl.lib ecom.lib inetprotutil.lib esock.lib
 DEBUGLIBRARY flogger.lib
 LIBRARY		etel.lib
 LIBRARY     etelmm.lib

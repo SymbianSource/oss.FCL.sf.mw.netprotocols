@@ -103,11 +103,6 @@ private:	// methods from MCommsConnectionProvider
 */
 	virtual void GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy);
 
-/** @fn         GetSecurityPrefs(MSecurityPolicy* aSecurityPolicy, TInt& aDialogPref)
-    @see        MCommsConnectionProvider    
-*/
-	virtual void GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref);
-
 /**	@fn			ImmediateSocketShutdown()
 	@see		MCommsConnectionProvider	
 */

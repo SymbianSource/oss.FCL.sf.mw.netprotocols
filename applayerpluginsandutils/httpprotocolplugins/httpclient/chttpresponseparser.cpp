@@ -1,4 +1,4 @@
-// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies).
 // All rights reserved.
 // This component and the accompanying materials are made available
 // under the terms of "Eclipse Public License v1.0"
@@ -296,18 +296,18 @@ void CHttpResponseParser::ConnectionError(TInt aError)
 			
 			}
 		else
-	        {		    
-            // Check client has asked to return Default Error occured while Disconnect received
+	        {
+            CHttpRequestComposer& request = static_cast<CHttpRequestComposer&>(iProtTrans->TxData());
+			// Check client has asked to return Default Error occured while Disconnect received
             if (clientTrans->PropogateDefaultError())
-               {
-               NotifyObserverError(aError);             
-               return;
-               }
+                {
+                NotifyObserverError(aError);             
+                return;
+                }
             // Need to map to appropriate error code if the disconnect notification is
-            // asked by the client			
-			if ( clientTrans->NeedDisconnectNotification() )
+            // asked by the client
+            if ( clientTrans->NeedDisconnectNotification() )
 				{
-				CHttpRequestComposer& request = static_cast<CHttpRequestComposer&>(iProtTrans->TxData());
 				// if we are consuming response then the request has been not sent fully.
 				if ( ConsumingResponse () || !request.RequestSent() )
 					aError = KErrHttpRequestNotSent;
@@ -503,10 +503,9 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                  #endif
                  manager->AppendPipelineFailedHost(hostVal.StrF().DesC());
                  }
-		}
-		
+ 		    }
  		if (name.DesC().CompareF(stringPool.StringF(HTTP::EWWWAuthenticate,RHTTPSession::GetTable()).DesC()) == KErrNone)
-            {
+ 		    {
             _LIT8(KNtlmProtocolName,"NTLM");
             if (aFieldValue.FindF(KNtlmProtocolName)!= KErrNotFound)
                 {
@@ -530,15 +529,14 @@ void CHttpResponseParser::HeaderL(const TDesC8& aFieldName, TDesC8& aFieldValue)
                         {
                         RStringF ntlmId= stringPool.OpenFStringL( KNtlmConnId );
                         CleanupClosePushL(ntlmId);
-                        THTTPHdrVal value;
+												THTTPHdrVal value;
                         value.SetInt(manager->GetNtlmConnId());
-                        trans.PropertySet().SetPropertyL( ntlmId, value );    
-                        CleanupStack::PopAndDestroy(&ntlmId);
+                        trans.PropertySet().SetPropertyL( ntlmId, value );
+                        CleanupStack::PopAndDestroy(&ntlmId);  
                         }
                     }
                }
-            }
- 		
+ 		    }
 		CleanupStack::PopAndDestroy(&name);
 		
 		if( BodyComplete() && !GotTrailers() )	
@@ -808,11 +806,9 @@ TBool CHttpResponseParser::ResponseCompleted ()
 TBool CHttpResponseParser::NeedCompletion ()
 	{
 	RHTTPTransaction trans = iProtTrans->Transaction ();
-	TInt statusCode = trans.Response().StatusCode();
-	if ( HTTPStatus::IsRedirection ( statusCode )|| statusCode == HTTPStatus::EUnauthorized )
+	if ( HTTPStatus::IsRedirection ( trans.Response().StatusCode() ) )
 		{
 		// If it is a redirection message then we need to complete the response
-		// for 401 error..we have to continue on the same port..so we need to complete the response immediately
 		return ETrue;			
 		}
 	return EFalse;		

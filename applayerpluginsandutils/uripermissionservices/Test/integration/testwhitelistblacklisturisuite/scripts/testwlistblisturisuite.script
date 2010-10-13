@@ -44,6 +44,544 @@ PRINT  Executing testcase appUpgradeInstall
 RUN_TEST_STEP	1000	systemtest_security	AppInstall		c:\testdata\ini\TestWListBListUriSuite.ini	isolated_app
 END_TESTCASE IWS-WLBL-TESTWLISTBLISTURISUITE-0001
 
+
+//START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE-0002
+//Copy_PreConfig_Xml
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-TESTWLISTBLISTURISUITE-0002
+//! @SYMTestCaseDesc 		This is to place preconfiguration xml file at c:\private\20009D70\ineturilist.xml
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		Copy file from z: to c:\private\20009D70\ineturilist.xml
+//! @SYMTestExpectedResults 	ineturilist.xml file should be copied to c:\private\20009D70\ineturilist.xml
+//! @SYMTestType 		CIT
+//RUN_TEST_STEP 	100 	TestWListBListUriServer     TestCopyPreConfigXmlStep 	
+//END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE-0002
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0049
+//PreConfigured_Uris_Count
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0049
+//! @SYMTestCaseDesc 		Test that all the URIs in the pre-configuration white list should be added to database when loaded first time.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		1) Place the pre-configuration file which contains white listed URIs in corresponding directory.
+//!				2) It should be read and added to the database when first time loaded.
+//!				3) Check the count of added URIs.
+//! @SYMTestExpectedResults 	Added URIs count should be equivalent to no of URIs in the pre-configuration file.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUriCountStep 	c:\testdata\ini\TestWListBListUriSuite.ini  PreConfigured_WhiteList_Uris_Count
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUriCountStep 	c:\testdata\ini\TestWListBListUriSuite.ini  PreConfigured_BlackList_Uris_Count
+END_TESTCASE 	IWS-WLBL-CIT-POS-0049
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0001
+//Add_Uri_WhiteList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0001
+//! @SYMTestCaseDesc 		Add an uri to white list.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//!				3) Check that it has been added successfully
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+
+//! Adding Uris of Voip Service Type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_Voip_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_Voip_WhiteList_1
+
+//! syntax normalisation 
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+
+//! Add an uri to white list with user-info component.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+
+//! Add an uri to white list with ip-address as host/domain name.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_200
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_200
+END_TESTCASE 	IWS-WLBL-CIT-POS-0001
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0001
+//Add_Uri_WhiteList_Already_Exist
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0001
+//! @SYMTestCaseDesc 		Add a URI to white list which has been already existed in white list.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should throw KErrUriAllreadyExist exception.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+
+//!Uris with Voip Service type
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_Voip_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_Voip_WhiteList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_Voip_WhiteList_1
+
+//! syntax normalisation 
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_101
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+
+//! With user-info component.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_107
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+
+
+//! ip-address as host/domain name.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_200
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_201
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_200
+
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0001
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0003
+//Add_Uri_WhiteList_Different_Servicetype
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0003
+//! @SYMTestCaseDesc 		Adding same URI in white list with different service type.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_3
+
+//! syntax normalisation 
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_102
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_102
+
+//! With user-info component.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_108
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_106
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_108
+END_TESTCASE 	IWS-WLBL-CIT-POS-0003
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0002
+//Add_Uri_WhiteList_Without_FavName
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0002
+//! @SYMTestCaseDesc 		Adding URI in white list without Favourite name.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_4
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_4
+END_TESTCASE 	IWS-WLBL-CIT-POS-0002
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0005
+//Add_Uri_WhiteList_Partialmatch_ExitingBLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0005
+//! @SYMTestCaseDesc 		Add URI(smaller URI) to White List, which partially matches to existing black list URI(bigger URI)
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_5
+END_TESTCASE 	IWS-WLBL-CIT-POS-0005
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0004
+//Add_Uri_WhiteList_Partialmatch_ExitingWLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0004
+//! @SYMTestCaseDesc 		Add URI to White List, which partially matches to existing white list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_8
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_8
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_9
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_9
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+
+//! Syntax Normalisation.
+//! Add URI to White List, which partially matches(smaller) to existing white list URI
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_103
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_103
+
+
+//! Add URI to White List, which partially matches(bigger) to existing white list URI
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_104
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_104
+
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_105
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_105
+END_TESTCASE 	IWS-WLBL-CIT-POS-0004
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0014
+//Add_Uri_WhiteList_Partialmatch_ExitingBLUri_BiggerURI
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0014
+//! @SYMTestCaseDesc 		Add URI to White List(bigger URI), which partially matches to existing black list URI(smaller URI)
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	Add should pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0014
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0006
+//Add_Uri_WhiteList_Partialmatch_ExitingBLUri__InitialPathMatch
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0006
+//! @SYMTestCaseDesc 		Add URI to White List, which partially matches(Initial part of URI-path) to existing black list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to white list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_11
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_11
+END_TESTCASE 	IWS-WLBL-CIT-POS-0006
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0002
+//Add_Uri_WhiteList_exactmatch_ExitingBLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0002
+//! @SYMTestCaseDesc 		Add URI to White List, which exactly matches to existing black list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	It should fail and URI shouldn't be added to white list as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_12
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0002
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0007
+//Add_Uri_BlackList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0007
+//! @SYMTestCaseDesc 		Add an uri to black list.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//!				3) Check that it has been added successfully
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0007
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0009
+//Add_Uri_BlackList_Already_Exist
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0009
+//! @SYMTestCaseDesc 		Add a URI to black list which has been already existed in black list.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should throw KErrUriAllreadyExist exception.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_2
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0009
+
+START_TESTCASE	IWS-WLBL-TESTWLISTBLISTURISUITE-0003
+//Add_Uri_BlackList_Different_Servicetype
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-TESTWLISTBLISTURISUITE-0003
+//! @SYMTestCaseDesc 		Adding same existing URI in black list with different service type.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_3
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_3
+END_TESTCASE 	IWS-WLBL-TESTWLISTBLISTURISUITE-0003
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0008
+//Add_Uri_BlackList_Without_FavName
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0008
+//! @SYMTestCaseDesc 		Adding URI in black list without Favourite name.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_4
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_4
+END_TESTCASE 	IWS-WLBL-CIT-POS-0008
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0010
+//Add_Uri_BlackList_Partialmatch_ExitingBLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0010
+//! @SYMTestCaseDesc 		Add URI to Black List, which partially matches to existing black list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_7
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_9
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_9
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0010
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0013
+//Add_Uri_BlackList_Partialmatch_ExitingWLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0013
+//! @SYMTestCaseDesc 		Add URI to Black List(smaller URI), which partially matches to existing white list URI(bigger URI)
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	Add should pass.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-POS-0013
+
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0011
+Add_Uri_BlackList_Partialmatch_ExitingWLUri_BiggerURI
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0011
+//! @SYMTestCaseDesc 		Add URI to Black List(bigger URI), which partially matches to existing white list URI(smaller URI).
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_8
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_8
+END_TESTCASE 	IWS-WLBL-CIT-POS-0011
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0012
+//Add_Uri_BlackList_Partialmatch_ExistingWLUri__InitialPathMatch
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0012
+//! @SYMTestCaseDesc 		Add URI to Black List, which partially matches(Initial part of URI-path) to existing white list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	URI should be added to black list with ReadWrite permission as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_12
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_12
+END_TESTCASE 	IWS-WLBL-CIT-POS-0012
+
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0004
+//Add_Uri_BlackList_exactmatch_ExistingWLUri
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0004
+//! @SYMTestCaseDesc 		Add URI to black List, which exactly matches to existing white list URI
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object for the existing URI
+//!                             2) Open RUriDatabase and call RUriDatabase::AddL() 
+//! @SYMTestExpectedResults 	It should fail and URI shouldn't be added to black list as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_11
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0004
+
+START_TESTCASE	IWS-WLBL-CIT-POS-0015
+//Remove_ReadWrite_Uri_WhiteList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-POS-0015
+//! @SYMTestCaseDesc 		Remove an uri having ReadWrite permission from white list.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                             2) Open RUriDatabase and call RUriDatabase::RemoveL() 
+//!				3) Check that it has been removed successfully
+//! @SYMTestExpectedResults 	URI having ReadWrite permission should be removed from white list as expected.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_1
+
+
+//! syntax normalisation 
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_111
+
+//! syntax normalisation, ip address formats
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_200
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_206
+END_TESTCASE 	IWS-WLBL-CIT-POS-0015
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0005
+//Remove_NonExist_ReadWrite_Uri_WhiteList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0005
+//! @SYMTestCaseDesc 		Remove URI of specific service type from whitelist when not available in database.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                             2) Open RUriDatabase and call RUriDatabase::RemoveL() 
+//! @SYMTestExpectedResults 	Should throw KErrUriNotFound exception.
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_2
+
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+//!  Remove URI of specific service type from whitelist when uri with different service type exists in white list.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_3
+//!  Remove URI of specific service type from whitelist when same uri(exact uri) is not available in white list.
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_4
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
+
+//! Remove URI from whitelist when same uri with same service type exists in black list
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_BlackList_1
+
+//! Syntax normalisation.
+//! Remove URI of specific service type from whitelist when uri with different service type exists in database
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_113
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+
+//! Remove URI without URI exact match
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestAddUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadWrite_Uri_WhiteList_114
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_100
+
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0005
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0007
+//Remove_ReadOnly_Uri_WhiteList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0007
+//! @SYMTestCaseDesc 		Should not remove URI of permission type readonly
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                             2) Open RUriDatabase and call RUriDatabase::RemoveL() 
+//!				3) Check that it hasn't been removed.
+//! @SYMTestExpectedResults 	Should throw KErrUriReadOnly exception.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_4
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadOnly_Uri_WhiteList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_4
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0007
+
 START_TESTCASE	IWS-WLBL-CIT-NEG-0009
 //Remove_UsingWildChar_Uri_WhiteList
 
@@ -125,6 +663,26 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\i
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
 
 END_TESTCASE 	IWS-WLBL-CIT-NEG-0006
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0008
+//Remove_ReadOnly_Uri_BlackList
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0008
+//! @SYMTestCaseDesc 		Should not remove URI of permission type readonly
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Create a RUriProperties object 
+//!                                2) Open RUriDatabase and call RUriDatabase::RemoveL() 
+//!				3) Check that it hasn't been removed.
+//! @SYMTestExpectedResults 	Should throw KErrUriReadOnly exception.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_BlackList_4
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Remove_ReadOnly_Uri_BlackList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_BlackList_4
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0008
+
 
 START_TESTCASE	IWS-WLBL-CIT-POS-0017
 //PartialPrefix_PathMatch_Uri_WhiteList
@@ -1084,6 +1642,23 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUpdateUriListTypeStep 	c:\te
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
 END_TESTCASE 	IWS-WLBL-CIT-NEG-0023
 
+START_TESTCASE	IWS-WLBL-CIT-NEG-0024
+//Update_ReadOnly_Uri_ListType
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0024
+//! @SYMTestCaseDesc 		Update the favourite name of readonly uri.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open RUriDatabase and call RUriDatabase::UpdateFavouriteNameL() by passing all the required parameters.
+//! @SYMTestExpectedResults 	It should fail with KErrUriReadOnly.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_6
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUpdateUriListTypeStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Update_ReadOnly_Uri_ListType_5_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_6
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0024
+
 
 START_TESTCASE	IWS-WLBL-CIT-POS-0036
 //Update_Uri_FavouriteName
@@ -1150,6 +1725,24 @@ RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUpdateUriFavNameStep 	c:\tes
 RUN_TEST_STEP 	100 	TestWListBListUriServer     TestRemoveUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Add_Uri_WhiteList_1
 END_TESTCASE 	IWS-WLBL-CIT-NEG-0026
 
+
+
+START_TESTCASE	IWS-WLBL-CIT-NEG-0027
+//Update_ReadOnly_Uri_FavouriteName
+
+//! @file			TestWListBListUriSuite.script
+//! @SYMTestCaseID		IWS-WLBL-CIT-NEG-0027
+//! @SYMTestCaseDesc 		Update the favourite name of readonly.
+//! @SYMFssID			
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		Critical
+//! @SYMTestActions 		1) Open RUriDatabase and call RUriDatabase::UpdateFavouriteNameL() by passing all the required parameters.
+//! @SYMTestExpectedResults 	It should fail with KErrUriReadOnly.
+//! @SYMTestType 		CIT
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_5
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestUpdateUriFavNameStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Update_ReadOnly_Uri_FavouriteName_5_1
+RUN_TEST_STEP 	100 	TestWListBListUriServer     TestMatchUriStep 	c:\testdata\ini\TestWListBListUriSuite.ini  Exact_Match_Uri_WhiteList_5
+END_TESTCASE 	IWS-WLBL-CIT-NEG-0027
 
 START_TESTCASE	IWS-WLBL-CIT-POS-0033
 //Get_ListType_WhiteListed_Uri

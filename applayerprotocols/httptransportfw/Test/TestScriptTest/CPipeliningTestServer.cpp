@@ -137,11 +137,6 @@ void CPipeliningTestServer::GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPoli
 	aSecurityPolicy = NULL;
 	}
 
-void CPipeliningTestServer::GetSecurityPrefs(MSecurityPolicy*& /*aSecurityPolicy*/, TInt& /*aDialogPref*/)
-    {
-    // dummy implementation  
-    }
-
 TBool CPipeliningTestServer::ImmediateSocketShutdown()
 	{
 	return EFalse;

@@ -57,7 +57,6 @@ private:
 	TBool SupplyCommsConnection(RConnection*& aConnectionPtr);
  	void SetCommsConnectionL(RConnection* aConnectionPtr);
 	void GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy);
-	void GetSecurityPrefs(MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref);
 	TBool ImmediateSocketShutdown();
 	virtual TBool SupplySocketServerHandle ( TInt& aSocketServerHandle );
   	virtual void SetSocketServerHandleL ( TInt aSocketServerHandle );

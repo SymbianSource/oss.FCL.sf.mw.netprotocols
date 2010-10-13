@@ -112,9 +112,9 @@ EXPORT_C TInt RCookieManager::Connect()
     CLOG( ( EClientConnect, 0, _L( "Server session created, errcode%d" ), error ) );
     if(error == KErrNone)
     	{
-	iCookieMgrData = new TCookieMgrInternalStruct(iStringPool);
-	if (!(iCookieMgrData && iCookieMgrData->Init() == KErrNone))
-		return KErrNoMemory;
+		iCookieMgrData = new TCookieMgrInternalStruct(iStringPool);
+		if (!(iCookieMgrData && iCookieMgrData->Init() == KErrNone))
+			return KErrNoMemory;
     	}
     CLOG( ( EClientConnect, 0, _L( "<- RCookieManager::Connect" ) ) );
     return error;

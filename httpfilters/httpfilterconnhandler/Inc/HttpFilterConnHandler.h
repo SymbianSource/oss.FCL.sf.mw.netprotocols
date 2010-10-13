@@ -157,6 +157,9 @@ private:    // Data
 
     // The pointer to the CHttpFilterConnHandlerObserver object
     CHttpFilterConnHandlerObserver* iObserver;
+    
+    // Value storing the last Iap ID returned by the client
+    TUint32 iLastIapId;
 
 };
 

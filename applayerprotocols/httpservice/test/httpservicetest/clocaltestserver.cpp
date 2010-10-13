@@ -117,11 +117,6 @@ void CLocalTestServer::GetSecurityPrefs(TBool& aDialogPrompt, MSecurityPolicy*& 
 	aSecurityPolicy = NULL;
 	}
 
-void CLocalTestServer::GetSecurityPrefs(MSecurityPolicy*& /*aSecurityPolicy*/, TInt& /*aDialogPref*/)
-    {
-    // dummy implementation
-    }
-
 TBool CLocalTestServer::ImmediateSocketShutdown()
 	{
 	return EFalse;

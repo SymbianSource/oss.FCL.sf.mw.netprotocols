@@ -35,6 +35,7 @@ EXPORT_C CHttpService* CHttpService::NewL()
 	CleanupStack::Pop(); // self
 	return self;	
 	}
+	
 /**
  * Destructor
  * @publishedAll
@@ -52,6 +53,7 @@ EXPORT_C CHttpService::~CHttpService()
 
 /**
  * Destructor of the inner class CHttpServiceStruct
+ *
  * @publishedAll
  * @prototype 
  */ 
@@ -73,14 +75,13 @@ CHttpService::CHttpServiceStruct::~CHttpServiceStruct()
  * @publishedAll
  * @prototype 
  */
-
 EXPORT_C TInt CHttpService::String(TInt aStringId, TPtrC8& aPtr)
     {
     RStringF str = iHttpServiceStruct->iHttpSession.StringPool().StringF(aStringId, RHTTPSession::GetTable());
     aPtr.Set(str.DesC());
     return KErrNone;
     }
-
+    
 /**
  * Set the proxy that applies to all HTTP client transactions that "this"
  * CHttpService instance creates
@@ -89,7 +90,6 @@ EXPORT_C TInt CHttpService::String(TInt aStringId, TPtrC8& aPtr)
  * @return KErrNoMemory if the proxy information cannot be set other KErrNone for success.
  * 
  */
-
 EXPORT_C TInt CHttpService::SetProxy(const TDesC8& aProxyAddress)
 	{
 	RHTTPSession sess = iHttpServiceStruct->iHttpSession;
@@ -116,7 +116,7 @@ EXPORT_C TInt CHttpService::SetProxy(const TDesC8& aProxyAddress)
  * 
  * @return Proxy address otherwise KNullDesC8 if the proxy information
  *         is not set.
- * 
+ *
  * @publishedAll
  * @prototype 
  */
@@ -143,7 +143,7 @@ EXPORT_C const TDesC8& CHttpService::ProxyAddress() const
  * at any time. The default no. of connections that the CHttpService instance uses is 6.
  * 
  * @param aValue aValue No. of connections
- * 
+ *
  * @publishedAll
  * @prototype 
  */
@@ -178,14 +178,13 @@ EXPORT_C TInt CHttpService::MaxConnections() const
 	return 0;
 	}
 	
-
 /**
  * Sets the maximum number of transactions to be pipelined.
  * @param aValue - number of transactions
  *
  * @publishedAll
  * @prototype 
- */ 
+ */	
 EXPORT_C void CHttpService::SetMaxTransactionsToPipeline(TInt aValue)
 	{
 	RHTTPSession sess = iHttpServiceStruct->iHttpSession;
@@ -200,7 +199,7 @@ EXPORT_C void CHttpService::SetMaxTransactionsToPipeline(TInt aValue)
  * 
  * @publishedAll
  * @prototype 
- */ 
+ */		
 EXPORT_C TInt CHttpService::MaxTransactionsToPipeline() const
 	{
 	RHTTPSession sess = iHttpServiceStruct->iHttpSession;
@@ -220,8 +219,8 @@ EXPORT_C TInt CHttpService::MaxTransactionsToPipeline() const
  * for all HTTP client transactions. [For ex; User-Agent header] 
  * 
  * @param aStringId - Pre-defined String ID in the HTTP string pool
- * @param aHeaderValue - Value for the header
- *  
+ * @param aHeaderValue - Value for the header 
+ *
  * @publishedAll
  * @prototype 
  */
@@ -240,8 +239,8 @@ EXPORT_C TInt CHttpService::AddRequestHeader(TInt aStringId, const THttpHeaderVa
  * applicable for all HTTP client transactions. [For ex; User-Agent header] 
  * 
  * @param aHeaderName - Custom header name
- * @param aHeaderValue - Value for the header
- *  
+ * @param aHeaderValue - Value for the header 
+ *
  * @publishedAll
  * @prototype 
  */
@@ -292,7 +291,7 @@ void CHttpService::ConstructL()
     SetMaxConnections(KMaxNoOfConnections);
     SetMaxTransactionsToPipeline(KMaxTransToPipeline);    
 	}
-	
+
 /**
  * returns the CHttpNetworkConnection instance created by the framework.
  * The class can be used to set the connection properties.
@@ -306,6 +305,7 @@ EXPORT_C CHttpNetworkConnection* CHttpService::HttpNetworkConnection()
     httpNetworkConn->SetHttpService(this);
     return httpNetworkConn;
     }
+
 
 void CHttpService::RemoveUnwantedFilters()
     {

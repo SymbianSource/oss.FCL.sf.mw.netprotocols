@@ -74,12 +74,11 @@ private:	// methods from MConnectionPrefsProvider
 	virtual void SetCommsConnectionL( RConnection* aConnectionPtr );
 	virtual void SetSocketServerHandleL ( TInt aSocketServerHandle );
 	virtual void GetSecurityPrefs( TBool& aDialogPrompt, MSecurityPolicy*& aSecurityPolicy );
-	virtual void GetSecurityPrefs( MSecurityPolicy*& aSecurityPolicy, TInt& aDialogPref );
 	virtual TBool ImmediateSocketShutdown();
 	virtual TInt SessionId();
 	virtual TInt GetRecvBufferSize();
 	virtual TInt GetSocketImmediateCloseTimeout();
-	
+
 private:	// methods from MRxDataObserver
 	
 	virtual void SetStatusL(CRxData& aRxData, TInt aStatus);	

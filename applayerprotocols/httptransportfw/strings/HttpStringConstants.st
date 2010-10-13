@@ -306,12 +306,8 @@ EHttpEnableOptimalPipelining _062
 # the socket will be closed
 #
 EHttpSocketTimeoutValue _063
-#Propery name to set the transaction should not be retried if there is any error
+#Property name to set the transaction should not be retried if there is any error
 #
 EHttpPropagateDefaultError _064
-#
-# Property name and value to be used for allowing untrusted certificates
-#
-EDialogAutomaticAllowed _071
 #Property name to set the TCP socket immediate close timewait. This will enable the Lingering option in tcp.
 EHttpSocketImmediateClosetTimeOutValue  _65
