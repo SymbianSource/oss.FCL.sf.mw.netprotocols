@@ -18,6 +18,7 @@
 
 #include <httpcore.iby>
 #include <transporthandler.iby>
+#include <ineturilist.iby>
 
 // ECom Filters
 ECOM_PLUGIN(tfcorefilters.dll,101f446e.rsc)
